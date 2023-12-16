@@ -125,7 +125,9 @@ Attractions (example)
 ​
 The url to your repository and to your deployed project
 ​
+
 Frontend: [https://github.com/anapatriciagomes/AtlasOfConquests]()
+
 Backend: [Repository Link]()
 ​
 [Deploy Link]()
@@ -135,5 +137,6 @@ Backend: [Repository Link]()
 
 ​
 Ana Patrícia Gomes - [`<anapatriciagomes>`](https://github.com/anapatriciagomes) - [`<Linkedin>`](https://www.linkedin.com/in/anapatriciagomes/)
+
 ​
 Ruben Abreu - [`<ruben-abreu>`](https://github.com/ruben-abreu) - [`<Linkedin>`](https://www.linkedin.com/in/ruben-abreu1/)
