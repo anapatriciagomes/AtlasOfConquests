@@ -125,7 +125,7 @@ Attractions (example)
 ​
 The url to your repository and to your deployed project
 ​
-Frontend: [Repository Link]()
+Frontend: [https://github.com/anapatriciagomes/AtlasOfConquests]()
 Backend: [Repository Link]()
 ​
 [Deploy Link]()
