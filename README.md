@@ -124,8 +124,6 @@ Attractions (example)
 
 ### Git
 
-​
-
 Frontend: [https://github.com/anapatriciagomes/AtlasOfConquests]()
 
 Backend: [Repository Link]()
