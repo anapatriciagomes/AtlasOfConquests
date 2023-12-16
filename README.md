@@ -109,8 +109,10 @@ Attractions (example)
 ​
 [OpenWeather API Node Package](https://www.npmjs.com/package/openweather-api-node)
 ​
+
 [React Simple Maps](https://www.react-simple-maps.io/)
 ​
+
 [react-svg-worldmap](https://www.npmjs.com/package/react-svg-worldmap)
 ​
 <br>
@@ -123,13 +125,12 @@ Attractions (example)
 ### Git
 
 ​
-The url to your repository and to your deployed project
-​
 
 Frontend: [https://github.com/anapatriciagomes/AtlasOfConquests]()
 
 Backend: [Repository Link]()
 ​
+
 [Deploy Link]()
 ​
 
@@ -139,4 +140,5 @@ Backend: [Repository Link]()
 Ana Patrícia Gomes - [`<anapatriciagomes>`](https://github.com/anapatriciagomes) - [`<Linkedin>`](https://www.linkedin.com/in/anapatriciagomes/)
 
 ​
+
 Ruben Abreu - [`<ruben-abreu>`](https://github.com/ruben-abreu) - [`<Linkedin>`](https://www.linkedin.com/in/ruben-abreu1/)
