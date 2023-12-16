@@ -1,5 +1,11 @@
+import SimpleWorldMap from './components/SimpleWorldMap';
+
 function App() {
-  return <></>;
+  return (
+    <>
+      <SimpleWorldMap />
+    </>
+  );
 }
 
 export default App;
