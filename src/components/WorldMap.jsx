@@ -42,7 +42,7 @@ function WorldMap() {
                 <Geography
                   key={geo.rsmKey}
                   geography={geo}
-                  fill={d ? colorScale(d['2017']) : '#F5F4F6'}
+                  fill={d ? colorScale(d['2017']) : '#faaa70'}
                 />
               );
             })
