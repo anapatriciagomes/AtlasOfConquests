@@ -1,55 +1,75 @@
-import { useEffect, useState } from 'react';
-import { csv } from 'd3-fetch';
-import { scaleLinear } from 'd3-scale';
+import React, { useState } from 'react';
 import {
   ComposableMap,
   Geographies,
   Geography,
-  Sphere,
-  Graticule,
+  ZoomableGroup,
 } from 'react-simple-maps';
 
 import geoUrl from '../assets/features.json';
 
-const colorScale = scaleLinear()
-  .domain([0.29, 0.68])
-  .range(['#ffedea', '#ff5233']);
-
 function WorldMap() {
-  const [data, setData] = useState([]);
+  const [position, setPosition] = useState({ coordinates: [0, 0], zoom: 1 });
 
-  useEffect(() => {
-    csv(`/vulnerability.csv`).then(data => {
-      setData(data);
-    });
-  }, []);
+  function handleZoomIn() {
+    if (position.zoom >= 4) return;
+    setPosition(pos => ({ ...pos, zoom: pos.zoom * 2 }));
+  }
+
+  function handleZoomOut() {
+    if (position.zoom <= 1) return;
+    setPosition(pos => ({ ...pos, zoom: pos.zoom / 2 }));
+  }
+
+  function handleMoveEnd(position) {
+    setPosition(position);
+  }
 
   return (
-    <ComposableMap
-      projectionConfig={{
-        rotate: [-10, 0, 0],
-        scale: 147,
-      }}
-    >
-      <Sphere stroke="#E4E5E6" strokeWidth={0.5} />
-      <Graticule stroke="#E4E5E6" strokeWidth={0.5} />
-      {data.length > 0 && (
-        <Geographies geography={geoUrl}>
-          {({ geographies }) =>
-            geographies.map(geo => {
-              const d = data.find(s => s.ISO3 === geo.id);
-              return (
-                <Geography
-                  key={geo.rsmKey}
-                  geography={geo}
-                  fill={d ? colorScale(d['2017']) : '#faaa70'}
-                />
-              );
-            })
-          }
-        </Geographies>
-      )}
-    </ComposableMap>
+    <div>
+      <ComposableMap>
+        <ZoomableGroup
+          zoom={position.zoom}
+          center={position.coordinates}
+          onMoveEnd={handleMoveEnd}
+        >
+          <Geographies geography={geoUrl}>
+            {({ geographies }) =>
+              geographies.map(geo => (
+                <Geography key={geo.rsmKey} geography={geo} />
+              ))
+            }
+          </Geographies>
+        </ZoomableGroup>
+      </ComposableMap>
+      <div className="controls">
+        <button onClick={handleZoomIn}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth="3"
+          >
+            <line x1="12" y1="5" x2="12" y2="19" />
+            <line x1="5" y1="12" x2="19" y2="12" />
+          </svg>
+        </button>
+        <button onClick={handleZoomOut}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth="3"
+          >
+            <line x1="5" y1="12" x2="19" y2="12" />
+          </svg>
+        </button>
+      </div>
+    </div>
   );
 }
 
