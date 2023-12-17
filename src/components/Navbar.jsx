@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 
 function Navbar() {
   return (
-    <nav className="my-4 px-6 fixed top-0 left-0 w-full">
+    <nav className="py-4 px-6 fixed top-0 left-0 w-full bg-white">
       <div className="flex justify-between">
         <Link to="/">
           <Button>Home</Button>
