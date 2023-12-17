@@ -36,7 +36,7 @@ function WorldMap() {
           <Geographies geography={geoUrl}>
             {({ geographies }) =>
               geographies.map(geo => (
-                <Geography key={geo.rsmKey} geography={geo} />
+                <Geography key={geo.rsmKey} geography={geo} fill="#faaa70" />
               ))
             }
           </Geographies>
