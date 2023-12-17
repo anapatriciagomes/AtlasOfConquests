@@ -42,7 +42,7 @@ function WorldMap() {
           </Geographies>
         </ZoomableGroup>
       </ComposableMap>
-      <div className="controls">
+      <div className="controls text-center">
         <button onClick={handleZoomIn}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
