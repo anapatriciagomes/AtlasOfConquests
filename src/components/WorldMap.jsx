@@ -5,10 +5,13 @@ import {
   Geography,
   ZoomableGroup,
 } from 'react-simple-maps';
+import { Tooltip } from 'react-tooltip';
 
 import geoUrl from '../assets/features.json';
 
-function WorldMap({ setTooltipContent }) {
+function WorldMap() {
+  const [tooltipContent, setTooltipContent] = useState('');
+
   const [position, setPosition] = useState({
     coordinates: [15, 0],
     zoom: 1,
@@ -44,7 +47,7 @@ function WorldMap({ setTooltipContent }) {
                   geography={geo}
                   fill="#faaa70"
                   onMouseEnter={() => {
-                    setTooltipContent(`${geo.properties.name}`);
+                    setTooltipContent(geo.properties.name);
                   }}
                   onMouseLeave={() => {
                     setTooltipContent('');
@@ -69,6 +72,7 @@ function WorldMap({ setTooltipContent }) {
           </Geographies>
         </ZoomableGroup>
       </ComposableMap>
+      <Tooltip>{tooltipContent}</Tooltip>
       <div className="controls text-center">
         <button onClick={handleZoomIn}>
           <svg
