@@ -42,37 +42,45 @@ function WorldMap() {
           <Geographies geography={geoUrl}>
             {({ geographies }) =>
               geographies.map(geo => (
-                <Geography
-                  key={geo.rsmKey}
-                  geography={geo}
-                  fill="#faaa70"
-                  onMouseEnter={() => {
-                    setTooltipContent(geo.properties.name);
-                  }}
-                  onMouseLeave={() => {
-                    setTooltipContent('');
-                  }}
-                  style={{
-                    default: {
-                      fill: '#faaa70',
-                      outline: 'none',
-                    },
-                    hover: {
-                      fill: '#F53',
-                      outline: 'none',
-                    },
-                    pressed: {
-                      fill: '#E42',
-                      outline: 'none',
-                    },
-                  }}
-                />
+                <a key={geo.rsmKey} className="country-tooltip">
+                  <Geography
+                    geography={geo}
+                    fill="#faaa70"
+                    onMouseEnter={() => {
+                      setTooltipContent(geo.properties.name);
+                      console.log(tooltipContent);
+                    }}
+                    onMouseLeave={() => {
+                      setTooltipContent('');
+                    }}
+                    style={{
+                      default: {
+                        fill: '#faaa70',
+                        outline: 'none',
+                      },
+                      hover: {
+                        fill: '#F53',
+                        outline: 'none',
+                      },
+                      pressed: {
+                        fill: '#E42',
+                        outline: 'none',
+                      },
+                    }}
+                  ></Geography>
+                </a>
               ))
             }
           </Geographies>
         </ZoomableGroup>
       </ComposableMap>
-      <Tooltip>{tooltipContent}</Tooltip>
+      <Tooltip
+        anchorSelect=".country-tooltip"
+        place="top"
+        className="bg-black absolute z-50 w-20"
+      >
+        {tooltipContent}
+      </Tooltip>
       <div className="controls text-center">
         <button onClick={handleZoomIn}>
           <svg
