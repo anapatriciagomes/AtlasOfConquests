@@ -3,7 +3,6 @@ import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import attractions from '../assets/attractions.json';
-import Clock from '../components/Clock';
 
 function CountryPage() {
   const [fetching, setFetching] = useState(true);
@@ -46,10 +45,7 @@ function CountryPage() {
                 )
               )}
             </p>
-            <p>
-              Timezones: {country.timezones}
-              <Clock countryCode='{country.cca2}' />
-            </p>
+            <p>Timezones: {country.timezones}</p>
             <p>Continent: {country.region}</p>
             <p>
               Point of Interest:
