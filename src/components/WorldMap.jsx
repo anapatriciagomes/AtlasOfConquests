@@ -6,11 +6,14 @@ import {
   ZoomableGroup,
 } from 'react-simple-maps';
 import { Tooltip } from 'react-tooltip';
+import { useNavigate } from 'react-router-dom';
 
 import geoUrl from '../assets/features.json';
 
 function WorldMap() {
   const [tooltipContent, setTooltipContent] = useState('');
+
+  const navigate = useNavigate();
 
   const [position, setPosition] = useState({
     coordinates: [15, 0],
@@ -53,6 +56,13 @@ function WorldMap() {
                     onMouseLeave={() => {
                       setTooltipContent('');
                     }}
+                    onClick={() => {
+                      navigate(
+                        `/country/${geo.properties.name
+                          .toLowerCase()
+                          .replace(' ', '-')}`
+                      );
+                    }}
                     style={{
                       default: {
                         fill: '#faaa70',
@@ -74,11 +84,7 @@ function WorldMap() {
           </Geographies>
         </ZoomableGroup>
       </ComposableMap>
-      <Tooltip
-        anchorSelect=".country-tooltip"
-        place="top"
-        className="bg-black absolute z-50 w-20"
-      >
+      <Tooltip anchorSelect=".country-tooltip" place="top">
         {tooltipContent}
       </Tooltip>
       <div className="controls text-center">
