@@ -8,7 +8,7 @@ import {
 
 import geoUrl from '../assets/features.json';
 
-function WorldMap() {
+function WorldMap({ setTooltipContent }) {
   const [position, setPosition] = useState({
     coordinates: [15, 0],
     zoom: 1,
@@ -39,7 +39,31 @@ function WorldMap() {
           <Geographies geography={geoUrl}>
             {({ geographies }) =>
               geographies.map(geo => (
-                <Geography key={geo.rsmKey} geography={geo} fill="#faaa70" />
+                <Geography
+                  key={geo.rsmKey}
+                  geography={geo}
+                  fill="#faaa70"
+                  onMouseEnter={() => {
+                    setTooltipContent(`${geo.properties.name}`);
+                  }}
+                  onMouseLeave={() => {
+                    setTooltipContent('');
+                  }}
+                  style={{
+                    default: {
+                      fill: '#faaa70',
+                      outline: 'none',
+                    },
+                    hover: {
+                      fill: '#F53',
+                      outline: 'none',
+                    },
+                    pressed: {
+                      fill: '#E42',
+                      outline: 'none',
+                    },
+                  }}
+                />
               ))
             }
           </Geographies>
