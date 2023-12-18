@@ -113,8 +113,13 @@ Attractions (example)
 [React Simple Maps](https://www.react-simple-maps.io/)
 ​
 
-[react-svg-worldmap](https://www.npmjs.com/package/react-svg-worldmap)
+[React Tooltip](https://react-tooltip.com/)
+
 ​
+[Material UI](https://mui.com/material-ui/)
+
+[Tailwind CSS](https://tailwindcss.com/)
+
 <br>
 ​
 
