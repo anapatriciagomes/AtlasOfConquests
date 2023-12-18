@@ -51,7 +51,6 @@ function WorldMap() {
                     fill="#faaa70"
                     onMouseEnter={() => {
                       setTooltipContent(geo.properties.name);
-                      console.log(tooltipContent);
                     }}
                     onMouseLeave={() => {
                       setTooltipContent('');
