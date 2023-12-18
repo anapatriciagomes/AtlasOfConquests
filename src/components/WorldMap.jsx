@@ -9,7 +9,10 @@ import {
 import geoUrl from '../assets/features.json';
 
 function WorldMap() {
-  const [position, setPosition] = useState({ coordinates: [0, 0], zoom: 1 });
+  const [position, setPosition] = useState({
+    coordinates: [15, 0],
+    zoom: 1,
+  });
 
   function handleZoomIn() {
     if (position.zoom >= 4) return;
@@ -26,7 +29,7 @@ function WorldMap() {
   }
 
   return (
-    <div>
+    <div className="w-4/5 mx-auto">
       <ComposableMap>
         <ZoomableGroup
           zoom={position.zoom}
