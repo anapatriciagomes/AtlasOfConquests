@@ -62,6 +62,7 @@ function WorldMap() {
                           .replace(' ', '-')}`
                       );
                     }}
+                    className="cursor-pointer"
                     style={{
                       default: {
                         fill: '#faaa70',
