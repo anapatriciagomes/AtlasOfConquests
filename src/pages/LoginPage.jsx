@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import OutlinedInput from '@mui/material/OutlinedInput';
@@ -14,11 +15,29 @@ import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import { grey } from '@mui/material/colors';
 
-function LoginPage({ setLoginPageActive }) {
+function LoginPage({ setLoginPageActive, setLoggedIn }) {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState('');
   const [isValidEmail, setIsValidEmail] = useState(true);
   const [password, setPassword] = useState('');
+  const [users, setUsers] = useState([]);
+
+  const navigate = useNavigate();
+
+  const getUsers = async () => {
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_BACKEND_URL}/users`
+      );
+      setUsers(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getUsers();
+  }, []);
 
   const handleClickShowPassword = () => setShowPassword(show => !show);
 
@@ -46,9 +65,15 @@ function LoginPage({ setLoginPageActive }) {
 
   const handleLogin = () => {
     if (isValidEmail) {
-      // Perform login logic
+      if (
+        users.find(user => user.email === email && user.password === password)
+      ) {
+        setLoggedIn(true);
+        navigate('/map-visited-wishlist');
+      } else if (users.find(user => user.email === email) === undefined) {
+        alert('Email does not exist, try registering.');
+      } else alert('Wrong Password');
     } else {
-      // Handle invalid email
       console.log('Invalid email format');
     }
   };
