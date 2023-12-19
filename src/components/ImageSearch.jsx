@@ -32,6 +32,7 @@ const ImageSearch = ({ countryCode }) => {
       <div>
         {photos.length > 0 && (
           <img
+            className='object-cover object-center bg-no-repeat h-screen w-full opacity-40'
             src={photos[0].src.large2x}
             alt={`Background for ${countryCode}`}
           />
