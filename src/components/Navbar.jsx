@@ -19,7 +19,7 @@ function Navbar({
   }));
 
   return (
-    <nav className="py-4 px-6 fixed top-0 left-0 w-full bg-[#ededed]">
+    <nav className=" z-10 py-4 px-6 fixed top-0 left-0 w-full bg-[#ededed]">
       <div className="flex justify-between items-center">
         <Link to="/" className="flex" onClick={() => setLoginPageActive(false)}>
           <img src={worldImage} alt="world" className="w-10 h-10 mr-3" />

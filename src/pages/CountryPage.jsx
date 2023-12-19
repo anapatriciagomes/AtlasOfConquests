@@ -32,34 +32,38 @@ function CountryPage() {
       {countries &&
         countries.map((country, index) => (
           <div key={index} className='mt-[80px]'>
-            <h1 className='mt-[80px] text-center'>
-              {country.name.common} {country.flag}
-            </h1>
             <ImageSearch
               countryCode={attractions[country.name.common]?.attraction}
             />
-            <p>Capital: {country.capital}</p>
-            <p>Population: {country.population}</p>
-            <p>
-              Area: {country.area}m<sup>2</sup>
-            </p>
-            <p>Borders: {country.borders}</p>
-            <ul>
-              {Object.entries(country.currencies).map(
-                ([currencyCode, currencyInfo]) => (
-                  <li key={currencyCode}>
-                    Currency: {currencyInfo.symbol} {currencyInfo.name}
-                  </li>
-                )
-              )}
-            </ul>
-            <p>Continent: {country.region}</p>
-            <p>
-              <Clock countryCode={country.cca2} capital={country.capital} />
-            </p>
-            <p>
-              Point of Interest: {attractions[country.name.common]?.attraction}
-            </p>
+
+            <div className='absolute top-0 left-10 right-0 bottom-0 flex flex-col justify-center '>
+              <h1>
+                {country.name.common} {country.flag}
+              </h1>
+              <p>Capital: {country.capital}</p>
+              <p>Population: {country.population}</p>
+              <p>
+                Area: {country.area}m<sup>2</sup>
+              </p>
+              <p>Borders: {country.borders}</p>
+              <ul>
+                {Object.entries(country.currencies).map(
+                  ([currencyCode, currencyInfo]) => (
+                    <li key={currencyCode}>
+                      Currency: {currencyInfo.symbol} {currencyInfo.name}
+                    </li>
+                  )
+                )}
+              </ul>
+              <p>Continent: {country.region}</p>
+              <p>
+                <Clock countryCode={country.cca2} capital={country.capital} />
+              </p>
+              <p>
+                Point of Interest:{' '}
+                {attractions[country.name.common]?.attraction}
+              </p>
+            </div>
           </div>
         ))}
     </div>
