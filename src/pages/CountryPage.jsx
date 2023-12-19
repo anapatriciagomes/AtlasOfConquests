@@ -49,12 +49,12 @@ function CountryPage() {
                 )
               )}
             </ul>
-            <p>Timezones: {country.timezones.join(', ')}</p>
             <p>Continent: {country.region}</p>
             <p>
               <p>
                 <Clock countryCode={country.cca2} capital={country.capital} />
               </p>
+              {}
             </p>
             <p>
               Point of Interest: {attractions[country.name.common]?.attraction}
