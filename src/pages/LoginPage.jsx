@@ -41,7 +41,7 @@ function LoginPage({ setLoginPageActive }) {
   }));
 
   return (
-    <div className="w-5/6 mt-[10%] mx-auto">
+    <div className="w-5/6 mt-[150px] mx-auto">
       <Box
         sx={{
           display: 'flex',
