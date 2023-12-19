@@ -1,4 +1,5 @@
-import { Routes, Route, useParams } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
+import { useState } from 'react';
 import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
@@ -13,13 +14,19 @@ function CountryRoute() {
 }
 
 function App() {
+  const [loginPageActive, setLoginPageActive] = useState(false);
+
   return (
     <div className='App'>
       <Navbar />
       <Routes>
         <Route path='/' element={<HomePage />} />
-        <Route path='/login' element={<LoginPage />} />
-        <Route path='/country/:countryName' element={<CountryRoute />} />
+        <Route
+          path='/login'
+          element={<LoginPage />}
+          setLoginPageActive={setLoginPageActive}
+        />
+        <Route path='/country/:countryName' element={<CountryPage />} />
         <Route path='*' element={<ErrorPage />} />
       </Routes>
     </div>
