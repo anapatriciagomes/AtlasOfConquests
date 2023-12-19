@@ -4,7 +4,12 @@ import { styled } from '@mui/material/styles';
 import { orange } from '@mui/material/colors';
 import worldImage from '../assets/world_atlas_favicon.png';
 
-function Navbar({ loginPageActive, setLoginPageActive }) {
+function Navbar({
+  loginPageActive,
+  setLoginPageActive,
+  loggedIn,
+  setLoggedIn,
+}) {
   const ColorButton = styled(Button)(({ theme }) => ({
     color: theme.palette.getContrastText(orange[100]),
     backgroundColor: orange[100],
@@ -24,7 +29,9 @@ function Navbar({ loginPageActive, setLoginPageActive }) {
           ''
         ) : (
           <Link to="/login">
-            <ColorButton>Log in</ColorButton>
+            <ColorButton onClick={() => (loggedIn ? setLoggedIn(false) : '')}>
+              {loggedIn ? 'Log out' : 'Log in'}
+            </ColorButton>
           </Link>
         )}
       </div>
