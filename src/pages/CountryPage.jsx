@@ -3,7 +3,9 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import attractions from '../assets/attractions.json';
 import Clock from '../components/Clock';
-import ImageSearch from '../components/ImageSearch';
+import ImageGenerator from '../components/ImageGenerator';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 function CountryPage() {
   const [fetching, setFetching] = useState(true);
@@ -27,12 +29,25 @@ function CountryPage() {
 
   return (
     <div>
-      {fetching && <p className='mt-[80px] text-center'>Loading...</p>}
+      {fetching && (
+        <p className='mt-[80px] text-center'>
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              margin: '300px',
+            }}
+          >
+            <CircularProgress />
+          </Box>
+        </p>
+      )}
 
       {countries &&
         countries.map((country, index) => (
-          <div key={index} className='mt-[80px]'>
-            <ImageSearch
+          <div key={index} className='mt-[70px]'>
+            <ImageGenerator
               countryCode={attractions[country.name.common]?.attraction}
             />
 
@@ -60,7 +75,7 @@ function CountryPage() {
                 <Clock countryCode={country.cca2} capital={country.capital} />
               </p>
               <p>
-                Point of Interest:{' '}
+                Point of Interest:
                 {attractions[country.name.common]?.attraction}
               </p>
             </div>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const ImageSearch = ({ countryCode }) => {
+const ImageGenerator = ({ countryCode }) => {
   const [photos, setPhotos] = useState([]);
 
   const apiKey = '2KrWm9bNdivSmVLZKm3MvjIoKSDtoYKQGftFR6UINbM4iCK1FMSXrpdv';
@@ -32,7 +32,7 @@ const ImageSearch = ({ countryCode }) => {
       <div>
         {photos.length > 0 && (
           <img
-            className='object-cover object-center bg-no-repeat h-screen w-full opacity-40'
+            className='object-cover object-center bg-no-repeat h-[91vh] w-full opacity-40'
             src={photos[0].src.large2x}
             alt={`Background for ${countryCode}`}
           />
@@ -42,4 +42,4 @@ const ImageSearch = ({ countryCode }) => {
   );
 };
 
-export default ImageSearch;
+export default ImageGenerator;
