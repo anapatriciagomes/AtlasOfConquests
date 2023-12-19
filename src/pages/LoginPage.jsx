@@ -77,6 +77,9 @@ function LoginPage({ setLoginPageActive }) {
                   onClick={handleClickShowPassword}
                   onMouseDown={handleMouseDownPassword}
                   edge="end"
+                  sx={{
+                    marginRight: -1,
+                  }}
                 >
                   {showPassword ? <VisibilityOff /> : <Visibility />}
                 </IconButton>
