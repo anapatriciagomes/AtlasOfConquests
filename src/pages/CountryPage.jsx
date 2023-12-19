@@ -1,29 +1,37 @@
-//import.meta.env.VITE_API_URL;
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import attractions from '../assets/attractions.json';
+import Clock from '../components/Clock';
+import { getCode } from 'country-list';
 
 function CountryPage() {
   const [fetching, setFetching] = useState(true);
   const [countries, setCountries] = useState(null);
+  let { countryName } = useParams();
 
   useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_API_URL}/brazil`)
-      .then(response => {
-        setCountries(response.data);
-        setFetching(false);
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error);
-        setFetching(false);
-      });
-  }, []);
+    if (countryName) {
+      axios
+        .get(
+          `${import.meta.env.VITE_API_URL}/${getCode(
+            countryName
+          ).toLowerCase()}`
+        )
+        .then(response => {
+          setCountries(response.data);
+          setFetching(false);
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error);
+          setFetching(false);
+        });
+    }
+  }, [countryName]);
 
   return (
     <div>
-      {fetching && <p>Loading ...</p>}
+      {fetching && <p className='mt-[80px] text-center'>Loading...</p>}
       {countries &&
         countries.map((country, index) => (
           <div key={index} className='mt-[80px]'>
@@ -36,21 +44,24 @@ function CountryPage() {
               Area: {country.area}m<sup>2</sup>
             </p>
             <p>Borders: {country.borders}</p>
-            <p>
+            <ul>
               {Object.entries(country.currencies).map(
                 ([currencyCode, currencyInfo]) => (
-                  <p key={currencyCode}>
+                  <li key={currencyCode}>
                     Currency: {currencyInfo.symbol} {currencyInfo.name}
-                  </p>
+                  </li>
                 )
               )}
-            </p>
-            <p>Timezones: {country.timezones}</p>
+            </ul>
+            <p>Timezones: {country.timezones.join(', ')}</p>
             <p>Continent: {country.region}</p>
             <p>
-              Point of Interest:
-              {attractions[country.name.common] &&
-                attractions[country.name.common].attraction}
+              <p>
+                <Clock countryCode={country.cca2} capital={country.capital} />
+              </p>
+            </p>
+            <p>
+              Point of Interest: {attractions[country.name.common]?.attraction}
             </p>
           </div>
         ))}
