@@ -24,9 +24,7 @@ function Navbar({ loginPageActive, setLoginPageActive }) {
           ''
         ) : (
           <Link to="/login">
-            <ColorButton onClick={() => setLoginPageActive(true)}>
-              Log in
-            </ColorButton>
+            <ColorButton>Log in</ColorButton>
           </Link>
         )}
       </div>

@@ -19,8 +19,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route
           path="/login"
-          element={<LoginPage />}
-          setLoginPageActive={setLoginPageActive}
+          element={<LoginPage setLoginPageActive={setLoginPageActive} />}
         />
         <Route path="/country/:countryName" element={<CountryPage />} />
         <Route path="*" element={<ErrorPage />} />
