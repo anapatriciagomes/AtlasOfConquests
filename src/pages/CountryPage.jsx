@@ -1,23 +1,19 @@
+// Import necessary libraries and components
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import attractions from '../assets/attractions.json';
 import Clock from '../components/Clock';
-import { getCode } from 'country-list';
 
 function CountryPage() {
   const [fetching, setFetching] = useState(true);
   const [countries, setCountries] = useState(null);
-  let { countryName } = useParams();
+  const { countryName } = useParams();
 
   useEffect(() => {
     if (countryName) {
       axios
-        .get(
-          `${import.meta.env.VITE_API_URL}/${getCode(
-            countryName
-          ).toLowerCase()}`
-        )
+        .get(`${import.meta.env.VITE_API_URL}/${countryName}`)
         .then(response => {
           setCountries(response.data);
           setFetching(false);

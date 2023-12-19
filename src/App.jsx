@@ -6,24 +6,28 @@ import LoginPage from './pages/LoginPage';
 import ErrorPage from './pages/ErrorPage';
 import CountryPage from './pages/CountryPage';
 
+function CountryRoute() {
+  const { countryName } = useParams();
+  const lowercaseCountryName = countryName.toLowerCase();
+
+  return <CountryPage countryName={lowercaseCountryName} />;
+}
+
 function App() {
   const [loginPageActive, setLoginPageActive] = useState(false);
 
   return (
-    <div className="App">
-      <Navbar
-        loginPageActive={loginPageActive}
-        setLoginPageActive={setLoginPageActive}
-      />
+    <div className='App'>
+      <Navbar />
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path='/' element={<HomePage />} />
         <Route
-          path="/login"
+          path='/login'
           element={<LoginPage />}
           setLoginPageActive={setLoginPageActive}
         />
-        <Route path="/country/:countryName" element={<CountryPage />} />
-        <Route path="*" element={<ErrorPage />} />
+        <Route path='/country/:countryName' element={<CountryPage />} />
+        <Route path='*' element={<ErrorPage />} />
       </Routes>
     </div>
   );
