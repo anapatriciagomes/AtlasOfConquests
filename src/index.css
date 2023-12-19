@@ -4,6 +4,7 @@
 @layer base {
   html {
     font-family: 'Roboto Mono', monospace;
+    background-color: #dedede;
   }
   h1 {
     font-family: 'Bungee', sans-serif;
