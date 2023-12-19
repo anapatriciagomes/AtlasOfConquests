@@ -14,6 +14,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import { grey } from '@mui/material/colors';
+import { orange } from '@mui/material/colors';
 
 function LoginPage({ setLoginPageActive, setLoggedIn }) {
   const [showPassword, setShowPassword] = useState(false);
@@ -78,7 +79,7 @@ function LoginPage({ setLoginPageActive, setLoggedIn }) {
     }
   };
 
-  const ColorButton = styled(Button)(({ theme }) => ({
+  const GreyButton = styled(Button)(({ theme }) => ({
     color: theme.palette.getContrastText(grey[500]),
     backgroundColor: grey[500],
     width: '500px',
@@ -86,7 +87,22 @@ function LoginPage({ setLoginPageActive, setLoggedIn }) {
     margin: 8,
 
     '&:hover': {
-      backgroundColor: grey[700],
+      backgroundColor: grey[600],
+      width: '500px',
+      height: '56px',
+      margin: 8,
+    },
+  }));
+
+  const OrangeButton = styled(Button)(({ theme }) => ({
+    color: theme.palette.getContrastText(orange[500]),
+    backgroundColor: orange[300],
+    width: '500px',
+    height: '56px',
+    margin: 8,
+
+    '&:hover': {
+      backgroundColor: orange[500],
       width: '500px',
       height: '56px',
       margin: 8,
@@ -150,7 +166,8 @@ function LoginPage({ setLoginPageActive, setLoggedIn }) {
             label="Password"
           />
         </FormControl>
-        <ColorButton onClick={handleLogin}>Log in</ColorButton>
+        <GreyButton onClick={handleLogin}>Log in</GreyButton>
+        <OrangeButton>Register</OrangeButton>
       </Box>
     </div>
   );

@@ -10,7 +10,7 @@ function Navbar({
   loggedIn,
   setLoggedIn,
 }) {
-  const ColorButton = styled(Button)(({ theme }) => ({
+  const OrangeButton = styled(Button)(({ theme }) => ({
     color: theme.palette.getContrastText(orange[100]),
     backgroundColor: orange[100],
     '&:hover': {
@@ -29,9 +29,9 @@ function Navbar({
           ''
         ) : (
           <Link to="/login">
-            <ColorButton onClick={() => (loggedIn ? setLoggedIn(false) : '')}>
+            <OrangeButton onClick={() => (loggedIn ? setLoggedIn(false) : '')}>
               {loggedIn ? 'Log out' : 'Log in'}
-            </ColorButton>
+            </OrangeButton>
           </Link>
         )}
       </div>
