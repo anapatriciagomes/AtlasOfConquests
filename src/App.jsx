@@ -6,13 +6,6 @@ import LoginPage from './pages/LoginPage';
 import ErrorPage from './pages/ErrorPage';
 import CountryPage from './pages/CountryPage';
 
-function CountryRoute() {
-  const { countryName } = useParams();
-  const lowercaseCountryName = countryName.toLowerCase();
-
-  return <CountryPage countryName={lowercaseCountryName} />;
-}
-
 function App() {
   const [loginPageActive, setLoginPageActive] = useState(false);
 
