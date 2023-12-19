@@ -17,17 +17,20 @@ function App() {
   const [loginPageActive, setLoginPageActive] = useState(false);
 
   return (
-    <div className='App'>
-      <Navbar />
+    <div className="App">
+      <Navbar
+        loginPageActive={loginPageActive}
+        setLoginPageActive={setLoginPageActive}
+      />
       <Routes>
-        <Route path='/' element={<HomePage />} />
+        <Route path="/" element={<HomePage />} />
         <Route
-          path='/login'
+          path="/login"
           element={<LoginPage />}
           setLoginPageActive={setLoginPageActive}
         />
-        <Route path='/country/:countryName' element={<CountryPage />} />
-        <Route path='*' element={<ErrorPage />} />
+        <Route path="/country/:countryName" element={<CountryPage />} />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </div>
   );
