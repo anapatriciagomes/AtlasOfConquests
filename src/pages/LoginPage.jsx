@@ -38,7 +38,7 @@ function LoginPage({ setLoginPageActive, setLoggedIn }) {
 
   useEffect(() => {
     getUsers();
-  }, []);
+  }, [email]);
 
   const handleClickShowPassword = () => setShowPassword(show => !show);
 
@@ -76,6 +76,21 @@ function LoginPage({ setLoginPageActive, setLoggedIn }) {
       } else alert('Wrong Password');
     } else {
       console.log('Invalid email format');
+    }
+  };
+
+  const handleRegister = async () => {
+    try {
+      const userDetails = { email, password };
+      await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/users`,
+        userDetails
+      );
+      alert('Your registration was successful, please log in.');
+      setEmail('');
+      setPassword('');
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -167,7 +182,7 @@ function LoginPage({ setLoginPageActive, setLoggedIn }) {
           />
         </FormControl>
         <GreyButton onClick={handleLogin}>Log in</GreyButton>
-        <OrangeButton>Register</OrangeButton>
+        <OrangeButton onClick={handleRegister}>Register</OrangeButton>
       </Box>
     </div>
   );
