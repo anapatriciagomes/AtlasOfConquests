@@ -1,9 +1,9 @@
-// Import necessary libraries and components
-import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 import attractions from '../assets/attractions.json';
 import Clock from '../components/Clock';
+import ImageSearch from '../components/ImageSearch';
 
 function CountryPage() {
   const [fetching, setFetching] = useState(true);
@@ -28,12 +28,16 @@ function CountryPage() {
   return (
     <div>
       {fetching && <p className='mt-[80px] text-center'>Loading...</p>}
+
       {countries &&
         countries.map((country, index) => (
           <div key={index} className='mt-[80px]'>
             <h1 className='mt-[80px] text-center'>
               {country.name.common} {country.flag}
             </h1>
+            <ImageSearch
+              countryCode={attractions[country.name.common]?.attraction}
+            />
             <p>Capital: {country.capital}</p>
             <p>Population: {country.population}</p>
             <p>
@@ -51,10 +55,7 @@ function CountryPage() {
             </ul>
             <p>Continent: {country.region}</p>
             <p>
-              <p>
-                <Clock countryCode={country.cca2} capital={country.capital} />
-              </p>
-              {}
+              <Clock countryCode={country.cca2} capital={country.capital} />
             </p>
             <p>
               Point of Interest: {attractions[country.name.common]?.attraction}
