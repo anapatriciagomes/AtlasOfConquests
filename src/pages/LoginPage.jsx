@@ -81,14 +81,16 @@ function LoginPage({ setLoginPageActive, setLoggedIn }) {
 
   const handleRegister = async () => {
     try {
-      const userDetails = { email, password };
-      await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/users`,
-        userDetails
-      );
-      alert('Your registration was successful, please log in.');
-      setEmail('');
-      setPassword('');
+      if (users.find(user => user.email === email) === undefined) {
+        const userDetails = { email, password };
+        await axios.post(
+          `${import.meta.env.VITE_BACKEND_URL}/users`,
+          userDetails
+        );
+        alert('Your registration was successful, please log in.');
+        setEmail('');
+        setPassword('');
+      } else alert('This email already exists, please log in.');
     } catch (error) {
       console.log(error);
     }
