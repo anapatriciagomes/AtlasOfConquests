@@ -57,6 +57,7 @@ function App() {
               setPassword={setPassword}
               loggedUserDetails={loggedUserDetails}
               userId={userId}
+              setLoggedIn={setLoggedIn}
             />
           }
         />
