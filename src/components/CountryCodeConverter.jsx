@@ -204,11 +204,8 @@ const CountryCodeConverter = ({ countryName }) => {
       Kiribati: 'KI',
       'Sao Tome and Principe': 'ST',
     };
-    const formattedCountryName = countryName
-      .toLowerCase()
-      .replace(/\b\w/g, c => c.toUpperCase());
 
-    return countryCodes[formattedCountryName] || 'Country code not found';
+    return countryCodes[countryName] || 'Country code not found';
   };
 
   return getCountryCode(countryName);
