@@ -3,6 +3,7 @@ import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import { orange } from '@mui/material/colors';
 import worldImage from '../assets/world_atlas_favicon.png';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 function Navbar({
   loginPageActive,
@@ -28,11 +29,18 @@ function Navbar({
         {loginPageActive ? (
           ''
         ) : (
-          <Link to="/login">
-            <OrangeButton onClick={() => (loggedIn ? setLoggedIn(false) : '')}>
-              {loggedIn ? 'Log out' : 'Log in'}
-            </OrangeButton>
-          </Link>
+          <div>
+            <Link to="/login">
+              <OrangeButton
+                onClick={() => (loggedIn ? setLoggedIn(false) : '')}
+              >
+                {loggedIn ? 'Log out' : 'Log in'}
+              </OrangeButton>
+            </Link>
+            <Link to="/user-account">
+              <AccountCircleIcon className="ml-4" />
+            </Link>
+          </div>
         )}
       </div>
     </nav>
