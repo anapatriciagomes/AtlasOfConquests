@@ -26,22 +26,28 @@ function Navbar({
           <img src={worldImage} alt="world" className="w-10 h-10 mr-3" />
           <h1 className="text-4xl text-center">Atlas Of Conquests</h1>
         </Link>
-        {loginPageActive ? (
-          ''
-        ) : (
-          <div>
-            <Link to="/login">
-              <OrangeButton
-                onClick={() => (loggedIn ? setLoggedIn(false) : '')}
-              >
-                {loggedIn ? 'Log out' : 'Log in'}
-              </OrangeButton>
-            </Link>
+        <div className="flex items-center">
+          {loginPageActive ? (
+            ''
+          ) : (
+            <div>
+              <Link to="/login">
+                <OrangeButton
+                  onClick={() => (loggedIn ? setLoggedIn(false) : '')}
+                >
+                  {loggedIn ? 'Log out' : 'Log in'}
+                </OrangeButton>
+              </Link>
+            </div>
+          )}
+          {loggedIn ? (
             <Link to="/user-account">
               <AccountCircleIcon className="ml-4" />
             </Link>
-          </div>
-        )}
+          ) : (
+            ''
+          )}
+        </div>
       </div>
     </nav>
   );

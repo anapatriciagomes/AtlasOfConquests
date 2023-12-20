@@ -11,6 +11,8 @@ import WishList from './pages/WishList';
 import UserAccountPage from './pages/UserAccountPage';
 
 function App() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [loginPageActive, setLoginPageActive] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const [loggedUserDetails, setLoggedUserDetails] = useState(null);
@@ -30,10 +32,13 @@ function App() {
           path="/login"
           element={
             <LoginPage
+              email={email}
+              setEmail={setEmail}
+              password={password}
+              setPassword={setPassword}
               setLoginPageActive={setLoginPageActive}
               setLoggedIn={setLoggedIn}
               setLoggedUserDetails={setLoggedUserDetails}
-              loggedUserDetails={loggedUserDetails}
               setUserId={setUserId}
             />
           }
@@ -46,6 +51,10 @@ function App() {
           path="/user-account"
           element={
             <UserAccountPage
+              email={email}
+              setEmail={setEmail}
+              password={password}
+              setPassword={setPassword}
               loggedUserDetails={loggedUserDetails}
               userId={userId}
             />

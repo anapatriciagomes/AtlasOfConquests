@@ -15,19 +15,19 @@ import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import { grey } from '@mui/material/colors';
 import { orange } from '@mui/material/colors';
-import { red } from '@mui/material/colors';
 
 function LoginPage({
+  email,
+  setEmail,
+  password,
+  setPassword,
   setLoginPageActive,
   setLoggedIn,
   setLoggedUserDetails,
-  loggedUserDetails,
   setUserId,
 }) {
   const [showPassword, setShowPassword] = useState(false);
-  const [email, setEmail] = useState('');
   const [isValidEmail, setIsValidEmail] = useState(true);
-  const [password, setPassword] = useState('');
   const [users, setUsers] = useState([]);
 
   const navigate = useNavigate();
@@ -79,8 +79,13 @@ function LoginPage({
         setLoggedUserDetails(
           users.find(user => user.email === email && user.password === password)
         );
-        setUserId(loggedUserDetails.id);
+        setUserId(
+          users.find(user => user.email === email && user.password === password)
+            .id
+        );
         setLoggedIn(true);
+        setLoginPageActive(false);
+        setPassword('');
         navigate('/map-visited-wishlist');
       } else if (users.find(user => user.email === email) === undefined) {
         alert('Email does not exist, try registering.');
@@ -131,21 +136,6 @@ function LoginPage({
 
     '&:hover': {
       backgroundColor: orange[500],
-      width: '500px',
-      height: '56px',
-      margin: 8,
-    },
-  }));
-
-  const RedButton = styled(Button)(({ theme }) => ({
-    color: theme.palette.getContrastText(red[500]),
-    backgroundColor: red[300],
-    width: '500px',
-    height: '56px',
-    margin: 8,
-
-    '&:hover': {
-      backgroundColor: red[500],
       width: '500px',
       height: '56px',
       margin: 8,
@@ -211,7 +201,6 @@ function LoginPage({
         </FormControl>
         <GreyButton onClick={handleLogin}>Log in</GreyButton>
         <OrangeButton onClick={handleRegister}>Register</OrangeButton>
-        <RedButton onClick={handleRegister}>Delete Account</RedButton>
       </Box>
     </div>
   );
