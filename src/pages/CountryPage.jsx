@@ -7,6 +7,8 @@ import ImageGenerator from '../components/ImageGenerator';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 
+import CountryMap from '../components/CountryMap';
+
 function CountryPage() {
   const [fetching, setFetching] = useState(true);
   const [countries, setCountries] = useState(null);
@@ -97,6 +99,7 @@ function CountryPage() {
             </div>
           </div>
         ))}
+      <CountryMap />
     </div>
   );
 }

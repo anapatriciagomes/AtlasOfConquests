@@ -4,8 +4,6 @@ import axios from 'axios';
 const ImageGenerator = ({ countryCode }) => {
   const [photos, setPhotos] = useState([]);
 
-  const apiKey = '2KrWm9bNdivSmVLZKm3MvjIoKSDtoYKQGftFR6UINbM4iCK1FMSXrpdv';
-
   useEffect(() => {
     const fetchImages = async () => {
       try {
@@ -13,7 +11,7 @@ const ImageGenerator = ({ countryCode }) => {
           `https://api.pexels.com/v1/search?query=${countryCode}`,
           {
             headers: {
-              Authorization: apiKey,
+              Authorization: import.meta.env.VITE_API_KEY,
             },
           }
         );
