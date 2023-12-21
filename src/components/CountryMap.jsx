@@ -15,25 +15,25 @@ function CountryMap() {
   }, []);
 
   return (
-    <div className='w-4/5 mx-auto'>
+    <div className="w-4/5 mx-auto">
       <ComposableMap>
         <Geographies geography={geoUrl}>
           {({ geographies }) =>
             geographies
               .filter(geo => geo.properties.name === selectedCountry)
               .map(geo => (
-                <a key={geo.rsmKey} className='country-tooltip'>
+                <a key={geo.rsmKey} className="country-tooltip">
                   <Geography
                     geography={geo}
-                    fill='#faaa70'
-                    width='200px'
+                    fill="#faaa70"
+                    width="200px"
                     onMouseEnter={() => {
                       setTooltipContent(geo.properties.name);
                     }}
                     onMouseLeave={() => {
                       setTooltipContent('');
                     }}
-                    className='cursor-pointer'
+                    className="cursor-pointer"
                     style={{
                       default: {
                         fill: '#faaa70',
@@ -54,7 +54,7 @@ function CountryMap() {
           }
         </Geographies>
       </ComposableMap>
-      <Tooltip anchorSelect='.country-tooltip' place='top'>
+      <Tooltip anchorSelect=".country-tooltip" place="top">
         {tooltipContent}
       </Tooltip>
     </div>
