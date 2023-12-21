@@ -93,10 +93,12 @@ function CountryPage() {
                     capital={country.capital.join(', ')}
                   />
                 </div>
-                <p className='pb-3'>
-                  <span className='font-semibold'>Point of Interest:</span>
-                  {attractions[country.name.common]?.attraction}
-                </p>
+                {attractions[country.name.common]?.attraction && (
+                  <p className='pb-3'>
+                    <span className='font-semibold'>Point of Interest:</span>
+                    {attractions[country.name.common].attraction}
+                  </p>
+                )}
               </div>
             </div>
           </div>
