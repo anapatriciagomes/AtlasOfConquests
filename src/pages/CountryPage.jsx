@@ -78,7 +78,7 @@ function CountryPage() {
                     ([currencyCode, currencyInfo]) => (
                       <li key={currencyCode}>
                         <span className='font-semibold'>Currency:</span>{' '}
-                        {currencyInfo.symbol} {currencyInfo.name}
+                        {currencyInfo.name} ({currencyInfo.symbol})
                       </li>
                     )
                   )}
