@@ -19,7 +19,7 @@ function App() {
   const [userId, setUserId] = useState(0);
 
   return (
-    <div className="App">
+    <div className='App'>
       <Navbar
         loginPageActive={loginPageActive}
         setLoginPageActive={setLoginPageActive}
@@ -27,9 +27,9 @@ function App() {
         setLoggedIn={setLoggedIn}
       />
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path='/' element={<HomePage />} />
         <Route
-          path="/login"
+          path='/login'
           element={
             <LoginPage
               email={email}
@@ -43,12 +43,12 @@ function App() {
             />
           }
         />
-        <Route path="/country/:countryName" element={<CountryPage />} />
-        <Route path="/map-visited-wishlist" element={<MapVisitedWishList />} />
-        <Route path="/visited-countries" element={<VisitedCountries />} />
-        <Route path="/wishList" element={<WishList />} />
+        <Route path='/country/:countryName' element={<CountryPage />} />
+        <Route path='/map-visited-wishlist' element={<MapVisitedWishList />} />
+        <Route path='/visited-countries' element={<VisitedCountries />} />
+        <Route path='/wishList' element={<WishList />} />
         <Route
-          path="/user-account"
+          path='/user-account'
           element={
             <UserAccountPage
               email={email}
@@ -61,7 +61,7 @@ function App() {
             />
           }
         />
-        <Route path="*" element={<ErrorPage />} />
+        <Route path='*' element={<ErrorPage />} />
       </Routes>
     </div>
   );
