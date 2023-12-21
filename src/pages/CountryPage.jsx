@@ -9,7 +9,7 @@ import Box from '@mui/material/Box';
 import Borders from '../components/Borders';
 import PopulationConverter from '../components/PopulationConverter';
 
-import CountryMap from '../components/CountryMap';
+/* import CountryMap from '../components/CountryMap'; */
 
 function CountryPage() {
   const [fetching, setFetching] = useState(true);
