@@ -8,6 +8,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 import Borders from '../components/Borders';
 import PopulationConverter from '../components/PopulationConverter';
+import Weather from '../components/Weather';
 
 /* import CountryMap from '../components/CountryMap'; */
 
@@ -93,6 +94,9 @@ function CountryPage() {
                     capital={country.capital.join(', ')}
                   />
                 </div>
+                <p>
+                  <Weather capital={country.capital} />
+                </p>
                 {attractions[country.name.common]?.attraction && (
                   <p className='pb-3'>
                     <span className='font-semibold'>Point of Interest:</span>
