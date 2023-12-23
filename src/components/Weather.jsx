@@ -11,8 +11,6 @@ function Weather({ capital }) {
   const [feelsLike, setFeelsLike] = useState(null);
   const [description, setDescription] = useState(null);
   const [humidity, setHumidity] = useState(null);
-  const [sunset, setSunset] = useState(null);
-  const [sunrise, setSunrise] = useState(null);
 
   useEffect(() => {
     const fetchWeather = async () => {
@@ -32,8 +30,6 @@ function Weather({ capital }) {
         setFeelsLike(data.weather.feelsLike.cur);
         setDescription(data.weather.description);
         setHumidity(data.weather.humidity);
-        setSunrise(data.astronomical.sunrise);
-        setSunset(data.astronomical.sunset);
       } catch (error) {
         console.error('Error fetching weather:', error);
         setFetching(false);
@@ -42,34 +38,6 @@ function Weather({ capital }) {
 
     fetchWeather();
   }, [firstCity]);
-
-  const formatSunsetTime = () => {
-    if (sunset instanceof Date) {
-      return `${sunset.getHours()}h${String(sunset.getMinutes()).padStart(
-        2,
-        '0'
-      )}`;
-    } else {
-      const sunsetDate = new Date(sunset);
-      return `${sunsetDate.getHours()}:${String(
-        sunsetDate.getMinutes()
-      ).padStart(2, '0')}`;
-    }
-  };
-
-  const formatSunriseTime = () => {
-    if (sunrise instanceof Date) {
-      return `${sunrise.getHours()}h${String(sunrise.getMinutes()).padStart(
-        2,
-        '0'
-      )}`;
-    } else {
-      const sunriseDate = new Date(sunrise);
-      return `${sunriseDate.getHours()}:${String(
-        sunriseDate.getMinutes()
-      ).padStart(2, '0')}`;
-    }
-  };
 
   return (
     <div>
@@ -97,16 +65,15 @@ function Weather({ capital }) {
                 src={currentConditions}
                 alt='weather conditions'
               />
-              <span className='text-xl'>{currentTemperature.toFixed(1)}°C</span>
+              <span className='text-xl'>
+                {Math.round(currentTemperature)}°C
+              </span>
             </div>{' '}
             <div className='text-xs pb-3'>
               <p>
-                Feels like {feelsLike.toFixed(1)}°C.{' '}
-                {description.charAt(0).toUpperCase() + description.slice(1)}.{' '}
+                Feels like {feelsLike.toFixed(1)}°C |{' '}
+                {description.charAt(0).toUpperCase() + description.slice(1)}. |
                 Humidity: {humidity}%
-              </p>
-              <p>
-                Sunrise: {formatSunriseTime()}m | Sunset: {formatSunsetTime()}m
               </p>
             </div>
           </>
