@@ -15,7 +15,7 @@ const Clock = ({ countryCode, capital }) => {
         if (timezones.length > 0) {
           const timezone = timezones[0];
           const countryTime = moment().tz(timezone);
-          const timeInCountry = countryTime.format('YYYY-MM-DD HH:mm');
+          const timeInCountry = countryTime.format('HH:mm | YYYY-MM-DD');
           setCurrentTime(`${timeInCountry}`);
         } else {
           setCurrentTime(`Invalid country code: ${countryCode}`);
@@ -28,23 +28,10 @@ const Clock = ({ countryCode, capital }) => {
     fetchData();
   }, [countryCode, capital]);
 
-  let currentDate = new Date();
-  let localTime = currentDate.toLocaleTimeString('en-US', {
-    hour12: false,
-    hour: 'numeric',
-    minute: 'numeric',
-  });
-  let localDate = currentDate.toISOString().split('T')[0];
-
-  // Use 24-hour format
   return (
     <div>
-      <h2>
-        <span className='font-semibold'>Time in {capital}:</span> {currentTime}
-      </h2>
-      <h2>
-        <span className='font-semibold'>Your local time: </span>
-        {`${localDate} ${localTime}`}
+      <h2 className='text-sm'>
+        Time in {capital}: <span className='font-semibold'> {currentTime}</span>
       </h2>
     </div>
   );
