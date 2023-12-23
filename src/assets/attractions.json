@@ -1,818 +1,1026 @@
 {
   "Afghanistan": {
-    "attraction": "Bamiyan Buddhas",
+    "attractions": ["Bamiyan Buddhas", "Band-e Amir", "Herat Citadel"],
     "country_code": "AF"
   },
   "Albania": {
-    "attraction": "Berat",
+    "attractions": ["Berat", "Gjirokastër", "Butrint"],
     "country_code": "AL"
   },
   "Algeria": {
-    "attraction": "The Great Mosque of Algiers",
+    "attractions": [
+      "The Great Mosque of Algiers",
+      "Tassili n'Ajjer National Park",
+      "Hoggar Mountains"
+    ],
     "country_code": "DZ"
   },
   "Andorra": {
-    "attraction": "Grand Valira ski resort",
+    "attractions": ["Grand Valira ski resort", "Caldea", "Vallnord"],
     "country_code": "AD"
   },
   "Angola": {
-    "attraction": "Okavango Delta",
+    "attractions": ["Okavango Delta", "Kalandula Falls", "Luanda"],
     "country_code": "AO"
   },
   "Antigua and Barbuda": {
-    "attraction": "English Harbour and Shirley Heights",
+    "attractions": [
+      "English Harbour and Shirley Heights",
+      "Nelson's Dockyard",
+      "Dickenson Bay"
+    ],
     "country_code": "AG"
   },
   "Argentina": {
-    "attraction": "Iguazu Falls",
+    "attractions": ["Iguazu Falls", "Perito Moreno Glacier", "Buenos Aires"],
     "country_code": "AR"
   },
   "Armenia": {
-    "attraction": "Garni Gorge",
+    "attractions": ["Garni Gorge", "Lake Sevan", "Tatev Monastery"],
     "country_code": "AM"
   },
   "Australia": {
-    "attraction": "Uluru (Ayers Rock)",
+    "attractions": [
+      "Uluru (Ayers Rock)",
+      "Great Barrier Reef",
+      "Sydney Opera House"
+    ],
     "country_code": "AU"
   },
   "Austria": {
-    "attraction": "Schönbrunn Palace",
+    "attractions": ["Schönbrunn Palace", "Hallstatt", "Innsbruck"],
     "country_code": "AT"
   },
   "Azerbaijan": {
-    "attraction": "Maiden Tower",
+    "attractions": [
+      "Maiden Tower",
+      "Gobustan National Park",
+      "Heydar Aliyev Center"
+    ],
     "country_code": "AZ"
   },
   "Bahamas": {
-    "attraction": "Atlantis Paradise Island",
+    "attractions": [
+      "Atlantis Paradise Island",
+      "Exuma Cays",
+      "Blue Lagoon Island"
+    ],
     "country_code": "BS"
   },
   "Bahrain": {
-    "attraction": "Bahrain National Museum",
+    "attractions": [
+      "Bahrain National Museum",
+      "Qal'at al-Bahrain",
+      "Bab Al Bahrain"
+    ],
     "country_code": "BH"
   },
   "Bangladesh": {
-    "attraction": "Sundarbans National Park",
+    "attractions": ["Sundarbans National Park", "Cox's Bazar", "Srimangal"],
     "country_code": "BD"
   },
   "Barbados": {
-    "attraction": "Harrison's Cave",
+    "attractions": [
+      "Harrison's Cave",
+      "Barbados Wildlife Reserve",
+      "Bottom Bay"
+    ],
     "country_code": "BB"
   },
   "Belarus": {
-    "attraction": "Mir Castle",
+    "attractions": ["Mir Castle", "Białowieża Forest", "Nesvizh Castle"],
     "country_code": "BY"
   },
   "Belgium": {
-    "attraction": "Atomium",
+    "attractions": ["Atomium", "Bruges", "Grand Place"],
     "country_code": "BE"
   },
   "Belize": {
-    "attraction": "Belize Barrier Reef",
+    "attractions": ["Belize Barrier Reef", "Xunantunich", "Great Blue Hole"],
     "country_code": "BZ"
   },
   "Benin": {
-    "attraction": "Ouidah",
+    "attractions": [
+      "Ouidah",
+      "Pendjari National Park",
+      "Royal Palaces of Abomey"
+    ],
     "country_code": "BJ"
   },
   "Bhutan": {
-    "attraction": "Tiger's Nest Monastery",
+    "attractions": [
+      "Tiger's Nest Monastery",
+      "Punakha Dzong",
+      "Phobjikha Valley"
+    ],
     "country_code": "BT"
   },
   "Bolivia": {
-    "attraction": "Salar de Uyuni salt flats",
+    "attractions": ["Salar de Uyuni salt flats", "Tiwanaku", "Lake Titicaca"],
     "country_code": "BO"
   },
   "Bosnia and Herzegovina": {
-    "attraction": "Mostar",
+    "attractions": ["Mostar", "Sarajevo", "Kravice Waterfalls"],
     "country_code": "BA"
   },
   "Botswana": {
-    "attraction": "Okavango Delta",
+    "attractions": [
+      "Okavango Delta",
+      "Chobe National Park",
+      "Makgadikgadi Pans"
+    ],
     "country_code": "BW"
   },
   "Brazil": {
-    "attraction": "Christ the Redeemer",
+    "attractions": [
+      "Christ the Redeemer",
+      "Amazon Rainforest",
+      "Iguaçu National Park"
+    ],
     "country_code": "BR"
   },
   "Brunei": {
-    "attraction": "Omar Ali Saifuddien Mosque",
+    "attractions": [
+      "Omar Ali Saifuddien Mosque",
+      "Ulu Temburong National Park",
+      "Kampong Ayer"
+    ],
     "country_code": "BN"
   },
   "Bulgaria": {
-    "attraction": "Ancient Nessebar",
+    "attractions": ["Ancient Nessebar", "Rila Monastery", "Plovdiv"],
     "country_code": "BG"
   },
   "Burkina Faso": {
-    "attraction": "Crocodile Pool in Arli National Park",
+    "attractions": [
+      "Crocodile Pool in Arli National Park",
+      "Arli National Park",
+      "Banfora"
+    ],
     "country_code": "BF"
   },
   "Burundi": {
-    "attraction": "Ngozi",
+    "attractions": ["Ngozi", "Kibira National Park", "Rusizi National Park"],
     "country_code": "BI"
   },
   "Cabo Verde": {
-    "attraction": "Cidade Velha",
+    "attractions": ["Cidade Velha", "Fogo Volcano", "Santa Maria Beach"],
     "country_code": "CV"
   },
   "Cambodia": {
-    "attraction": "Angkor Wat",
+    "attractions": ["Angkor Wat", "Phnom Penh", "Tonle Sap Lake"],
     "country_code": "KH"
   },
   "Cameroon": {
-    "attraction": "Mount Cameroon",
+    "attractions": ["Mount Cameroon", "Waza National Park", "Lobe Falls"],
     "country_code": "CM"
   },
   "Canada": {
-    "attraction": "Niagara Falls",
+    "attractions": ["Niagara Falls", "Banff National Park", "CN Tower"],
     "country_code": "CA"
   },
   "Central African Republic": {
-    "attraction": "Manovo-Gounda St. Floris National Park",
+    "attractions": [
+      "Manovo-Gounda St. Floris National Park",
+      "Dzanga-Sangha Special Reserve",
+      "Bamingui-Bangoran National Park"
+    ],
     "country_code": "CF"
   },
   "Chad": {
-    "attraction": "Ennedi Plateau",
+    "attractions": ["Ennedi Plateau", "Zakouma National Park", "Aloba Arch"],
     "country_code": "TD"
   },
   "Chile": {
-    "attraction": "Patagonia",
+    "attractions": ["Patagonia", "Easter Island", "Valle de la Luna"],
     "country_code": "CL"
   },
   "China": {
-    "attraction": "Great Wall of China",
+    "attractions": ["Great Wall of China", "Forbidden City", "Terracotta Army"],
     "country_code": "CN"
   },
   "Colombia": {
-    "attraction": "Cartagena",
+    "attractions": [
+      "Cartagena",
+      "Tayrona National Natural Park",
+      "Cocora Valley"
+    ],
     "country_code": "CO"
   },
   "Comoros": {
-    "attraction": "Grand Comore volcano",
+    "attractions": ["Moroni", "Mount Karthala", "Chindini"],
     "country_code": "KM"
   },
-  "Congo": {
-    "attraction": "Virunga National Park",
+  "Congo (Congo-Brazzaville)": {
+    "attractions": [
+      "Brazzaville",
+      "Odzala-Kokoua National Park",
+      "Lesio Louna Gorilla Reserve"
+    ],
     "country_code": "CG"
   },
   "Costa Rica": {
-    "attraction": "Arenal Volcano National Park",
+    "attractions": [
+      "Arenal Volcano",
+      "Monteverde Cloud Forest Reserve",
+      "Manuel Antonio National Park"
+    ],
     "country_code": "CR"
   },
   "Côte d'Ivoire": {
-    "attraction": "Parc National de la Comoé",
+    "attractions": [
+      "Basilica of Our Lady of Peace",
+      "Comoe National Park",
+      "Tai National Park"
+    ],
     "country_code": "CI"
   },
   "Croatia": {
-    "attraction": "Plitvice Lakes National Park",
+    "attractions": [
+      "Plitvice Lakes National Park",
+      "Dubrovnik",
+      "Diocletian's Palace"
+    ],
     "country_code": "HR"
   },
   "Cuba": {
-    "attraction": "Old Havana",
+    "attractions": ["Havana", "Varadero", "Viñales Valley"],
     "country_code": "CU"
   },
-  "Curaçao": {
-    "attraction": "Christoffel National Park",
-    "country_code": "CW"
-  },
   "Cyprus": {
-    "attraction": "Paphos Archaeological Park",
+    "attractions": ["Paphos", "Kykkos Monastery", "Nissi Beach"],
     "country_code": "CY"
   },
-  "Czech Republic": {
-    "attraction": "Prague Castle",
+  "Czechia (Czech Republic)": {
+    "attractions": ["Prague Castle", "Charles Bridge", "Český Krumlov"],
     "country_code": "CZ"
   },
+  "Democratic Republic of the Congo (Congo-Kinshasa)": {
+    "attractions": [
+      "Virunga National Park",
+      "Garamba National Park",
+      "Kahuzi-Biega National Park"
+    ],
+    "country_code": "CD"
+  },
   "Denmark": {
-    "attraction": "Tivoli Gardens",
+    "attractions": ["Tivoli Gardens", "Nyhavn", "Frederiksborg Castle"],
     "country_code": "DK"
   },
   "Djibouti": {
-    "attraction": "Lac Assal",
+    "attractions": [
+      "Lake Assal",
+      "Ardoukoba Volcano",
+      "Day Forest National Park"
+    ],
     "country_code": "DJ"
   },
   "Dominica": {
-    "attraction": "Trafalgar Falls",
+    "attractions": [
+      "Boiling Lake",
+      "Trafalgar Falls",
+      "Morne Trois Pitons National Park"
+    ],
     "country_code": "DM"
   },
   "Dominican Republic": {
-    "attraction": "Santo Domingo",
+    "attractions": ["Punta Cana", "Santo Domingo", "Jarabacoa"],
     "country_code": "DO"
   },
-  "East Timor": {
-    "attraction": "Dili",
-    "country_code": "TL"
-  },
   "Ecuador": {
-    "attraction": "Galápagos Islands",
+    "attractions": ["Galápagos Islands", "Amazon Rainforest", "Quito"],
     "country_code": "EC"
   },
   "Egypt": {
-    "attraction": "Pyramids of Giza",
+    "attractions": ["Pyramids of Giza", "Karnak Temple", "Valley of the Kings"],
     "country_code": "EG"
   },
   "El Salvador": {
-    "attraction": "Tazumal",
+    "attractions": ["Santa Ana Volcano", "Tazumal", "Lake Coatepeque"],
     "country_code": "SV"
   },
-  "England": {
-    "attraction": "Buckingham Palace",
-    "country_code": "GB"
-  },
   "Equatorial Guinea": {
-    "attraction": "Bioko Island",
+    "attractions": [
+      "Bioko Island",
+      "Monte Alen National Park",
+      "Cocoteros de Malabo"
+    ],
     "country_code": "GQ"
   },
   "Eritrea": {
-    "attraction": "Massawa",
+    "attractions": ["Asmara", "Dahlak Archipelago", "Qohaito"],
     "country_code": "ER"
   },
   "Estonia": {
-    "attraction": "Old Town of Tallinn",
+    "attractions": ["Tallinn", "Lahemaa National Park", "Saaremaa"],
     "country_code": "EE"
   },
   "Eswatini": {
-    "attraction": "Hlane Royal National Park",
+    "attractions": [
+      "Mkhaya Game Reserve",
+      "Hlane Royal National Park",
+      "Mlilwane Wildlife Sanctuary"
+    ],
     "country_code": "SZ"
   },
   "Ethiopia": {
-    "attraction": "Simien Mountains National Park",
+    "attractions": [
+      "Simien Mountains National Park",
+      "Rock-Hewn Churches of Lalibela",
+      "Omo Valley"
+    ],
     "country_code": "ET"
   },
-  "Falkland Islands": {
-    "attraction": "Stanley",
-    "country_code": "FK"
-  },
-  "Faroe Islands": {
-    "attraction": "Vestmanna Birds Cliffs",
-    "country_code": "FO"
-  },
   "Fiji": {
-    "attraction": "Viti Levu",
+    "attractions": ["Yasawa Islands", "Nadi", "Denarau Island"],
     "country_code": "FJ"
   },
   "Finland": {
-    "attraction": "Lapland",
+    "attractions": ["Helsinki", "Rovaniemi", "Lapland"],
     "country_code": "FI"
   },
   "France": {
-    "attraction": "Eiffel Tower",
+    "attractions": ["Eiffel Tower", "Louvre Museum", "Mont Saint-Michel"],
     "country_code": "FR"
   },
   "Gabon": {
-    "attraction": "N'Gounié National Park",
+    "attractions": [
+      "Lopé National Park",
+      "Ivindo National Park",
+      "Pointe-Denis Beach"
+    ],
     "country_code": "GA"
   },
   "Gambia": {
-    "attraction": "Banjul",
+    "attractions": [
+      "Banjul",
+      "Kachikally Crocodile Pool",
+      "Abuko Nature Reserve"
+    ],
     "country_code": "GM"
   },
   "Georgia": {
-    "attraction": "Kazbegi",
+    "attractions": ["Tbilisi", "Svetitskhoveli Cathedral", "Uplistsikhe"],
     "country_code": "GE"
   },
   "Germany": {
-    "attraction": "Cologne Cathedral",
+    "attractions": [
+      "Neuschwanstein Castle",
+      "Berlin Wall",
+      "Cologne Cathedral"
+    ],
     "country_code": "DE"
   },
   "Ghana": {
-    "attraction": "Kakum National Park",
+    "attractions": [
+      "Cape Coast Castle",
+      "Kakum National Park",
+      "Mole National Park"
+    ],
     "country_code": "GH"
   },
   "Greece": {
-    "attraction": "Acropolis of Athens",
+    "attractions": ["Acropolis of Athens", "Santorini", "Meteora"],
     "country_code": "GR"
   },
   "Grenada": {
-    "attraction": "Grand Anse",
+    "attractions": ["Grand Anse Beach", "Concord Waterfall", "Fort George"],
     "country_code": "GD"
   },
   "Guatemala": {
-    "attraction": "Antigua Guatemala",
+    "attractions": ["Tikal", "Antigua Guatemala", "Lake Atitlán"],
     "country_code": "GT"
   },
   "Guinea": {
-    "attraction": "Mount Nimba Strict Nature Reserve",
+    "attractions": ["Mount Nimba", "Îles de Los", "Fouta Djallon"],
     "country_code": "GN"
   },
   "Guinea-Bissau": {
-    "attraction": "Bijagos Archipelago",
+    "attractions": ["Bijagós Islands", "Bolama", "Cacheu"],
     "country_code": "GW"
   },
   "Guyana": {
-    "attraction": "Kaieteur Falls",
+    "attractions": ["Kaieteur Falls", "Iwokrama Forest", "Georgetown"],
     "country_code": "GY"
   },
   "Haiti": {
-    "attraction": "Citadelle Laferrière",
+    "attractions": ["Citadelle Laferrière", "Jacmel", "Sans-Souci Palace"],
     "country_code": "HT"
   },
   "Honduras": {
-    "attraction": "Copán Ruinas",
+    "attractions": ["Copán", "Roatán", "Lago de Yojoa"],
     "country_code": "HN"
   },
   "Hungary": {
-    "attraction": "Budapest",
+    "attractions": [
+      "Budapest",
+      "Fisherman's Bastion",
+      "Széchenyi Thermal Bath"
+    ],
     "country_code": "HU"
   },
   "Iceland": {
-    "attraction": "Blue Lagoon",
+    "attractions": ["Blue Lagoon", "Gullfoss", "Þingvellir National Park"],
     "country_code": "IS"
   },
   "India": {
-    "attraction": "Taj Mahal",
+    "attractions": ["Taj Mahal", "Jaipur City", "Kerala Backwaters"],
     "country_code": "IN"
   },
   "Indonesia": {
-    "attraction": "Borobudur Temple",
+    "attractions": ["Borobudur Temple", "Komodo Island", "Ubud"],
     "country_code": "ID"
   },
   "Iran": {
-    "attraction": "Persepolis",
+    "attractions": ["Persepolis", "Isfahan", "Shiraz"],
     "country_code": "IR"
   },
   "Iraq": {
-    "attraction": "Mesopotamian Marshes",
+    "attractions": ["Mesopotamian Marshes", "Baghdad", "Erbil"],
     "country_code": "IQ"
   },
   "Ireland": {
-    "attraction": "Cliffs of Moher",
+    "attractions": ["Cliffs of Moher", "Dublin", "Ring of Kerry"],
     "country_code": "IE"
   },
   "Isle of Man": {
-    "attraction": "Isle of Man TT",
+    "attractions": ["Isle of Man TT", "Peel Castle", "Laxey Wheel"],
     "country_code": "IM"
   },
   "Israel": {
-    "attraction": "Jerusalem",
+    "attractions": ["Jerusalem", "Tel Aviv", "Dead Sea"],
     "country_code": "IL"
   },
   "Italy": {
-    "attraction": "Colosseum",
+    "attractions": ["Colosseum", "Venice", "Amalfi Coast"],
     "country_code": "IT"
   },
   "Ivory Coast": {
-    "attraction": "Mande Mountains",
+    "attractions": [
+      "Mande Mountains",
+      "Comoé National Park",
+      "Basilica of Our Lady of Peace"
+    ],
     "country_code": "CI"
   },
   "Jamaica": {
-    "attraction": "Blue Mountains",
+    "attractions": ["Blue Mountains", "Dunn's River Falls", "Seven Mile Beach"],
     "country_code": "JM"
   },
   "Japan": {
-    "attraction": "Mount Fuji",
+    "attractions": ["Mount Fuji", "Tokyo", "Hiroshima Peace Memorial"],
     "country_code": "JP"
   },
   "Jordan": {
-    "attraction": "Petra",
+    "attractions": ["Petra", "Wadi Rum", "Dead Sea"],
     "country_code": "JO"
   },
   "Kazakhstan": {
-    "attraction": "Charyn Canyon",
+    "attractions": ["Charyn Canyon", "Big Almaty Lake", "Shymbulak Ski Resort"],
     "country_code": "KZ"
   },
   "Kenya": {
-    "attraction": "Masai Mara National Reserve",
+    "attractions": [
+      "Masai Mara National Reserve",
+      "Amboseli National Park",
+      "Diani Beach"
+    ],
     "country_code": "KE"
   },
   "Kiribati": {
-    "attraction": "Kiritimati Island",
+    "attractions": ["Kiritimati Island", "Tarawa Atoll", "Abaiang Atoll"],
     "country_code": "KI"
   },
   "Kuwait": {
-    "attraction": "Kuwait Towers",
+    "attractions": ["Kuwait Towers", "The Avenues", "Souq Al-Mubarakiya"],
     "country_code": "KW"
   },
   "Kyrgyzstan": {
-    "attraction": "Ala Archa National Park",
+    "attractions": ["Ala Archa National Park", "Song Kul Lake", "Osh Bazaar"],
     "country_code": "KG"
   },
   "Laos": {
-    "attraction": "Luang Prabang",
+    "attractions": ["Luang Prabang", "Kuang Si Falls", "Vientiane"],
     "country_code": "LA"
   },
   "Latvia": {
-    "attraction": "Old Town of Riga",
+    "attractions": [
+      "Old Town of Riga",
+      "Gauja National Park",
+      "Rundale Palace"
+    ],
     "country_code": "LV"
   },
   "Lebanon": {
-    "attraction": "Baalbek",
+    "attractions": ["Baalbek", "Jeita Grotto", "Byblos"],
     "country_code": "LB"
   },
   "Lesotho": {
-    "attraction": "Drakensberg Mountains",
+    "attractions": [
+      "Drakensberg Mountains",
+      "Maletsunyane Falls",
+      "Thaba-Bosiu"
+    ],
     "country_code": "LS"
   },
   "Liberia": {
-    "attraction": "Sapo National Park",
+    "attractions": ["Sapo National Park", "Harper", "Kpatawee Waterfall"],
     "country_code": "LR"
   },
   "Libya": {
-    "attraction": "Leptis Magna",
+    "attractions": ["Leptis Magna", "Ghadames", "Sabratha"],
     "country_code": "LY"
   },
   "Liechtenstein": {
-    "attraction": "Vaduz",
+    "attractions": ["Vaduz", "Malbun", "Gutenberg Castle"],
     "country_code": "LI"
   },
   "Lithuania": {
-    "attraction": "Trakai Island Castle",
+    "attractions": ["Trakai Island Castle", "Hill of Crosses", "Curonian Spit"],
     "country_code": "LT"
   },
   "Luxembourg": {
-    "attraction": "Vianden Castle",
+    "attractions": ["Vianden Castle", "Luxembourg City", "Mullerthal Trail"],
     "country_code": "LU"
   },
   "Macedonia": {
-    "attraction": "Skopje",
+    "attractions": ["Skopje", "Ohrid", "Matka Canyon"],
     "country_code": "MK"
   },
   "Madagascar": {
-    "attraction": "Avenue of the Baobabs",
+    "attractions": ["Avenue of the Baobabs", "Tsingy de Bemaraha", "Nosy Be"],
     "country_code": "MG"
   },
   "Malawi": {
-    "attraction": "Liwonde National Park",
+    "attractions": [
+      "Liwonde National Park",
+      "Lake Malawi",
+      "Majete Wildlife Reserve"
+    ],
     "country_code": "MW"
   },
   "Malaysia": {
-    "attraction": "Petronas Twin Towers",
+    "attractions": ["Petronas Twin Towers", "Langkawi", "Penang"],
     "country_code": "MY"
   },
   "Maldives": {
-    "attraction": "Male",
+    "attractions": ["Male", "Ari Atoll", "Thulusdhoo"],
     "country_code": "MV"
   },
   "Mali": {
-    "attraction": "Dogon Country",
+    "attractions": ["Dogon Country", "Timbuktu", "Djenné"],
     "country_code": "ML"
   },
   "Malta": {
-    "attraction": "Valletta",
+    "attractions": ["Valletta", "Mdina", "Blue Lagoon"],
     "country_code": "MT"
   },
   "Marshall Islands": {
-    "attraction": "Majuro",
+    "attractions": ["Majuro", "Kwajalein Atoll", "Arno Atoll"],
     "country_code": "MH"
   },
   "Mauritania": {
-    "attraction": "Chinguetti",
+    "attractions": [
+      "Chinguetti",
+      "Banc d'Arguin National Park",
+      "Terjit Oasis"
+    ],
     "country_code": "MR"
   },
   "Mauritius": {
-    "attraction": "Le Morne Brabant",
+    "attractions": [
+      "Le Morne Brabant",
+      "Black River Gorges National Park",
+      "Ile aux Cerfs"
+    ],
     "country_code": "MU"
   },
   "Mexico": {
-    "attraction": "Chichen Itza",
+    "attractions": ["Chichen Itza", "Tulum", "Cancun"],
     "country_code": "MX"
   },
   "Micronesia, Federated States of": {
-    "attraction": "Chuuk Lagoon",
+    "attractions": ["Chuuk Lagoon", "Pohnpei", "Kosrae"],
     "country_code": "FM"
   },
   "Moldova": {
-    "attraction": "Orheiul Vechi",
+    "attractions": ["Orheiul Vechi", "Cricova Winery", "Soroca Fortress"],
     "country_code": "MD"
   },
   "Monaco": {
-    "attraction": "Prince's Palace",
+    "attractions": [
+      "Prince's Palace",
+      "Monte Carlo Casino",
+      "Oceanographic Museum"
+    ],
     "country_code": "MC"
   },
   "Mongolia": {
-    "attraction": "Genghis Khan Statue Complex",
+    "attractions": [
+      "Genghis Khan Statue Complex",
+      "Khovsgol Nuur",
+      "Flaming Cliffs"
+    ],
     "country_code": "MN"
   },
   "Montenegro": {
-    "attraction": "Kotor",
+    "attractions": ["Kotor", "Budva", "Durmitor National Park"],
     "country_code": "ME"
   },
   "Montserrat": {
-    "attraction": "Emerald Pool",
+    "attractions": ["Emerald Pool", "Rendezvous Bay", "Little Bay"],
     "country_code": "MS"
   },
   "Morocco": {
-    "attraction": "Jemaa el-Fnaa Square",
+    "attractions": ["Jemaa el-Fnaa Square", "Chefchaouen", "Atlas Mountains"],
     "country_code": "MA"
   },
   "Mozambique": {
-    "attraction": "Parque Nacional Da Gorongosa",
+    "attractions": [
+      "Parque Nacional Da Gorongosa",
+      "Tofo Beach",
+      "Bazaruto Archipelago"
+    ],
     "country_code": "MZ"
   },
   "Myanmar": {
-    "attraction": "Shwedagon Pagoda",
+    "attractions": ["Shwedagon Pagoda", "Bagan", "Inle Lake"],
     "country_code": "MM"
   },
   "Namibia": {
-    "attraction": "Sossusvlei",
+    "attractions": ["Sossusvlei", "Etosha National Park", "Fish River Canyon"],
     "country_code": "NA"
   },
   "Nauru": {
-    "attraction": "Buada Lagoon",
+    "attractions": [
+      "Buada Lagoon",
+      "Anibare Bay",
+      "Nauru Phosphate Corporation"
+    ],
     "country_code": "NR"
   },
   "Nepal": {
-    "attraction": "Mount Everest",
+    "attractions": ["Mount Everest", "Pokhara", "Lumbini"],
     "country_code": "NP"
   },
   "Netherlands": {
-    "attraction": "Anne Frank House",
+    "attractions": ["Anne Frank House", "Keukenhof Gardens", "Zaanse Schans"],
     "country_code": "NL"
   },
   "New Zealand": {
-    "attraction": "Milford Sound",
+    "attractions": ["Milford Sound", "Rotorua", "Waitomo Glowworm Caves"],
     "country_code": "NZ"
   },
   "Nicaragua": {
-    "attraction": "Ometepe Island",
+    "attractions": ["Ometepe Island", "Granada", "Montelimar Beach"],
     "country_code": "NI"
   },
   "Niger": {
-    "attraction": "Sahara Desert",
+    "attractions": ["Sahara Desert", "W National Park", "Agadez"],
     "country_code": "NE"
   },
   "Nigeria": {
-    "attraction": "Victoria Falls",
+    "attractions": ["Victoria Falls", "Erin Ijesha Waterfall", "Zuma Rock"],
     "country_code": "NG"
   },
   "North Korea": {
-    "attraction": "Kumsusan Palace of the Sun",
+    "attractions": [
+      "Kumsusan Palace of the Sun",
+      "Mount Paektu",
+      "Mangyongdae Funfair"
+    ],
     "country_code": "KP"
   },
   "Norway": {
-    "attraction": "Preikestolen",
+    "attractions": ["Preikestolen", "Northern Lights", "Geirangerfjord"],
     "country_code": "NO"
   },
   "Oman": {
-    "attraction": "Muscat",
+    "attractions": ["Muscat", "Nizwa", "Wahiba Sands"],
     "country_code": "OM"
   },
   "Pakistan": {
-    "attraction": "Badshahi Mosque",
+    "attractions": ["Badshahi Mosque", "Fairy Meadows", "Hunza Valley"],
     "country_code": "PK"
   },
   "Palau": {
-    "attraction": "Jellyfish Lake",
+    "attractions": ["Jellyfish Lake", "Rock Islands", "Ngardmau Waterfall"],
     "country_code": "PW"
   },
   "Palestine": {
-    "attraction": "Al-Aqsa Mosque",
+    "attractions": ["Al-Aqsa Mosque", "Bethlehem", "Jericho"],
     "country_code": "PS"
   },
   "Panama": {
-    "attraction": "Panama Canal",
+    "attractions": ["Panama Canal", "Bocas del Toro", "Casco Viejo"],
     "country_code": "PA"
   },
   "Papua New Guinea": {
-    "attraction": "Kokoda Track",
+    "attractions": ["Kokoda Track", "Tufi", "Madang"],
     "country_code": "PG"
   },
   "Paraguay": {
-    "attraction": "Catedral Metropolitana de Asunción",
+    "attractions": [
+      "Catedral Metropolitana de Asunción",
+      "Iguaçu Falls",
+      "Ybycuí National Park"
+    ],
     "country_code": "PY"
   },
   "Peru": {
-    "attraction": "Machu Picchu",
+    "attractions": ["Machu Picchu", "Amazon Rainforest", "Nazca Lines"],
     "country_code": "PE"
   },
   "Philippines": {
-    "attraction": "Banaue Rice Terraces",
+    "attractions": ["Banaue Rice Terraces", "Palawan", "Chocolate Hills"],
     "country_code": "PH"
   },
   "Poland": {
-    "attraction": "Auschwitz-Birkenau",
+    "attractions": [
+      "Auschwitz-Birkenau",
+      "Wieliczka Salt Mine",
+      "Tatra Mountains"
+    ],
     "country_code": "PL"
   },
   "Portugal": {
-    "attraction": "Mosteiro dos Jerónimos",
+    "attractions": [
+      "Mosteiro dos Jerónimos",
+      "Centro Cultural de Belém",
+      "Pena Palace"
+    ],
     "country_code": "PT"
   },
   "Qatar": {
-    "attraction": "Qatar National Museum",
+    "attractions": ["Qatar National Museum", "The Pearl-Qatar", "Souq Waqif"],
     "country_code": "QA"
   },
   "Romania": {
-    "attraction": "Bran Castle",
+    "attractions": ["Bran Castle", "Transfagarasan Highway", "Peles Castle"],
     "country_code": "RO"
   },
   "Russia": {
-    "attraction": "Red Square",
+    "attractions": ["Red Square", "Hermitage Museum", "Lake Baikal"],
     "country_code": "RU"
   },
   "Rwanda": {
-    "attraction": "Volcanoes National Park",
+    "attractions": [
+      "Volcanoes National Park",
+      "Nyungwe Forest National Park",
+      "Kigali"
+    ],
     "country_code": "RW"
   },
   "Saint Kitts and Nevis": {
-    "attraction": "The Baths",
+    "attractions": ["The Baths", "Brimstone Hill Fortress", "Nevis Peak"],
     "country_code": "KN"
   },
   "Saint Lucia": {
-    "attraction": "Pitons",
+    "attractions": ["Pitons", "Marigot Bay", "Anse Chastanet"],
     "country_code": "LC"
   },
   "Saint Vincent and the Grenadines": {
-    "attraction": "Wallilabou Bay",
+    "attractions": ["Wallilabou Bay", "Tobago Cays", "Botanic Gardens"],
     "country_code": "VC"
   },
   "Samoa": {
-    "attraction": "To Sua Trench",
+    "attractions": ["To Sua Trench", "Piula Cave Pool", "Alofaaga Blowholes"],
     "country_code": "WS"
   },
   "San Marino": {
-    "attraction": "Guaita Tower",
+    "attractions": ["Guaita Tower", "Basilica di San Marino", "Monte Titano"],
     "country_code": "SM"
   },
   "São Tomé and Príncipe": {
-    "attraction": "Bom Sucesso Fort",
+    "attractions": ["Bom Sucesso Fort", "Pico Cão Grande", "Obo National Park"],
     "country_code": "ST"
   },
   "Saudi Arabia": {
-    "attraction": "Masmak Fortress",
+    "attractions": [
+      "Masmak Fortress",
+      "King Abdulaziz Center for World Culture",
+      "Al-Ula"
+    ],
     "country_code": "SA"
   },
   "Senegal": {
-    "attraction": "Goree Island",
+    "attractions": [
+      "Goree Island",
+      "Pink Lake",
+      "Djoudj National Bird Sanctuary"
+    ],
     "country_code": "SN"
   },
   "Serbia": {
-    "attraction": "Belgrade Fortress",
+    "attractions": ["Belgrade Fortress", "Niš Fortress", "Đavolja Varoš"],
     "country_code": "RS"
   },
   "Seychelles": {
-    "attraction": "Anse Source d'Argent",
+    "attractions": ["Anse Source d'Argent", "Vallee de Mai", "Moroni"],
     "country_code": "SC"
   },
   "Sierra Leone": {
-    "attraction": "Turtle Island",
+    "attractions": ["Turtle Island", "Bunce Island", "Tiwai Island"],
     "country_code": "SL"
   },
   "Singapore": {
-    "attraction": "Gardens by the Bay",
+    "attractions": ["Gardens by the Bay", "Sentosa Island", "Marina Bay Sands"],
     "country_code": "SG"
   },
   "Slovakia": {
-    "attraction": "Bratislava Castle",
+    "attractions": ["Bratislava Castle", "High Tatras", "Spiš Castle"],
     "country_code": "SK"
   },
   "Slovenia": {
-    "attraction": "Škocjan Caves",
+    "attractions": ["Škocjan Caves", "Lake Bled", "Postojna Cave"],
     "country_code": "SI"
   },
   "Solomon Islands": {
-    "attraction": "Kukumanggu Caves",
+    "attractions": ["Kukumanggu Caves", "Marovo Lagoon", "Tenaru Falls"],
     "country_code": "SB"
   },
   "Somalia": {
-    "attraction": "Lamu Old Town",
+    "attractions": ["Lamu Old Town", "Laas Geel", "Mogadishu"],
     "country_code": "SO"
   },
   "South Africa": {
-    "attraction": "Table Mountain",
+    "attractions": ["Table Mountain", "Kruger National Park", "Robben Island"],
     "country_code": "ZA"
   },
   "South Korea": {
-    "attraction": "Gyeongbokgung Palace",
+    "attractions": [
+      "Gyeongbokgung Palace",
+      "Bukhansan National Park",
+      "Jeju Island"
+    ],
     "country_code": "KR"
   },
   "South Sudan": {
-    "attraction": "Boma National Park",
+    "attractions": ["Boma National Park", "Nimule National Park", "Juba"],
     "country_code": "SS"
   },
   "Spain": {
-    "attraction": "Sagrada Familia",
+    "attractions": ["Sagrada Familia", "Alhambra", "Park Güell"],
     "country_code": "ES"
   },
   "Sri Lanka": {
-    "attraction": "Sigiriya Rock Fortress",
+    "attractions": ["Sigiriya Rock Fortress", "Temple of the Tooth", "Ella"],
     "country_code": "LK"
   },
   "Sudan": {
-    "attraction": "Jebel Barkal",
+    "attractions": ["Jebel Barkal", "Pyramids of Meroe", "Khartoum"],
     "country_code": "SD"
   },
   "Suriname": {
-    "attraction": "Brownsberg Nature Park",
+    "attractions": [
+      "Brownsberg Nature Park",
+      "Central Suriname Nature Reserve",
+      "Fort Zeelandia"
+    ],
     "country_code": "SR"
   },
   "Swaziland": {
-    "attraction": "Royal Swazi Spa",
+    "attractions": [
+      "Royal Swazi Spa",
+      "Mlilwane Wildlife Sanctuary",
+      "Lobamba"
+    ],
     "country_code": "SZ"
   },
   "Sweden": {
-    "attraction": "Vasa Museum",
+    "attractions": ["Vasa Museum", "Abisko National Park", "Icehotel"],
     "country_code": "SE"
   },
   "Switzerland": {
-    "attraction": "Matterhorn",
+    "attractions": ["Matterhorn", "Jungfraujoch", "Lake Geneva"],
     "country_code": "CH"
   },
   "Syria": {
-    "attraction": "Aleppo",
+    "attractions": ["Aleppo", "Palmyra", "Krak des Chevaliers"],
     "country_code": "SY"
   },
   "Taiwan": {
-    "attraction": "Taipei 101",
+    "attractions": ["Taipei 101", "Taroko National Park", "Sun Moon Lake"],
     "country_code": "TW"
   },
   "Tajikistan": {
-    "attraction": "Band-e Amir",
+    "attractions": ["Band-e Amir", "Fann Mountains", "Ismaili Centre"],
     "country_code": "TJ"
   },
   "Tanzania": {
-    "attraction": "Serengeti National Park",
+    "attractions": ["Serengeti National Park", "Ngorongoro Crater", "Zanzibar"],
     "country_code": "TZ"
   },
   "Thailand": {
-    "attraction": "Grand Palace",
+    "attractions": ["Grand Palace", "Ayutthaya", "Railay Beach"],
     "country_code": "TH"
   },
   "Timor-Leste": {
-    "attraction": "Mount Ramelau",
+    "attractions": ["Mount Ramelau", "Tasi Tolu", "Jaco Island"],
     "country_code": "TL"
   },
   "Togo": {
-    "attraction": "Koutammakou",
+    "attractions": ["Koutammakou", "Fosse aux Lions", "Mount Agou"],
     "country_code": "TG"
   },
   "Tonga": {
-    "attraction": "Haapai Group",
+    "attractions": ["Haapai Group", "Tongatapu", "Vava'u"],
     "country_code": "TO"
   },
   "Trinidad and Tobago": {
-    "attraction": "Trinidad",
+    "attractions": ["Trinidad", "Tobago", "Maracas Beach"],
     "country_code": "TT"
   },
   "Tunisia": {
-    "attraction": "Bardo Museum",
+    "attractions": ["Bardo Museum", "Carthage", "Douz"],
     "country_code": "TN"
   },
   "Turkey": {
-    "attraction": "Hagia Sophia",
+    "attractions": ["Hagia Sophia", "Cappadocia", "Ephesus"],
     "country_code": "TR"
   },
   "Turkmenistan": {
-    "attraction": "Darvaza Gas Crater",
+    "attractions": ["Darvaza Gas Crater", "Ancient Merv", "Avaza"],
     "country_code": "TM"
   },
   "Tuvalu": {
-    "attraction": "Funafuti",
+    "attractions": ["Funafuti", "Nanumea", "Nui"],
     "country_code": "TV"
   },
   "Uganda": {
-    "attraction": "Bwindi Impenetrable Forest National Park",
+    "attractions": [
+      "Bwindi Impenetrable Forest National Park",
+      "Queen Elizabeth National Park",
+      "Murchison Falls"
+    ],
     "country_code": "UG"
   },
   "Ukraine": {
-    "attraction": "Chernobyl Exclusion Zone",
+    "attractions": ["Chernobyl Exclusion Zone", "Lviv", "Odesa"],
     "country_code": "UA"
   },
   "United Arab Emirates": {
-    "attraction": "Burj Khalifa",
+    "attractions": ["Burj Khalifa", "Sheikh Zayed Grand Mosque", "Dubai Mall"],
     "country_code": "AE"
   },
   "United Kingdom": {
-    "attraction": "Buckingham Palace",
+    "attractions": ["Buckingham Palace", "Stonehenge", "The British Museum"],
     "country_code": "GB"
   },
   "United States": {
-    "attraction": "Grand Canyon",
+    "attractions": [
+      "Grand Canyon",
+      "Statue of Liberty",
+      "Yellowstone National Park"
+    ],
     "country_code": "US"
   },
   "Uruguay": {
-    "attraction": "Colonia del Sacramento",
+    "attractions": ["Colonia del Sacramento", "Punta del Este", "Montevideo"],
     "country_code": "UY"
   },
   "Uzbekistan": {
-    "attraction": "Registan",
+    "attractions": ["Registan", "Samarkand", "Khiva"],
     "country_code": "UZ"
   },
   "Vanuatu": {
-    "attraction": "Malekula Island",
+    "attractions": ["Malekula Island", "Espiritu Santo", "Port Vila"],
     "country_code": "VU"
   },
   "Venezuela": {
-    "attraction": "Angel Falls",
+    "attractions": [
+      "Angel Falls",
+      "Canaima National Park",
+      "Morrocoy National Park"
+    ],
     "country_code": "VE"
   },
   "Vietnam": {
-    "attraction": "Ha Long Bay",
+    "attractions": ["Ha Long Bay", "Phong Nha-Ke Bang National Park", "Hoi An"],
     "country_code": "VN"
   },
   "Wales": {
-    "attraction": "Snowdonia National Park",
+    "attractions": [
+      "Snowdonia National Park",
+      "Cardiff Castle",
+      "Conwy Castle"
+    ],
     "country_code": "GB"
   },
   "Yemen": {
-    "attraction": "Old City of Sana'a",
+    "attractions": ["Old City of Sana'a", "Al-Mahwit", "Shibam"],
     "country_code": "YE"
   },
   "Zambia": {
-    "attraction": "Victoria Falls",
+    "attractions": [
+      "Victoria Falls",
+      "South Luangwa National Park",
+      "Lower Zambezi National Park"
+    ],
     "country_code": "ZM"
   },
   "Zimbabwe": {
-    "attraction": "Victoria Falls",
+    "attractions": ["Victoria Falls", "Hwange National Park", "Great Zimbabwe"],
     "country_code": "ZW"
   }
 }
