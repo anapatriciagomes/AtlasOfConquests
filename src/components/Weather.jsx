@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import OpenWeatherAPI from 'openweather-api-node';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 function Weather({ capital }) {
   const firstCity = capital.length > 0 ? capital[0] : '';
-
+  const [fetching, setFetching] = useState(true);
   const [currentTemperature, setCurrentTemperature] = useState(null);
   const [currentConditions, setCurrentConditions] = useState(null);
   const [feelsLike, setFeelsLike] = useState(null);
@@ -21,6 +23,7 @@ function Weather({ capital }) {
           units: 'metric',
         });
         const data = await weather.getCurrent();
+        setFetching(false);
         setCurrentTemperature(data.weather.temp.cur);
         setCurrentConditions(data.weather.icon.url);
         setFeelsLike(data.weather.feelsLike.cur);
@@ -30,6 +33,7 @@ function Weather({ capital }) {
         setSunset(data.astronomical.sunset);
       } catch (error) {
         console.error('Error fetching weather:', error);
+        setFetching(false);
       }
     };
 
@@ -65,33 +69,51 @@ function Weather({ capital }) {
   };
 
   return (
-    <>
-      {currentTemperature !== null ? (
-        <>
-          <div className='flex items-center'>
-            {' '}
-            <img
-              className='w-[50px]'
-              src={currentConditions}
-              alt='weather conditions'
-            />
-            <span className='text-xl'>{currentTemperature.toFixed(1)}°C</span>
-          </div>{' '}
-          <div className='text-xs pb-3'>
-            <p>
-              Feels like {feelsLike.toFixed(1)}°C.{' '}
-              {description.charAt(0).toUpperCase() + description.slice(1)}.{' '}
-              Humidity: {humidity}%
-            </p>
-            <p>
-              Sunrise: {formatSunriseTime()}m | Sunset: {formatSunsetTime()}m
-            </p>
-          </div>
-        </>
-      ) : (
-        <p>Loading...</p>
+    <div>
+      {fetching && (
+        <div className='mt-[80px] text-center'>
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              margin: '300px',
+            }}
+          >
+            <CircularProgress />
+          </Box>
+        </div>
       )}
-    </>
+      <>
+        {currentTemperature !== null ? (
+          <>
+            <div className='flex items-center'>
+              {' '}
+              <img
+                className='w-[50px]'
+                src={currentConditions}
+                alt='weather conditions'
+              />
+              <span className='text-xl'>{currentTemperature.toFixed(1)}°C</span>
+            </div>{' '}
+            <div className='text-xs pb-3'>
+              <p>
+                Feels like {feelsLike.toFixed(1)}°C.{' '}
+                {description.charAt(0).toUpperCase() + description.slice(1)}.{' '}
+                Humidity: {humidity}%
+              </p>
+              <p>
+                Sunrise: {formatSunriseTime()}m | Sunset: {formatSunsetTime()}m
+              </p>
+            </div>
+          </>
+        ) : (
+          <p>
+            <CircularProgress />
+          </p>
+        )}
+      </>
+    </div>
   );
 }
 
