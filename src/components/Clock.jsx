@@ -15,7 +15,7 @@ const Clock = ({ countryCode, capital }) => {
         if (timezones.length > 0) {
           const timezone = timezones[0];
           const countryTime = moment().tz(timezone);
-          const timeInCountry = countryTime.format('HH:mm | YYYY-MM-DD');
+          const timeInCountry = countryTime.format('HH:mm (YYYY-MM-DD)');
           setCurrentTime(`${timeInCountry}`);
         } else {
           setCurrentTime(`Invalid country code: ${countryCode}`);
