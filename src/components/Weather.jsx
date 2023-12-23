@@ -4,7 +4,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 
 function Weather({ capital }) {
-  const firstCity = capital.length > 0 ? capital[0] : '';
+  let firstCity = capital.length > 0 ? capital[0] : '';
   const [fetching, setFetching] = useState(true);
   const [currentTemperature, setCurrentTemperature] = useState(null);
   const [currentConditions, setCurrentConditions] = useState(null);
@@ -16,6 +16,9 @@ function Weather({ capital }) {
 
   useEffect(() => {
     const fetchWeather = async () => {
+      if (firstCity === 'Washington, D.C.') {
+        firstCity = 'Washington';
+      }
       try {
         const weather = new OpenWeatherAPI({
           key: `${import.meta.env.VITE_API_WEATHER_KEY}`,
