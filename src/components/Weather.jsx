@@ -21,7 +21,6 @@ function Weather({ capital }) {
           units: 'metric',
         });
         const data = await weather.getCurrent();
-        console.log(data);
         setCurrentTemperature(data.weather.temp.cur);
         setCurrentConditions(data.weather.icon.url);
         setFeelsLike(data.weather.feelsLike.cur);
