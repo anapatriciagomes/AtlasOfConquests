@@ -72,7 +72,7 @@ function Weather({ capital }) {
             <div className='text-xs pb-3'>
               <p>
                 Feels like {feelsLike.toFixed(1)}°C |{' '}
-                {description.charAt(0).toUpperCase() + description.slice(1)}. |
+                {description.charAt(0).toUpperCase() + description.slice(1)} |
                 Humidity: {humidity}%
               </p>
             </div>
