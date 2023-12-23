@@ -66,6 +66,9 @@ function CountryPage() {
                   <span className='font-semibold'>Capital:</span>
                   {country.capital.join(', ')}
                 </p>
+                <p>
+                  <Weather capital={country.capital} />
+                </p>
                 <p className='pb-3'>
                   <span className='font-semibold'>Population:</span>{' '}
                   <PopulationConverter number={country.population} />
@@ -95,9 +98,6 @@ function CountryPage() {
                     capital={country.capital.join(', ')}
                   />
                 </div>
-                <p>
-                  <Weather capital={country.capital} />
-                </p>
                 {attractions[country.name.common]?.attractions && (
                   <p className='pb-3'>
                     <span className='font-semibold'>Points of Interest:</span>
