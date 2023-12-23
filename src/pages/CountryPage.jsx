@@ -53,7 +53,8 @@ function CountryPage() {
         countries.map((country, index) => (
           <div key={index} className='mt-[70px]'>
             <ImageGenerator
-              countryCode={attractions[country.name.common]?.attraction}
+              countryName={country.name.common}
+              attractions={attractions[country.name.common]?.attractions}
             />
 
             <div className='absolute top-0 left-10 right-0 bottom-0 flex flex-col text-justify justify-center '>
@@ -97,10 +98,16 @@ function CountryPage() {
                 <p>
                   <Weather capital={country.capital} />
                 </p>
-                {attractions[country.name.common]?.attraction && (
+                {attractions[country.name.common]?.attractions && (
                   <p className='pb-3'>
-                    <span className='font-semibold'>Point of Interest:</span>
-                    {attractions[country.name.common].attraction}
+                    <span className='font-semibold'>Points of Interest:</span>
+                    <ul>
+                      <li className='flex flex-col'>
+                        {attractions[country.name.common].attractions.join(
+                          ', '
+                        )}
+                      </li>
+                    </ul>
                   </p>
                 )}
               </div>
