@@ -69,7 +69,7 @@ function Weather({ capital }) {
     <>
       {currentTemperature !== null ? (
         <>
-          <p className='flex items-center'>
+          <div className='flex items-center'>
             {' '}
             <img
               className='w-[50px]'
@@ -77,15 +77,17 @@ function Weather({ capital }) {
               alt='weather conditions'
             />
             <span className='text-xl'>{currentTemperature.toFixed(1)}°C</span>
-          </p>{' '}
-          <p className='text-sm pb-4'>
-            Feels like {feelsLike.toFixed(1)}°C.{' '}
-            {description.charAt(0).toUpperCase() + description.slice(1)}.{' '}
-            Humidity:{humidity}%{' '}
+          </div>{' '}
+          <div className='text-xs pb-3'>
+            <p>
+              Feels like {feelsLike.toFixed(1)}°C.{' '}
+              {description.charAt(0).toUpperCase() + description.slice(1)}.{' '}
+              Humidity: {humidity}%
+            </p>
             <p>
               Sunrise: {formatSunriseTime()}m | Sunset: {formatSunsetTime()}m
             </p>
-          </p>
+          </div>
         </>
       ) : (
         <p>Loading...</p>

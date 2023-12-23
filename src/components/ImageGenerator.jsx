@@ -7,13 +7,10 @@ const ImageGenerator = ({ countryName, attractions }) => {
   useEffect(() => {
     const fetchImages = async () => {
       try {
-        console.log('attractions:', attractions);
-
         if (attractions.length > 0) {
           const randomIndex = Math.floor(Math.random() * attractions.length);
-          console.log(`randomIndex: ${randomIndex}`);
+
           const randomAttraction = attractions[randomIndex];
-          console.log(`randomAttraction: ${randomAttraction}`);
 
           const response = await axios.get(
             `https://api.pexels.com/v1/search?query=${randomAttraction}`,

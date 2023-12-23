@@ -63,12 +63,10 @@ function CountryPage() {
               </h1>
               <div className='text-justify ml-5 w-[60vh] bg-white bg-opacity-60 p-4 rounded-md'>
                 <p className='pb-3 '>
-                  <span className='font-semibold'>Capital:</span>
+                  <span className='font-semibold'>Capital: </span>
                   {country.capital.join(', ')}
                 </p>
-                <p>
-                  <Weather capital={country.capital} />
-                </p>
+                <Weather capital={country.capital} />
                 <p className='pb-3'>
                   <span className='font-semibold'>Population:</span>{' '}
                   <PopulationConverter number={country.population} />
@@ -99,7 +97,7 @@ function CountryPage() {
                   />
                 </div>
                 {attractions[country.name.common]?.attractions && (
-                  <p className='pb-3'>
+                  <div className='pb-3'>
                     <span className='font-semibold'>Points of Interest:</span>
                     <ul>
                       <li className='flex flex-col'>
@@ -108,7 +106,7 @@ function CountryPage() {
                         )}
                       </li>
                     </ul>
-                  </p>
+                  </div>
                 )}
               </div>
             </div>
