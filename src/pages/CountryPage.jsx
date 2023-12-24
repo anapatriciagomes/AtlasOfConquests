@@ -61,7 +61,7 @@ function CountryPage() {
               <h1 className='text-center text-xl mb-10'>
                 {country.name.common} {country.flag}
               </h1>
-              <div className='text-justify ml-5 w-[60vh] bg-white bg-opacity-60 p-4 rounded-md'>
+              <div className='text-justify ml-5 max-w-[45vw] bg-white bg-opacity-60 p-4 rounded-md '>
                 <p className='pb-3 '>
                   <span className='font-semibold'>Capital: </span>
                   {country.capital.join(', ')}

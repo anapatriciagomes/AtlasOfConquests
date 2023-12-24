@@ -207,6 +207,7 @@ function Borders({ borders = [] }) {
       KIR: 'Kiribati',
       STP: 'Sao Tome and Principe',
     };
+    const colors = ['#ef914e', '#3498db'];
 
     if (borders.length > 0) {
       const borderCountries = borders.map(code => countryCodes[code]);
@@ -216,30 +217,49 @@ function Borders({ borders = [] }) {
           <p className='pb-3'>
             <span className='font-semibold'>Borders:</span>
           </p>
-          {borderCountries.map(country => (
-            <table key={country}>
+          {borderCountries.length > 6 ? (
+            <table>
               <tbody>
                 <tr>
-                  <td className='flex mb-1'>
-                    <Link
-                      className='text-[#ef914e] font-semibold hover:text-[#F53]'
-                      to={`/country/${CountryCodeConverter({
-                        countryName: country,
-                      })}`}
-                    >
-                      {country}
-                    </Link>
+                  <td className='flex flex-wrap'>
+                    {borderCountries.map((country, index) => (
+                      <Link
+                        key={country}
+                        className={`font-semibold mb-1 mr-7 `}
+                        style={{ color: colors[index % colors.length] }}
+                        to={`/country/${CountryCodeConverter({
+                          countryName: country,
+                        })}`}
+                      >
+                        {country}
+                      </Link>
+                    ))}
                   </td>
                 </tr>
               </tbody>
             </table>
-          ))}
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          <p className='pb-3 font-semibold'>No Borders</p>
+          ) : (
+            <table>
+              <tbody>
+                <tr>
+                  {borderCountries.map((country, index) => (
+                    <td key={country} className='flex mb-1'>
+                      <Link
+                        className={`text-[${
+                          colors[index % colors.length]
+                        }] font-semibold hover:text-[#F53]`}
+                        to={`/country/${CountryCodeConverter({
+                          countryName: country,
+                        })}`}
+                      >
+                        {country}
+                      </Link>
+                    </td>
+                  ))}
+                </tr>
+              </tbody>
+            </table>
+          )}
         </div>
       );
     }
