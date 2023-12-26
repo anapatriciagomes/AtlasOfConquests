@@ -207,7 +207,7 @@ function Borders({ borders = [] }) {
       KIR: 'Kiribati',
       STP: 'Sao Tome and Principe',
     };
-    const colors = ['#ef914e', '#E36414'];
+    const colors = ['#ef914e', '#D83F31'];
 
     if (borders.length > 0) {
       const borderCountries = borders.map(code => countryCodes[code]);
