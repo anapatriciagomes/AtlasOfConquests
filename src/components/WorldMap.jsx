@@ -42,7 +42,9 @@ function WorldMap() {
       });
       const countryName = geo.properties.name;
       const lowercaseCountryCode = countryCode.toLowerCase();
-      navigate(`/country/${lowercaseCountryCode}/${countryName}`);
+      navigate(
+        `/country/${lowercaseCountryCode}/${countryName.replace(' ', '-')}`
+      );
     } catch (error) {
       console.error(error);
     }

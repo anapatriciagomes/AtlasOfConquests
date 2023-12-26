@@ -13,7 +13,7 @@ function AddRemoveVisited({ loggedIn, loggedUserDetails, countryName }) {
 
   useEffect(() => {
     if (loggedUserDetails) {
-      setCountry(CountryCodeConverter.countryName);
+      setCountry(countryName.replace('-', ' '));
       setUserId(loggedUserDetails.id);
       const filteredCountry = loggedUserDetails.visited.filter(
         visited => visited.country === countryName
@@ -21,7 +21,8 @@ function AddRemoveVisited({ loggedIn, loggedUserDetails, countryName }) {
       console.log(filteredCountry);
       if (filteredCountry.length > 0) {
         setVisited(true);
-        setCountryId(filteredCountry.id);
+        setCountryId(filteredCountry[0].id);
+        console.log(filteredCountry[0].id);
       } else {
         setVisited(false);
       }
@@ -36,6 +37,13 @@ function AddRemoveVisited({ loggedIn, loggedUserDetails, countryName }) {
         countryDetails
       );
       setVisited(true);
+      const updatedVisited = await axios.get(
+        `${import.meta.env.VITE_BACKEND_URL}/userId?_embed=visited`
+      );
+      const currentCountry = updatedVisited.visited.filter(
+        country => country === countryName
+      );
+      setCountryId(currentCountry.id);
     } catch (error) {
       console.log(error);
     }
@@ -61,13 +69,13 @@ function AddRemoveVisited({ loggedIn, loggedUserDetails, countryName }) {
     backgroundColor: lightGreen[300],
     width: '180px',
     height: '56px',
-    margin: 18,
+    margin: 40,
 
     '&:hover': {
       backgroundColor: lightGreen[500],
       width: '180px',
       height: '56px',
-      margin: 18,
+      margin: 40,
     },
   }));
 

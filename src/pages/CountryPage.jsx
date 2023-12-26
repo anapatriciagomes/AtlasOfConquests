@@ -154,6 +154,7 @@ function CountryPage({ loggedIn, loggedUserDetails }) {
                   loggedIn={loggedIn}
                   loggedUserDetails={loggedUserDetails}
                   countryName={countryName}
+                  className="ml-[40px]"
                 />
               </div>
             ))}
