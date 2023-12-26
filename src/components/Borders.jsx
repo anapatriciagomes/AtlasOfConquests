@@ -229,7 +229,7 @@ function Borders({ borders = [] }) {
                         style={{ color: colors[index % colors.length] }}
                         to={`/country/${CountryCodeConverter({
                           countryName: country,
-                        })}`}
+                        })}/${country}`}
                       >
                         {country}
                       </Link>
@@ -248,7 +248,7 @@ function Borders({ borders = [] }) {
                         className={`text-[${`#ef914e`}] font-semibold hover:text-[#F53]`}
                         to={`/country/${CountryCodeConverter({
                           countryName: country,
-                        })}`}
+                        })}/${country}`}
                       >
                         {country}
                       </Link>

@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import attractions from '../assets/attractions.json';
 import Clock from '../components/Clock';
 import AddRemoveVisited from '../components/AddRemoveVisited';
+import AddRemoveWishlist from '../components/AddRemoveWishlist';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 import Borders from '../components/Borders';
@@ -37,17 +38,27 @@ function CountryPage({ loggedIn, loggedUserDetails }) {
     const fetchImages = async () => {
       try {
         if (
-          attractions[countryName.replaceAll('-', ' ')]?.attractions.length > 0
+          attractions[
+            countryName.includes('-')
+              ? countryName.replaceAll('-', ' ')
+              : countryName
+          ]?.attractions.length > 0
         ) {
           const randomIndex = Math.floor(
             Math.random() *
-              attractions[countryName.replaceAll('-', ' ')]?.attractions.length
+              attractions[
+                countryName.includes('-')
+                  ? countryName.replaceAll('-', ' ')
+                  : countryName
+              ]?.attractions.length
           );
 
           const randomAttraction =
-            attractions[countryName.replaceAll('-', ' ')]?.attractions[
-              randomIndex
-            ];
+            attractions[
+              countryName.includes('-')
+                ? countryName.replaceAll('-', ' ')
+                : countryName
+            ]?.attractions[randomIndex];
 
           const response = await axios.get(
             `https://api.pexels.com/v1/search?query=${randomAttraction}`,
@@ -68,7 +79,7 @@ function CountryPage({ loggedIn, loggedUserDetails }) {
     };
 
     fetchImages();
-  }, attractions[countryName.replaceAll('-', ' ')]?.attractions);
+  }, attractions[countryName.includes('-') ? countryName.replaceAll('-', ' ') : countryName]?.attractions);
 
   return (
     <div>
@@ -160,6 +171,12 @@ function CountryPage({ loggedIn, loggedUserDetails }) {
                   countryName={countryName}
                   className="ml-[40px]"
                 />
+                {/* <AddRemoveWishlist
+                  loggedIn={loggedIn}
+                  loggedUserDetails={loggedUserDetails}
+                  countryName={countryName}
+                  className="ml-[40px]"
+                /> */}
               </div>
             ))}
         </div>
@@ -228,6 +245,12 @@ function CountryPage({ loggedIn, loggedUserDetails }) {
                   countryName={countryName}
                   className="ml-[40px]"
                 />
+                {/* <AddRemoveWishlist
+                  loggedIn={loggedIn}
+                  loggedUserDetails={loggedUserDetails}
+                  countryName={countryName}
+                  className="ml-[40px]"
+                /> */}
               </div>
             ))}
         </div>

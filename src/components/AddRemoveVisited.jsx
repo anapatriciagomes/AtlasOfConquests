@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import CountryCodeConverter from './CountryCodeConverter';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import { lightGreen } from '@mui/material/colors';
@@ -13,7 +12,11 @@ function AddRemoveVisited({ loggedIn, loggedUserDetails, countryName }) {
 
   useEffect(() => {
     if (loggedUserDetails) {
-      setCountry(countryName.replaceAll('-', ' '));
+      setCountry(
+        countryName.includes('-')
+          ? countryName.replaceAll('-', ' ')
+          : countryName
+      );
       setUserId(loggedUserDetails.id);
       const filteredCountry = loggedUserDetails.visited.filter(
         visited => visited.country === countryName
@@ -84,7 +87,7 @@ function AddRemoveVisited({ loggedIn, loggedUserDetails, countryName }) {
       {loggedIn ? (
         <GreenButton onClick={handleButtonClick}>
           {visited
-            ? 'Remove Country to Visited List'
+            ? 'Remove Country from Visited List'
             : 'Add Country to Visited List'}
         </GreenButton>
       ) : (
