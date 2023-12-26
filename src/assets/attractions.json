@@ -387,6 +387,10 @@
     "attractions": ["Grand Anse Beach", "Concord Waterfall", "Fort George"],
     "country_code": "GD"
   },
+  "Greenland": {
+    "attractions": ["Ilulissa fjord", "Tasiilaq", "Kangerlussuaq"],
+    "country_code": "GL"
+  },
   "Guatemala": {
     "attractions": ["Tikal", "Antigua Guatemala", "Lake Atitlán"],
     "country_code": "GT"
@@ -548,7 +552,11 @@
     "country_code": "MK"
   },
   "Madagascar": {
-    "attractions": ["Avenue of the Baobabs", "Tsingy de Bemaraha", "Nosy Be"],
+    "attractions": [
+      "Avenue of the Baobabs",
+      "Tsingy de Bemaraha",
+      "Isalo National Park"
+    ],
     "country_code": "MG"
   },
   "Malawi": {

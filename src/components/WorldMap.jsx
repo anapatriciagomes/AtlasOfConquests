@@ -43,7 +43,7 @@ function WorldMap() {
       const countryName = geo.properties.name;
       const lowercaseCountryCode = countryCode.toLowerCase();
       navigate(
-        `/country/${lowercaseCountryCode}/${countryName.replace(' ', '-')}`
+        `/country/${lowercaseCountryCode}/${countryName.replaceAll(' ', '-')}`
       );
     } catch (error) {
       console.error(error);

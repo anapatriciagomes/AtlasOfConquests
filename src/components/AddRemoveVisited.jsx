@@ -13,7 +13,7 @@ function AddRemoveVisited({ loggedIn, loggedUserDetails, countryName }) {
 
   useEffect(() => {
     if (loggedUserDetails) {
-      setCountry(countryName.replace('-', ' '));
+      setCountry(countryName.replaceAll('-', ' '));
       setUserId(loggedUserDetails.id);
       const filteredCountry = loggedUserDetails.visited.filter(
         visited => visited.country === countryName

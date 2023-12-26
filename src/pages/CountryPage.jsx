@@ -36,13 +36,18 @@ function CountryPage({ loggedIn, loggedUserDetails }) {
   useEffect(() => {
     const fetchImages = async () => {
       try {
-        if (attractions[countryName]?.attractions.length > 0) {
+        if (
+          attractions[countryName.replaceAll('-', ' ')]?.attractions.length > 0
+        ) {
           const randomIndex = Math.floor(
-            Math.random() * attractions[countryName]?.attractions.length
+            Math.random() *
+              attractions[countryName.replaceAll('-', ' ')]?.attractions.length
           );
 
           const randomAttraction =
-            attractions[countryName]?.attractions[randomIndex];
+            attractions[countryName.replaceAll('-', ' ')]?.attractions[
+              randomIndex
+            ];
 
           const response = await axios.get(
             `https://api.pexels.com/v1/search?query=${randomAttraction}`,
@@ -63,7 +68,7 @@ function CountryPage({ loggedIn, loggedUserDetails }) {
     };
 
     fetchImages();
-  }, attractions[countryName]?.attractions);
+  }, attractions[countryName.replaceAll('-', ' ')]?.attractions);
 
   return (
     <div>
