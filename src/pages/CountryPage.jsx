@@ -109,11 +109,11 @@ function CountryPage({ loggedUserDetails }) {
                   </div>
                 )}
               </div>
+              <AddRemoveVisited loggedUserDetails={loggedUserDetails} />
             </div>
           </div>
         ))}
       {/* <CountryMap /> */}
-      <AddRemoveVisited loggedUserDetails={loggedUserDetails} />
     </div>
   );
 }
