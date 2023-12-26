@@ -11,7 +11,7 @@ function AddRemoveVisited({ loggedIn, loggedUserDetails, countryName }) {
   const [countryId, setCountryId] = useState(0);
 
   useEffect(() => {
-    if (loggedUserDetails) {
+    if (loggedUserDetails && countryName) {
       setCountry(
         countryName.includes('-')
           ? countryName.replaceAll('-', ' ')
@@ -30,7 +30,7 @@ function AddRemoveVisited({ loggedIn, loggedUserDetails, countryName }) {
         setVisited(false);
       }
     }
-  }, []);
+  }, [loggedUserDetails, countryName]);
 
   const handleAddCountry = async () => {
     try {
@@ -72,13 +72,13 @@ function AddRemoveVisited({ loggedIn, loggedUserDetails, countryName }) {
     backgroundColor: lightGreen[300],
     width: '180px',
     height: '56px',
-    margin: 40,
+    margin: '20px 40px 10px',
 
     '&:hover': {
       backgroundColor: lightGreen[500],
       width: '180px',
       height: '56px',
-      margin: 40,
+      margin: '20px 40px 10px',
     },
   }));
 

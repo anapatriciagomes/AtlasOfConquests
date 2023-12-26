@@ -10,6 +10,8 @@ function Navbar({
   setLoginPageActive,
   loggedIn,
   setLoggedIn,
+  setLoggedUserDetails,
+  setUserId,
 }) {
   const OrangeButton = styled(Button)(({ theme }) => ({
     color: theme.palette.getContrastText(orange[100]),
@@ -33,7 +35,13 @@ function Navbar({
             <div>
               <Link to="/login">
                 <OrangeButton
-                  onClick={() => (loggedIn ? setLoggedIn(false) : '')}
+                  onClick={() => {
+                    if (loggedIn) {
+                      setLoggedIn(false);
+                      setLoggedUserDetails(null);
+                      setUserId(0);
+                    }
+                  }}
                 >
                   {loggedIn ? 'Log out' : 'Log in'}
                 </OrangeButton>

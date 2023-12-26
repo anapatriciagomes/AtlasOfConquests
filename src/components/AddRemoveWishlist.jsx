@@ -11,7 +11,7 @@ function AddRemoveWishlist(loggedIn, loggedUserDetails, countryName) {
   const [countryId, setCountryId] = useState(0);
 
   useEffect(() => {
-    if (loggedUserDetails) {
+    if (loggedUserDetails && countryName) {
       setCountry(
         countryName.includes('-')
           ? countryName.replaceAll('-', ' ')
@@ -30,7 +30,7 @@ function AddRemoveWishlist(loggedIn, loggedUserDetails, countryName) {
         setWishlist(false);
       }
     }
-  }, []);
+  }, [loggedUserDetails, countryName]);
 
   const handleAddCountry = async () => {
     try {
@@ -67,29 +67,29 @@ function AddRemoveWishlist(loggedIn, loggedUserDetails, countryName) {
     wishlist ? handleRemoveCountry() : handleAddCountry();
   };
 
-  const GreenButton = styled(Button)(({ theme }) => ({
+  const PurpleButton = styled(Button)(({ theme }) => ({
     color: theme.palette.getContrastText(deepPurple[500]),
     backgroundColor: deepPurple[300],
     width: '180px',
     height: '56px',
-    margin: 40,
+    margin: '20px 40px 10px',
 
     '&:hover': {
       backgroundColor: deepPurple[500],
       width: '180px',
       height: '56px',
-      margin: 40,
+      margin: '20px 40px 10px',
     },
   }));
 
   return (
     <div>
       {loggedIn ? (
-        <GreenButton onClick={handleButtonClick}>
+        <PurpleButton onClick={handleButtonClick}>
           {wishlist
             ? 'Remove Country from Wishlist List'
             : 'Add Country to Wishlist List'}
-        </GreenButton>
+        </PurpleButton>
       ) : (
         ''
       )}

@@ -165,18 +165,24 @@ function CountryPage({ loggedIn, loggedUserDetails }) {
                     </div>
                   )}
                 </div>
-                <AddRemoveVisited
-                  loggedIn={loggedIn}
-                  loggedUserDetails={loggedUserDetails}
-                  countryName={countryName}
-                  className="ml-[40px]"
-                />
-                {/* <AddRemoveWishlist
-                  loggedIn={loggedIn}
-                  loggedUserDetails={loggedUserDetails}
-                  countryName={countryName}
-                  className="ml-[40px]"
-                /> */}
+                {loggedIn ? (
+                  <div className="flex">
+                    <AddRemoveVisited
+                      loggedIn={loggedIn}
+                      loggedUserDetails={loggedUserDetails}
+                      countryName={countryName}
+                      className="ml-[40px]"
+                    />
+                    <AddRemoveWishlist
+                      loggedIn={loggedIn}
+                      loggedUserDetails={loggedUserDetails}
+                      countryName={countryName}
+                      className="ml-[40px]"
+                    />
+                  </div>
+                ) : (
+                  ''
+                )}
               </div>
             ))}
         </div>
@@ -239,18 +245,20 @@ function CountryPage({ loggedIn, loggedUserDetails }) {
                     </div>
                   )}
                 </div>
-                <AddRemoveVisited
-                  loggedIn={loggedIn}
-                  loggedUserDetails={loggedUserDetails}
-                  countryName={countryName}
-                  className="ml-[40px]"
-                />
-                {/* <AddRemoveWishlist
-                  loggedIn={loggedIn}
-                  loggedUserDetails={loggedUserDetails}
-                  countryName={countryName}
-                  className="ml-[40px]"
-                /> */}
+                <div className="flex">
+                  <AddRemoveVisited
+                    loggedIn={loggedIn}
+                    loggedUserDetails={loggedUserDetails}
+                    countryName={countryName}
+                    className="ml-[40px]"
+                  />
+                  <AddRemoveWishlist
+                    loggedIn={loggedIn}
+                    loggedUserDetails={loggedUserDetails}
+                    countryName={countryName}
+                    className="ml-[40px]"
+                  />
+                </div>
               </div>
             ))}
         </div>

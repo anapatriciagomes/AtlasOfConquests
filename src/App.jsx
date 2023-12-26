@@ -25,6 +25,8 @@ function App() {
         setLoginPageActive={setLoginPageActive}
         loggedIn={loggedIn}
         setLoggedIn={setLoggedIn}
+        setLoggedUserDetails={setLoggedUserDetails}
+        setUserId={setUserId}
       />
       <Routes>
         <Route path="/" element={<HomePage />} />
