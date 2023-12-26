@@ -12,7 +12,7 @@ import PopulationConverter from '../components/PopulationConverter';
 import Weather from '../components/Weather';
 /* import CountryMap from '../components/CountryMap'; */
 
-function CountryPage({ loggedUserDetails }) {
+function CountryPage({ loggedIn, loggedUserDetails }) {
   const [fetching, setFetching] = useState(true);
   const [countries, setCountries] = useState(null);
   const { countryName } = useParams();
@@ -109,7 +109,10 @@ function CountryPage({ loggedUserDetails }) {
                   </div>
                 )}
               </div>
-              <AddRemoveVisited loggedUserDetails={loggedUserDetails} />
+              <AddRemoveVisited
+                loggedIn={loggedIn}
+                loggedUserDetails={loggedUserDetails}
+              />
             </div>
           </div>
         ))}

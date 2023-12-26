@@ -3,9 +3,13 @@ import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import { lightGreen } from '@mui/material/colors';
 
-function AddRemoveVisited({ loggedUserDetails }) {
+function AddRemoveVisited({ loggedIn, loggedUserDetails }) {
+  const [visited, setVisited] = useState(false);
+
   const handleButtonClick = () => {
-    console.log(loggedUserDetails);
+    if (loggedIn) {
+      console.log(loggedUserDetails);
+    }
   };
 
   const GreenButton = styled(Button)(({ theme }) => ({
@@ -24,9 +28,17 @@ function AddRemoveVisited({ loggedUserDetails }) {
   }));
 
   return (
-    <GreenButton onClick={handleButtonClick}>
-      Add Country to Visited List
-    </GreenButton>
+    <div>
+      {loggedIn ? (
+        <GreenButton onClick={handleButtonClick}>
+          {visited
+            ? 'Remove Country to Visited List'
+            : 'Add Country to Visited List'}
+        </GreenButton>
+      ) : (
+        ''
+      )}
+    </div>
   );
 }
 

@@ -45,7 +45,12 @@ function App() {
         />
         <Route
           path="/country/:countryName"
-          element={<CountryPage loggedUserDetails={loggedUserDetails} />}
+          element={
+            <CountryPage
+              loggedIn={loggedIn}
+              loggedUserDetails={loggedUserDetails}
+            />
+          }
         />
         <Route
           path="/map-visited-wishlist"
