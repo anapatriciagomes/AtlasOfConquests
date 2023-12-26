@@ -35,7 +35,9 @@ function LoginPage({
   const getUsers = async () => {
     try {
       const response = await axios.get(
-        `${import.meta.env.VITE_BACKEND_URL}/users`
+        `${
+          import.meta.env.VITE_BACKEND_URL
+        }/users/?_embed=visited&_embed=wishlist`
       );
       setUsers(response.data);
     } catch (error) {
