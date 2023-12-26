@@ -42,7 +42,7 @@ function Weather({ capital }) {
   return (
     <div>
       {fetching && (
-        <div className='mt-[80px] text-center'>
+        <div className="mt-[80px] text-center">
           <Box
             sx={{
               display: 'flex',
@@ -58,18 +58,18 @@ function Weather({ capital }) {
       <>
         {currentTemperature !== null ? (
           <>
-            <div className='flex items-center'>
+            <div className="flex items-center">
               {' '}
               <img
-                className='w-[50px]'
+                className="w-[50px]"
                 src={currentConditions}
-                alt='weather conditions'
+                alt="weather conditions"
               />
-              <span className='text-xl'>
+              <span className="text-xl">
                 {Math.round(currentTemperature)}°C
               </span>
             </div>{' '}
-            <div className='text-xs pb-3'>
+            <div className="text-xs pb-3">
               <p>
                 Feels like {feelsLike.toFixed(1)}°C |{' '}
                 {description.charAt(0).toUpperCase() + description.slice(1)} |
@@ -78,9 +78,7 @@ function Weather({ capital }) {
             </div>
           </>
         ) : (
-          <p>
-            <CircularProgress />
-          </p>
+          ''
         )}
       </>
     </div>

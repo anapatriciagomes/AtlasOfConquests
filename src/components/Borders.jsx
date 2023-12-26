@@ -214,14 +214,14 @@ function Borders({ borders = [] }) {
 
       return (
         <div>
-          <p className='pb-3'>
-            <span className='font-semibold'>Borders:</span>
+          <p className="pb-3">
+            <span className="font-semibold">Borders:</span>
           </p>
           {borderCountries.length > 6 ? (
             <table>
               <tbody>
                 <tr>
-                  <td className='flex flex-wrap'>
+                  <td className="flex flex-wrap">
                     {borderCountries.map((country, index) => (
                       <Link
                         key={country}
@@ -243,7 +243,7 @@ function Borders({ borders = [] }) {
               <tbody>
                 <tr>
                   {borderCountries.map((country, index) => (
-                    <td key={country} className='flex mb-1'>
+                    <td key={country} className="flex mb-1">
                       <Link
                         className={`text-[${
                           colors[index % colors.length]

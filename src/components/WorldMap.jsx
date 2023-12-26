@@ -40,8 +40,9 @@ function WorldMap() {
       const countryCode = await CountryCodeConverter({
         countryName: geo.properties.name,
       });
+      const countryName = geo.properties.name;
       const lowercaseCountryCode = countryCode.toLowerCase();
-      navigate(`/country/${lowercaseCountryCode}`);
+      navigate(`/country/${lowercaseCountryCode}/${countryName}`);
     } catch (error) {
       console.error(error);
     }

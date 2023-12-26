@@ -44,7 +44,7 @@ function App() {
           }
         />
         <Route
-          path="/country/:countryName"
+          path="/country/:countryCode/:countryName"
           element={
             <CountryPage
               loggedIn={loggedIn}
@@ -54,15 +54,30 @@ function App() {
         />
         <Route
           path="/map-visited-wishlist"
-          element={<MapVisitedWishList loggedUserDetails={loggedUserDetails} />}
+          element={
+            <MapVisitedWishList
+              loggedIn={loggedIn}
+              loggedUserDetails={loggedUserDetails}
+            />
+          }
         />
         <Route
           path="/visited-countries"
-          element={<VisitedCountries loggedUserDetails={loggedUserDetails} />}
+          element={
+            <VisitedCountries
+              loggedIn={loggedIn}
+              loggedUserDetails={loggedUserDetails}
+            />
+          }
         />
         <Route
           path="/wishList"
-          element={<WishList loggedUserDetails={loggedUserDetails} />}
+          element={
+            <WishList
+              loggedIn={loggedIn}
+              loggedUserDetails={loggedUserDetails}
+            />
+          }
         />
         <Route
           path="/user-account"
