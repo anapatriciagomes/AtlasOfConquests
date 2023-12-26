@@ -207,7 +207,7 @@ function Borders({ borders = [] }) {
       KIR: 'Kiribati',
       STP: 'Sao Tome and Principe',
     };
-    const colors = ['#ef914e', '#3498db'];
+    const colors = ['#ef914e', '#E36414'];
 
     if (borders.length > 0) {
       const borderCountries = borders.map(code => countryCodes[code]);
@@ -242,12 +242,10 @@ function Borders({ borders = [] }) {
             <table>
               <tbody>
                 <tr>
-                  {borderCountries.map((country, index) => (
+                  {borderCountries.map(country => (
                     <td key={country} className='flex mb-1'>
                       <Link
-                        className={`text-[${
-                          colors[index % colors.length]
-                        }] font-semibold hover:text-[#F53]`}
+                        className={`text-[${`#ef914e`}] font-semibold hover:text-[#F53]`}
                         to={`/country/${CountryCodeConverter({
                           countryName: country,
                         })}`}
