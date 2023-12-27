@@ -112,7 +112,7 @@ function CountryPage({ loggedIn, loggedUserDetails, userId }) {
             countries.map((country, index) => (
               <div
                 key={index}
-                className="flex flex-col text-justify justify-center pb-[100px] min-[1024px]:pb-[300px] min-[1280px]:pb-[500px]"
+                className="flex flex-col text-justify justify-center pb-[120px] min-[1024px]:pb-[300px] min-[1280px]:pb-[500px]"
               >
                 <h1 className="text-center text-xl mb-10 mt-[40px] mx-[40px] bg-white bg-opacity-70 p-4 rounded-md">
                   {country.name.common} {country.flag}
@@ -194,7 +194,7 @@ function CountryPage({ loggedIn, loggedUserDetails, userId }) {
             countries.map((country, index) => (
               <div
                 key={index}
-                className="flex flex-col text-justify justify-center pb-[100px] min-[1024px]:pb-[300px] min-[1280px]:pb-[500px]"
+                className="flex flex-col text-justify justify-center pb-[120px] min-[1024px]:pb-[300px] min-[1280px]:pb-[500px]"
               >
                 <h1 className="text-center text-xl mb-10 mt-[40px] mx-[40px] bg-white bg-opacity-60 p-4 rounded-md">
                   {country.name.common} {country.flag}
