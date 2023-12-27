@@ -576,7 +576,11 @@
     "country_code": "MV"
   },
   "Mali": {
-    "attractions": ["Dogon Country", "Timbuktu", "Djenné"],
+    "attractions": [
+      "Great Mosque of Djenne",
+      "Mali National Park",
+      "Djingareyber Mosque"
+    ],
     "country_code": "ML"
   },
   "Malta": {
