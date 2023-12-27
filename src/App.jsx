@@ -51,6 +51,7 @@ function App() {
             <CountryPage
               loggedIn={loggedIn}
               loggedUserDetails={loggedUserDetails}
+              userId={userId}
             />
           }
         />
@@ -60,6 +61,7 @@ function App() {
             <MapVisitedWishList
               loggedIn={loggedIn}
               loggedUserDetails={loggedUserDetails}
+              userId={userId}
             />
           }
         />
@@ -69,6 +71,7 @@ function App() {
             <VisitedCountries
               loggedIn={loggedIn}
               loggedUserDetails={loggedUserDetails}
+              userId={userId}
             />
           }
         />
@@ -78,6 +81,7 @@ function App() {
             <WishList
               loggedIn={loggedIn}
               loggedUserDetails={loggedUserDetails}
+              userId={userId}
             />
           }
         />

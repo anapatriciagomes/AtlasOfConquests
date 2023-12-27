@@ -227,7 +227,7 @@
     ],
     "country_code": "CR"
   },
-  "Côte d'Ivoire": {
+  "Cote d'Ivoire": {
     "attractions": [
       "Basilica of Our Lady of Peace",
       "Comoe National Park",
@@ -1028,7 +1028,7 @@
     "country_code": "ZM"
   },
   "Zimbabwe": {
-    "attractions": ["Victoria Falls", "Hwange National Park", "Great Zimbabwe"],
+    "attractions": ["Victoria Falls", "Hwange National Park", "Chinhoyi Caves"],
     "country_code": "ZW"
   }
 }

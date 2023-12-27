@@ -4,20 +4,29 @@ import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import { deepPurple } from '@mui/material/colors';
 
-function AddRemoveWishlist(loggedIn, loggedUserDetails, countryName) {
+function AddRemoveWishlist({
+  loggedIn,
+  loggedUserDetails,
+  loggedUserId,
+  countryName,
+}) {
   const [wishlist, setWishlist] = useState(false);
   const [country, setCountry] = useState('');
-  const [userId, setUserId] = useState(0);
   const [countryId, setCountryId] = useState(0);
+  const [userId, setUserId] = useState(0);
 
   useEffect(() => {
-    if (loggedUserDetails && countryName) {
+    if (countryName) {
       setCountry(
         countryName.includes('-')
           ? countryName.replaceAll('-', ' ')
           : countryName
       );
-      setUserId(loggedUserDetails.id);
+    }
+    if (loggedUserId > 0) {
+      setUserId(loggedUserId);
+    }
+    if (loggedUserDetails.wishlist) {
       const filteredCountry = loggedUserDetails.wishlist.filter(
         wishlist => wishlist.country === countryName
       );
@@ -30,7 +39,7 @@ function AddRemoveWishlist(loggedIn, loggedUserDetails, countryName) {
         setWishlist(false);
       }
     }
-  }, [loggedUserDetails, countryName]);
+  }, []);
 
   const handleAddCountry = async () => {
     try {
@@ -40,13 +49,10 @@ function AddRemoveWishlist(loggedIn, loggedUserDetails, countryName) {
         countryDetails
       );
       setWishlist(true);
-      const updatedwishlist = await axios.get(
-        `${import.meta.env.VITE_BACKEND_URL}/userId?_embed=wishlist`
+      const updatedWishlist = await axios.get(
+        `${import.meta.env.VITE_BACKEND_URL}/users/${userId}?_embed=wishlist`
       );
-      const currentCountry = updatedwishlist.wishlist.filter(
-        country => country === countryName
-      );
-      setCountryId(currentCountry.id);
+      setCountryId(updatedWishlist.data.wishlist[0].id);
     } catch (error) {
       console.log(error);
     }
@@ -64,7 +70,11 @@ function AddRemoveWishlist(loggedIn, loggedUserDetails, countryName) {
   };
 
   const handleButtonClick = () => {
-    wishlist ? handleRemoveCountry() : handleAddCountry();
+    if (wishlist) {
+      handleRemoveCountry();
+    } else {
+      handleAddCountry();
+    }
   };
 
   const PurpleButton = styled(Button)(({ theme }) => ({
@@ -72,13 +82,13 @@ function AddRemoveWishlist(loggedIn, loggedUserDetails, countryName) {
     backgroundColor: deepPurple[300],
     width: '180px',
     height: '56px',
-    margin: '20px 40px 10px',
+    margin: '20px 0 10px 10px',
 
     '&:hover': {
       backgroundColor: deepPurple[500],
       width: '180px',
       height: '56px',
-      margin: '20px 40px 10px',
+      margin: '20px 0 10px 10px',
     },
   }));
 

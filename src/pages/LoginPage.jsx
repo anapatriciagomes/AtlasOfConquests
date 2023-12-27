@@ -88,6 +88,13 @@ function LoginPage({
         setLoggedIn(true);
         setLoginPageActive(false);
         setPassword('');
+        console.log(
+          `User Id: ${
+            users.find(
+              user => user.email === email && user.password === password
+            ).id
+          }`
+        );
         navigate('/map-visited-wishlist');
       } else if (users.find(user => user.email === email) === undefined) {
         alert('Email does not exist, try registering.');

@@ -11,7 +11,7 @@ import Borders from '../components/Borders';
 import PopulationConverter from '../components/PopulationConverter';
 import Weather from '../components/Weather';
 
-function CountryPage({ loggedIn, loggedUserDetails }) {
+function CountryPage({ loggedIn, loggedUserDetails, userId }) {
   const [fetching, setFetching] = useState(true);
   const [countries, setCountries] = useState(null);
   const [photos, setPhotos] = useState(null);
@@ -170,12 +170,14 @@ function CountryPage({ loggedIn, loggedUserDetails }) {
                     <AddRemoveVisited
                       loggedIn={loggedIn}
                       loggedUserDetails={loggedUserDetails}
+                      loggedUserId={userId}
                       countryName={countryName}
                       className="ml-[40px]"
                     />
                     <AddRemoveWishlist
                       loggedIn={loggedIn}
                       loggedUserDetails={loggedUserDetails}
+                      loggedUserId={userId}
                       countryName={countryName}
                       className="ml-[40px]"
                     />
@@ -249,12 +251,14 @@ function CountryPage({ loggedIn, loggedUserDetails }) {
                   <AddRemoveVisited
                     loggedIn={loggedIn}
                     loggedUserDetails={loggedUserDetails}
+                    loggedUserId={userId}
                     countryName={countryName}
                     className="ml-[40px]"
                   />
                   <AddRemoveWishlist
                     loggedIn={loggedIn}
                     loggedUserDetails={loggedUserDetails}
+                    loggedUserId={userId}
                     countryName={countryName}
                     className="ml-[40px]"
                   />

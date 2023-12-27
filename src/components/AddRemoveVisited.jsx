@@ -4,20 +4,29 @@ import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import { lightGreen } from '@mui/material/colors';
 
-function AddRemoveVisited({ loggedIn, loggedUserDetails, countryName }) {
+function AddRemoveVisited({
+  loggedIn,
+  loggedUserDetails,
+  loggedUserId,
+  countryName,
+}) {
   const [visited, setVisited] = useState(false);
   const [country, setCountry] = useState('');
-  const [userId, setUserId] = useState(0);
   const [countryId, setCountryId] = useState(0);
+  const [userId, setUserId] = useState(0);
 
   useEffect(() => {
-    if (loggedUserDetails && countryName) {
+    if (countryName) {
       setCountry(
         countryName.includes('-')
           ? countryName.replaceAll('-', ' ')
           : countryName
       );
-      setUserId(loggedUserDetails.id);
+    }
+    if (loggedUserId > 0) {
+      setUserId(loggedUserId);
+    }
+    if (loggedUserDetails.visited) {
       const filteredCountry = loggedUserDetails.visited.filter(
         visited => visited.country === countryName
       );
@@ -25,12 +34,12 @@ function AddRemoveVisited({ loggedIn, loggedUserDetails, countryName }) {
       if (filteredCountry.length > 0) {
         setVisited(true);
         setCountryId(filteredCountry[0].id);
-        console.log(filteredCountry[0].id);
+        console.log(`Country Id: ${countryId}`);
       } else {
         setVisited(false);
       }
     }
-  }, [loggedUserDetails, countryName]);
+  }, []);
 
   const handleAddCountry = async () => {
     try {
@@ -41,12 +50,10 @@ function AddRemoveVisited({ loggedIn, loggedUserDetails, countryName }) {
       );
       setVisited(true);
       const updatedVisited = await axios.get(
-        `${import.meta.env.VITE_BACKEND_URL}/userId?_embed=visited`
+        `${import.meta.env.VITE_BACKEND_URL}/users/${userId}?_embed=visited`
       );
-      const currentCountry = updatedVisited.visited.filter(
-        country => country === countryName
-      );
-      setCountryId(currentCountry.id);
+      setCountryId(updatedVisited.data.visited[0].id);
+      console.log(`Country Id: ${countryId}`);
     } catch (error) {
       console.log(error);
     }
@@ -64,7 +71,11 @@ function AddRemoveVisited({ loggedIn, loggedUserDetails, countryName }) {
   };
 
   const handleButtonClick = () => {
-    visited ? handleRemoveCountry() : handleAddCountry();
+    if (visited) {
+      handleRemoveCountry();
+    } else {
+      handleAddCountry();
+    }
   };
 
   const GreenButton = styled(Button)(({ theme }) => ({
@@ -72,13 +83,13 @@ function AddRemoveVisited({ loggedIn, loggedUserDetails, countryName }) {
     backgroundColor: lightGreen[300],
     width: '180px',
     height: '56px',
-    margin: '20px 40px 10px',
+    margin: '20px 10px 10px 40px',
 
     '&:hover': {
       backgroundColor: lightGreen[500],
       width: '180px',
       height: '56px',
-      margin: '20px 40px 10px',
+      margin: '20px 10px 10px 40px',
     },
   }));
 
