@@ -33,7 +33,7 @@ function AddRemoveVisited({
       console.log(filteredCountry);
       if (filteredCountry.length > 0) {
         setVisited(true);
-        setCountryId(filteredCountry[0].id);
+        setCountryId(filteredCountry.id);
         console.log(`Country Id: ${countryId}`);
       } else {
         setVisited(false);
