@@ -30,11 +30,10 @@ function AddRemoveVisited({
       const filteredCountry = loggedUserDetails.visited.filter(
         visited => visited.country === countryName
       );
-      console.log(filteredCountry);
+
       if (filteredCountry.length > 0) {
         setVisited(true);
-        setCountryId(filteredCountry.id);
-        console.log(filteredCountry.id);
+        setCountryId(filteredCountry[0].id);
       } else {
         setVisited(false);
       }
@@ -53,7 +52,6 @@ function AddRemoveVisited({
         `${import.meta.env.VITE_BACKEND_URL}/users/${userId}?_embed=visited`
       );
       setCountryId(updatedVisited.data.visited.slice(-1)[0].id);
-      console.log(`Country Id: ${updatedVisited.data.visited.slice(-1)[0].id}`);
     } catch (error) {
       console.log(error);
     }

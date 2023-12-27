@@ -30,11 +30,10 @@ function AddRemoveWishlist({
       const filteredCountry = loggedUserDetails.wishlist.filter(
         wishlist => wishlist.country === countryName
       );
-      console.log(filteredCountry);
+
       if (filteredCountry.length > 0) {
         setWishlist(true);
-        setCountryId(filteredCountry.id);
-        console.log(filteredCountry.id);
+        setCountryId(filteredCountry[0].id);
       } else {
         setWishlist(false);
       }
