@@ -59,6 +59,7 @@ function AddRemoveWishlist({
         }/users/${userId}?_embed=visited&_embed=wishlist`
       );
       setLoggedUserDetails(updatedUserDetails.data);
+      console.log(updatedUserDetails.data);
     } catch (error) {
       console.log(error);
     }
