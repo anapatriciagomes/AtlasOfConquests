@@ -1015,6 +1015,10 @@
     ],
     "country_code": "GB"
   },
+  "Western Sahara": {
+    "attractions": ["Dakhla", "Laayoune", "Boujdour"],
+    "country_code": "EH"
+  },
   "Yemen": {
     "attractions": ["Old City of Sana'a", "Al-Mahwit", "Shibam"],
     "country_code": "YE"

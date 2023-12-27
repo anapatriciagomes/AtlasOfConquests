@@ -33,8 +33,8 @@ function AddRemoveWishlist({
       console.log(filteredCountry);
       if (filteredCountry.length > 0) {
         setWishlist(true);
-        setCountryId(filteredCountry[0].id);
-        console.log(filteredCountry[0].id);
+        setCountryId(filteredCountry.id);
+        console.log(filteredCountry.id);
       } else {
         setWishlist(false);
       }
