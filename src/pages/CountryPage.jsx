@@ -84,7 +84,7 @@ function CountryPage({ loggedIn, loggedUserDetails, userId }) {
   return (
     <div>
       {fetching && (
-        <div className='mt-[80px] text-center'>
+        <div className="mt-[80px] text-center">
           <Box
             sx={{
               display: 'flex',
@@ -106,144 +106,57 @@ function CountryPage({ loggedIn, loggedUserDetails, userId }) {
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
-          className='mt-[72px]'
+          className="mt-[72px]"
         >
-          <div className='absolute inset-0 bg-black opacity-[0.35]'></div>
-          <div className='relative z-10'>
-            {countries &&
-              countries.map((country, index) => (
-                <div
-                  key={index}
-                  className='flex flex-col text-justify justify-center pb-[120px] min-[1024px]:pb-[300px] min-[1280px]:pb-[500px]'
-                >
-                  <h1 className='text-center text-xl mb-10 mt-[40px] mx-[40px] bg-white bg-opacity-70 p-4 rounded-md'>
-                    {country.name.common} {country.flag}
-                  </h1>
-                  <div className='ml-10 text-justify max-w-[65%] bg-white bg-opacity-70 p-4 rounded-md '>
-                    <p className='pb-3 '>
-                      <span className='font-semibold'>Capital: </span>
-                      {country.capital.join(', ')}
-                    </p>
-                    <Weather capital={country.capital} />
-                    <div className='pb-3'>
-                      <Clock
-                        countryCode={country.cca2}
-                        capital={country.capital.join(', ')}
-                      />
-                    </div>
-                    <p className='pb-3'>
-                      <span className='font-semibold'>Population:</span>{' '}
-                      <PopulationConverter number={country.population} />
-                    </p>
-                    <p className='pb-3'>
-                      <span className='font-semibold'>Area:</span>{' '}
-                      {country.area}m<sup>2</sup>
-                    </p>
-                    <Borders borders={country.borders} />
-                    <ul className='pt-3 pb-3'>
-                      {Object.entries(country.currencies).map(
-                        ([currencyCode, currencyInfo]) => (
-                          <li key={currencyCode}>
-                            <span className='font-semibold'>Currency:</span>{' '}
-                            {currencyInfo.name} ({currencyInfo.symbol})
-                          </li>
-                        )
-                      )}
-                    </ul>
-                    <p className='pb-3'>
-                      <span className='font-semibold'>Continent:</span>{' '}
-                      {country.region}
-                    </p>
-                    {attractions[country.name.common]?.attractions && (
-                      <div className='pb-3'>
-                        <span className='font-semibold'>
-                          Points of Interest:
-                        </span>
-                        <ul>
-                          <li className='flex flex-col'>
-                            {attractions[country.name.common].attractions.join(
-                              ', '
-                            )}
-                          </li>
-                        </ul>
-                      </div>
-                    )}
-                  </div>
-                  {loggedIn ? (
-                    <div className='flex'>
-                      <AddRemoveVisited
-                        loggedIn={loggedIn}
-                        loggedUserDetails={loggedUserDetails}
-                        loggedUserId={userId}
-                        countryName={countryName}
-                        className='ml-[40px]'
-                      />
-                      <AddRemoveWishlist
-                        loggedIn={loggedIn}
-                        loggedUserDetails={loggedUserDetails}
-                        loggedUserId={userId}
-                        countryName={countryName}
-                        className='ml-[40px]'
-                      />
-                    </div>
-                  ) : (
-                    ''
-                  )}
-                </div>
-              ))}
-          </div>
-        </div>
-      ) : (
-        <div className='mt-[72px]'>
           {countries &&
             countries.map((country, index) => (
               <div
                 key={index}
-                className='flex flex-col text-justify justify-center pb-[120px] min-[1024px]:pb-[300px] min-[1280px]:pb-[500px]'
+                className="flex flex-col text-justify justify-center pb-[120px] min-[1024px]:pb-[300px] min-[1280px]:pb-[500px]"
               >
-                <h1 className='text-center text-xl mb-10 mt-[40px] mx-[40px] bg-white bg-opacity-60 p-4 rounded-md'>
+                <h1 className="text-center text-xl mb-10 mt-[40px] mx-[40px] bg-white bg-opacity-70 p-4 rounded-md">
                   {country.name.common} {country.flag}
                 </h1>
-                <div className='ml-10 text-justify max-w-[65%] bg-white bg-opacity-60 p-4 rounded-md '>
-                  <p className='pb-3 '>
-                    <span className='font-semibold'>Capital: </span>
+                <div className="ml-10 text-justify max-w-[65%] bg-white bg-opacity-70 p-4 rounded-md ">
+                  <p className="pb-3 ">
+                    <span className="font-semibold">Capital: </span>
                     {country.capital.join(', ')}
                   </p>
                   <Weather capital={country.capital} />
-                  <div className='pb-3'>
+                  <div className="pb-3">
                     <Clock
                       countryCode={country.cca2}
                       capital={country.capital.join(', ')}
                     />
                   </div>
-                  <p className='pb-3'>
-                    <span className='font-semibold'>Population:</span>{' '}
+                  <p className="pb-3">
+                    <span className="font-semibold">Population:</span>{' '}
                     <PopulationConverter number={country.population} />
                   </p>
-                  <p className='pb-3'>
-                    <span className='font-semibold'>Area:</span> {country.area}m
+                  <p className="pb-3">
+                    <span className="font-semibold">Area:</span> {country.area}m
                     <sup>2</sup>
                   </p>
                   <Borders borders={country.borders} />
-                  <ul className='pt-3 pb-3'>
+                  <ul className="pt-3 pb-3">
                     {Object.entries(country.currencies).map(
                       ([currencyCode, currencyInfo]) => (
                         <li key={currencyCode}>
-                          <span className='font-semibold'>Currency:</span>{' '}
+                          <span className="font-semibold">Currency:</span>{' '}
                           {currencyInfo.name} ({currencyInfo.symbol})
                         </li>
                       )
                     )}
                   </ul>
-                  <p className='pb-3'>
-                    <span className='font-semibold'>Continent:</span>{' '}
+                  <p className="pb-3">
+                    <span className="font-semibold">Continent:</span>{' '}
                     {country.region}
                   </p>
                   {attractions[country.name.common]?.attractions && (
-                    <div className='pb-3'>
-                      <span className='font-semibold'>Points of Interest:</span>
+                    <div className="pb-3">
+                      <span className="font-semibold">Points of Interest:</span>
                       <ul>
-                        <li className='flex flex-col'>
+                        <li className="flex flex-col">
                           {attractions[country.name.common].attractions.join(
                             ', '
                           )}
@@ -252,20 +165,102 @@ function CountryPage({ loggedIn, loggedUserDetails, userId }) {
                     </div>
                   )}
                 </div>
-                <div className='flex'>
+                {loggedIn ? (
+                  <div className="flex">
+                    <AddRemoveVisited
+                      loggedIn={loggedIn}
+                      loggedUserDetails={loggedUserDetails}
+                      loggedUserId={userId}
+                      countryName={countryName}
+                      className="ml-[40px]"
+                    />
+                    <AddRemoveWishlist
+                      loggedIn={loggedIn}
+                      loggedUserDetails={loggedUserDetails}
+                      loggedUserId={userId}
+                      countryName={countryName}
+                      className="ml-[40px]"
+                    />
+                  </div>
+                ) : (
+                  ''
+                )}
+              </div>
+            ))}
+        </div>
+      ) : (
+        <div className="mt-[72px]">
+          {countries &&
+            countries.map((country, index) => (
+              <div
+                key={index}
+                className="flex flex-col text-justify justify-center pb-[120px] min-[1024px]:pb-[300px] min-[1280px]:pb-[500px]"
+              >
+                <h1 className="text-center text-xl mb-10 mt-[40px] mx-[40px] bg-white bg-opacity-60 p-4 rounded-md">
+                  {country.name.common} {country.flag}
+                </h1>
+                <div className="ml-10 text-justify max-w-[65%] bg-white bg-opacity-60 p-4 rounded-md ">
+                  <p className="pb-3 ">
+                    <span className="font-semibold">Capital: </span>
+                    {country.capital.join(', ')}
+                  </p>
+                  <Weather capital={country.capital} />
+                  <div className="pb-3">
+                    <Clock
+                      countryCode={country.cca2}
+                      capital={country.capital.join(', ')}
+                    />
+                  </div>
+                  <p className="pb-3">
+                    <span className="font-semibold">Population:</span>{' '}
+                    <PopulationConverter number={country.population} />
+                  </p>
+                  <p className="pb-3">
+                    <span className="font-semibold">Area:</span> {country.area}m
+                    <sup>2</sup>
+                  </p>
+                  <Borders borders={country.borders} />
+                  <ul className="pt-3 pb-3">
+                    {Object.entries(country.currencies).map(
+                      ([currencyCode, currencyInfo]) => (
+                        <li key={currencyCode}>
+                          <span className="font-semibold">Currency:</span>{' '}
+                          {currencyInfo.name} ({currencyInfo.symbol})
+                        </li>
+                      )
+                    )}
+                  </ul>
+                  <p className="pb-3">
+                    <span className="font-semibold">Continent:</span>{' '}
+                    {country.region}
+                  </p>
+                  {attractions[country.name.common]?.attractions && (
+                    <div className="pb-3">
+                      <span className="font-semibold">Points of Interest:</span>
+                      <ul>
+                        <li className="flex flex-col">
+                          {attractions[country.name.common].attractions.join(
+                            ', '
+                          )}
+                        </li>
+                      </ul>
+                    </div>
+                  )}
+                </div>
+                <div className="flex">
                   <AddRemoveVisited
                     loggedIn={loggedIn}
                     loggedUserDetails={loggedUserDetails}
                     loggedUserId={userId}
                     countryName={countryName}
-                    className='ml-[40px]'
+                    className="ml-[40px]"
                   />
                   <AddRemoveWishlist
                     loggedIn={loggedIn}
                     loggedUserDetails={loggedUserDetails}
                     loggedUserId={userId}
                     countryName={countryName}
-                    className='ml-[40px]'
+                    className="ml-[40px]"
                   />
                 </div>
               </div>
