@@ -20,7 +20,7 @@ function App() {
   const [userId, setUserId] = useState(0);
 
   return (
-    <div className='App'>
+    <div className="App">
       <Navbar
         loginPageActive={loginPageActive}
         setLoginPageActive={setLoginPageActive}
@@ -30,9 +30,9 @@ function App() {
         setUserId={setUserId}
       />
       <Routes>
-        <Route path='/' element={<HomePage />} />
+        <Route path="/" element={<HomePage />} />
         <Route
-          path='/login'
+          path="/login"
           element={
             <LoginPage
               email={email}
@@ -47,7 +47,7 @@ function App() {
           }
         />
         <Route
-          path='/country/:countryCode/:countryName'
+          path="/country/:countryCode/:countryName"
           element={
             <CountryPage
               loggedIn={loggedIn}
@@ -57,7 +57,7 @@ function App() {
           }
         />
         <Route
-          path='/map-visited-wishlist'
+          path="/map-visited-wishlist"
           element={
             <MapVisitedWishList
               loggedIn={loggedIn}
@@ -67,7 +67,7 @@ function App() {
           }
         />
         <Route
-          path='/visited-countries'
+          path="/visited"
           element={
             <VisitedCountries
               loggedIn={loggedIn}
@@ -77,7 +77,7 @@ function App() {
           }
         />
         <Route
-          path='/wishList'
+          path="/wishlist"
           element={
             <WishList
               loggedIn={loggedIn}
@@ -87,7 +87,7 @@ function App() {
           }
         />
         <Route
-          path='/user-account'
+          path="/user-account"
           element={
             <UserAccountPage
               email={email}
@@ -100,8 +100,8 @@ function App() {
             />
           }
         />
-        <Route path='/list' element={<CountriesList />} />
-        <Route path='*' element={<ErrorPage />} />
+        <Route path="/list" element={<CountriesList />} />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </div>
   );
