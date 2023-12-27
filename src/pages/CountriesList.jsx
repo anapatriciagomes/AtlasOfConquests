@@ -139,7 +139,7 @@ function EnhancedTableToolbar(props) {
           id='tableTitle'
           component='div'
         >
-          Nutrition
+          Countries List
         </Typography>
       )}
 
@@ -181,7 +181,7 @@ export default function EnhancedTable() {
   }, []);
 
   const [order, setOrder] = React.useState('asc');
-  const [orderBy, setOrderBy] = React.useState('name.common');
+  const [orderBy, setOrderBy] = React.useState('name');
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
@@ -249,7 +249,7 @@ export default function EnhancedTable() {
   );
 
   return (
-    <>
+    <div className='mt-[72px]'>
       {countries && (
         <Box sx={{ width: '100%' }}>
           <Paper sx={{ width: '100%', mb: 2 }}>
@@ -328,6 +328,6 @@ export default function EnhancedTable() {
           />
         </Box>
       )}
-    </>
+    </div>
   );
 }
