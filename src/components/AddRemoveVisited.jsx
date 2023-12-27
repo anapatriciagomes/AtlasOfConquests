@@ -34,7 +34,7 @@ function AddRemoveVisited({
       if (filteredCountry.length > 0) {
         setVisited(true);
         setCountryId(filteredCountry.id);
-        console.log(`Country Id: ${countryId}`);
+        console.log(filteredCountry.id);
       } else {
         setVisited(false);
       }
@@ -52,8 +52,8 @@ function AddRemoveVisited({
       const updatedVisited = await axios.get(
         `${import.meta.env.VITE_BACKEND_URL}/users/${userId}?_embed=visited`
       );
-      setCountryId(updatedVisited.data.visited[0].id);
-      console.log(`Country Id: ${countryId}`);
+      setCountryId(updatedVisited.data.visited.slice(-1)[0].id);
+      console.log(`Country Id: ${updatedVisited.data.visited.slice(-1)[0].id}`);
     } catch (error) {
       console.log(error);
     }

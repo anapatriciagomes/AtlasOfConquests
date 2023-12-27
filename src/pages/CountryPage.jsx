@@ -111,7 +111,7 @@ function CountryPage({ loggedIn, loggedUserDetails, userId }) {
             countries.map((country, index) => (
               <div
                 key={index}
-                className='flex flex-col text-justify justify-center pb-40'
+                className='flex flex-col text-justify justify-center pb-[100px] min-[1024px]:pb-[300px] min-[1280px]:pb-[500px]'
               >
                 <h1 className='text-center text-xl mb-10 mt-[40px] mx-[40px] bg-white bg-opacity-70 p-4 rounded-md'>
                   {country.name.common} {country.flag}
@@ -266,6 +266,85 @@ function CountryPage({ loggedIn, loggedUserDetails, userId }) {
             ))}
         </div>
       )}
+      )} : (
+      <div className='mt-[72px]'>
+        {countries &&
+          countries.map((country, index) => (
+            <div
+              key={index}
+              className='flex flex-col text-justify justify-center pb-40'
+            >
+              <h1 className='text-center text-xl mb-10 mt-[40px] mx-[40px] bg-white bg-opacity-60 p-4 rounded-md'>
+                {country.name.common} {country.flag}
+              </h1>
+              <div className='ml-10 text-justify max-w-[65%] bg-white bg-opacity-60 p-4 rounded-md '>
+                <p className='pb-3 '>
+                  <span className='font-semibold'>Capital: </span>
+                  {country.capital.join(', ')}
+                </p>
+                <Weather capital={country.capital} />
+                <div className='pb-3'>
+                  <Clock
+                    countryCode={country.cca2}
+                    capital={country.capital.join(', ')}
+                  />
+                </div>
+                <p className='pb-3'>
+                  <span className='font-semibold'>Population:</span>{' '}
+                  <PopulationConverter number={country.population} />
+                </p>
+                <p className='pb-3'>
+                  <span className='font-semibold'>Area:</span> {country.area}m
+                  <sup>2</sup>
+                </p>
+                <Borders borders={country.borders} />
+                <ul className='pt-3 pb-3'>
+                  {Object.entries(country.currencies).map(
+                    ([currencyCode, currencyInfo]) => (
+                      <li key={currencyCode}>
+                        <span className='font-semibold'>Currency:</span>{' '}
+                        {currencyInfo.name} ({currencyInfo.symbol})
+                      </li>
+                    )
+                  )}
+                </ul>
+                <p className='pb-3'>
+                  <span className='font-semibold'>Continent:</span>{' '}
+                  {country.region}
+                </p>
+                {attractions[country.name.common]?.attractions && (
+                  <div className='pb-3'>
+                    <span className='font-semibold'>Points of Interest:</span>
+                    <ul>
+                      <li className='flex flex-col'>
+                        {attractions[country.name.common].attractions.join(
+                          ', '
+                        )}
+                      </li>
+                    </ul>
+                  </div>
+                )}
+              </div>
+              <div className='flex'>
+                <AddRemoveVisited
+                  loggedIn={loggedIn}
+                  loggedUserDetails={loggedUserDetails}
+                  loggedUserId={userId}
+                  countryName={countryName}
+                  className='ml-[40px]'
+                />
+                <AddRemoveWishlist
+                  loggedIn={loggedIn}
+                  loggedUserDetails={loggedUserDetails}
+                  loggedUserId={userId}
+                  countryName={countryName}
+                  className='ml-[40px]'
+                />
+              </div>
+            </div>
+          ))}
+      </div>
+      )
     </div>
   );
 }

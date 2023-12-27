@@ -52,7 +52,7 @@ function AddRemoveWishlist({
       const updatedWishlist = await axios.get(
         `${import.meta.env.VITE_BACKEND_URL}/users/${userId}?_embed=wishlist`
       );
-      setCountryId(updatedWishlist.data.wishlist[0].id);
+      setCountryId(updatedWishlist.data.wishlist.slice(-1)[0].id);
     } catch (error) {
       console.log(error);
     }
