@@ -35,6 +35,20 @@ function Navbar({
           </h1>
         </Link>
         <div className="flex items-center">
+          {loggedIn ? (
+            <Link to="/visited" className="mr-[10px]">
+              <OrangeButton> Visited</OrangeButton>
+            </Link>
+          ) : (
+            ''
+          )}
+          {loggedIn ? (
+            <Link to="/wishlist" className="mr-[10px]">
+              <OrangeButton> Wishlist</OrangeButton>
+            </Link>
+          ) : (
+            ''
+          )}
           {loginPageActive ? (
             ''
           ) : (
