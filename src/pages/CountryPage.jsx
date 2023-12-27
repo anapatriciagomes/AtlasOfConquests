@@ -79,7 +79,7 @@ function CountryPage({ loggedIn, loggedUserDetails, userId }) {
     };
 
     fetchImages();
-  }, attractions[countryName.includes('-') ? countryName.replaceAll('-', ' ') : countryName]?.attractions);
+  }, []);
 
   return (
     <div>
