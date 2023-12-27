@@ -224,7 +224,7 @@ function Borders({ borders = [] }) {
                   <td className="flex flex-wrap">
                     {borderCountries.map((country, index) => (
                       <Link
-                        key={country}
+                        key={index}
                         className={`font-semibold mb-1 mr-7 `}
                         style={{ color: colors[index % colors.length] }}
                         to={`/country/${CountryCodeConverter({
@@ -242,8 +242,8 @@ function Borders({ borders = [] }) {
             <table>
               <tbody>
                 <tr>
-                  {borderCountries.map(country => (
-                    <td key={country} className="flex mb-1">
+                  {borderCountries.map((country, index) => (
+                    <td key={index} className="flex mb-1">
                       <Link
                         className={`text-[${`#ef914e`}] font-semibold hover:text-[#F53]`}
                         to={`/country/${CountryCodeConverter({

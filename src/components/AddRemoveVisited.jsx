@@ -26,7 +26,7 @@ function AddRemoveVisited({
     if (loggedUserId > 0) {
       setUserId(loggedUserId);
     }
-    if (loggedUserDetails.visited) {
+    if (loggedUserDetails && loggedUserDetails.visited) {
       const filteredCountry = loggedUserDetails.visited.filter(
         visited => visited.country === countryName
       );

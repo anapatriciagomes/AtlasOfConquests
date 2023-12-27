@@ -26,7 +26,7 @@ function AddRemoveWishlist({
     if (loggedUserId > 0) {
       setUserId(loggedUserId);
     }
-    if (loggedUserDetails.wishlist) {
+    if (loggedUserDetails && loggedUserDetails.wishlist) {
       const filteredCountry = loggedUserDetails.wishlist.filter(
         wishlist => wishlist.country === countryName
       );
