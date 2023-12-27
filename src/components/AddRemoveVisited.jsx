@@ -7,6 +7,7 @@ import { lightGreen } from '@mui/material/colors';
 function AddRemoveVisited({
   loggedIn,
   loggedUserDetails,
+  setLoggedUserDetails,
   loggedUserId,
   countryName,
 }) {
@@ -28,7 +29,7 @@ function AddRemoveVisited({
     }
     if (loggedUserDetails && loggedUserDetails.visited) {
       const filteredCountry = loggedUserDetails.visited.filter(
-        visited => visited.country === countryName
+        visited => visited.country === countryName.replaceAll('-', ' ')
       );
 
       if (filteredCountry.length > 0) {
@@ -52,6 +53,13 @@ function AddRemoveVisited({
         `${import.meta.env.VITE_BACKEND_URL}/users/${userId}?_embed=visited`
       );
       setCountryId(updatedVisited.data.visited.slice(-1)[0].id);
+      const updatedUserDetails = await axios.get(
+        `${
+          import.meta.env.VITE_BACKEND_URL
+        }/users/${userId}?_embed=visited&_embed=wishlist`
+      );
+      setLoggedUserDetails(updatedUserDetails.data);
+      console.log(updatedUserDetails.data);
     } catch (error) {
       console.log(error);
     }
@@ -63,6 +71,13 @@ function AddRemoveVisited({
         `${import.meta.env.VITE_BACKEND_URL}/visited/${countryId}`
       );
       setVisited(false);
+      const updatedUserDetails = await axios.get(
+        `${
+          import.meta.env.VITE_BACKEND_URL
+        }/users/${userId}?_embed=visited&_embed=wishlist`
+      );
+      setLoggedUserDetails(updatedUserDetails.data);
+      console.log(updatedUserDetails.data);
     } catch (error) {
       console.log(error);
     }

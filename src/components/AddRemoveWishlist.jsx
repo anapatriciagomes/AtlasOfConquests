@@ -7,6 +7,7 @@ import { deepPurple } from '@mui/material/colors';
 function AddRemoveWishlist({
   loggedIn,
   loggedUserDetails,
+  setLoggedUserDetails,
   loggedUserId,
   countryName,
 }) {
@@ -28,7 +29,7 @@ function AddRemoveWishlist({
     }
     if (loggedUserDetails && loggedUserDetails.wishlist) {
       const filteredCountry = loggedUserDetails.wishlist.filter(
-        wishlist => wishlist.country === countryName
+        wishlist => wishlist.country === countryName.replaceAll('-', ' ')
       );
 
       if (filteredCountry.length > 0) {
@@ -52,6 +53,12 @@ function AddRemoveWishlist({
         `${import.meta.env.VITE_BACKEND_URL}/users/${userId}?_embed=wishlist`
       );
       setCountryId(updatedWishlist.data.wishlist.slice(-1)[0].id);
+      const updatedUserDetails = await axios.get(
+        `${
+          import.meta.env.VITE_BACKEND_URL
+        }/users/${userId}?_embed=visited&_embed=wishlist`
+      );
+      setLoggedUserDetails(updatedUserDetails.data);
     } catch (error) {
       console.log(error);
     }
@@ -63,6 +70,12 @@ function AddRemoveWishlist({
         `${import.meta.env.VITE_BACKEND_URL}/wishlist/${countryId}`
       );
       setWishlist(false);
+      const updatedUserDetails = await axios.get(
+        `${
+          import.meta.env.VITE_BACKEND_URL
+        }/users/${userId}?_embed=visited&_embed=wishlist`
+      );
+      setLoggedUserDetails(updatedUserDetails.data);
     } catch (error) {
       console.log(error);
     }

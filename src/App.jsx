@@ -6,7 +6,7 @@ import LoginPage from './pages/LoginPage';
 import ErrorPage from './pages/ErrorPage';
 import CountryPage from './pages/CountryPage';
 import MapVisitedWishList from './pages/MapVisitedWishList';
-import VisitedCountries from './pages/VisitedCountries';
+import Visited from './pages/Visited';
 import WishList from './pages/WishList';
 import UserAccountPage from './pages/UserAccountPage';
 import CountriesList from './pages/CountriesList';
@@ -52,6 +52,7 @@ function App() {
             <CountryPage
               loggedIn={loggedIn}
               loggedUserDetails={loggedUserDetails}
+              setLoggedUserDetails={setLoggedUserDetails}
               userId={userId}
             />
           }
@@ -62,6 +63,7 @@ function App() {
             <MapVisitedWishList
               loggedIn={loggedIn}
               loggedUserDetails={loggedUserDetails}
+              setLoggedUserDetails={setLoggedUserDetails}
               userId={userId}
             />
           }
@@ -69,9 +71,10 @@ function App() {
         <Route
           path="/visited"
           element={
-            <VisitedCountries
+            <Visited
               loggedIn={loggedIn}
               loggedUserDetails={loggedUserDetails}
+              setLoggedUserDetails={setLoggedUserDetails}
               userId={userId}
             />
           }
@@ -82,6 +85,7 @@ function App() {
             <WishList
               loggedIn={loggedIn}
               loggedUserDetails={loggedUserDetails}
+              setLoggedUserDetails={setLoggedUserDetails}
               userId={userId}
             />
           }
