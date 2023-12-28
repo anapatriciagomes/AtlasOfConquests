@@ -62,6 +62,7 @@ function WorldMap() {
             {({ geographies }) =>
               geographies.map(geo => (
                 <a key={geo.rsmKey} className="country-tooltip">
+                  {console.log(geo.properties.name)}
                   <Geography
                     geography={geo}
                     fill="#faaa70"
