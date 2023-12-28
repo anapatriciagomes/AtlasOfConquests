@@ -388,7 +388,11 @@
     "country_code": "GD"
   },
   "Greenland": {
-    "attractions": ["Ilulissa fjord", "Tasiilaq", "Kangerlussuaq"],
+    "attractions": [
+      "Ilulissat Ice-fjord",
+      "Greenland National Museum",
+      "Qaqortoq Museum"
+    ],
     "country_code": "GL"
   },
   "Guatemala": {
