@@ -132,11 +132,7 @@
     "country_code": "BW"
   },
   "Brazil": {
-    "attractions": [
-      "Christ the Redeemer",
-      "Amazon Rainforest",
-      "Iguaçu National Park"
-    ],
+    "attractions": ["Christ the Redeemer", "Amazon Rainforest", "Iguazu Falls"],
     "country_code": "BR"
   },
   "Brunei": {
