@@ -1,6 +1,5 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { alpha } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -15,24 +14,55 @@ import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Switch from '@mui/material/Switch';
 import DeleteIcon from '@mui/icons-material/Delete';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-
-function descendingComparator(a, b, orderBy) {
-  if (b[orderBy] < a[orderBy]) return -1;
-  if (b[orderBy] > a[orderBy]) return 1;
-  return 0;
-}
+import PopulationConverter from '../components/PopulationConverter';
 
 function getComparator(order, orderBy) {
   return order === 'desc'
     ? (a, b) => descendingComparator(a, b, orderBy)
-    : (a, b) => -descendingComparator(a, b, orderBy);
+    : (a, b) => ascendingComparator(a, b, orderBy);
+}
+
+function descendingComparator(a, b, orderBy) {
+  const valueA = getComparisonValue(a, orderBy);
+  const valueB = getComparisonValue(b, orderBy);
+
+  console.log('Comparing:', valueA, valueB);
+
+  if (valueB < valueA) return -1;
+  if (valueB > valueA) return 1;
+  return 0;
+}
+
+function ascendingComparator(a, b, orderBy) {
+  const valueA = getComparisonValue(a, orderBy);
+  const valueB = getComparisonValue(b, orderBy);
+
+  // Null/undefined check
+  if (valueA == null) return -1;
+  if (valueB == null) return 1;
+
+  console.log('Comparing:', valueA, valueB);
+
+  if (valueA < valueB) return -1;
+  if (valueA > valueB) return 1;
+  return 0;
+}
+
+function getComparisonValue(item, orderBy) {
+  if (orderBy === 'capital' && Array.isArray(item[orderBy])) {
+    // If the field is 'capital' and it's an array, return the first element
+    return item[orderBy][0];
+  }
+
+  // Use the existing logic for other fields or non-array 'capital'
+  return typeof item[orderBy] === 'object'
+    ? item[orderBy].common
+    : item[orderBy];
 }
 
 function stableSort(array, comparator) {
@@ -59,13 +89,11 @@ const headCells = [
 ];
 
 function EnhancedTableHead(props) {
-  const {
-    order,
-    orderBy,
-
-    onRequestSort,
-  } = props;
-  const createSortHandler = property => event => onRequestSort(event, property);
+  const { order, orderBy, onRequestSort } = props;
+  const createSortHandler = property => event => {
+    onRequestSort(event, property);
+    console.log('Sorting by:', property);
+  };
 
   return (
     <TableHead>
@@ -110,19 +138,7 @@ function EnhancedTableToolbar(props) {
   const { numSelected } = props;
 
   return (
-    <Toolbar
-      sx={{
-        pl: { sm: 2 },
-        pr: { xs: 1, sm: 1 },
-        ...(numSelected > 0 && {
-          bgcolor: theme =>
-            alpha(
-              theme.palette.primary.main,
-              theme.palette.action.activatedOpacity
-            ),
-        }),
-      }}
-    >
+    <Toolbar>
       {numSelected > 0 ? (
         <Typography
           sx={{ flex: '1 1 100%' }}
@@ -184,7 +200,6 @@ export default function EnhancedTable() {
   const [orderBy, setOrderBy] = React.useState('name');
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
-  const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
   const handleRequestSort = (event, property) => {
@@ -230,10 +245,6 @@ export default function EnhancedTable() {
     setPage(0);
   };
 
-  const handleChangeDense = event => {
-    setDense(event.target.checked);
-  };
-
   const isSelected = id => selected.indexOf(id) !== -1;
 
   const emptyRows =
@@ -258,7 +269,7 @@ export default function EnhancedTable() {
               <Table
                 sx={{ minWidth: 750 }}
                 aria-labelledby='tableTitle'
-                size={dense ? 'small' : 'medium'}
+                size='medium'
               >
                 <EnhancedTableHead
                   numSelected={selected.length}
@@ -293,9 +304,15 @@ export default function EnhancedTable() {
                         >
                           {row.name.common}
                         </TableCell>
-                        <TableCell align='right'>{row.capital}</TableCell>
-                        <TableCell align='right'>{row.population}</TableCell>
-                        <TableCell align='right'>{row.area}</TableCell>
+                        <TableCell align='right'>
+                          {row.capital.join(', ')}
+                        </TableCell>
+                        <TableCell align='right'>
+                          {<PopulationConverter number={row.population} />}
+                        </TableCell>
+                        <TableCell align='right'>
+                          {row.area} m<sup>2</sup>
+                        </TableCell>
                         <TableCell align='right'>{row.region}</TableCell>
                       </TableRow>
                     );
@@ -303,7 +320,7 @@ export default function EnhancedTable() {
                   {emptyRows > 0 && (
                     <TableRow
                       style={{
-                        height: (dense ? 33 : 53) * emptyRows,
+                        height: 53 * emptyRows,
                       }}
                     >
                       <TableCell colSpan={6} />
@@ -322,10 +339,6 @@ export default function EnhancedTable() {
               onRowsPerPageChange={handleChangeRowsPerPage}
             />
           </Paper>
-          <FormControlLabel
-            control={<Switch checked={dense} onChange={handleChangeDense} />}
-            label='Dense padding'
-          />
         </Box>
       )}
     </div>
