@@ -211,7 +211,7 @@
     "attractions": ["Moroni", "Mount Karthala", "Chindini"],
     "country_code": "KM"
   },
-  "Congo (Congo-Brazzaville)": {
+  "Congo": {
     "attractions": [
       "Brazzaville",
       "Odzala-Kokoua National Park",
@@ -781,7 +781,7 @@
       "Centro Cultural de Belém",
       "Pena Palace"
     ],
-    "country_code": "PT"
+    "country_code": "PR"
   },
   "Puerto Rico": {
     "attractions": [
