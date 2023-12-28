@@ -19,6 +19,7 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import PopulationConverter from '../components/PopulationConverter';
 
 function getComparator(order, orderBy) {
   return order === 'desc'
@@ -303,9 +304,15 @@ export default function EnhancedTable() {
                         >
                           {row.name.common}
                         </TableCell>
-                        <TableCell align='right'>{row.capital}</TableCell>
-                        <TableCell align='right'>{row.population}</TableCell>
-                        <TableCell align='right'>{row.area}</TableCell>
+                        <TableCell align='right'>
+                          {row.capital.join(', ')}
+                        </TableCell>
+                        <TableCell align='right'>
+                          {<PopulationConverter number={row.population} />}
+                        </TableCell>
+                        <TableCell align='right'>
+                          {row.area} m<sup>2</sup>
+                        </TableCell>
                         <TableCell align='right'>{row.region}</TableCell>
                       </TableRow>
                     );
