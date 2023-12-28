@@ -159,7 +159,7 @@
     "attractions": ["Ngozi", "Kibira National Park", "Rusizi National Park"],
     "country_code": "BI"
   },
-  "Cabo Verde": {
+  "Cape Verde": {
     "attractions": ["Cidade Velha", "Fogo Volcano", "Santa Maria Beach"],
     "country_code": "CV"
   },
@@ -247,7 +247,7 @@
     "attractions": ["Paphos", "Kykkos Monastery", "Nissi Beach"],
     "country_code": "CY"
   },
-  "Czechia (Czech Republic)": {
+  "Czechia": {
     "attractions": ["Prague Castle", "Charles Bridge", "Český Krumlov"],
     "country_code": "CZ"
   },
@@ -342,6 +342,18 @@
   "France": {
     "attractions": ["Eiffel Tower", "Louvre Museum", "Mont Saint-Michel"],
     "country_code": "FR"
+  },
+  "French Guiana": {
+    "attractions": [
+      "Zoo de Guyane",
+      "Guiana Space Centre",
+      "Phare de Fort Cépérou"
+    ],
+    "country_code": "GF"
+  },
+  "French Southern Territories": {
+    "attractions": ["Île Saint-Paul", "Golfe du Morbihan", "Île des Pingouins"],
+    "country_code": "TF"
   },
   "Gabon": {
     "attractions": [
@@ -511,6 +523,14 @@
     "attractions": ["Kiritimati Island", "Tarawa Atoll", "Abaiang Atoll"],
     "country_code": "KI"
   },
+  "Kosovo": {
+    "attractions": [
+      "Prizren Fortress",
+      "Monastery Visoki Decani",
+      "Orthodox Monastery Gračanica"
+    ],
+    "country_code": "XK"
+  },
   "Kuwait": {
     "attractions": ["Kuwait Towers", "The Avenues", "Souq Al-Mubarakiya"],
     "country_code": "KW"
@@ -563,7 +583,7 @@
     "attractions": ["Vianden Castle", "Luxembourg City", "Mullerthal Trail"],
     "country_code": "LU"
   },
-  "Macedonia": {
+  "North Macedonia": {
     "attractions": ["Skopje", "Ohrid", "Matka Canyon"],
     "country_code": "MK"
   },
@@ -627,7 +647,7 @@
     "attractions": ["Chichen Itza", "Tulum", "Cancun"],
     "country_code": "MX"
   },
-  "Micronesia, Federated States of": {
+  "Micronesia (country)": {
     "attractions": ["Chuuk Lagoon", "Pohnpei", "Kosrae"],
     "country_code": "FM"
   },
@@ -694,6 +714,14 @@
   "Netherlands": {
     "attractions": ["Anne Frank House", "Keukenhof Gardens", "Zaanse Schans"],
     "country_code": "NL"
+  },
+  "New Caledonia": {
+    "attractions": [
+      "Tjibaou Cultural Centre",
+      "Amédée Lighthouse",
+      "Blue River Provincial Park"
+    ],
+    "country_code": "NC"
   },
   "New Zealand": {
     "attractions": ["Milford Sound", "Rotorua", "Waitomo Glowworm Caves"],
@@ -827,7 +855,7 @@
     "attractions": ["Guaita Tower", "Basilica di San Marino", "Monte Titano"],
     "country_code": "SM"
   },
-  "São Tomé and Príncipe": {
+  "Sao Tome and Principe": {
     "attractions": ["Bom Sucesso Fort", "Pico Cão Grande", "Obo National Park"],
     "country_code": "ST"
   },
@@ -951,7 +979,7 @@
     "attractions": ["Grand Palace", "Ayutthaya", "Railay Beach"],
     "country_code": "TH"
   },
-  "Timor-Leste": {
+  "Timor": {
     "attractions": ["Mount Ramelau", "Tasi Tolu", "Jaco Island"],
     "country_code": "TL"
   },
@@ -1042,6 +1070,10 @@
       "Conwy Castle"
     ],
     "country_code": "GB"
+  },
+  "West Bank": {
+    "attractions": ["Church of the Nativity", "Dead Sea", "Wadi Qelt"],
+    "country_code": "PS"
   },
   "Western Sahara": {
     "attractions": ["Dakhla", "Laayoune", "Boujdour"],
