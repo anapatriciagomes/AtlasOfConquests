@@ -304,9 +304,7 @@ export default function EnhancedTable() {
                         >
                           {row.name.common}
                         </TableCell>
-                        <TableCell align='right'>
-                          {row.capital.join(', ')}
-                        </TableCell>
+                        <TableCell align='right'>{row.capital}</TableCell>
                         <TableCell align='right'>
                           {<PopulationConverter number={row.population} />}
                         </TableCell>
