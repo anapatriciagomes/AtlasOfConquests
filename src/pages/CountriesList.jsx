@@ -20,6 +20,7 @@ import { visuallyHidden } from '@mui/utils';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import PopulationConverter from '../components/PopulationConverter';
+import SearchBar from '../components/SearchBar';
 
 function getComparator(order, orderBy) {
   return order === 'desc'
@@ -42,7 +43,6 @@ function ascendingComparator(a, b, orderBy) {
   const valueA = getComparisonValue(a, orderBy);
   const valueB = getComparisonValue(b, orderBy);
 
-  // Null/undefined check
   if (valueA == null) return -1;
   if (valueB == null) return 1;
 
@@ -55,11 +55,9 @@ function ascendingComparator(a, b, orderBy) {
 
 function getComparisonValue(item, orderBy) {
   if (orderBy === 'capital' && Array.isArray(item[orderBy])) {
-    // If the field is 'capital' and it's an array, return the first element
     return item[orderBy][0];
   }
 
-  // Use the existing logic for other fields or non-array 'capital'
   return typeof item[orderBy] === 'object'
     ? item[orderBy].common
     : item[orderBy];
@@ -183,11 +181,13 @@ EnhancedTableToolbar.propTypes = {
 export default function EnhancedTable() {
   const [fetching, setFetching] = useState(true);
   const [countries, setCountries] = useState([]);
+  const [showCountries, setShowCountries] = useState([]);
   useEffect(() => {
     axios
       .get(`https://restcountries.com/v3.1/all`)
       .then(response => {
         setCountries(response.data);
+        setShowCountries(response.data); // Initialize showCountries with all countries
         setFetching(false);
       })
       .catch(error => {
@@ -248,21 +248,30 @@ export default function EnhancedTable() {
   const isSelected = id => selected.indexOf(id) !== -1;
 
   const emptyRows =
-    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - countries.length) : 0;
+    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - showCountries.length) : 0;
 
   const visibleRows = React.useMemo(
     () =>
-      stableSort(countries, getComparator(order, orderBy)).slice(
+      stableSort(showCountries, getComparator(order, orderBy)).slice(
         page * rowsPerPage,
         page * rowsPerPage + rowsPerPage
       ),
-    [order, orderBy, page, rowsPerPage, countries]
+    [order, orderBy, page, rowsPerPage, showCountries]
   );
+
+  const searchedCountries = query => {
+    const filteredCountries = countries.filter(country => {
+      return country.name.common.toLowerCase().includes(query.toLowerCase());
+    });
+    setShowCountries(filteredCountries);
+    setPage(0); // Reset page when search query changes
+  };
 
   return (
     <div className='mt-[72px]'>
       {countries && (
         <Box sx={{ width: '100%' }}>
+          <SearchBar searchedCountries={searchedCountries} />
           <Paper sx={{ width: '100%', mb: 2 }}>
             <EnhancedTableToolbar numSelected={selected.length} />
             <TableContainer>
@@ -277,7 +286,7 @@ export default function EnhancedTable() {
                   orderBy={orderBy}
                   onSelectAllClick={handleSelectAllClick}
                   onRequestSort={handleRequestSort}
-                  rowCount={countries.length}
+                  rowCount={showCountries.length}
                 />
                 <TableBody>
                   {visibleRows.map((row, index) => {
@@ -330,7 +339,7 @@ export default function EnhancedTable() {
             <TablePagination
               rowsPerPageOptions={[10, 20, 250]}
               component='div'
-              count={countries.length}
+              count={showCountries.length}
               rowsPerPage={rowsPerPage}
               page={page}
               onPageChange={handleChangePage}
