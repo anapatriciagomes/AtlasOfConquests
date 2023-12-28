@@ -66,7 +66,10 @@ function CountryPage({
             ]?.attractions[randomIndex];
 
           const response = await axios.get(
-            `https://api.pexels.com/v1/search?query=${randomAttraction}`,
+            `https://api.pexels.com/v1/search?query=${randomAttraction}${' '}${countryName.replaceAll(
+              '-',
+              ' '
+            )}&orientation=landscape&size=large`,
             {
               headers: {
                 Authorization: import.meta.env.VITE_API_KEY,
@@ -117,7 +120,7 @@ function CountryPage({
             countries.map((country, index) => (
               <div
                 key={index}
-                className="flex flex-col text-justify justify-center pb-[120px] min-[1024px]:pb-[300px] min-[1280px]:pb-[500px]"
+                className="flex flex-col text-justify justify-center pb-[200px] min-[1024px]:pb-[300px] min-[1280px]:pb-[500px]"
               >
                 <h1 className="text-center text-xl mb-10 mt-[40px] mx-[40px] bg-white bg-opacity-70 p-4 rounded-md">
                   {country.name.common} {country.flag}
@@ -157,14 +160,15 @@ function CountryPage({
                     <span className="font-semibold">Continent:</span>{' '}
                     {country.region}
                   </p>
-                  {attractions[country.name.common]?.attractions && (
+                  {attractions[countryName.replaceAll('-', ' ')]
+                    ?.attractions && (
                     <div className="pb-3">
                       <span className="font-semibold">Points of Interest:</span>
                       <ul>
                         <li className="flex flex-col">
-                          {attractions[country.name.common].attractions.join(
-                            ', '
-                          )}
+                          {attractions[
+                            countryName.replaceAll('-', ' ')
+                          ].attractions.join(', ')}
                         </li>
                       </ul>
                     </div>

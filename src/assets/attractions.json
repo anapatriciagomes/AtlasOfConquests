@@ -132,11 +132,7 @@
     "country_code": "BW"
   },
   "Brazil": {
-    "attractions": [
-      "Christ the Redeemer",
-      "Amazon Rainforest",
-      "Iguaçu National Park"
-    ],
+    "attractions": ["Christ the Redeemer", "Amazon Rainforest", "Iguazu Falls"],
     "country_code": "BR"
   },
   "Brunei": {
@@ -211,7 +207,7 @@
     "attractions": ["Moroni", "Mount Karthala", "Chindini"],
     "country_code": "KM"
   },
-  "Congo (Congo-Brazzaville)": {
+  "Congo": {
     "attractions": [
       "Brazzaville",
       "Odzala-Kokoua National Park",
@@ -284,7 +280,11 @@
     "country_code": "DM"
   },
   "Dominican Republic": {
-    "attractions": ["Punta Cana", "Santo Domingo", "Jarabacoa"],
+    "attractions": [
+      "Basilica Nuestra Señora De La Altagracia",
+      "Nuestra Señora de la Encarnación",
+      "27 Waterfalls of Damajagua"
+    ],
     "country_code": "DO"
   },
   "Ecuador": {
@@ -412,11 +412,19 @@
     "country_code": "GY"
   },
   "Haiti": {
-    "attractions": ["Citadelle Laferrière", "Jacmel", "Sans-Souci Palace"],
+    "attractions": [
+      "Blue Waterfalls",
+      "Kokoye Beach",
+      "Notre-Dame of Cap-Haitian Cathedral"
+    ],
     "country_code": "HT"
   },
   "Honduras": {
-    "attractions": ["Copán", "Roatán", "Lago de Yojoa"],
+    "attractions": [
+      "Lake Yojoa (Lago de Yojoa)",
+      "Roatán Bay Islands",
+      "Copán Ruins Archeological Site"
+    ],
     "country_code": "HN"
   },
   "Hungary": {
@@ -472,7 +480,11 @@
     "country_code": "CI"
   },
   "Jamaica": {
-    "attractions": ["Blue Mountains", "Dunn's River Falls", "Seven Mile Beach"],
+    "attractions": [
+      "Dunn's River Falls and Park",
+      "Blue Hole Mineral Spring Jamaica",
+      "Green Grotto Caves"
+    ],
     "country_code": "JM"
   },
   "Japan": {
@@ -764,6 +776,14 @@
       "Mosteiro dos Jerónimos",
       "Centro Cultural de Belém",
       "Pena Palace"
+    ],
+    "country_code": "PR"
+  },
+  "Puerto Rico": {
+    "attractions": [
+      "Castillo San Felipe del Morro",
+      "Reserva Natural Cueva del Indio",
+      "Mar Chiquita Beach"
     ],
     "country_code": "PT"
   },
