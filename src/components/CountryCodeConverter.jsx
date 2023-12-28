@@ -205,7 +205,8 @@ const CountryCodeConverter = ({ countryName }) => {
       'Sao Tome and Principe': 'ST',
     };
 
-    return countryCodes[countryName] || 'Country code not found';
+    const countryCode = countryCodes[countryName] || 'Country code not found';
+    return countryCode.toLowerCase();
   };
 
   return getCountryCode(countryName);

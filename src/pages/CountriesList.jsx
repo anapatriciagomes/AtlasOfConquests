@@ -18,6 +18,8 @@ import axios from 'axios';
 import PopulationConverter from '../components/PopulationConverter';
 import SearchBar from '../components/SearchBar';
 import CircularProgress from '@mui/material/CircularProgress';
+import { Link } from 'react-router-dom';
+import CountryNameConverter from '../components/CountryNameConverter';
 
 function getComparator(order, orderBy) {
   return order === 'desc'
@@ -200,25 +202,6 @@ export default function EnhancedTable() {
     setSelected([]);
   };
 
-  const handleClick = (event, id) => {
-    const selectedIndex = selected.indexOf(id);
-    let newSelected = [];
-
-    if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, id);
-    } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1));
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1));
-    } else if (selectedIndex > 0) {
-      newSelected = newSelected.concat(
-        selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1)
-      );
-    }
-    setSelected(newSelected);
-  };
-
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -294,7 +277,6 @@ export default function EnhancedTable() {
                     return (
                       <TableRow
                         hover
-                        onClick={event => handleClick(event, row.id)}
                         role='checkbox'
                         aria-checked={isItemSelected}
                         tabIndex={-1}
@@ -309,7 +291,13 @@ export default function EnhancedTable() {
                           scope='row'
                           padding='none'
                         >
-                          {row.name.common}
+                          <Link
+                            to={`/country/${row.cca2}/${CountryNameConverter({
+                              countryCode: row.cca2,
+                            })}`}
+                          >
+                            {row.name.common}
+                          </Link>
                         </TableCell>
                         <TableCell align='center'>{row.capital}</TableCell>
                         <TableCell align='center'>
