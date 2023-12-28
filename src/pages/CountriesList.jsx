@@ -102,7 +102,7 @@ function EnhancedTableHead(props) {
         {headCells.map(headCell => (
           <TableCell
             key={headCell.id}
-            align={headCell.numeric ? 'right' : 'left'}
+            align={headCell.numeric ? 'center' : 'left'}
             padding={headCell.disablePadding ? 'none' : 'normal'}
             sortDirection={orderBy === headCell.id ? order : false}
           >
@@ -304,14 +304,14 @@ export default function EnhancedTable() {
                         >
                           {row.name.common}
                         </TableCell>
-                        <TableCell align='right'>{row.capital}</TableCell>
-                        <TableCell align='right'>
+                        <TableCell align='center'>{row.capital}</TableCell>
+                        <TableCell align='center'>
                           {<PopulationConverter number={row.population} />}
                         </TableCell>
-                        <TableCell align='right'>
+                        <TableCell align='center'>
                           {row.area} m<sup>2</sup>
                         </TableCell>
-                        <TableCell align='right'>{row.region}</TableCell>
+                        <TableCell align='center'>{row.region}</TableCell>
                       </TableRow>
                     );
                   })}
