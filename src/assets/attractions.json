@@ -471,10 +471,6 @@
     "attractions": ["Cliffs of Moher", "Dublin", "Ring of Kerry"],
     "country_code": "IE"
   },
-  "Isle of Man": {
-    "attractions": ["Isle of Man TT", "Peel Castle", "Laxey Wheel"],
-    "country_code": "IM"
-  },
   "Israel": {
     "attractions": ["Jerusalem", "Tel Aviv", "Dead Sea"],
     "country_code": "IL"
@@ -482,14 +478,6 @@
   "Italy": {
     "attractions": ["Colosseum", "Venice", "Amalfi Coast"],
     "country_code": "IT"
-  },
-  "Ivory Coast": {
-    "attractions": [
-      "Mande Mountains",
-      "Comoé National Park",
-      "Basilica of Our Lady of Peace"
-    ],
-    "country_code": "CI"
   },
   "Jamaica": {
     "attractions": [
@@ -675,10 +663,6 @@
     "attractions": ["Kotor", "Budva", "Durmitor National Park"],
     "country_code": "ME"
   },
-  "Montserrat": {
-    "attractions": ["Emerald Pool", "Rendezvous Bay", "Little Bay"],
-    "country_code": "MS"
-  },
   "Morocco": {
     "attractions": ["Jemaa el-Fnaa Square", "Chefchaouen", "Atlas Mountains"],
     "country_code": "MA"
@@ -762,10 +746,6 @@
   "Palau": {
     "attractions": ["Jellyfish Lake", "Rock Islands", "Ngardmau Waterfall"],
     "country_code": "PW"
-  },
-  "Palestine": {
-    "attractions": ["Al-Aqsa Mosque", "Bethlehem", "Jericho"],
-    "country_code": "PS"
   },
   "Panama": {
     "attractions": ["Panama Canal", "Bocas del Toro", "Casco Viejo"],
@@ -943,14 +923,6 @@
     ],
     "country_code": "SR"
   },
-  "Swaziland": {
-    "attractions": [
-      "Royal Swazi Spa",
-      "Mlilwane Wildlife Sanctuary",
-      "Lobamba"
-    ],
-    "country_code": "SZ"
-  },
   "Sweden": {
     "attractions": ["Vasa Museum", "Abisko National Park", "Icehotel"],
     "country_code": "SE"
@@ -1062,14 +1034,6 @@
   "Vietnam": {
     "attractions": ["Ha Long Bay", "Phong Nha-Ke Bang National Park", "Hoi An"],
     "country_code": "VN"
-  },
-  "Wales": {
-    "attractions": [
-      "Snowdonia National Park",
-      "Cardiff Castle",
-      "Conwy Castle"
-    ],
-    "country_code": "GB"
   },
   "West Bank": {
     "attractions": ["Church of the Nativity", "Dead Sea", "Wadi Qelt"],
