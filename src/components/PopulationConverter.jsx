@@ -3,15 +3,24 @@ const PopulationConverter = ({ number }) => {
     if (num < 1000) {
       return num.toString();
     } else if (num < 1000000) {
-      return `${(num / 1000).toFixed(2)} thousand`;
+      const formatted = num.toLocaleString();
+      return formatted;
+    } else if (num < 1000000000) {
+      const formatted = (num / 1000000).toLocaleString(undefined, {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 2,
+      });
+      return `${formatted}M`;
     } else {
-      return `${(num / 1000000).toFixed(2)} million`;
+      const formatted = (num / 1000000000).toLocaleString(undefined, {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 2,
+      });
+      return `${formatted}B`;
     }
   };
 
-  const formattedNumber = formatNumber(number);
-
-  return <>{formattedNumber}</>;
+  return <span>{formatNumber(number)}</span>;
 };
 
 export default PopulationConverter;
