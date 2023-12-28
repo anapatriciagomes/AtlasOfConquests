@@ -23,16 +23,48 @@ import { visuallyHidden } from '@mui/utils';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-function descendingComparator(a, b, orderBy) {
-  if (b[orderBy] < a[orderBy]) return -1;
-  if (b[orderBy] > a[orderBy]) return 1;
-  return 0;
-}
-
 function getComparator(order, orderBy) {
   return order === 'desc'
     ? (a, b) => descendingComparator(a, b, orderBy)
-    : (a, b) => -descendingComparator(a, b, orderBy);
+    : (a, b) => ascendingComparator(a, b, orderBy);
+}
+
+function descendingComparator(a, b, orderBy) {
+  const valueA = getComparisonValue(a, orderBy);
+  const valueB = getComparisonValue(b, orderBy);
+
+  console.log('Comparing:', valueA, valueB);
+
+  if (valueB < valueA) return -1;
+  if (valueB > valueA) return 1;
+  return 0;
+}
+
+function ascendingComparator(a, b, orderBy) {
+  const valueA = getComparisonValue(a, orderBy);
+  const valueB = getComparisonValue(b, orderBy);
+
+  // Null/undefined check
+  if (valueA == null) return -1;
+  if (valueB == null) return 1;
+
+  console.log('Comparing:', valueA, valueB);
+
+  if (valueA < valueB) return -1;
+  if (valueA > valueB) return 1;
+  return 0;
+}
+
+function getComparisonValue(item, orderBy) {
+  if (orderBy === 'capital' && Array.isArray(item[orderBy])) {
+    // If the field is 'capital' and it's an array, return the first element
+    return item[orderBy][0];
+  }
+
+  // Use the existing logic for other fields or non-array 'capital'
+  return typeof item[orderBy] === 'object'
+    ? item[orderBy].common
+    : item[orderBy];
 }
 
 function stableSort(array, comparator) {
@@ -65,7 +97,10 @@ function EnhancedTableHead(props) {
 
     onRequestSort,
   } = props;
-  const createSortHandler = property => event => onRequestSort(event, property);
+  const createSortHandler = property => event => {
+    onRequestSort(event, property);
+    console.log('Sorting by:', property);
+  };
 
   return (
     <TableHead>
