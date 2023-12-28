@@ -15,12 +15,12 @@ import Paper from '@mui/material/Paper';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import DeleteIcon from '@mui/icons-material/Delete';
-import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import PopulationConverter from '../components/PopulationConverter';
 import SearchBar from '../components/SearchBar';
+import CircularProgress from '@mui/material/CircularProgress';
 
 function getComparator(order, orderBy) {
   return order === 'desc'
@@ -156,20 +156,6 @@ function EnhancedTableToolbar(props) {
           Countries List
         </Typography>
       )}
-
-      {numSelected > 0 ? (
-        <Tooltip title='Delete'>
-          <IconButton>
-            <DeleteIcon />
-          </IconButton>
-        </Tooltip>
-      ) : (
-        <Tooltip title='Filter list'>
-          <IconButton>
-            <FilterListIcon />
-          </IconButton>
-        </Tooltip>
-      )}
     </Toolbar>
   );
 }
@@ -264,11 +250,26 @@ export default function EnhancedTable() {
       return country.name.common.toLowerCase().includes(query.toLowerCase());
     });
     setShowCountries(filteredCountries);
-    setPage(0); // Reset page when search query changes
+    setPage(0);
   };
 
   return (
     <div className='mt-[72px]'>
+      {fetching && (
+        <div className='mt-[80px] text-center'>
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              margin: '300px',
+            }}
+          >
+            <CircularProgress />
+          </Box>
+        </div>
+      )}
+
       {countries && (
         <Box sx={{ width: '100%' }}>
           <SearchBar searchedCountries={searchedCountries} />
@@ -318,7 +319,7 @@ export default function EnhancedTable() {
                           {<PopulationConverter number={row.population} />}
                         </TableCell>
                         <TableCell align='center'>
-                          {row.area} m<sup>2</sup>
+                          {row.area} km<sup>2</sup>
                         </TableCell>
                         <TableCell align='center'>{row.region}</TableCell>
                       </TableRow>
