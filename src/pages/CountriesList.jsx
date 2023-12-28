@@ -12,9 +12,6 @@ import TableSortLabel from '@mui/material/TableSortLabel';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
-import IconButton from '@mui/material/IconButton';
-import Tooltip from '@mui/material/Tooltip';
-import DeleteIcon from '@mui/icons-material/Delete';
 import { visuallyHidden } from '@mui/utils';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -173,7 +170,7 @@ export default function EnhancedTable() {
       .get(`https://restcountries.com/v3.1/all`)
       .then(response => {
         setCountries(response.data);
-        setShowCountries(response.data); // Initialize showCountries with all countries
+        setShowCountries(response.data);
         setFetching(false);
       })
       .catch(error => {
