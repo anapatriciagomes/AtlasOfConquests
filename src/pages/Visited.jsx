@@ -15,7 +15,6 @@ function Visited({
   useEffect(() => {
     if (loggedUserDetails && loggedUserDetails.visited) {
       setVisitedCountries(loggedUserDetails.visited);
-      console.log(loggedUserDetails.visited);
     }
   }, [loggedUserDetails]);
 
@@ -24,7 +23,6 @@ function Visited({
       .get('https://restcountries.com/v3.1/all?fields=name,cca2,flags')
       .then(response => {
         setCountriesFlags(response.data);
-        console.log(response.data);
       })
       .catch(error => {
         console.error('Error fetching data:', error);

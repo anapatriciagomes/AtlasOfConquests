@@ -79,7 +79,7 @@ function WorldMap() {
                         outline: 'none',
                       },
                       hover: {
-                        fill: '#F53',
+                        fill: '#E42',
                         outline: 'none',
                       },
                       pressed: {
