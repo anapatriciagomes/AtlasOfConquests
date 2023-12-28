@@ -245,14 +245,15 @@ function CountryPage({
                     <span className="font-semibold">Continent:</span>{' '}
                     {country.region}
                   </p>
-                  {attractions[country.name.common]?.attractions && (
+                  {attractions[countryName.replaceAll('-', ' ')]
+                    ?.attractions && (
                     <div className="pb-3">
                       <span className="font-semibold">Points of Interest:</span>
                       <ul>
                         <li className="flex flex-col">
-                          {attractions[country.name.common].attractions.join(
-                            ', '
-                          )}
+                          {attractions[
+                            countryName.replaceAll('-', ' ')
+                          ].attractions.join(', ')}
                         </li>
                       </ul>
                     </div>
