@@ -35,6 +35,9 @@ function Navbar({
           </h1>
         </Link>
         <div className="flex items-center">
+          <Link to="/list" className="mr-[10px]">
+            <OrangeButton>Countries List</OrangeButton>
+          </Link>
           {loggedIn ? (
             <Link to="/map-visited-wishlist" className="mr-[10px]">
               <OrangeButton>Visited & Wishlist Map</OrangeButton>
