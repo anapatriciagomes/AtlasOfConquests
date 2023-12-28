@@ -66,7 +66,10 @@ function CountryPage({
             ]?.attractions[randomIndex];
 
           const response = await axios.get(
-            `https://api.pexels.com/v1/search?query=${randomAttraction}`,
+            `https://api.pexels.com/v1/search?query=${randomAttraction}${' '}${countryName.replaceAll(
+              '-',
+              ' '
+            )}&orientation=landscape&size=large`,
             {
               headers: {
                 Authorization: import.meta.env.VITE_API_KEY,
