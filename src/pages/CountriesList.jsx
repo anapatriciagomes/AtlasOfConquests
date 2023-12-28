@@ -291,13 +291,21 @@ export default function EnhancedTable() {
                           scope='row'
                           padding='none'
                         >
-                          <Link
-                            to={`/country/${row.cca2}/${CountryNameConverter({
-                              countryCode: row.cca2,
-                            })}`}
-                          >
-                            {row.name.common}
-                          </Link>
+                          {CountryNameConverter({ countryCode: row.cca2 }) !==
+                          'Country not found' ? (
+                            <Link
+                              to={`/country/${row.cca2}/${CountryNameConverter({
+                                countryCode: row.cca2,
+                              })}`}
+                              className='text-blue-500 hover:text-[#ff9800]'
+                            >
+                              {row.name.common}
+                            </Link>
+                          ) : (
+                            <span className='text-gray-500'>
+                              {row.name.common}
+                            </span>
+                          )}
                         </TableCell>
                         <TableCell align='center'>{row.capital}</TableCell>
                         <TableCell align='center'>
