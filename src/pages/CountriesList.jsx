@@ -87,7 +87,7 @@ const headCells = [
   },
   { id: 'area', numeric: true, disablePadding: false, label: 'Area' },
   { id: 'region', numeric: false, disablePadding: false, label: 'Continent' },
-  { id: 'status', numeric: false, disablePadding: true, label: 'Status' },
+  { id: 'actions', numeric: false, disablePadding: true, label: 'Actions' },
 ];
 
 function EnhancedTableHead(props) {
