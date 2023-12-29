@@ -20,6 +20,10 @@ import SearchBar from '../components/SearchBar';
 import CircularProgress from '@mui/material/CircularProgress';
 import { Link } from 'react-router-dom';
 import CountryNameConverter from '../components/CountryNameConverter';
+import Button from '@mui/material/Button';
+import { styled } from '@mui/material/styles';
+import { lightGreen } from '@mui/material/colors';
+import { deepPurple } from '@mui/material/colors';
 
 function getComparator(order, orderBy) {
   return order === 'desc'
@@ -74,7 +78,7 @@ function stableSort(array, comparator) {
 
 const headCells = [
   { id: 'name', numeric: false, disablePadding: true, label: 'Country' },
-  { id: 'capital', numeric: true, disablePadding: false, label: 'Capital' },
+  { id: 'capital', numeric: false, disablePadding: false, label: 'Capital' },
   {
     id: 'population',
     numeric: true,
@@ -82,7 +86,8 @@ const headCells = [
     label: 'Population',
   },
   { id: 'area', numeric: true, disablePadding: false, label: 'Area' },
-  { id: 'region', numeric: true, disablePadding: false, label: 'Continent' },
+  { id: 'region', numeric: false, disablePadding: false, label: 'Continent' },
+  { id: 'status', numeric: false, disablePadding: true, label: 'Status' },
 ];
 
 function EnhancedTableHead(props) {
@@ -99,7 +104,7 @@ function EnhancedTableHead(props) {
         {headCells.map(headCell => (
           <TableCell
             key={headCell.id}
-            align={headCell.numeric ? 'center' : 'left'}
+            align={headCell.numeric ? 'center' : 'center'}
             padding={headCell.disablePadding ? 'none' : 'normal'}
             sortDirection={orderBy === headCell.id ? order : false}
           >
@@ -240,6 +245,43 @@ export default function EnhancedTable() {
     setPage(0);
   };
 
+  const addToWishlist = country => {
+    // Implement logic to add to wishlist
+    console.log(`Added ${country.name.common} to Wishlist`);
+  };
+
+  const addToVisited = country => {
+    // Implement logic to add to visited
+    console.log(`Added ${country.name.common} to Visited`);
+  };
+
+  const GreenButton = styled(Button)(({ theme }) => ({
+    color: theme.palette.getContrastText(lightGreen[500]),
+    backgroundColor: lightGreen[300],
+    width: '80px',
+    height: '40px',
+
+    '&:hover': {
+      backgroundColor: lightGreen[500],
+      width: '80px',
+      height: '40px',
+    },
+  }));
+
+  const PurpleButton = styled(Button)(({ theme }) => ({
+    color: theme.palette.getContrastText(deepPurple[500]),
+    backgroundColor: deepPurple[300],
+    width: '80px',
+    height: '40px',
+    marginRight: '5px',
+
+    '&:hover': {
+      backgroundColor: deepPurple[500],
+      width: '80px',
+      height: '40px',
+    },
+  }));
+
   return (
     <div className='mt-[72px]'>
       {fetching && (
@@ -321,6 +363,14 @@ export default function EnhancedTable() {
                           {row.area} km<sup>2</sup>
                         </TableCell>
                         <TableCell align='center'>{row.region}</TableCell>
+                        <TableCell align='center'>
+                          <PurpleButton onClick={() => addToWishlist(row)}>
+                            Add to Wishlist
+                          </PurpleButton>
+                          <GreenButton onClick={() => addToVisited(row)}>
+                            Add to Visited
+                          </GreenButton>
+                        </TableCell>
                       </TableRow>
                     ) : null;
                   })}
