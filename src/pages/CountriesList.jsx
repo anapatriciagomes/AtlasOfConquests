@@ -214,16 +214,23 @@ export default function EnhancedTable() {
   const isSelected = id => selected.indexOf(id) !== -1;
 
   const emptyRows =
-    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - showCountries.length) : 0;
+    rowsPerPage -
+    Math.min(rowsPerPage, showCountries.length - page * rowsPerPage);
 
-  const visibleRows = React.useMemo(
-    () =>
-      stableSort(showCountries, getComparator(order, orderBy)).slice(
-        page * rowsPerPage,
-        page * rowsPerPage + rowsPerPage
-      ),
-    [order, orderBy, page, rowsPerPage, showCountries]
-  );
+  const visibleRows = React.useMemo(() => {
+    const filteredRows = showCountries.filter(row => {
+      return (
+        CountryNameConverter({ countryCode: row.cca2 }) !== 'Country not found'
+      );
+    });
+
+    const sortedRows = stableSort(filteredRows, getComparator(order, orderBy));
+
+    return sortedRows.slice(
+      page * rowsPerPage,
+      page * rowsPerPage + rowsPerPage
+    );
+  }, [order, orderBy, page, rowsPerPage, showCountries]);
 
   const searchedCountries = query => {
     const filteredCountries = countries.filter(country => {
@@ -274,7 +281,11 @@ export default function EnhancedTable() {
                     const isItemSelected = isSelected(row.id);
                     const labelId = `enhanced-table-checkbox-${index}`;
 
-                    return (
+                    const isLinkClickable =
+                      CountryNameConverter({ countryCode: row.cca2 }) !==
+                      'Country not found';
+
+                    return isLinkClickable ? (
                       <TableRow
                         hover
                         role='checkbox'
@@ -291,21 +302,14 @@ export default function EnhancedTable() {
                           scope='row'
                           padding='none'
                         >
-                          {CountryNameConverter({ countryCode: row.cca2 }) !==
-                          'Country not found' ? (
-                            <Link
-                              to={`/country/${row.cca2}/${CountryNameConverter({
-                                countryCode: row.cca2,
-                              })}`}
-                              className='text-blue-500 hover:text-[#ff9800]'
-                            >
-                              {row.name.common}
-                            </Link>
-                          ) : (
-                            <span className='text-gray-500'>
-                              {row.name.common}
-                            </span>
-                          )}
+                          <Link
+                            to={`/country/${row.cca2}/${CountryNameConverter({
+                              countryCode: row.cca2,
+                            })}`}
+                            className='text-blue-500 hover:text-[#ff9800]'
+                          >
+                            {row.name.common}
+                          </Link>
                         </TableCell>
                         <TableCell align='center'>{row.capital}</TableCell>
                         <TableCell align='center'>
@@ -316,7 +320,7 @@ export default function EnhancedTable() {
                         </TableCell>
                         <TableCell align='center'>{row.region}</TableCell>
                       </TableRow>
-                    );
+                    ) : null;
                   })}
                   {emptyRows > 0 && (
                     <TableRow
