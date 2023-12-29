@@ -205,11 +205,18 @@ const CountryNameConverter = ({ countryCode }) => {
       ST: 'Sao Tome and Principe',
     };
 
-    const countryName = countryCodes[countryCode] || 'Country not found';
+    const countryName = countryCodes[countryCode];
 
-    console.log('Output countryName:', countryName);
+    if (!countryName) {
+      return 'Country not found';
+    }
 
-    return countryName;
+    // Convert to URL-friendly format
+    const urlFriendlyName = countryName.replace(/\s+/g, '-') || 'unknown';
+
+    console.log('Output urlFriendlyName:', urlFriendlyName);
+
+    return urlFriendlyName;
   };
 
   return getCountryName(countryCode);
