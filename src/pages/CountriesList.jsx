@@ -260,6 +260,7 @@ export default function EnhancedTable() {
     backgroundColor: lightGreen[300],
     width: '80px',
     height: '40px',
+    marginRight: '5px',
 
     '&:hover': {
       backgroundColor: lightGreen[500],
@@ -273,7 +274,6 @@ export default function EnhancedTable() {
     backgroundColor: deepPurple[300],
     width: '80px',
     height: '40px',
-    marginRight: '5px',
 
     '&:hover': {
       backgroundColor: deepPurple[500],
@@ -364,12 +364,12 @@ export default function EnhancedTable() {
                         </TableCell>
                         <TableCell align='center'>{row.region}</TableCell>
                         <TableCell align='center'>
-                          <PurpleButton onClick={() => addToWishlist(row)}>
-                            Add to Wishlist
-                          </PurpleButton>
                           <GreenButton onClick={() => addToVisited(row)}>
                             Add to Visited
                           </GreenButton>
+                          <PurpleButton onClick={() => addToWishlist(row)}>
+                            Add to Wishlist
+                          </PurpleButton>
                         </TableCell>
                       </TableRow>
                     ) : null;
