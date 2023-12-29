@@ -211,7 +211,6 @@ const CountryNameConverter = ({ countryCode }) => {
       return 'Country not found';
     }
 
-    // Convert to URL-friendly format
     const urlFriendlyName = countryName.replace(/\s+/g, '-') || 'unknown';
 
     console.log('Output urlFriendlyName:', urlFriendlyName);

@@ -303,9 +303,11 @@ export default function EnhancedTable() {
                           padding='none'
                         >
                           <Link
-                            to={`/country/${row.cca2}/${CountryNameConverter({
-                              countryCode: row.cca2,
-                            })}`}
+                            to={`/country/${row.cca2.toLowerCase()}/${CountryNameConverter(
+                              {
+                                countryCode: row.cca2,
+                              }
+                            )}`}
                             className='text-blue-500 hover:text-[#ff9800]'
                           >
                             {row.name.common}
