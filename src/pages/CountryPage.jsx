@@ -87,7 +87,7 @@ function CountryPage({
     };
 
     fetchImages();
-  }, []);
+  }, [countryName]);
 
   return (
     <div>
