@@ -250,7 +250,6 @@ function Borders({ borders = [] }) {
                   <tr>
                     {borderCountries.map((country, index) => (
                       <td key={index} className="flex mb-1">
-                        {console.log(country)}
                         <Link
                           className={`text-[#ef914e] font-semibold hover:text-[#F53]`}
                           countryName={country}
