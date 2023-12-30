@@ -316,7 +316,11 @@ function CountriesList({
                               {row.name.common}
                             </Link>
                           </TableCell>
-                          <TableCell align="center">{row.capital}</TableCell>
+                          <TableCell align="center">
+                            {row.capital.length > 1
+                              ? row.capital.toString().replaceAll(',', ', ')
+                              : row.capital}
+                          </TableCell>
                           <TableCell align="center">
                             {<PopulationConverter number={row.population} />}
                           </TableCell>
