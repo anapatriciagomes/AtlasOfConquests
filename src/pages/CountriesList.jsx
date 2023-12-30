@@ -23,42 +23,12 @@ import SearchBar from '../components/SearchBar';
 import CircularProgress from '@mui/material/CircularProgress';
 import CountryNameConverter from '../components/CountryNameConverter';
 
-const EnhancedTableToolbar = ({ numSelected }) => {
-  return (
-    <Toolbar>
-      {numSelected > 0 ? (
-        <Typography
-          sx={{ flex: '1 1 100%' }}
-          color="inherit"
-          variant="subtitle1"
-          component="div"
-        >
-          {numSelected} selected
-        </Typography>
-      ) : (
-        <Typography
-          sx={{ flex: '1 1 100%' }}
-          variant="h6"
-          id="tableTitle"
-          component="div"
-        >
-          Countries List
-        </Typography>
-      )}
-    </Toolbar>
-  );
-};
-
-EnhancedTableToolbar.propTypes = {
-  numSelected: PropTypes.number.isRequired,
-};
-
-const CountriesList = ({
+function CountriesList({
   loggedIn,
   loggedUserDetails,
   setLoggedUserDetails,
   userId,
-}) => {
+}) {
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('name');
   const [selected, setSelected] = React.useState([]);
@@ -67,6 +37,36 @@ const CountriesList = ({
   const [fetching, setFetching] = useState(true);
   const [countries, setCountries] = useState([]); // Initialize with an empty array
   const [showCountries, setShowCountries] = useState([]); // Initialize with an empty array
+
+  const EnhancedTableToolbar = numSelected => {
+    return (
+      <Toolbar>
+        {numSelected > 0 ? (
+          <Typography
+            sx={{ flex: '1 1 100%' }}
+            color="inherit"
+            variant="subtitle1"
+            component="div"
+          >
+            {numSelected} selected
+          </Typography>
+        ) : (
+          <Typography
+            sx={{ flex: '1 1 100%' }}
+            variant="h6"
+            id="tableTitle"
+            component="div"
+          >
+            Countries List
+          </Typography>
+        )}
+      </Toolbar>
+    );
+  };
+
+  EnhancedTableToolbar.propTypes = {
+    numSelected: PropTypes.number.isRequired,
+  };
 
   const getComparator = (order, orderBy) => {
     return order === 'desc'
@@ -381,6 +381,6 @@ const CountriesList = ({
       )}
     </div>
   );
-};
+}
 
 export default CountriesList;
