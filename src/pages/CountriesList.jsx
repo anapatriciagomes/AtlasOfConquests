@@ -110,14 +110,15 @@ function CountriesList({
     return (
       <TableHead className="w-[100%]">
         <TableRow>
-          <TableCell padding="checkbox"></TableCell>
           {loggedIn
             ? headCells.map(headCell => (
                 <TableCell
                   key={headCell.id}
-                  align={headCell.numeric ? 'center' : 'center'}
                   padding={headCell.disablePadding ? 'none' : 'normal'}
                   sortDirection={orderBy === headCell.id ? order : false}
+                  className={
+                    headCell.label === 'Country' ? 'text-left' : 'text-center'
+                  }
                 >
                   <TableSortLabel
                     active={orderBy === headCell.id}
@@ -297,12 +298,12 @@ function CountriesList({
                           selected={isItemSelected}
                           sx={{ cursor: 'pointer' }}
                         >
-                          <TableCell padding="checkbox"></TableCell>
                           <TableCell
                             component="th"
                             id={labelId}
                             scope="row"
                             padding="none"
+                            align="center"
                           >
                             <Link
                               to={`/country/${row.cca2.toLowerCase()}/${CountryNameConverter(
