@@ -14,8 +14,6 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import TableSortLabel from '@mui/material/TableSortLabel';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import { visuallyHidden } from '@mui/utils';
 import PopulationConverter from '../components/PopulationConverter';
@@ -110,32 +108,58 @@ function CountriesList({
     };
 
     return (
-      <TableHead>
+      <TableHead className="w-[100%]">
         <TableRow>
           <TableCell padding="checkbox"></TableCell>
-          {headCells.map(headCell => (
-            <TableCell
-              key={headCell.id}
-              align={headCell.numeric ? 'center' : 'center'}
-              padding={headCell.disablePadding ? 'none' : 'normal'}
-              sortDirection={orderBy === headCell.id ? order : false}
-            >
-              <TableSortLabel
-                active={orderBy === headCell.id}
-                direction={orderBy === headCell.id ? order : 'asc'}
-                onClick={createSortHandler(headCell.id)}
-              >
-                {headCell.label}
-                {orderBy === headCell.id ? (
-                  <Box component="span" sx={visuallyHidden}>
-                    {order === 'desc'
-                      ? 'sorted descending'
-                      : 'sorted ascending'}
-                  </Box>
-                ) : null}
-              </TableSortLabel>
-            </TableCell>
-          ))}
+          {loggedIn
+            ? headCells.map(headCell => (
+                <TableCell
+                  key={headCell.id}
+                  align={headCell.numeric ? 'center' : 'center'}
+                  padding={headCell.disablePadding ? 'none' : 'normal'}
+                  sortDirection={orderBy === headCell.id ? order : false}
+                >
+                  <TableSortLabel
+                    active={orderBy === headCell.id}
+                    direction={orderBy === headCell.id ? order : 'asc'}
+                    onClick={createSortHandler(headCell.id)}
+                  >
+                    {headCell.label}
+                    {orderBy === headCell.id ? (
+                      <Box component="span" sx={visuallyHidden}>
+                        {order === 'desc'
+                          ? 'sorted descending'
+                          : 'sorted ascending'}
+                      </Box>
+                    ) : null}
+                  </TableSortLabel>
+                </TableCell>
+              ))
+            : headCells
+                .filter(headCell => headCell.label !== 'Actions')
+                .map(headCell => (
+                  <TableCell
+                    key={headCell.id}
+                    align={headCell.numeric ? 'center' : 'center'}
+                    padding={headCell.disablePadding ? 'none' : 'normal'}
+                    sortDirection={orderBy === headCell.id ? order : false}
+                  >
+                    <TableSortLabel
+                      active={orderBy === headCell.id}
+                      direction={orderBy === headCell.id ? order : 'asc'}
+                      onClick={createSortHandler(headCell.id)}
+                    >
+                      {headCell.label}
+                      {orderBy === headCell.id ? (
+                        <Box component="span" sx={visuallyHidden}>
+                          {order === 'desc'
+                            ? 'sorted descending'
+                            : 'sorted ascending'}
+                        </Box>
+                      ) : null}
+                    </TableSortLabel>
+                  </TableCell>
+                ))}
         </TableRow>
       </TableHead>
     );
@@ -239,20 +263,20 @@ function CountriesList({
         <Box sx={{ width: '100%' }}>
           <SearchBar searchedCountries={searchedCountries} />
           <Paper sx={{ width: '100%', mb: 2 }}>
-            <EnhancedTableHead
-              numSelected={selected.length}
-              order={order}
-              orderBy={orderBy}
-              onSelectAllClick={handleSelectAllClick}
-              onRequestSort={handleRequestSort}
-              rowCount={showCountries.length}
-            />
             <TableContainer>
               <Table
                 sx={{ minWidth: 750 }}
                 aria-labelledby="tableTitle"
                 size="medium"
               >
+                <EnhancedTableHead
+                  numSelected={selected.length}
+                  order={order}
+                  orderBy={orderBy}
+                  onSelectAllClick={handleSelectAllClick}
+                  onRequestSort={handleRequestSort}
+                  rowCount={showCountries.length}
+                />
                 <TableBody>
                   {visibleRows.map((row, index) => {
                     const isItemSelected = isSelected(row.id);
@@ -299,28 +323,26 @@ function CountriesList({
                             {row.area} km<sup>2</sup>
                           </TableCell>
                           <TableCell align="center">{row.region}</TableCell>
-                          <TableCell align="center">
-                            {loggedIn ? (
-                              <div>
-                                <AddRemoveVisited
-                                  loggedIn={loggedIn}
-                                  loggedUserDetails={loggedUserDetails}
-                                  setLoggedUserDetails={setLoggedUserDetails}
-                                  loggedUserId={userId}
-                                  countryName={row.name.common}
-                                />
-                                <AddRemoveWishlist
-                                  loggedIn={loggedIn}
-                                  loggedUserDetails={loggedUserDetails}
-                                  setLoggedUserDetails={setLoggedUserDetails}
-                                  loggedUserId={userId}
-                                  countryName={row.name.common}
-                                />
-                              </div>
-                            ) : (
-                              ''
-                            )}
-                          </TableCell>
+                          {loggedIn ? (
+                            <TableCell align="center">
+                              <AddRemoveVisited
+                                loggedIn={loggedIn}
+                                loggedUserDetails={loggedUserDetails}
+                                setLoggedUserDetails={setLoggedUserDetails}
+                                loggedUserId={userId}
+                                countryName={row.name.common}
+                              />
+                              <AddRemoveWishlist
+                                loggedIn={loggedIn}
+                                loggedUserDetails={loggedUserDetails}
+                                setLoggedUserDetails={setLoggedUserDetails}
+                                loggedUserId={userId}
+                                countryName={row.name.common}
+                              />
+                            </TableCell>
+                          ) : (
+                            ''
+                          )}
                         </TableRow>
                       )
                     );
