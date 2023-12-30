@@ -47,7 +47,7 @@ function Wishlist({
                     ? countriesFlags
                         .filter(
                           flag =>
-                            flag.cca2 ===
+                            flag.cca2.toLowerCase() ===
                             CountryCodeConverter({
                               countryName: wishlist.country,
                             })
