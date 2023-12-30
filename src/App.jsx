@@ -104,7 +104,17 @@ function App() {
             />
           }
         />
-        <Route path="/list" element={<CountriesList />} />
+        <Route
+          path="/list"
+          element={
+            <CountriesList
+              loggedIn={loggedIn}
+              loggedUserDetails={loggedUserDetails}
+              setLoggedUserDetails={setLoggedUserDetails}
+              userId={userId}
+            />
+          }
+        />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </div>
