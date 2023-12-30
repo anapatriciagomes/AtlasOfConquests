@@ -175,14 +175,14 @@ function CountryPage({
                   )}
                 </div>
                 {loggedIn ? (
-                  <div className="flex">
+                  <div className="flex justify-between ml-[40px] mt-[20px] w-[370px]">
                     <AddRemoveVisited
                       loggedIn={loggedIn}
                       loggedUserDetails={loggedUserDetails}
                       setLoggedUserDetails={setLoggedUserDetails}
                       loggedUserId={userId}
                       countryName={countryName}
-                      className="ml-[40px]"
+                      className="mr-[20px]"
                     />
                     <AddRemoveWishlist
                       loggedIn={loggedIn}
@@ -190,7 +190,6 @@ function CountryPage({
                       setLoggedUserDetails={setLoggedUserDetails}
                       loggedUserId={userId}
                       countryName={countryName}
-                      className="ml-[40px]"
                     />
                   </div>
                 ) : (

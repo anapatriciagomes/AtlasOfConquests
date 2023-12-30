@@ -94,15 +94,13 @@ function AddRemoveVisited({
   const GreenButton = styled(Button)(({ theme }) => ({
     color: theme.palette.getContrastText(lightGreen[500]),
     backgroundColor: lightGreen[300],
-    width: '180px',
+    width: '170px',
     height: '56px',
-    margin: '20px 10px 10px 40px',
 
     '&:hover': {
       backgroundColor: lightGreen[500],
-      width: '180px',
+      width: '170px',
       height: '56px',
-      margin: '20px 10px 10px 40px',
     },
   }));
 

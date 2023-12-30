@@ -114,11 +114,10 @@ function CountriesList({
             ? headCells.map(headCell => (
                 <TableCell
                   key={headCell.id}
+                  align={headCell.numeric ? 'center' : 'center'}
                   padding={headCell.disablePadding ? 'none' : 'normal'}
                   sortDirection={orderBy === headCell.id ? order : false}
-                  className={
-                    headCell.label === 'Country' ? 'text-left' : 'text-center'
-                  }
+                  className="text-center"
                 >
                   <TableSortLabel
                     active={orderBy === headCell.id}
@@ -144,6 +143,7 @@ function CountriesList({
                     align={headCell.numeric ? 'center' : 'center'}
                     padding={headCell.disablePadding ? 'none' : 'normal'}
                     sortDirection={orderBy === headCell.id ? order : false}
+                    className="text-center"
                   >
                     <TableSortLabel
                       active={orderBy === headCell.id}
@@ -330,20 +330,22 @@ function CountriesList({
                           <TableCell align="center">{row.region}</TableCell>
                           {loggedIn ? (
                             <TableCell align="center">
-                              <AddRemoveVisited
-                                loggedIn={loggedIn}
-                                loggedUserDetails={loggedUserDetails}
-                                setLoggedUserDetails={setLoggedUserDetails}
-                                loggedUserId={userId}
-                                countryName={row.name.common}
-                              />
-                              <AddRemoveWishlist
-                                loggedIn={loggedIn}
-                                loggedUserDetails={loggedUserDetails}
-                                setLoggedUserDetails={setLoggedUserDetails}
-                                loggedUserId={userId}
-                                countryName={row.name.common}
-                              />
+                              <div className="flex flex-col justify-between h-[122px]">
+                                <AddRemoveVisited
+                                  loggedIn={loggedIn}
+                                  loggedUserDetails={loggedUserDetails}
+                                  setLoggedUserDetails={setLoggedUserDetails}
+                                  loggedUserId={userId}
+                                  countryName={row.name.common}
+                                />
+                                <AddRemoveWishlist
+                                  loggedIn={loggedIn}
+                                  loggedUserDetails={loggedUserDetails}
+                                  setLoggedUserDetails={setLoggedUserDetails}
+                                  loggedUserId={userId}
+                                  countryName={row.name.common}
+                                />
+                              </div>
                             </TableCell>
                           ) : (
                             ''

@@ -93,15 +93,13 @@ function AddRemoveWishlist({
   const PurpleButton = styled(Button)(({ theme }) => ({
     color: theme.palette.getContrastText(deepPurple[500]),
     backgroundColor: deepPurple[300],
-    width: '180px',
+    width: '170px',
     height: '56px',
-    margin: '20px 0 10px 10px',
 
     '&:hover': {
       backgroundColor: deepPurple[500],
-      width: '180px',
+      width: '170px',
       height: '56px',
-      margin: '20px 0 10px 10px',
     },
   }));
 
