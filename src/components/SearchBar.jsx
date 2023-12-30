@@ -1,5 +1,9 @@
 import { useState } from 'react';
-import mGlass from '../assets/magnifying glass.jpg';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputLabel from '@mui/material/InputLabel';
+import InputAdornment from '@mui/material/InputAdornment';
+import FormControl from '@mui/material/FormControl';
+import SearchIcon from '@mui/icons-material/Search';
 
 function SearchBar({ searchedCountries }) {
   const [search, setSearch] = useState('');
@@ -10,24 +14,29 @@ function SearchBar({ searchedCountries }) {
   };
 
   return (
-    <div className='relative bg-[#ff9800] p-3'>
-      <label htmlFor='search' className='text-xl'>
-        Search by country name:
-      </label>
-      <div className='relative flex items-center'>
-        <input
-          type='text'
-          name='search'
-          id='search'
+    <div className="text-center">
+      <FormControl sx={{ m: 2, width: '95%' }}>
+        <InputLabel
+          htmlFor="outlined-adornment-amount"
+          type="text"
+          name="search"
+          id="search"
+        >
+          Search Country
+        </InputLabel>
+        <OutlinedInput
+          id="outlined-adornment-amount"
+          startAdornment={
+            <InputAdornment position="start">
+              <SearchIcon />
+            </InputAdornment>
+          }
+          label="Search Country"
           value={search}
           onChange={handleSearch}
-          className='h-10 w-full pl-10 rounded-md border border-gray-300 focus:outline-none focus:ring focus:border-blue-500'
-          placeholder='Country Name'
+          placeholder="Country Name"
         />
-        <span className='absolute left-3 top-2'>
-          <img src={mGlass} alt='Search' className='h-5 w-5 text-gray-500' />
-        </span>
-      </div>
+      </FormControl>
     </div>
   );
 }

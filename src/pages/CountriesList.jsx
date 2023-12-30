@@ -38,36 +38,6 @@ function CountriesList({
   const [countries, setCountries] = useState([]); // Initialize with an empty array
   const [showCountries, setShowCountries] = useState([]); // Initialize with an empty array
 
-  const EnhancedTableToolbar = numSelected => {
-    return (
-      <Toolbar>
-        {numSelected > 0 ? (
-          <Typography
-            sx={{ flex: '1 1 100%' }}
-            color="inherit"
-            variant="subtitle1"
-            component="div"
-          >
-            {numSelected} selected
-          </Typography>
-        ) : (
-          <Typography
-            sx={{ flex: '1 1 100%' }}
-            variant="h6"
-            id="tableTitle"
-            component="div"
-          >
-            Countries List
-          </Typography>
-        )}
-      </Toolbar>
-    );
-  };
-
-  EnhancedTableToolbar.propTypes = {
-    numSelected: PropTypes.number.isRequired,
-  };
-
   const getComparator = (order, orderBy) => {
     return order === 'desc'
       ? (a, b) => descendingComparator(a, b, orderBy)
@@ -248,8 +218,8 @@ function CountriesList({
   }, []);
 
   return (
-    <div className="mt-[72px]">
-      <EnhancedTableToolbar numSelected={selected.length} />
+    <div className="mt-[100px]">
+      <h1 className="text-xl text-center my-[30px]">Countries List</h1>
       {fetching && (
         <div className="mt-[80px] text-center">
           <Box
