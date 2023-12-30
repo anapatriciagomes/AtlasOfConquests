@@ -46,8 +46,6 @@ function CountriesList({
     const valueA = getComparisonValue(a, orderBy);
     const valueB = getComparisonValue(b, orderBy);
 
-    console.log('Comparing:', valueA, valueB);
-
     if (valueB < valueA) return -1;
     if (valueB > valueA) return 1;
     return 0;
@@ -59,8 +57,6 @@ function CountriesList({
 
     if (valueA == null) return -1;
     if (valueB == null) return 1;
-
-    console.log('Comparing:', valueA, valueB);
 
     if (valueA < valueB) return -1;
     if (valueA > valueB) return 1;
@@ -104,7 +100,6 @@ function CountriesList({
   const EnhancedTableHead = ({ order, orderBy, onRequestSort }) => {
     const createSortHandler = property => event => {
       onRequestSort(event, property);
-      console.log('Sorting by:', property);
     };
 
     return (

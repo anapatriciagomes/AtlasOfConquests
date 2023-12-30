@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import worldImage from '../assets/world_atlas_favicon.png';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
@@ -13,7 +13,7 @@ function Navbar({
   return (
     <nav className="z-10 py-4 px-6 fixed top-0 left-0 w-full bg-[#ededed]">
       <div className="flex justify-between items-center">
-        <Link
+        <NavLink
           to="/"
           className="flex items-center"
           onClick={() => setLoginPageActive(false)}
@@ -22,52 +22,64 @@ function Navbar({
           <h1 className="text-2xl max-[610px]:text-xl text-center">
             Atlas Of Conquests
           </h1>
-        </Link>
+        </NavLink>
         <div className="flex items-center text-sm text-center font-medium">
-          <Link
+          <NavLink
             to="/list"
             className="mr-[30px]"
+            style={({ isActive }) => {
+              return isActive ? { color: '#dd7031' } : {};
+            }}
             onClick={() => setLoginPageActive(false)}
           >
             Countries List
-          </Link>
+          </NavLink>
           {loggedIn ? (
-            <Link
+            <NavLink
               to="/map-visited-wishlist"
               className="mr-[30px]"
+              style={({ isActive }) => {
+                return isActive ? { color: '#dd7031' } : {};
+              }}
               onClick={() => setLoginPageActive(false)}
             >
               Visited & Wishlist Map
-            </Link>
+            </NavLink>
           ) : (
             ''
           )}
           {loggedIn ? (
-            <Link
+            <NavLink
               to="/visited"
               className="mr-[30px]"
+              style={({ isActive }) => {
+                return isActive ? { color: '#dd7031' } : {};
+              }}
               onClick={() => setLoginPageActive(false)}
             >
               Visited
-            </Link>
+            </NavLink>
           ) : (
             ''
           )}
           {loggedIn ? (
-            <Link
+            <NavLink
               to="/wishlist"
               className="mr-[30px]"
+              style={({ isActive }) => {
+                return isActive ? { color: '#dd7031' } : {};
+              }}
               onClick={() => setLoginPageActive(false)}
             >
               Wishlist
-            </Link>
+            </NavLink>
           ) : (
             ''
           )}
           {loginPageActive ? (
             ''
           ) : (
-            <Link
+            <NavLink
               to="/login"
               className="text-sm"
               onClick={() => {
@@ -79,12 +91,18 @@ function Navbar({
               }}
             >
               {loggedIn ? 'Log out' : 'Log in'}
-            </Link>
+            </NavLink>
           )}
           {loggedIn ? (
-            <Link to="/user-account" onClick={() => setLoginPageActive(false)}>
+            <NavLink
+              to="/user-account"
+              style={({ isActive }) => {
+                return isActive ? { color: '#dd7031' } : {};
+              }}
+              onClick={() => setLoginPageActive(false)}
+            >
               <AccountCircleIcon className="ml-[20px] text-center" />
-            </Link>
+            </NavLink>
           ) : (
             ''
           )}
