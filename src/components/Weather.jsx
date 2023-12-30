@@ -16,15 +16,15 @@ function Weather({ capital }) {
     const fetchWeather = async () => {
       if (firstCity === 'Washington, D.C.') {
         firstCity = 'Washington';
-      } else if (firstCity === 'Brasília') {
-        firstCity = 'Brasilia';
-      } else if (firstCity === 'Addis Ababa') {
-        firstCity = 'Adis';
       }
+      let formattedCity = firstCity.replace(/ /g, '.');
+      formattedCity = formattedCity
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '');
       try {
         const weather = new OpenWeatherAPI({
           key: `${import.meta.env.VITE_API_WEATHER_KEY}`,
-          locationName: encodeURIComponent(firstCity),
+          locationName: encodeURIComponent(formattedCity),
           units: 'metric',
         });
         const data = await weather.getCurrent();

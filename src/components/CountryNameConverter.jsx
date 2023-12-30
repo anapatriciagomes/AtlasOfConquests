@@ -213,8 +213,6 @@ const CountryNameConverter = ({ countryCode }) => {
 
     const urlFriendlyName = countryName.replace(/\s+/g, '-') || 'unknown';
 
-    console.log('Output urlFriendlyName:', urlFriendlyName);
-
     return urlFriendlyName;
   };
 
