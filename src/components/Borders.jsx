@@ -210,56 +210,65 @@ function Borders({ borders = [] }) {
     const colors = ['#ef914e', '#D83F31'];
 
     if (borders.length > 0) {
-      const borderCountries = borders.map(code => countryCodes[code]);
-
-      return (
-        <div>
-          <p className='pb-3'>
-            <span className='font-semibold'>Borders:</span>
-          </p>
-          {borderCountries.length > 6 ? (
-            <table>
-              <tbody>
-                <tr>
-                  <td className='flex flex-wrap'>
-                    {borderCountries.map((country, index) => (
-                      <Link
-                        key={index}
-                        className={`font-semibold mb-1 mr-7 `}
-                        style={{ color: colors[index % colors.length] }}
-                        to={`/country/${CountryCodeConverter({
-                          countryName: country,
-                        })}/${country}`}
-                      >
-                        {country}
-                      </Link>
-                    ))}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          ) : (
-            <table>
-              <tbody>
-                <tr>
-                  {borderCountries.map((country, index) => (
-                    <td key={index} className='flex mb-1'>
-                      <Link
-                        className={`text-[#ef914e] font-semibold hover:text-[#F53]`}
-                        to={`/country/${CountryCodeConverter({
-                          countryName: country,
-                        })}/${country}`}
-                      >
-                        {country}
-                      </Link>
-                    </td>
-                  ))}
-                </tr>
-              </tbody>
-            </table>
-          )}
-        </div>
+      const borderCountriesfiltered = borders.filter(border =>
+        Object.keys(countryCodes).includes(border)
       );
+      if (borderCountriesfiltered.length > 0) {
+        const borderCountries = borderCountriesfiltered.map(
+          code => countryCodes[code]
+        );
+
+        return (
+          <div>
+            <p className="pb-3">
+              <span className="font-semibold">Borders:</span>
+            </p>
+            {borderCountries.length > 6 ? (
+              <table>
+                <tbody>
+                  <tr>
+                    <td className="flex flex-wrap">
+                      {borderCountries.map((country, index) => (
+                        <Link
+                          key={index}
+                          className={`font-semibold mb-1 mr-7 `}
+                          style={{ color: colors[index % colors.length] }}
+                          to={`/country/${CountryCodeConverter({
+                            countryName: country,
+                          })}/${country}`}
+                        >
+                          {country}
+                        </Link>
+                      ))}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            ) : (
+              <table>
+                <tbody>
+                  <tr>
+                    {borderCountries.map((country, index) => (
+                      <td key={index} className="flex mb-1">
+                        {console.log(country)}
+                        <Link
+                          className={`text-[#ef914e] font-semibold hover:text-[#F53]`}
+                          countryName={country}
+                          to={`/country/${CountryCodeConverter({
+                            countryName: country,
+                          })}/${country}`}
+                        >
+                          {country}
+                        </Link>
+                      </td>
+                    ))}
+                  </tr>
+                </tbody>
+              </table>
+            )}
+          </div>
+        );
+      }
     }
   };
   return getCountryBorder(borders);
