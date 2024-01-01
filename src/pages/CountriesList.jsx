@@ -1,24 +1,25 @@
-import { useState, useEffect } from 'react';
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import PropTypes from 'prop-types';
-import AddRemoveVisited from '../components/AddRemoveVisited';
-import AddRemoveWishlist from '../components/AddRemoveWishlist';
-import Box from '@mui/material/Box';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TablePagination from '@mui/material/TablePagination';
-import TableRow from '@mui/material/TableRow';
-import TableSortLabel from '@mui/material/TableSortLabel';
-import Paper from '@mui/material/Paper';
-import { visuallyHidden } from '@mui/utils';
+import {
+  Box,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TablePagination,
+  TableRow,
+  TableSortLabel,
+  Paper,
+} from '@mui/material';
+import CircularProgress from '@mui/material/CircularProgress';
 import PopulationConverter from '../components/PopulationConverter';
 import SearchBar from '../components/SearchBar';
-import CircularProgress from '@mui/material/CircularProgress';
+import AddRemoveVisited from '../components/AddRemoveVisited';
+import AddRemoveWishlist from '../components/AddRemoveWishlist';
+import { visuallyHidden } from '@mui/utils';
 import CountryNameConverter from '../components/CountryNameConverter';
 
 function CountriesList({
@@ -103,7 +104,7 @@ function CountriesList({
     };
 
     return (
-      <TableHead className="w-[100%]">
+      <TableHead className='w-[100%]'>
         <TableRow>
           {loggedIn
             ? headCells.map(headCell => (
@@ -112,7 +113,7 @@ function CountriesList({
                   align={headCell.numeric ? 'center' : 'center'}
                   padding={headCell.disablePadding ? 'none' : 'normal'}
                   sortDirection={orderBy === headCell.id ? order : false}
-                  className="text-center"
+                  className='text-center'
                 >
                   <TableSortLabel
                     active={orderBy === headCell.id}
@@ -121,7 +122,7 @@ function CountriesList({
                   >
                     {headCell.label}
                     {orderBy === headCell.id ? (
-                      <Box component="span" sx={visuallyHidden}>
+                      <Box component='span' sx={visuallyHidden}>
                         {order === 'desc'
                           ? 'sorted descending'
                           : 'sorted ascending'}
@@ -138,7 +139,7 @@ function CountriesList({
                     align={headCell.numeric ? 'center' : 'center'}
                     padding={headCell.disablePadding ? 'none' : 'normal'}
                     sortDirection={orderBy === headCell.id ? order : false}
-                    className="text-center"
+                    className='text-center'
                   >
                     <TableSortLabel
                       active={orderBy === headCell.id}
@@ -147,7 +148,7 @@ function CountriesList({
                     >
                       {headCell.label}
                       {orderBy === headCell.id ? (
-                        <Box component="span" sx={visuallyHidden}>
+                        <Box component='span' sx={visuallyHidden}>
                           {order === 'desc'
                             ? 'sorted descending'
                             : 'sorted ascending'}
@@ -238,10 +239,10 @@ function CountriesList({
   }, []);
 
   return (
-    <div className="mt-[100px]">
-      <h1 className="text-xl text-center my-[30px]">Countries List</h1>
+    <div className='mt-[100px]'>
+      <h1 className='text-xl text-center my-[30px]'>Countries List</h1>
       {fetching && (
-        <div className="mt-[80px] text-center">
+        <div className='mt-[80px] text-center'>
           <Box
             sx={{
               display: 'flex',
@@ -262,8 +263,8 @@ function CountriesList({
             <TableContainer>
               <Table
                 sx={{ minWidth: 750 }}
-                aria-labelledby="tableTitle"
-                size="medium"
+                aria-labelledby='tableTitle'
+                size='medium'
               >
                 <EnhancedTableHead
                   numSelected={selected.length}
@@ -286,7 +287,7 @@ function CountriesList({
                       isLinkClickable && (
                         <TableRow
                           hover
-                          role="checkbox"
+                          role='checkbox'
                           aria-checked={isItemSelected}
                           tabIndex={-1}
                           key={row.id}
@@ -294,11 +295,11 @@ function CountriesList({
                           sx={{ cursor: 'pointer' }}
                         >
                           <TableCell
-                            component="th"
+                            component='th'
                             id={labelId}
-                            scope="row"
-                            padding="none"
-                            align="center"
+                            scope='row'
+                            padding='none'
+                            align='center'
                           >
                             <Link
                               to={`/country/${row.cca2.toLowerCase()}/${CountryNameConverter(
@@ -306,26 +307,26 @@ function CountriesList({
                                   countryCode: row.cca2,
                                 }
                               )}`}
-                              className="text-blue-500 hover:text-[#ff9800]"
+                              className='text-blue-500 hover:text-[#ff9800]'
                             >
                               {row.name.common}
                             </Link>
                           </TableCell>
-                          <TableCell align="center">
+                          <TableCell align='center'>
                             {row.capital.length > 1
                               ? row.capital.toString().replaceAll(',', ', ')
                               : row.capital}
                           </TableCell>
-                          <TableCell align="center">
+                          <TableCell align='center'>
                             {<PopulationConverter number={row.population} />}
                           </TableCell>
-                          <TableCell align="center">
+                          <TableCell align='center'>
                             {row.area} km<sup>2</sup>
                           </TableCell>
-                          <TableCell align="center">{row.region}</TableCell>
+                          <TableCell align='center'>{row.region}</TableCell>
                           {loggedIn ? (
-                            <TableCell align="center">
-                              <div className="flex flex-col justify-between h-[122px]">
+                            <TableCell align='center'>
+                              <div className='flex flex-col justify-between h-[122px]'>
                                 <AddRemoveVisited
                                   loggedIn={loggedIn}
                                   loggedUserDetails={loggedUserDetails}
@@ -363,7 +364,7 @@ function CountriesList({
             </TableContainer>
             <TablePagination
               rowsPerPageOptions={[10, 20, 250]}
-              component="div"
+              component='div'
               count={showCountries.length}
               rowsPerPage={rowsPerPage}
               page={page}
