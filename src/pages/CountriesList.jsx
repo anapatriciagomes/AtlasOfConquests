@@ -14,12 +14,12 @@ import {
   TableSortLabel,
   Paper,
 } from '@mui/material';
+import { visuallyHidden } from '@mui/utils';
 import CircularProgress from '@mui/material/CircularProgress';
 import PopulationConverter from '../components/PopulationConverter';
 import SearchBar from '../components/SearchBar';
 import AddRemoveVisited from '../components/AddRemoveVisited';
 import AddRemoveWishlist from '../components/AddRemoveWishlist';
-import { visuallyHidden } from '@mui/utils';
 import CountryNameConverter from '../components/CountryNameConverter';
 
 function CountriesList({
@@ -34,8 +34,8 @@ function CountriesList({
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [fetching, setFetching] = useState(true);
-  const [countries, setCountries] = useState([]); // Initialize with an empty array
-  const [showCountries, setShowCountries] = useState([]); // Initialize with an empty array
+  const [countries, setCountries] = useState([]);
+  const [showCountries, setShowCountries] = useState([]);
 
   const getComparator = (order, orderBy) => {
     return order === 'desc'
@@ -282,15 +282,14 @@ function CountriesList({
                     const isLinkClickable =
                       CountryNameConverter({ countryCode: row.cca2 }) !==
                       'Country not found';
-
                     return (
                       isLinkClickable && (
                         <TableRow
                           hover
+                          key={index}
                           role='checkbox'
                           aria-checked={isItemSelected}
                           tabIndex={-1}
-                          key={row.id}
                           selected={isItemSelected}
                           sx={{ cursor: 'pointer' }}
                         >
