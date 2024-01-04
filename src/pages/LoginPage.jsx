@@ -74,31 +74,46 @@ function LoginPage({
   };
 
   const handleLogin = () => {
-    if (isValidEmail) {
-      if (
-        users.find(user => user.email === email && user.password === password)
-      ) {
-        setLoggedUserDetails(
-          users.find(user => user.email === email && user.password === password)
-        );
-        setUserId(
-          users.find(user => user.email === email && user.password === password)
-            .id
-        );
-        setLoggedIn(true);
-        setLoginPageActive(false);
-        setPassword('');
-        navigate('/map-visited-wishlist');
-      } else if (users.find(user => user.email === email) === undefined) {
-        alert('Email does not exist, try registering.');
-      } else alert('Wrong Password');
+    if (!isValidEmail) {
+      alert('Invalid email format');
+      return;
+    }
+
+    if (password.trim() === '') {
+      alert('Password cannot be empty');
+      return;
+    }
+
+    const user = users.find(
+      user => user.email === email && user.password === password
+    );
+
+    if (user) {
+      setLoggedUserDetails(user);
+      setUserId(user.id);
+      setLoggedIn(true);
+      setLoginPageActive(false);
+      setPassword('');
+      navigate('/map-visited-wishlist');
+    } else if (users.find(user => user.email === email) === undefined) {
+      alert('Email does not exist, try registering.');
     } else {
-      console.log('Invalid email format');
+      alert('Wrong Password');
     }
   };
 
   const handleRegister = async () => {
     try {
+      if (!isValidEmail) {
+        alert('Invalid email format');
+        return;
+      }
+
+      if (password.trim() === '') {
+        alert('Password cannot be empty');
+        return;
+      }
+
       if (users.find(user => user.email === email) === undefined) {
         const userDetails = { email, password };
         await axios.post(
@@ -108,7 +123,9 @@ function LoginPage({
         alert('Your registration was successful, please log in.');
         setEmail('');
         setPassword('');
-      } else alert('This email already exists, please log in.');
+      } else {
+        alert('This email already exists, please log in.');
+      }
     } catch (error) {
       console.log(error);
     }

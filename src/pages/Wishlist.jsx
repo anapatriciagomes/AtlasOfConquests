@@ -36,6 +36,17 @@ function Wishlist({
         <div className="mt-[120px] mx-auto text-center w-[650px]">
           <h1 className="mb-[40px] text-xl text-center">Wishlist Countries</h1>
           {wishlistCountries ? (
+            <h2 className="mb-[40px] text-xl text-center leading-10">
+              You have{' '}
+              <b className="text-[#673ab7] text-2xl">
+                {wishlistCountries.length}
+              </b>{' '}
+              countries on your Wishlist!
+            </h2>
+          ) : (
+            ''
+          )}
+          {wishlistCountries ? (
             wishlistCountries.map(wishlist => (
               <div
                 key={wishlist.id}
