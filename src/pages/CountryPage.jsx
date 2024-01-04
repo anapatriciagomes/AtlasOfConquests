@@ -89,6 +89,12 @@ function CountryPage({
     fetchImages();
   }, [countryName]);
 
+  const formatArea = area => {
+    let formattedNumber = area.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+
+    return formattedNumber;
+  };
+
   return (
     <div>
       {fetching && (
@@ -142,8 +148,8 @@ function CountryPage({
                     <PopulationConverter number={country.population} />
                   </p>
                   <p className="pb-3">
-                    <span className="font-semibold">Area:</span> {country.area}m
-                    <sup>2</sup>
+                    <span className="font-semibold">Area:</span>{' '}
+                    {formatArea(country.area)} m<sup>2</sup>
                   </p>
                   <Borders borders={country.borders} />
                   <ul className="pt-3 pb-3">
