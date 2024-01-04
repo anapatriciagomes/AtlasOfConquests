@@ -39,7 +39,7 @@ function AddRemoveVisited({
         setVisited(false);
       }
     }
-  }, []);
+  }, [countryName, loggedUserDetails, loggedUserId]);
 
   const handleAddCountry = async () => {
     try {

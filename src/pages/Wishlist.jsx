@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import CountryCodeConverter from '../components/CountryCodeConverter';
+import AddRemoveWishlist from '../components/AddRemoveWishlist';
 
 function Wishlist({
   loggedIn,
@@ -32,13 +33,16 @@ function Wishlist({
   return (
     <div>
       {loggedIn && (
-        <div className="mt-[120px] ml-[80px]">
+        <div className="mt-[120px] mx-auto text-center w-[650px]">
           <h1 className="mb-[40px] text-xl text-center">Wishlist Countries</h1>
           {wishlistCountries ? (
             wishlistCountries.map(wishlist => (
-              <div key={wishlist.id} className="flex items-center mb-[20px]">
+              <div
+                key={wishlist.id}
+                className="flex justify-center items-center mb-[20px]"
+              >
                 <Link
-                  className={`flex text-[${`#ef914e`}] font-semibold hover:text-[#F53]`}
+                  className={`flex justify-start flex-wrap w-[50%] text-[${`#ef914e`}] font-semibold hover:text-[#F53]`}
                   to={`/country/${CountryCodeConverter({
                     countryName: wishlist.country,
                   })}/${wishlist.country.replaceAll(' ', '-')}`}
@@ -63,6 +67,15 @@ function Wishlist({
 
                   <p>{wishlist.country}</p>
                 </Link>
+                <div>
+                  <AddRemoveWishlist
+                    loggedIn={loggedIn}
+                    loggedUserDetails={loggedUserDetails}
+                    setLoggedUserDetails={setLoggedUserDetails}
+                    loggedUserId={userId}
+                    countryName={wishlist.country}
+                  />
+                </div>
               </div>
             ))
           ) : (
@@ -71,6 +84,11 @@ function Wishlist({
             </h1>
           )}
         </div>
+      )}
+      {loggedIn === false && (
+        <h1 className="mt-[120px] text-center text-xl">
+          Please log in to visit this page
+        </h1>
       )}
     </div>
   );

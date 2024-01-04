@@ -39,7 +39,7 @@ function AddRemoveWishlist({
         setWishlist(false);
       }
     }
-  }, []);
+  }, [countryName, loggedUserDetails, loggedUserId]);
 
   const handleAddCountry = async () => {
     try {

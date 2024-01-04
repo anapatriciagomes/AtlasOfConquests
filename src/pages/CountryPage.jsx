@@ -122,10 +122,10 @@ function CountryPage({
                 key={index}
                 className="flex flex-col text-justify justify-center pb-[200px] min-[1024px]:pb-[300px] min-[1280px]:pb-[500px]"
               >
-                <h1 className="text-center text-xl mb-10 mt-[40px] mx-[40px] bg-white bg-opacity-70 p-4 rounded-md">
+                <h1 className="text-center text-xl mb-10 mt-[40px] mx-auto w-[500px] bg-white bg-opacity-70 p-4 rounded-md">
                   {country.name.common} {country.flag}
                 </h1>
-                <div className="ml-10 text-justify max-w-[65%] bg-white bg-opacity-70 p-4 rounded-md ">
+                <div className="mx-auto text-justify w-[500px] bg-white bg-opacity-70 p-4 rounded-md">
                   <p className="pb-3 ">
                     <span className="font-semibold">Capital: </span>
                     {country.capital.join(', ')}
@@ -175,14 +175,13 @@ function CountryPage({
                   )}
                 </div>
                 {loggedIn ? (
-                  <div className="flex justify-between ml-[40px] mt-[20px] w-[370px]">
+                  <div className="flex justify-between mx-auto mt-[20px] w-[400px]">
                     <AddRemoveVisited
                       loggedIn={loggedIn}
                       loggedUserDetails={loggedUserDetails}
                       setLoggedUserDetails={setLoggedUserDetails}
                       loggedUserId={userId}
                       countryName={countryName}
-                      className="mr-[20px]"
                     />
                     <AddRemoveWishlist
                       loggedIn={loggedIn}
@@ -206,10 +205,10 @@ function CountryPage({
                 key={index}
                 className="flex flex-col text-justify justify-center pb-[120px] min-[1024px]:pb-[300px] min-[1280px]:pb-[500px]"
               >
-                <h1 className="text-center text-xl mb-10 mt-[40px] mx-[40px] bg-white bg-opacity-60 p-4 rounded-md">
+                <h1 className="text-center text-xl mb-10 mt-[40px] mx-auto w-[500px] bg-white bg-opacity-70 p-4 rounded-md">
                   {country.name.common} {country.flag}
                 </h1>
-                <div className="ml-10 text-justify max-w-[65%] bg-white bg-opacity-60 p-4 rounded-md ">
+                <div className="mx-auto text-justify w-[500px] bg-white bg-opacity-70 p-4 rounded-md">
                   <p className="pb-3 ">
                     <span className="font-semibold">Capital: </span>
                     {country.capital.join(', ')}
@@ -259,20 +258,18 @@ function CountryPage({
                     </div>
                   )}
                 </div>
-                <div className="flex">
+                <div className="flex justify-between mx-auto mt-[20px] w-[400px]">
                   <AddRemoveVisited
                     loggedIn={loggedIn}
                     loggedUserDetails={loggedUserDetails}
                     loggedUserId={userId}
                     countryName={countryName}
-                    className="ml-[40px]"
                   />
                   <AddRemoveWishlist
                     loggedIn={loggedIn}
                     loggedUserDetails={loggedUserDetails}
                     loggedUserId={userId}
                     countryName={countryName}
-                    className="ml-[40px]"
                   />
                 </div>
               </div>
