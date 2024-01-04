@@ -8,6 +8,8 @@ import {
 import { Tooltip } from 'react-tooltip';
 import { useNavigate } from 'react-router-dom';
 import CountryCodeConverter from '../components/CountryCodeConverter';
+import AddRemoveVisited from '../components/AddRemoveVisited';
+import AddRemoveWishlist from '../components/AddRemoveWishlist';
 
 import geoUrl from '../assets/features.json';
 
@@ -69,7 +71,7 @@ function MapVisitedWishList({
   }
 
   return (
-    <div className="w-4/5 mx-auto mt-[100px]">
+    <div className="w-4/5 mx-auto mt-[70px]">
       {loggedUserDetails && visitedCountries && wishlistCountries && (
         <div>
           <ComposableMap>
@@ -93,9 +95,6 @@ function MapVisitedWishList({
                             fill="#aed581"
                             onMouseEnter={() => {
                               setTooltipContent(geo.properties.name);
-                            }}
-                            onMouseLeave={() => {
-                              setTooltipContent('');
                             }}
                             onClick={() => handleClick(geo)}
                             className="cursor-pointer"
@@ -129,9 +128,6 @@ function MapVisitedWishList({
                             onMouseEnter={() => {
                               setTooltipContent(geo.properties.name);
                             }}
-                            onMouseLeave={() => {
-                              setTooltipContent('');
-                            }}
                             onClick={() => handleClick(geo)}
                             className="cursor-pointer"
                             style={{
@@ -160,9 +156,6 @@ function MapVisitedWishList({
                             onMouseEnter={() => {
                               setTooltipContent(geo.properties.name);
                             }}
-                            onMouseLeave={() => {
-                              setTooltipContent('');
-                            }}
                             onClick={() => handleClick(geo)}
                             className="cursor-pointer"
                             style={{
@@ -188,8 +181,32 @@ function MapVisitedWishList({
               </Geographies>
             </ZoomableGroup>
           </ComposableMap>
-          <Tooltip anchorSelect=".country-tooltip" place="top">
+          <Tooltip
+            anchorSelect=".country-tooltip"
+            place="top-start"
+            className="text-center"
+            clickable
+            offset={-20}
+          >
             {tooltipContent}
+            <div className="flex mt-[10px]">
+              <div className="mr-[10px]">
+                <AddRemoveVisited
+                  loggedIn={loggedIn}
+                  loggedUserDetails={loggedUserDetails}
+                  setLoggedUserDetails={setLoggedUserDetails}
+                  loggedUserId={userId}
+                  countryName={tooltipContent}
+                />
+              </div>
+              <AddRemoveWishlist
+                loggedIn={loggedIn}
+                loggedUserDetails={loggedUserDetails}
+                setLoggedUserDetails={setLoggedUserDetails}
+                loggedUserId={userId}
+                countryName={tooltipContent}
+              />
+            </div>
           </Tooltip>
           <div className="controls text-center">
             <button onClick={handleZoomIn}>
