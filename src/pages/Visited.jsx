@@ -36,6 +36,19 @@ function Visited({
         <div className="mt-[120px] mx-auto text-center w-[650px]">
           <h1 className="mb-[40px] text-xl text-center">Visited Countries</h1>
           {visitedCountries ? (
+            <h2 className="mb-[40px] text-xl text-center leading-10">
+              You have visited{' '}
+              <b className="text-[#6fbc16] text-2xl">
+                {visitedCountries.length}
+              </b>{' '}
+              out of 202 countries! <br />
+              {202 - visitedCountries.length} countries left to conquer the
+              World!
+            </h2>
+          ) : (
+            ''
+          )}
+          {visitedCountries ? (
             visitedCountries.map(visited => (
               <div
                 key={visited.id}
