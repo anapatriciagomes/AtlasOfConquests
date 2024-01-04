@@ -237,6 +237,11 @@ function MapVisitedWishList({
           </div>
         </div>
       )}
+      {loggedIn === false && (
+        <h1 className="mt-[120px] text-center text-xl">
+          Please log in to visit this page
+        </h1>
+      )}
     </div>
   );
 }
