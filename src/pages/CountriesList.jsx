@@ -239,7 +239,7 @@ function CountriesList({
   }, []);
 
   return (
-    <div className="mt-[100px]">
+    <div className="mt-[120px]">
       <h1 className="text-xl text-center my-[30px]">Countries List</h1>
       {fetching && (
         <div className="mt-[80px] text-center">
