@@ -104,7 +104,7 @@ function CountriesList({
     };
 
     return (
-      <TableHead className='w-[100%]'>
+      <TableHead className="w-[95%] mx-auto">
         <TableRow>
           {loggedIn
             ? headCells.map(headCell => (
@@ -113,7 +113,7 @@ function CountriesList({
                   align={headCell.numeric ? 'center' : 'center'}
                   padding={headCell.disablePadding ? 'none' : 'normal'}
                   sortDirection={orderBy === headCell.id ? order : false}
-                  className='text-center'
+                  className="text-center"
                 >
                   <TableSortLabel
                     active={orderBy === headCell.id}
@@ -122,7 +122,7 @@ function CountriesList({
                   >
                     {headCell.label}
                     {orderBy === headCell.id ? (
-                      <Box component='span' sx={visuallyHidden}>
+                      <Box component="span" sx={visuallyHidden}>
                         {order === 'desc'
                           ? 'sorted descending'
                           : 'sorted ascending'}
@@ -139,7 +139,7 @@ function CountriesList({
                     align={headCell.numeric ? 'center' : 'center'}
                     padding={headCell.disablePadding ? 'none' : 'normal'}
                     sortDirection={orderBy === headCell.id ? order : false}
-                    className='text-center'
+                    className="text-center"
                   >
                     <TableSortLabel
                       active={orderBy === headCell.id}
@@ -148,7 +148,7 @@ function CountriesList({
                     >
                       {headCell.label}
                       {orderBy === headCell.id ? (
-                        <Box component='span' sx={visuallyHidden}>
+                        <Box component="span" sx={visuallyHidden}>
                           {order === 'desc'
                             ? 'sorted descending'
                             : 'sorted ascending'}
@@ -239,10 +239,10 @@ function CountriesList({
   }, []);
 
   return (
-    <div className='mt-[100px]'>
-      <h1 className='text-xl text-center my-[30px]'>Countries List</h1>
+    <div className="mt-[100px]">
+      <h1 className="text-xl text-center my-[30px]">Countries List</h1>
       {fetching && (
-        <div className='mt-[80px] text-center'>
+        <div className="mt-[80px] text-center">
           <Box
             sx={{
               display: 'flex',
@@ -257,14 +257,14 @@ function CountriesList({
       )}
 
       {countries && (
-        <Box sx={{ width: '100%' }}>
+        <Box sx={{ width: '95%' }} className="mx-auto">
           <SearchBar searchedCountries={searchedCountries} />
-          <Paper sx={{ width: '100%', mb: 2 }}>
+          <Paper sx={{ width: '95%', mb: 2 }} className="mx-auto">
             <TableContainer>
               <Table
                 sx={{ minWidth: 750 }}
-                aria-labelledby='tableTitle'
-                size='medium'
+                aria-labelledby="tableTitle"
+                size="medium"
               >
                 <EnhancedTableHead
                   numSelected={selected.length}
@@ -287,18 +287,18 @@ function CountriesList({
                         <TableRow
                           hover
                           key={index}
-                          role='checkbox'
+                          role="checkbox"
                           aria-checked={isItemSelected}
                           tabIndex={-1}
                           selected={isItemSelected}
                           sx={{ cursor: 'pointer' }}
                         >
                           <TableCell
-                            component='th'
+                            component="th"
                             id={labelId}
-                            scope='row'
-                            padding='none'
-                            align='center'
+                            scope="row"
+                            padding="none"
+                            align="center"
                           >
                             <Link
                               to={`/country/${row.cca2.toLowerCase()}/${CountryNameConverter(
@@ -306,26 +306,26 @@ function CountriesList({
                                   countryCode: row.cca2,
                                 }
                               )}`}
-                              className='text-blue-500 hover:text-[#ff9800]'
+                              className="text-blue-500 hover:text-[#ff9800]"
                             >
                               {row.name.common}
                             </Link>
                           </TableCell>
-                          <TableCell align='center'>
+                          <TableCell align="center">
                             {row.capital.length > 1
                               ? row.capital.toString().replaceAll(',', ', ')
                               : row.capital}
                           </TableCell>
-                          <TableCell align='center'>
+                          <TableCell align="center">
                             {<PopulationConverter number={row.population} />}
                           </TableCell>
-                          <TableCell align='center'>
+                          <TableCell align="center">
                             {row.area} km<sup>2</sup>
                           </TableCell>
-                          <TableCell align='center'>{row.region}</TableCell>
+                          <TableCell align="center">{row.region}</TableCell>
                           {loggedIn ? (
-                            <TableCell align='center'>
-                              <div className='flex flex-col justify-between h-[122px]'>
+                            <TableCell align="center">
+                              <div className="flex flex-col justify-between h-[122px]">
                                 <AddRemoveVisited
                                   loggedIn={loggedIn}
                                   loggedUserDetails={loggedUserDetails}
@@ -363,7 +363,7 @@ function CountriesList({
             </TableContainer>
             <TablePagination
               rowsPerPageOptions={[10, 20, 250]}
-              component='div'
+              component="div"
               count={showCountries.length}
               rowsPerPage={rowsPerPage}
               page={page}
