@@ -124,11 +124,7 @@
     "country_code": "BA"
   },
   "Botswana": {
-    "attractions": [
-      "Okavango Delta",
-      "Chobe National Park",
-      "Makgadikgadi Pans"
-    ],
+    "attractions": ["Okavango Delta", "Kubu Island", "Khama Rhino Sanctuary"],
     "country_code": "BW"
   },
   "Brazil": {
@@ -210,7 +206,7 @@
   "Congo": {
     "attractions": [
       "Brazzaville",
-      "Odzala-Kokoua National Park",
+      "Conkouati Reserve",
       "Lesio Louna Gorilla Reserve"
     ],
     "country_code": "CG"
@@ -252,11 +248,7 @@
     "country_code": "CZ"
   },
   "Democratic Republic of Congo": {
-    "attractions": [
-      "Virunga National Park",
-      "Garamba National Park",
-      "Kahuzi-Biega National Park"
-    ],
+    "attractions": ["Zongo Falls", "Mount Nyiragongo", "Boyoma Falls"],
     "country_code": "CD"
   },
   "Denmark": {
@@ -356,11 +348,7 @@
     "country_code": "TF"
   },
   "Gabon": {
-    "attractions": [
-      "Liana Bridge of Poubara",
-      "Minkébé National Park",
-      "Crystal Mountain National Park"
-    ],
+    "attractions": ["Liana Bridge of Poubara"],
     "country_code": "GA"
   },
   "Gambia": {
@@ -584,11 +572,7 @@
     "country_code": "MG"
   },
   "Malawi": {
-    "attractions": [
-      "Liwonde National Park",
-      "Lake Malawi",
-      "Majete Wildlife Reserve"
-    ],
+    "attractions": ["Likoma Island", "Lake Malawi", "Majete Wildlife Reserve"],
     "country_code": "MW"
   },
   "Malaysia": {
@@ -669,8 +653,8 @@
   },
   "Mozambique": {
     "attractions": [
-      "Parque Nacional Da Gorongosa",
-      "Tofo Beach",
+      "Maputo Special Reserve",
+      "Benguerra Island",
       "Bazaruto Archipelago"
     ],
     "country_code": "MZ"
@@ -680,7 +664,11 @@
     "country_code": "MM"
   },
   "Namibia": {
-    "attractions": ["Sossusvlei", "Etosha National Park", "Fish River Canyon"],
+    "attractions": [
+      "Cape Cross Seal Reserve",
+      "Epupa Falls",
+      "Fish River Canyon"
+    ],
     "country_code": "NA"
   },
   "Nauru": {
@@ -836,7 +824,11 @@
     "country_code": "SM"
   },
   "Sao Tome and Principe": {
-    "attractions": ["Bom Sucesso Fort", "Pico Cão Grande", "Obo National Park"],
+    "attractions": [
+      "Saint Nicholas Waterfall",
+      "Cão Grande Peak",
+      "Praia dos Tamarindos"
+    ],
     "country_code": "ST"
   },
   "Saudi Arabia": {
@@ -888,7 +880,11 @@
     "country_code": "SO"
   },
   "South Africa": {
-    "attractions": ["Table Mountain", "Kruger National Park", "Robben Island"],
+    "attractions": [
+      "Kruger National Park",
+      "Boulders Beach",
+      "Addo Elephant National Park"
+    ],
     "country_code": "ZA"
   },
   "South Korea": {
@@ -1048,11 +1044,7 @@
     "country_code": "YE"
   },
   "Zambia": {
-    "attractions": [
-      "Victoria Falls",
-      "South Luangwa National Park",
-      "Lower Zambezi National Park"
-    ],
+    "attractions": ["Victoria Falls", "Bangweulu Wetlands", "Mukuni Village"],
     "country_code": "ZM"
   },
   "Zimbabwe": {
