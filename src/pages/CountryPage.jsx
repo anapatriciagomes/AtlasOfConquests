@@ -277,6 +277,7 @@ function CountryPage({
                     </div>
                   )}
                 </div>
+                <GoogleMaps lat={country.latlng[0]} lng={country.latlng[1]} />
                 {loggedIn ? (
                   <div className='flex justify-between mx-auto mt-[20px] w-[400px]'>
                     <AddRemoveVisited
