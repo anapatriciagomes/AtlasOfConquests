@@ -53,7 +53,7 @@ function Wishlist({
                 className="flex justify-center items-center mb-[20px]"
               >
                 <Link
-                  className={`flex justify-start flex-wrap w-[50%] text-[${`#ef914e`}] font-semibold hover:text-[#F53]`}
+                  className={`flex justify-start items-center flex-wrap w-[50%] text-[${`#ef914e`}] font-semibold hover:text-[#F53]`}
                   to={`/country/${CountryCodeConverter({
                     countryName: wishlist.country,
                   })}/${wishlist.country.replaceAll(' ', '-')}`}
