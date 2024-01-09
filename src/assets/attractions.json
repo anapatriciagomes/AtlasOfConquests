@@ -348,7 +348,11 @@
     "country_code": "TF"
   },
   "Gabon": {
-    "attractions": ["Liana Bridge of Poubara"],
+    "attractions": [
+      "Lopé National Park",
+      "Akanda National Park",
+      "Loango National Park"
+    ],
     "country_code": "GA"
   },
   "Gambia": {

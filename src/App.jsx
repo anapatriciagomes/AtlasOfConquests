@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
@@ -18,6 +18,21 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [loggedUserDetails, setLoggedUserDetails] = useState(null);
   const [userId, setUserId] = useState(0);
+
+  useEffect(() => {
+    if (localStorage.getItem('loggedIn')) {
+      setLoggedIn(true);
+      const storedUserDetails = JSON.parse(
+        localStorage.getItem('loggedUserDetails')
+      );
+      setLoggedUserDetails(storedUserDetails);
+      console.log(storedUserDetails);
+      setUserId(localStorage.getItem('userId'));
+      console.log(localStorage.getItem('userId'));
+      setEmail(localStorage.getItem('email'));
+      console.log(localStorage.getItem('email'));
+    }
+  }, []);
 
   return (
     <div className="App">

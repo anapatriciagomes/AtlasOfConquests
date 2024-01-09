@@ -252,7 +252,6 @@ function Borders({ borders = [] }) {
                       <td key={index} className="flex mb-1">
                         <Link
                           className={`text-[#ef914e] font-semibold hover:text-[#F53]`}
-                          countryName={country}
                           to={`/country/${CountryCodeConverter({
                             countryName: country,
                           })}/${country}`}

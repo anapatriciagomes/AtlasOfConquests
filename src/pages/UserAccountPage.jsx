@@ -27,7 +27,6 @@ import { useTheme } from '@mui/material/styles';
 
 function UserAccountPage({
   email,
-  setEmail,
   password,
   setPassword,
   loggedUserDetails,
@@ -50,7 +49,6 @@ function UserAccountPage({
 
   const handleChangePasswordButton = async () => {
     try {
-      setEmail(loggedUserDetails.email);
       const requestDetails = { email, password };
       await axios.put(
         `${import.meta.env.VITE_BACKEND_URL}/users/${userId}`,
@@ -122,22 +120,24 @@ function UserAccountPage({
   return (
     <div className="w-[580px] mt-[150px] mx-auto">
       <List>
-        <ListItem className="h-[68px]">
-          <ListItemIcon className="justify-center">
+        <ListItem sx={{ height: '68px' }}>
+          <ListItemIcon sx={{ justifyContent: 'center' }}>
             <EmailIcon />
           </ListItemIcon>
           <ListItemText
-            className="ml-[12px]"
-            sx={{
-              '& > :not(style)': { m: 1 },
-            }}
+            sx={
+              ({
+                '& > :not(style)': { m: 1 },
+              },
+              { marginLeft: '20px' })
+            }
             primary={
               loggedUserDetails ? `Email: ${loggedUserDetails.email}` : 'Email'
             }
           />
         </ListItem>
         <ListItem>
-          <ListItemIcon className="justify-center">
+          <ListItemIcon sx={{ justifyContent: 'center' }}>
             <LockIcon />
           </ListItemIcon>
           <FormControl sx={{ m: 1, width: '300px' }} variant="outlined">

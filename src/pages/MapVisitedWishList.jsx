@@ -19,8 +19,8 @@ function MapVisitedWishList({
   setLoggedUserDetails,
   userId,
 }) {
-  const [visitedCountries, setVisitedCountries] = useState(null);
-  const [wishlistCountries, setWishlistCountries] = useState(null);
+  const [visitedCountries, setVisitedCountries] = useState([]);
+  const [wishlistCountries, setWishlistCountries] = useState([]);
   const [tooltipContent, setTooltipContent] = useState('');
 
   const navigate = useNavigate();

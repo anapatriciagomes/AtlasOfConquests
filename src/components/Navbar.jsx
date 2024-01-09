@@ -85,6 +85,10 @@ function Navbar({
               onClick={() => {
                 if (loggedIn) {
                   setLoggedIn(false);
+                  localStorage.removeItem('loggedIn');
+                  localStorage.removeItem('loggedUserDetails');
+                  localStorage.removeItem('userId');
+                  localStorage.removeItem('email');
                   setLoggedUserDetails(null);
                   setUserId(0);
                 }

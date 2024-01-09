@@ -66,6 +66,8 @@ function LoginPage({
 
   const handleEmailChange = event => {
     setEmail(event.target.value);
+    localStorage.setItem('email', event.target.value);
+    console.log(localStorage.getItem('email'));
     setIsValidEmail(true);
   };
 
@@ -90,8 +92,11 @@ function LoginPage({
 
     if (user) {
       setLoggedUserDetails(user);
+      localStorage.setItem('loggedUserDetails', JSON.stringify(user));
       setUserId(user.id);
+      localStorage.setItem('userId', user.id);
       setLoggedIn(true);
+      localStorage.setItem('loggedIn', true);
       setLoginPageActive(false);
       setPassword('');
       navigate('/map-visited-wishlist');
