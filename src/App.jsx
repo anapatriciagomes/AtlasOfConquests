@@ -22,15 +22,11 @@ function App() {
   useEffect(() => {
     if (localStorage.getItem('loggedIn')) {
       setLoggedIn(true);
-      const storedUserDetails = JSON.parse(
-        localStorage.getItem('loggedUserDetails')
+      setLoggedUserDetails(
+        JSON.parse(localStorage.getItem('loggedUserDetails'))
       );
-      setLoggedUserDetails(storedUserDetails);
-      console.log(storedUserDetails);
-      setUserId(localStorage.getItem('userId'));
-      console.log(localStorage.getItem('userId'));
+      setUserId(+parseInt(localStorage.getItem('userId')));
       setEmail(localStorage.getItem('email'));
-      console.log(localStorage.getItem('email'));
     }
   }, []);
 

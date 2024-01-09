@@ -89,6 +89,8 @@ function Navbar({
                   localStorage.removeItem('loggedUserDetails');
                   localStorage.removeItem('userId');
                   localStorage.removeItem('email');
+                  localStorage.removeItem('userId');
+                  localStorage.removeItem('countryId');
                   setLoggedUserDetails(null);
                   setUserId(0);
                 }

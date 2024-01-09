@@ -94,7 +94,7 @@ function LoginPage({
       setLoggedUserDetails(user);
       localStorage.setItem('loggedUserDetails', JSON.stringify(user));
       setUserId(user.id);
-      localStorage.setItem('userId', user.id);
+      localStorage.setItem('userId', user.id.toString());
       setLoggedIn(true);
       localStorage.setItem('loggedIn', true);
       setLoginPageActive(false);

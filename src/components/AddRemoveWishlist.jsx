@@ -26,6 +26,7 @@ function AddRemoveWishlist({
     }
     if (loggedUserId > 0) {
       setUserId(loggedUserId);
+      localStorage.setItem('userId', loggedUserId.toString());
     }
     if (loggedUserDetails && loggedUserDetails.wishlist) {
       const filteredCountry = loggedUserDetails.wishlist.filter(
@@ -43,6 +44,9 @@ function AddRemoveWishlist({
 
   const handleAddCountry = async () => {
     try {
+      if (loggedUserId === 0) {
+        setUserId(+parseInt(localStorage.getItem('userId')));
+      }
       const countryDetails = { country, userId };
       await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/wishlist`,
@@ -59,7 +63,10 @@ function AddRemoveWishlist({
         }/users/${userId}?_embed=visited&_embed=wishlist`
       );
       setLoggedUserDetails(updatedUserDetails.data);
-      console.log(updatedUserDetails.data);
+      localStorage.setItem(
+        'loggedUserDetails',
+        JSON.stringify(updatedUserDetails.data)
+      );
     } catch (error) {
       console.log(error);
     }
@@ -67,6 +74,9 @@ function AddRemoveWishlist({
 
   const handleRemoveCountry = async () => {
     try {
+      if (loggedUserId === 0) {
+        setUserId(+parseInt(localStorage.getItem('userId')));
+      }
       await axios.delete(
         `${import.meta.env.VITE_BACKEND_URL}/wishlist/${countryId}`
       );
@@ -77,6 +87,10 @@ function AddRemoveWishlist({
         }/users/${userId}?_embed=visited&_embed=wishlist`
       );
       setLoggedUserDetails(updatedUserDetails.data);
+      localStorage.setItem(
+        'loggedUserDetails',
+        JSON.stringify(updatedUserDetails.data)
+      );
     } catch (error) {
       console.log(error);
     }

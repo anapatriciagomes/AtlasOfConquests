@@ -26,6 +26,7 @@ function AddRemoveVisited({
     }
     if (loggedUserId > 0) {
       setUserId(loggedUserId);
+      localStorage.setItem('userId', loggedUserId.toString());
     }
     if (loggedUserDetails && loggedUserDetails.visited) {
       const filteredCountry = loggedUserDetails.visited.filter(
@@ -43,23 +44,25 @@ function AddRemoveVisited({
 
   const handleAddCountry = async () => {
     try {
+      if (loggedUserId === 0) {
+        setUserId(+parseInt(localStorage.getItem('userId')));
+      }
       const countryDetails = { country, userId };
       await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/visited`,
         countryDetails
       );
       setVisited(true);
-      const updatedVisited = await axios.get(
-        `${import.meta.env.VITE_BACKEND_URL}/users/${userId}?_embed=visited`
-      );
-      setCountryId(updatedVisited.data.visited.slice(-1)[0].id);
       const updatedUserDetails = await axios.get(
         `${
           import.meta.env.VITE_BACKEND_URL
         }/users/${userId}?_embed=visited&_embed=wishlist`
       );
       setLoggedUserDetails(updatedUserDetails.data);
-      console.log(updatedUserDetails.data);
+      localStorage.setItem(
+        'loggedUserDetails',
+        JSON.stringify(updatedUserDetails.data)
+      );
     } catch (error) {
       console.log(error);
     }
@@ -67,6 +70,9 @@ function AddRemoveVisited({
 
   const handleRemoveCountry = async () => {
     try {
+      if (loggedUserId === 0) {
+        setUserId(+parseInt(localStorage.getItem('userId')));
+      }
       await axios.delete(
         `${import.meta.env.VITE_BACKEND_URL}/visited/${countryId}`
       );
@@ -77,7 +83,10 @@ function AddRemoveVisited({
         }/users/${userId}?_embed=visited&_embed=wishlist`
       );
       setLoggedUserDetails(updatedUserDetails.data);
-      console.log(updatedUserDetails.data);
+      localStorage.setItem(
+        'loggedUserDetails',
+        JSON.stringify(updatedUserDetails.data)
+      );
     } catch (error) {
       console.log(error);
     }
