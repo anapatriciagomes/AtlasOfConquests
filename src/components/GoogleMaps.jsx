@@ -3,7 +3,7 @@ import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
 const mapContainerStyle = {
   width: '500px',
   height: '45vh',
-  'border-radius': '0.375rem',
+  borderRadius: '0.375rem',
 };
 
 const GoogleMaps = ({ lat, lng, area }) => {
@@ -77,5 +77,4 @@ const GoogleMaps = ({ lat, lng, area }) => {
     </div>
   );
 };
-
 export default GoogleMaps;
