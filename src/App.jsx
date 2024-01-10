@@ -7,7 +7,7 @@ import ErrorPage from './pages/ErrorPage';
 import CountryPage from './pages/CountryPage';
 import MapVisitedWishList from './pages/MapVisitedWishList';
 import Visited from './pages/Visited';
-import WishList from './pages/WishList';
+import WishList from './pages/Wishlist';
 import UserAccountPage from './pages/UserAccountPage';
 import CountriesList from './pages/CountriesList';
 
