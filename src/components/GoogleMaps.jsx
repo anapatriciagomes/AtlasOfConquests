@@ -65,12 +65,17 @@ const GoogleMaps = ({ lat, lng, area }) => {
     return <div>Loading maps</div>;
   }
 
+  const mapOptions = {
+    mapTypeId: 'hybrid',
+  };
+
   return (
     <div>
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
         zoom={customZoom}
         center={center}
+        options={mapOptions}
       >
         <MarkerF position={center} />
       </GoogleMap>
