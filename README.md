@@ -170,9 +170,11 @@ OpenWeather API (example)
 [Pexels API](https://www.pexels.com/api/)
 
 [OpenWeather API](https://openweathermap.org/)
+
+[Google Maps API](https://mapsplatform.google.com/)
+
 ​
 <br>
-​
 
 ## Packages
 
@@ -187,13 +189,14 @@ OpenWeather API (example)
 [React Tooltip](https://react-tooltip.com/)
 
 [Country-Timezone](https://github.com/mountainfirefly/country-timezone#readme)
+
+[@react-google-maps/api](https://github.com/JustFly1984/react-google-maps-api)
 ​
 [Material UI](https://mui.com/material-ui/)
 
 [Tailwind CSS](https://tailwindcss.com/)
 
-<br>
-​
+<br>​
 
 ## Links
 
