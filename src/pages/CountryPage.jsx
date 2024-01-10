@@ -99,7 +99,7 @@ function CountryPage({
   return (
     <div>
       {fetching && (
-        <div className="mt-[80px] text-center">
+        <div className='mt-[80px] text-center'>
           <Box
             sx={{
               display: 'flex',
@@ -121,74 +121,83 @@ function CountryPage({
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
-          className="mt-[72px]"
+          className='mt-[72px]'
         >
           {countries &&
             countries.map((country, index) => (
               <div
                 key={index}
-                className="flex flex-col text-justify justify-center pb-[200px] min-[1024px]:pb-[300px] min-[1280px]:pb-[500px]"
+                className='flex flex-col text-justify justify-center pb-[200px] min-[1024px]:pb-[300px] min-[1280px]:pb-[500px]'
               >
-                <h1 className="text-center text-xl mb-10 mt-[40px] mx-auto w-[1050px] bg-white bg-opacity-70 p-4 rounded-md">
+                <h1 className='text-center text-xl mb-10 mt-[40px] mx-auto w-[1050px] bg-white bg-opacity-70 p-4 rounded-md'>
                   {country.name.common} {country.flag}
                 </h1>
-                <div className="flex mx-auto items-center">
-                  <div className="mr-[50px] text-justify w-[500px] bg-white bg-opacity-70 p-4 rounded-md">
-                    <p className="pb-3 ">
-                      <span className="font-semibold">Capital: </span>
+                <div className='flex mx-auto items-center'>
+                  <div className='mr-[50px] text-justify w-[500px] bg-white bg-opacity-70 p-4 rounded-md'>
+                    <p className='pb-3 '>
+                      <span className='font-semibold'>Capital: </span>
                       {country.capital.join(', ')}
                     </p>
                     <Weather capital={country.capital} />
-                    <div className="pb-3">
+                    <div className='pb-3'>
                       <Clock
                         countryCode={country.cca2}
                         capital={country.capital.join(', ')}
                       />
                     </div>
-                    <p className="pb-3">
-                      <span className="font-semibold">Population:</span>{' '}
+                    <p className='pb-3'>
+                      <span className='font-semibold'>Population:</span>{' '}
                       <PopulationConverter number={country.population} />
                     </p>
-                    <p className="pb-3">
-                      <span className="font-semibold">Area:</span>{' '}
+                    <p className='pb-3'>
+                      <span className='font-semibold'>Area:</span>{' '}
                       {formatArea(country.area)} m<sup>2</sup>
                     </p>
                     <Borders borders={country.borders} />
-                    <p className="pt-3  font-semibold">
+                    <p className='pt-3  font-semibold'>
                       {Object.keys(country.languages).length === 1
                         ? 'Official Language: '
                         : 'Official Languages: '}
                       {Object.entries(country.languages).map(
                         ([languageCode, language], index) => (
-                          <span key={languageCode} className="font-normal">
+                          <span key={languageCode} className='font-normal'>
                             {index > 0 && ', '}
                             {language}
                           </span>
                         )
                       )}
                     </p>
-                    <ul className="pt-3 pb-3">
+                    <ul className='pt-3 pb-3'>
                       {Object.entries(country.currencies).map(
                         ([currencyCode, currencyInfo]) => (
                           <li key={currencyCode}>
-                            <span className="font-semibold">Currency:</span>{' '}
+                            <span className='font-semibold'>Currency:</span>{' '}
                             {currencyInfo.name} ({currencyInfo.symbol})
                           </li>
                         )
                       )}
                     </ul>
-                    <p className="pb-3">
-                      <span className="font-semibold">Continent:</span>{' '}
-                      {country.region}
+                    <p className='pb-3  font-semibold'>
+                      {Object.keys(country.continents).length === 1
+                        ? 'Continent: '
+                        : 'Continents: '}
+                      {Object.entries(country.continents).map(
+                        ([continentCode, continent], index) => (
+                          <span key={continentCode} className='font-normal'>
+                            {index > 0 && ' and '}
+                            {continent}
+                          </span>
+                        )
+                      )}
                     </p>
                     {attractions[countryName.replaceAll('-', ' ')]
                       ?.attractions && (
-                      <div className="pb-3">
-                        <span className="font-semibold">
+                      <div className='pb-3'>
+                        <span className='font-semibold'>
                           Points of Interest:
                         </span>
                         <ul>
-                          <li className="flex flex-col">
+                          <li className='flex flex-col'>
                             {attractions[
                               countryName.replaceAll('-', ' ')
                             ].attractions.join(', ')}
@@ -197,7 +206,7 @@ function CountryPage({
                       </div>
                     )}
                     {loggedIn ? (
-                      <div className="flex justify-between mx-auto mt-[20px] w-[400px]">
+                      <div className='flex justify-between mx-auto mt-[20px] w-[400px]'>
                         <AddRemoveVisited
                           loggedIn={loggedIn}
                           loggedUserDetails={loggedUserDetails}
@@ -227,48 +236,48 @@ function CountryPage({
             ))}
         </div>
       ) : (
-        <div className="mt-[72px]">
+        <div className='mt-[72px]'>
           {countries &&
             countries.map((country, index) => (
               <div
                 key={index}
-                className="flex flex-col text-justify justify-center pb-[120px] min-[1024px]:pb-[300px] min-[1280px]:pb-[500px]"
+                className='flex flex-col text-justify justify-center pb-[120px] min-[1024px]:pb-[300px] min-[1280px]:pb-[500px]'
               >
-                <h1 className="text-center text-xl mb-10 mt-[40px] mx-auto w-[1050px] bg-white bg-opacity-70 p-4 rounded-md">
+                <h1 className='text-center text-xl mb-10 mt-[40px] mx-auto w-[1050px] bg-white bg-opacity-70 p-4 rounded-md'>
                   {country.name.common} {country.flag}
                 </h1>
-                <div className="flex mx-auto items-center">
-                  <div className="mr-[50px] text-justify w-[500px] bg-white bg-opacity-70 p-4 rounded-md">
-                    <p className="pb-3 ">
-                      <span className="font-semibold">Capital: </span>
+                <div className='flex mx-auto items-center'>
+                  <div className='mr-[50px] text-justify w-[500px] bg-white bg-opacity-70 p-4 rounded-md'>
+                    <p className='pb-3 '>
+                      <span className='font-semibold'>Capital: </span>
                       {country.capital.join(', ')}
                     </p>
                     <Weather capital={country.capital} />
-                    <div className="pb-3">
+                    <div className='pb-3'>
                       <Clock
                         countryCode={country.cca2}
                         capital={country.capital.join(', ')}
                       />
                     </div>
-                    <p className="pb-3">
-                      <span className="font-semibold">Population:</span>{' '}
+                    <p className='pb-3'>
+                      <span className='font-semibold'>Population:</span>{' '}
                       <PopulationConverter number={country.population} />
                     </p>
-                    <p className="pb-3">
-                      <span className="font-semibold">Area:</span>{' '}
+                    <p className='pb-3'>
+                      <span className='font-semibold'>Area:</span>{' '}
                       {country.area}
                       km
                       <sup>2</sup>
                     </p>
                     <Borders borders={country.borders} />
-                    <ul className="pt-3 pb-3">
-                      <p className="pt-3  font-semibold">
+                    <ul className='pt-3 pb-3'>
+                      <p className='pt-3  font-semibold'>
                         {Object.keys(country.languages).length === 1
                           ? 'Official Language: '
                           : 'Official Languages: '}
                         {Object.entries(country.languages).map(
                           ([languageCode, language], index) => (
-                            <span key={languageCode} className="font-normal">
+                            <span key={languageCode} className='font-normal'>
                               {index > 0 && ', '}
                               {language}
                             </span>
@@ -278,24 +287,33 @@ function CountryPage({
                       {Object.entries(country.currencies).map(
                         ([currencyCode, currencyInfo]) => (
                           <li key={currencyCode}>
-                            <span className="font-semibold">Currency:</span>{' '}
+                            <span className='font-semibold'>Currency:</span>{' '}
                             {currencyInfo.name} ({currencyInfo.symbol})
                           </li>
                         )
                       )}
                     </ul>
-                    <p className="pb-3">
-                      <span className="font-semibold">Continent:</span>{' '}
-                      {country.region}
+                    <p className='pb-3  font-semibold'>
+                      {Object.keys(country.continents).length === 1
+                        ? 'Continent: '
+                        : 'Continents: '}
+                      {Object.entries(country.continents).map(
+                        ([continentCode, continent], index) => (
+                          <span key={continentCode} className='font-normal'>
+                            {index > 0 && ' and '}
+                            {continent}
+                          </span>
+                        )
+                      )}
                     </p>
                     {attractions[countryName.replaceAll('-', ' ')]
                       ?.attractions && (
-                      <div className="pb-3">
-                        <span className="font-semibold">
+                      <div className='pb-3'>
+                        <span className='font-semibold'>
                           Points of Interest:
                         </span>
                         <ul>
-                          <li className="flex flex-col">
+                          <li className='flex flex-col'>
                             {attractions[
                               countryName.replaceAll('-', ' ')
                             ].attractions.join(', ')}
@@ -304,7 +322,7 @@ function CountryPage({
                       </div>
                     )}
                     {loggedIn ? (
-                      <div className="flex justify-between mx-auto mt-[20px] w-[400px]">
+                      <div className='flex justify-between mx-auto mt-[20px] w-[400px]'>
                         <AddRemoveVisited
                           loggedIn={loggedIn}
                           loggedUserDetails={loggedUserDetails}
