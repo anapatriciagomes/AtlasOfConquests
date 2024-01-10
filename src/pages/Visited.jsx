@@ -17,8 +17,16 @@ function Visited({
 
   useEffect(() => {
     if (loggedUserDetails && loggedUserDetails.visited) {
-      setVisitedCountries(loggedUserDetails.visited);
-      setShowVisited(loggedUserDetails.visited);
+      setVisitedCountries(
+        loggedUserDetails.visited.sort((a, b) =>
+          a.country.localeCompare(b.country)
+        )
+      );
+      setShowVisited(
+        loggedUserDetails.visited.sort((a, b) =>
+          a.country.localeCompare(b.country)
+        )
+      );
     }
   }, [loggedUserDetails]);
 
@@ -37,7 +45,9 @@ function Visited({
     const filteredCountries = loggedUserDetails.visited.filter(visited => {
       return visited.country.toLowerCase().includes(query.toLowerCase());
     });
-    setShowVisited(filteredCountries);
+    setShowVisited(
+      filteredCountries.sort((a, b) => a.country.localeCompare(b.country))
+    );
   };
 
   return (

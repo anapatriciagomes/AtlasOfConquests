@@ -17,8 +17,16 @@ function Wishlist({
 
   useEffect(() => {
     if (loggedUserDetails && loggedUserDetails.wishlist) {
-      setWishlistCountries(loggedUserDetails.wishlist);
-      setShowWishlist(loggedUserDetails.wishlist);
+      setWishlistCountries(
+        loggedUserDetails.wishlist.sort((a, b) =>
+          a.country.localeCompare(b.country)
+        )
+      );
+      setShowWishlist(
+        loggedUserDetails.wishlist.sort((a, b) =>
+          a.country.localeCompare(b.country)
+        )
+      );
     }
   }, [loggedUserDetails]);
 
@@ -37,7 +45,9 @@ function Wishlist({
     const filteredCountries = loggedUserDetails.wishlist.filter(wishlist => {
       return wishlist.country.toLowerCase().includes(query.toLowerCase());
     });
-    setShowWishlist(filteredCountries);
+    setShowWishlist(
+      filteredCountries.sort((a, b) => a.country.localeCompare(b.country))
+    );
   };
 
   return (
