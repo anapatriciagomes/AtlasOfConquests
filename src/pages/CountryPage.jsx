@@ -154,7 +154,9 @@ function CountryPage({
                   </p>
                   <Borders borders={country.borders} />
                   <p className='pt-3  font-semibold'>
-                    Language(s):{' '}
+                    {Object.keys(country.languages).length === 1
+                      ? 'Official Language: '
+                      : 'Official Languages: '}
                     {Object.entries(country.languages).map(
                       ([languageCode, language], index) => (
                         <span key={languageCode} className='font-normal'>
