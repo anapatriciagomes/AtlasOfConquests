@@ -133,12 +133,7 @@ function CountryPage({
                   <h1 className="text-center text-xl mr-[10px]">
                     {country.name.common}
                   </h1>
-
-                  <img
-                    src={country.flags.png}
-                    key={index}
-                    style={{ height: '15px' }}
-                  />
+                  <img src={country.flags.png} style={{ height: '15px' }} />
                 </div>
 
                 <div className="flex mx-auto items-center">
