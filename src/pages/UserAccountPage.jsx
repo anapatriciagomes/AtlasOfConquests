@@ -172,7 +172,7 @@ function UserAccountPage({
           </GreyButton>
         </ListItem>
         <ListItem>
-          <React.Fragment className="w-[500px]">
+          <React.Fragment>
             <RedButton onClick={handleClickOpen}>Delete Account</RedButton>
             <Dialog
               fullScreen={fullScreen}
