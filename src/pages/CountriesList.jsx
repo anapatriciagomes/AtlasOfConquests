@@ -66,7 +66,10 @@ function CountriesList({
 
   const getComparisonValue = (item, orderBy) => {
     if (orderBy === 'capital' && Array.isArray(item[orderBy])) {
-      return item[orderBy][0];
+      return item[orderBy];
+    }
+    if (orderBy === 'continents' && Array.isArray(item[orderBy])) {
+      return item[orderBy];
     }
 
     return typeof item[orderBy] === 'object'
@@ -94,7 +97,12 @@ function CountriesList({
       label: 'Population',
     },
     { id: 'area', numeric: true, disablePadding: false, label: 'Area' },
-    { id: 'region', numeric: false, disablePadding: false, label: 'Continent' },
+    {
+      id: 'continents',
+      numeric: false,
+      disablePadding: false,
+      label: 'Continent',
+    },
     { id: 'actions', numeric: false, disablePadding: true, label: 'Actions' },
   ];
 
@@ -322,7 +330,9 @@ function CountriesList({
                           <TableCell align='center'>
                             {row.area} km<sup>2</sup>
                           </TableCell>
-                          <TableCell align='center'>{row.region}</TableCell>
+                          <TableCell align='center'>
+                            {row.continents.join(' and ')}
+                          </TableCell>
                           {loggedIn ? (
                             <TableCell align='center'>
                               <div className='flex flex-col justify-between h-[122px]'>
