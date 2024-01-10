@@ -256,6 +256,19 @@ function CountryPage({
                   </p>
                   <Borders borders={country.borders} />
                   <ul className='pt-3 pb-3'>
+                    <p className='pt-3  font-semibold'>
+                      {Object.keys(country.languages).length === 1
+                        ? 'Official Language: '
+                        : 'Official Languages: '}
+                      {Object.entries(country.languages).map(
+                        ([languageCode, language], index) => (
+                          <span key={languageCode} className='font-normal'>
+                            {index > 0 && ', '}
+                            {language}
+                          </span>
+                        )
+                      )}
+                    </p>
                     {Object.entries(country.currencies).map(
                       ([currencyCode, currencyInfo]) => (
                         <li key={currencyCode}>
