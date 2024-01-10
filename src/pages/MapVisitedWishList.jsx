@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import {
   ComposableMap,
   Geographies,
@@ -61,6 +62,21 @@ function MapVisitedWishList({
         countryName: geo.properties.name,
       });
       const countryName = geo.properties.name;
+      const lowercaseCountryCode = countryCode.toLowerCase();
+      navigate(
+        `/country/${lowercaseCountryCode}/${countryName.replaceAll(' ', '-')}`
+      );
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async function handleClickTooltip(country) {
+    try {
+      const countryCode = await CountryCodeConverter({
+        countryName: country,
+      });
+      const countryName = country;
       const lowercaseCountryCode = countryCode.toLowerCase();
       navigate(
         `/country/${lowercaseCountryCode}/${countryName.replaceAll(' ', '-')}`
@@ -186,9 +202,15 @@ function MapVisitedWishList({
             place="top-start"
             className="text-center"
             clickable
-            offset={-20}
+            offset={-10}
           >
-            {tooltipContent}
+            <a
+              onClick={() => handleClickTooltip(tooltipContent)}
+              className="text-white hover:text-[#ff9800] cursor-pointer px-[20px] py-[5px] bg-gray-700 rounded"
+            >
+              {tooltipContent}
+            </a>
+
             <div className="flex mt-[10px]">
               <div className="mr-[10px]">
                 <AddRemoveVisited
