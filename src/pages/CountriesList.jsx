@@ -362,7 +362,7 @@ function CountriesList({
               </Table>
             </TableContainer>
             <TablePagination
-              rowsPerPageOptions={[10, 20, 50, 202]}
+              rowsPerPageOptions={[10, 20, 50, 100, 202]}
               component='div'
               count={202}
               rowsPerPage={rowsPerPage}
