@@ -1,4 +1,5 @@
 import { GoogleMap, useLoadScript, MarkerF } from '@react-google-maps/api';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const mapContainerStyle = {
   width: '500px',
@@ -62,7 +63,11 @@ const GoogleMaps = ({ lat, lng, area }) => {
   }
 
   if (!isLoaded) {
-    return <div>Loading maps</div>;
+    return (
+      <div>
+        <CircularProgress />
+      </div>
+    );
   }
 
   const mapOptions = {
