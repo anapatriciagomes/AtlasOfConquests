@@ -15,7 +15,7 @@ function SearchBar({ searchedCountries }) {
 
   return (
     <div className="text-center">
-      <FormControl sx={{ m: 2, width: '95%' }}>
+      <FormControl sx={{ marginTop: 4, marginBottom: 4, width: '95%' }}>
         <InputLabel
           htmlFor="outlined-adornment-amount"
           type="text"

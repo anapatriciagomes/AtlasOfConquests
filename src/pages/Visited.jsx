@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import CountryCodeConverter from '../components/CountryCodeConverter';
 import AddRemoveVisited from '../components/AddRemoveVisited';
+import SearchBar from '../components/SearchBar';
 
 function Visited({
   loggedIn,
@@ -11,11 +12,13 @@ function Visited({
   userId,
 }) {
   const [visitedCountries, setVisitedCountries] = useState(null);
+  const [showVisited, setShowVisited] = useState([]);
   const [countriesFlags, setCountriesFlags] = useState(null);
 
   useEffect(() => {
     if (loggedUserDetails && loggedUserDetails.visited) {
       setVisitedCountries(loggedUserDetails.visited);
+      setShowVisited(loggedUserDetails.visited);
     }
   }, [loggedUserDetails]);
 
@@ -30,13 +33,20 @@ function Visited({
       });
   }, []);
 
+  const searchedCountries = query => {
+    const filteredCountries = loggedUserDetails.visited.filter(visited => {
+      return visited.country.toLowerCase().includes(query.toLowerCase());
+    });
+    setShowVisited(filteredCountries);
+  };
+
   return (
     <div>
       {loggedIn && (
         <div className="mt-[120px] mx-auto text-center w-[650px]">
           <h1 className="mb-[40px] text-xl text-center">Visited Countries</h1>
           {visitedCountries ? (
-            <h2 className="mb-[40px] text-xl text-center leading-10">
+            <h2 className="mb-[20px] text-xl text-center leading-10">
               You have visited{' '}
               <b className="text-[#6fbc16] text-2xl">
                 {visitedCountries.length}
@@ -49,7 +59,12 @@ function Visited({
             ''
           )}
           {visitedCountries ? (
-            visitedCountries.map(visited => (
+            <SearchBar searchedCountries={searchedCountries} />
+          ) : (
+            ''
+          )}
+          {visitedCountries ? (
+            showVisited.map(visited => (
               <div
                 key={visited.id}
                 className="flex justify-center items-center mb-[20px]"

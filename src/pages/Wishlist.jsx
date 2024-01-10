@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import CountryCodeConverter from '../components/CountryCodeConverter';
 import AddRemoveWishlist from '../components/AddRemoveWishlist';
+import SearchBar from '../components/SearchBar';
 
 function Wishlist({
   loggedIn,
@@ -11,11 +12,13 @@ function Wishlist({
   userId,
 }) {
   const [wishlistCountries, setWishlistCountries] = useState(null);
+  const [showWishlist, setShowWishlist] = useState([]);
   const [countriesFlags, setCountriesFlags] = useState(null);
 
   useEffect(() => {
     if (loggedUserDetails && loggedUserDetails.wishlist) {
       setWishlistCountries(loggedUserDetails.wishlist);
+      setShowWishlist(loggedUserDetails.wishlist);
     }
   }, [loggedUserDetails]);
 
@@ -29,6 +32,13 @@ function Wishlist({
         console.error('Error fetching data:', error);
       });
   }, []);
+
+  const searchedCountries = query => {
+    const filteredCountries = loggedUserDetails.wishlist.filter(wishlist => {
+      return wishlist.country.toLowerCase().includes(query.toLowerCase());
+    });
+    setShowWishlist(filteredCountries);
+  };
 
   return (
     <div>
@@ -47,7 +57,12 @@ function Wishlist({
             ''
           )}
           {wishlistCountries ? (
-            wishlistCountries.map(wishlist => (
+            <SearchBar searchedCountries={searchedCountries} />
+          ) : (
+            ''
+          )}
+          {wishlistCountries ? (
+            showWishlist.map(wishlist => (
               <div
                 key={wishlist.id}
                 className="flex justify-center items-center mb-[20px]"
