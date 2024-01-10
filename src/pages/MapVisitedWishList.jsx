@@ -109,6 +109,7 @@ function MapVisitedWishList({
                           <Geography
                             geography={geo}
                             fill="#aed581"
+                            stroke="#d1d1d1"
                             onMouseEnter={() => {
                               setTooltipContent(geo.properties.name);
                             }}
@@ -141,6 +142,7 @@ function MapVisitedWishList({
                           <Geography
                             geography={geo}
                             fill="#9575cd"
+                            stroke="#d1d1d1"
                             onMouseEnter={() => {
                               setTooltipContent(geo.properties.name);
                             }}
@@ -169,6 +171,7 @@ function MapVisitedWishList({
                           <Geography
                             geography={geo}
                             fill="#faaa70"
+                            stroke="#d1d1d1"
                             onMouseEnter={() => {
                               setTooltipContent(geo.properties.name);
                             }}

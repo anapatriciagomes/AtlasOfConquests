@@ -65,6 +65,7 @@ function WorldMap() {
                   <Geography
                     geography={geo}
                     fill="#faaa70"
+                    stroke="#d1d1d1"
                     onMouseEnter={() => {
                       setTooltipContent(geo.properties.name);
                     }}
