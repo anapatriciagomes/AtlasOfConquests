@@ -254,7 +254,7 @@ function Borders({ borders = [] }) {
                           className={`text-[#ef914e] font-semibold hover:text-[#F53]`}
                           to={`/country/${CountryCodeConverter({
                             countryName: country,
-                          })}/${country}`}
+                          })}/${country.replaceAll(' ', '-')}`}
                         >
                           {country}
                         </Link>
