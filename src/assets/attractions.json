@@ -1067,10 +1067,16 @@
   },
   "Zambia": {
     "attractions": ["Victoria Falls", "Bangweulu Wetlands", "Mukuni Village"],
-    "country_code": "ZM"
+    "country_code": "ZM",
+    "imageURLs": [
+      "https://images.unsplash.com/photo-1665064965150-56807405776b?q=80&w=2748&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    ]
   },
   "Zimbabwe": {
     "attractions": ["Victoria Falls", "Hwange National Park", "Chinhoyi Caves"],
-    "country_code": "ZW"
+    "country_code": "ZW",
+    "imageURLs": [
+      "https://images.unsplash.com/photo-1488158302608-a31885ac02ff?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    ]
   }
 }
