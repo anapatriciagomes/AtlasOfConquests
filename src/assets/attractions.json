@@ -330,7 +330,9 @@
   "Cyprus": {
     "attractions": ["Paphos", "Kykkos Monastery", "Nissi Beach"],
     "country_code": "CY",
-    "imageURLs": "https://images.unsplash.com/photo-1619029807642-1eb86758cb97?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    "imageURLs": [
+      "https://images.unsplash.com/photo-1619029807642-1eb86758cb97?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    ]
   },
   "Czechia": {
     "attractions": ["Prague Castle", "Charles Bridge", "Český Krumlov"],
@@ -375,7 +377,9 @@
       "27 Waterfalls of Damajagua"
     ],
     "country_code": "DO",
-    "imageURLs": "https://images.unsplash.com/photo-1611952961634-349806683d73?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    "imageURLs": [
+      "https://images.unsplash.com/photo-1611952961634-349806683d73?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    ]
   },
   "Ecuador": {
     "attractions": ["Galápagos Islands", "Amazon Rainforest", "Quito"],
@@ -444,12 +448,16 @@
       "Phare de Fort Cépérou"
     ],
     "country_code": "GF",
-    "imageURLs": "https://images.unsplash.com/photo-1665236327029-0f756a1fd19c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    "imageURLs": [
+      "https://images.unsplash.com/photo-1665236327029-0f756a1fd19c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    ]
   },
   "French Southern Territories": {
     "attractions": ["Île Saint-Paul", "Golfe du Morbihan", "Île des Pingouins"],
     "country_code": "TF",
-    "imageURLs": "https://images.unsplash.com/photo-1625828248382-e5d12bddd777?q=80&w=2564&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    "imageURLs": [
+      "https://images.unsplash.com/photo-1625828248382-e5d12bddd777?q=80&w=2564&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    ]
   },
   "Gabon": {
     "attractions": [
