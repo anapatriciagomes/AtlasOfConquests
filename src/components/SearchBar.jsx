@@ -14,7 +14,7 @@ function SearchBar({ searchedCountries, darkMode }) {
   };
 
   return (
-    <div className={`text-center ${darkMode ? 'dark-mode' : ''}`}>
+    <div className={`text-center`}>
       <FormControl sx={{ marginTop: 4, marginBottom: 4, width: '95%' }}>
         <InputLabel
           htmlFor='outlined-adornment-amount'
@@ -28,7 +28,10 @@ function SearchBar({ searchedCountries, darkMode }) {
         <OutlinedInput
           id='outlined-adornment-amount'
           startAdornment={
-            <InputAdornment position='start'>
+            <InputAdornment
+              position='start'
+              sx={{ color: darkMode ? 'white' : 'inherit' }}
+            >
               <SearchIcon />
             </InputAdornment>
           }
@@ -36,7 +39,6 @@ function SearchBar({ searchedCountries, darkMode }) {
           value={search}
           onChange={handleSearch}
           placeholder='Country Name'
-          className={`${darkMode ? 'text-white border-white' : ''}`}
           sx={{
             color: darkMode ? 'white' : 'inherit',
           }}
