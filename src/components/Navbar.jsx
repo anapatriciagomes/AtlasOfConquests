@@ -1,7 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import worldImage from '../assets/world_atlas_favicon.png';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { useState } from 'react';
 
 function Navbar({
   loginPageActive,
