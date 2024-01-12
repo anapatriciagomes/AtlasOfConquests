@@ -20,7 +20,7 @@ function SearchBar({ searchedCountries, darkMode }) {
           marginTop: 4,
           marginBottom: 4,
           width: '95%',
-          '& .MuiOutlinedInput-notchedOutline': {
+          '.MuiOutlinedInput-notchedOutline': {
             borderColor: darkMode ? 'white' : '#848884',
           },
         }}
