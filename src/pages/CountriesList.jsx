@@ -89,7 +89,7 @@ function CountriesList({
   };
 
   const headCells = [
-    { id: 'name', numeric: false, disablePadding: true, label: 'Country' },
+    { id: 'name', numeric: false, disablePadding: true, label: '' },
     { id: 'capital', numeric: false, disablePadding: false, label: 'Capital' },
     {
       id: 'population',
@@ -132,10 +132,14 @@ function CountriesList({
                   >
                     {headCell.label}
                     {orderBy === headCell.id ? (
-                      <Box component='span' sx={visuallyHidden}>
-                        {order === 'desc'
-                          ? 'sorted descending'
-                          : 'sorted ascending'}
+                      <Box
+                        component='span'
+                        sx={{
+                          visuallyHidden,
+                          color: darkMode ? 'white' : 'inherit',
+                        }}
+                      >
+                        {order === 'desc' ? 'Country' : 'Country'}
                       </Box>
                     ) : null}
                   </TableSortLabel>
@@ -158,7 +162,13 @@ function CountriesList({
                     >
                       {headCell.label}
                       {orderBy === headCell.id ? (
-                        <Box component='span' sx={visuallyHidden}>
+                        <Box
+                          component='span'
+                          sx={{
+                            visuallyHidden,
+                            color: darkMode ? 'white' : 'inherit',
+                          }}
+                        >
                           {order === 'desc'
                             ? 'sorted descending'
                             : 'sorted ascending'}
