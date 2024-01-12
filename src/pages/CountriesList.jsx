@@ -27,6 +27,7 @@ function CountriesList({
   loggedUserDetails,
   setLoggedUserDetails,
   userId,
+  darkMode,
 }) {
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('name');
@@ -122,6 +123,7 @@ function CountriesList({
                   padding={headCell.disablePadding ? 'none' : 'normal'}
                   sortDirection={orderBy === headCell.id ? order : false}
                   className='text-center'
+                  style={{ color: darkMode ? 'white' : 'inherit' }}
                 >
                   <TableSortLabel
                     active={orderBy === headCell.id}
@@ -267,7 +269,14 @@ function CountriesList({
       {countries && (
         <Box sx={{ width: '95%' }} className='mx-auto'>
           <SearchBar searchedCountries={searchedCountries} />
-          <Paper sx={{ width: '95%', mb: 2 }} className='mx-auto'>
+          <Paper
+            sx={{
+              width: '95%',
+              mb: 2,
+              backgroundColor: darkMode ? '#333333' : '',
+            }}
+            className='mx-auto'
+          >
             <TableContainer>
               <Table
                 sx={{ minWidth: 750 }}
@@ -314,27 +323,44 @@ function CountriesList({
                                   countryCode: row.cca2,
                                 }
                               )}`}
-                              className='text-blue-500 hover:text-[#ff9800]'
+                              className={`${
+                                darkMode ? 'text-blue-600' : 'text-blue-500'
+                              } hover:text-[#ff9800]`}
                             >
                               {row.name.common}
                             </Link>
                           </TableCell>
-                          <TableCell align='center'>
+                          <TableCell
+                            align='center'
+                            style={{ color: darkMode ? 'white' : 'inherit' }}
+                          >
                             {row.capital.length > 1
                               ? row.capital.toString().replaceAll(',', ', ')
                               : row.capital}
                           </TableCell>
-                          <TableCell align='center'>
+                          <TableCell
+                            align='center'
+                            style={{ color: darkMode ? 'white' : 'inherit' }}
+                          >
                             {<PopulationConverter number={row.population} />}
                           </TableCell>
-                          <TableCell align='center'>
+                          <TableCell
+                            align='center'
+                            style={{ color: darkMode ? 'white' : 'inherit' }}
+                          >
                             {row.area} km<sup>2</sup>
                           </TableCell>
-                          <TableCell align='center'>
+                          <TableCell
+                            align='center'
+                            style={{ color: darkMode ? 'white' : 'inherit' }}
+                          >
                             {row.continents.join(' and ')}
                           </TableCell>
                           {loggedIn ? (
-                            <TableCell align='center'>
+                            <TableCell
+                              align='center'
+                              style={{ color: darkMode ? 'white' : 'inherit' }}
+                            >
                               <div className='flex flex-col justify-between h-[122px]'>
                                 <AddRemoveVisited
                                   loggedIn={loggedIn}
@@ -379,6 +405,7 @@ function CountriesList({
               page={page}
               onPageChange={handleChangePage}
               onRowsPerPageChange={handleChangeRowsPerPage}
+              style={{ color: darkMode ? 'white' : 'inherit' }}
             />
           </Paper>
         </Box>
