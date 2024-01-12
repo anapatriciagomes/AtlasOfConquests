@@ -324,7 +324,7 @@ function CountriesList({
                                 }
                               )}`}
                               className={`${
-                                darkMode ? 'text-blue-600' : 'text-blue-500'
+                                darkMode ? 'text-blue-300' : 'text-blue-500'
                               } hover:text-[#ff9800]`}
                             >
                               {row.name.common}
