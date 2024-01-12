@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import WorldMap from '../components/WorldMap';
 import MapVisitedWishList from './MapVisitedWishList';
 
-function HomePage({ loggedIn }) {
+function HomePage({ loggedIn, darkMode }) {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -15,12 +15,12 @@ function HomePage({ loggedIn }) {
   return (
     <div>
       {loggedIn ? (
-        <div className="mx-6 mt-[60px]">
+        <div className='mx-6 mt-[60px]'>
           <MapVisitedWishList />
         </div>
       ) : (
-        <div className="mx-6 mt-[60px]">
-          <WorldMap />
+        <div className='mx-6 mt-[60px]'>
+          <WorldMap darkMode={darkMode} />
         </div>
       )}
     </div>

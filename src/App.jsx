@@ -55,7 +55,10 @@ function App() {
         setDarkMode={setDarkMode}
       />
       <Routes>
-        <Route path='/' element={<HomePage loggedIn={loggedIn} />} />
+        <Route
+          path='/'
+          element={<HomePage loggedIn={loggedIn} darkMode={darkMode} />}
+        />
         <Route
           path='/login'
           element={

@@ -18,6 +18,7 @@ function MapVisitedWishList({
   loggedUserDetails,
   setLoggedUserDetails,
   userId,
+  darkMode,
 }) {
   const [visitedCountries, setVisitedCountries] = useState([]);
   const [wishlistCountries, setWishlistCountries] = useState([]);
@@ -86,7 +87,7 @@ function MapVisitedWishList({
   }
 
   return (
-    <div className="w-4/5 mx-auto mt-[70px]">
+    <div className='w-4/5 mx-auto mt-[70px]'>
       {loggedUserDetails && visitedCountries && wishlistCountries && (
         <div>
           <ComposableMap>
@@ -104,16 +105,16 @@ function MapVisitedWishList({
                       ).length > 0
                     ) {
                       return (
-                        <a key={geo.rsmKey} className="country-tooltip">
+                        <a key={geo.rsmKey} className='country-tooltip'>
                           <Geography
                             geography={geo}
-                            fill="#aed581"
-                            stroke="#d1d1d1"
+                            fill='#aed581'
+                            stroke='#d1d1d1'
                             onMouseEnter={() => {
                               setTooltipContent(geo.properties.name);
                             }}
                             onClick={() => handleClick(geo)}
-                            className="cursor-pointer"
+                            className='cursor-pointer'
                             style={{
                               default: {
                                 fill: '#aed581',
@@ -137,16 +138,16 @@ function MapVisitedWishList({
                       ).length > 0
                     ) {
                       return (
-                        <a key={geo.rsmKey} className="country-tooltip">
+                        <a key={geo.rsmKey} className='country-tooltip'>
                           <Geography
                             geography={geo}
-                            fill="#9575cd"
-                            stroke="#d1d1d1"
+                            fill='#9575cd'
+                            stroke='#d1d1d1'
                             onMouseEnter={() => {
                               setTooltipContent(geo.properties.name);
                             }}
                             onClick={() => handleClick(geo)}
-                            className="cursor-pointer"
+                            className='cursor-pointer'
                             style={{
                               default: {
                                 fill: '#9575cd',
@@ -166,19 +167,19 @@ function MapVisitedWishList({
                       );
                     } else {
                       return (
-                        <a key={geo.rsmKey} className="country-tooltip">
+                        <a key={geo.rsmKey} className='country-tooltip'>
                           <Geography
                             geography={geo}
-                            fill="#faaa70"
-                            stroke="#d1d1d1"
+                            fill='#faaa70'
+                            stroke='#d1d1d1'
                             onMouseEnter={() => {
                               setTooltipContent(geo.properties.name);
                             }}
                             onClick={() => handleClick(geo)}
-                            className="cursor-pointer"
+                            className='cursor-pointer'
                             style={{
                               default: {
-                                fill: '#faaa70',
+                                fill: darkMode ? '#f08b42' : '#faaa70',
                                 outline: 'none',
                               },
                               hover: {
@@ -200,21 +201,21 @@ function MapVisitedWishList({
             </ZoomableGroup>
           </ComposableMap>
           <Tooltip
-            anchorSelect=".country-tooltip"
-            place="top-start"
-            className="text-center"
+            anchorSelect='.country-tooltip'
+            place='top-start'
+            className='text-center'
             clickable
             offset={-10}
           >
             <a
               onClick={() => handleClickTooltip(tooltipContent)}
-              className="text-white hover:text-[#ff9800] cursor-pointer px-[20px] py-[5px] bg-gray-700 rounded"
+              className='text-white hover:text-[#ff9800] cursor-pointer px-[20px] py-[5px] bg-gray-700 rounded'
             >
               {tooltipContent}
             </a>
 
-            <div className="flex mt-[10px]">
-              <div className="mr-[10px]">
+            <div className='flex mt-[10px]'>
+              <div className='mr-[10px]'>
                 <AddRemoveVisited
                   loggedIn={loggedIn}
                   loggedUserDetails={loggedUserDetails}
@@ -232,37 +233,37 @@ function MapVisitedWishList({
               />
             </div>
           </Tooltip>
-          <div className="controls text-center">
+          <div className='controls text-center'>
             <button onClick={handleZoomIn}>
               <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth="3"
+                xmlns='http://www.w3.org/2000/svg'
+                width='24'
+                height='24'
+                viewBox='0 0 24 24'
+                stroke='currentColor'
+                strokeWidth='3'
               >
-                <line x1="12" y1="5" x2="12" y2="19" />
-                <line x1="5" y1="12" x2="19" y2="12" />
+                <line x1='12' y1='5' x2='12' y2='19' />
+                <line x1='5' y1='12' x2='19' y2='12' />
               </svg>
             </button>
             <button onClick={handleZoomOut}>
               <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth="3"
+                xmlns='http://www.w3.org/2000/svg'
+                width='24'
+                height='24'
+                viewBox='0 0 24 24'
+                stroke='currentColor'
+                strokeWidth='3'
               >
-                <line x1="5" y1="12" x2="19" y2="12" />
+                <line x1='5' y1='12' x2='19' y2='12' />
               </svg>
             </button>
           </div>
         </div>
       )}
       {loggedIn === false && (
-        <h1 className="mt-[120px] text-center text-xl">
+        <h1 className='mt-[120px] text-center text-xl'>
           Please log in to visit this page
         </h1>
       )}

@@ -53,12 +53,12 @@ function Visited({
   return (
     <div>
       {loggedIn && (
-        <div className="mt-[120px] mx-auto text-center w-[650px]">
-          <h1 className="mb-[40px] text-xl text-center">Visited Countries</h1>
+        <div className='mt-[120px] mx-auto text-center w-[650px]'>
+          <h1 className='mb-[40px] text-xl text-center'>Visited Countries</h1>
           {visitedCountries ? (
-            <h2 className="mb-[20px] text-xl text-center leading-10">
+            <h2 className='mb-[20px] text-xl text-center leading-10'>
               You have visited{' '}
-              <b className="text-[#6fbc16] text-2xl">
+              <b className='text-[#6fbc16] text-2xl'>
                 {visitedCountries.length}
               </b>{' '}
               out of 202 countries! <br />
@@ -77,7 +77,7 @@ function Visited({
             showVisited.map(visited => (
               <div
                 key={visited.id}
-                className="flex justify-center items-center mb-[20px]"
+                className='flex justify-center items-center mb-[20px]'
               >
                 <Link
                   className={`flex justify-start items-center flex-wrap w-[50%] text-[${`#ef914e`}] font-semibold hover:text-[#F53]`}
@@ -98,7 +98,7 @@ function Visited({
                           <img
                             src={flag.flags.png}
                             key={index}
-                            className="max-w-[40px] mr-[10px]"
+                            className='max-w-[40px] mr-[10px]'
                           />
                         ))
                     : ''}
@@ -124,7 +124,7 @@ function Visited({
         </div>
       )}
       {loggedIn === false && (
-        <h1 className="mt-[120px] text-center text-xl">
+        <h1 className='mt-[120px] text-center text-xl'>
           Please log in to visit this page
         </h1>
       )}
