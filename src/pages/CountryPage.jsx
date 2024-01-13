@@ -232,14 +232,19 @@ function CountryPage({
                       )}
                     </p>
                     <ul className="pt-3 pb-3">
-                      {Object.entries(country.currencies).map(
-                        ([currencyCode, currencyInfo]) => (
-                          <li key={currencyCode}>
-                            <span className="font-semibold">Currency:</span>{' '}
-                            {currencyInfo.name} ({currencyInfo.symbol})
-                          </li>
-                        )
-                      )}
+                      <li>
+                        <span className="font-semibold">
+                          {Object.entries(country.currencies).length === 1
+                            ? 'Currency: '
+                            : 'Currencies: '}
+                        </span>
+                        {Object.values(country.currencies)
+                          .map(
+                            currencyInfo =>
+                              `${currencyInfo.name} (${currencyInfo.symbol})`
+                          )
+                          .join(', ')}
+                      </li>
                     </ul>
                     <p className="pb-3  font-semibold">
                       {Object.keys(country.continents).length === 1
@@ -356,14 +361,21 @@ function CountryPage({
                           )
                         )}
                       </p>
-                      {Object.entries(country.currencies).map(
-                        ([currencyCode, currencyInfo]) => (
-                          <li key={currencyCode}>
-                            <span className="font-semibold">Currency:</span>{' '}
-                            {currencyInfo.name} ({currencyInfo.symbol})
-                          </li>
-                        )
-                      )}
+                      <ul className="pt-3 pb-3">
+                        <li>
+                          <span className="font-semibold">
+                            {Object.entries(country.currencies).length === 1
+                              ? 'Currency: '
+                              : 'Currencies: '}
+                          </span>
+                          {Object.values(country.currencies)
+                            .map(
+                              currencyInfo =>
+                                `${currencyInfo.name} (${currencyInfo.symbol})`
+                            )
+                            .join(', ')}
+                        </li>
+                      </ul>
                     </ul>
                     <p className="pb-3  font-semibold">
                       {Object.keys(country.continents).length === 1
