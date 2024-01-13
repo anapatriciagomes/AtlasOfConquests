@@ -89,7 +89,7 @@ function CountriesList({
   };
 
   const headCells = [
-    { id: 'name', numeric: false, disablePadding: true, label: '' },
+    { id: 'name', numeric: false, disablePadding: true, label: 'Country' },
     { id: 'capital', numeric: false, disablePadding: false, label: 'Capital' },
     {
       id: 'population',
@@ -129,6 +129,7 @@ function CountriesList({
                     active={orderBy === headCell.id}
                     direction={orderBy === headCell.id ? order : 'asc'}
                     onClick={createSortHandler(headCell.id)}
+                    style={{ color: darkMode ? 'white' : 'inherit' }}
                   >
                     {headCell.label}
                     {orderBy === headCell.id ? (
@@ -139,7 +140,7 @@ function CountriesList({
                           color: darkMode ? 'white' : 'inherit',
                         }}
                       >
-                        {order === 'desc' ? 'Country' : 'Country'}
+                        {order === 'desc' ? '' : ''}
                       </Box>
                     ) : null}
                   </TableSortLabel>
@@ -154,11 +155,13 @@ function CountriesList({
                     padding={headCell.disablePadding ? 'none' : 'normal'}
                     sortDirection={orderBy === headCell.id ? order : false}
                     className='text-center'
+                    style={{ color: darkMode ? 'white' : 'inherit' }}
                   >
                     <TableSortLabel
                       active={orderBy === headCell.id}
                       direction={orderBy === headCell.id ? order : 'asc'}
                       onClick={createSortHandler(headCell.id)}
+                      style={{ color: darkMode ? 'white' : 'inherit' }}
                     >
                       {headCell.label}
                       {orderBy === headCell.id ? (
@@ -169,9 +172,7 @@ function CountriesList({
                             color: darkMode ? 'white' : 'inherit',
                           }}
                         >
-                          {order === 'desc'
-                            ? 'sorted descending'
-                            : 'sorted ascending'}
+                          {order === 'desc' ? '' : ''}
                         </Box>
                       ) : null}
                     </TableSortLabel>
