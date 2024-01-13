@@ -213,7 +213,11 @@ function CountryPage({
                       <span className="font-semibold">Area:</span>{' '}
                       {formatArea(country.area)} m<sup>2</sup>
                     </p>
-                    <Borders borders={country.borders} />
+                    <Borders
+                      borders={country.borders}
+                      setPhotos={setPhotos}
+                      setAlternativePhotos={setAlternativePhotos}
+                    />
                     <p className="pt-3  font-semibold">
                       {Object.keys(country.languages).length === 1
                         ? 'Official Language: '

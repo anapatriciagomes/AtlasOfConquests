@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import CountryCodeConverter from './CountryCodeConverter';
 
-function Borders({ borders = [] }) {
+function Borders({ borders = [], setPhotos, setAlternativePhotos }) {
   const getCountryBorder = borders => {
     const countryCodes = {
       AFG: 'Afghanistan',
@@ -218,6 +218,11 @@ function Borders({ borders = [] }) {
           code => countryCodes[code]
         );
 
+        const handleBorderClick = () => {
+          setPhotos([]);
+          setAlternativePhotos(null);
+        };
+
         return (
           <div>
             <p className="pb-3">
@@ -236,6 +241,7 @@ function Borders({ borders = [] }) {
                           to={`/country/${CountryCodeConverter({
                             countryName: country,
                           })}/${country.replaceAll(' ', '-')}`}
+                          onClick={handleBorderClick}
                         >
                           {country}
                         </Link>
@@ -255,6 +261,7 @@ function Borders({ borders = [] }) {
                           to={`/country/${CountryCodeConverter({
                             countryName: country,
                           })}/${country.replaceAll(' ', '-')}`}
+                          onClick={handleBorderClick}
                         >
                           {country}
                         </Link>
