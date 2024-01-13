@@ -25,6 +25,7 @@ function LoginPage({
   setLoggedIn,
   setLoggedUserDetails,
   setUserId,
+  darkMode,
 }) {
   const [showPassword, setShowPassword] = useState(false);
   const [isValidEmail, setIsValidEmail] = useState(true);
@@ -167,60 +168,85 @@ function LoginPage({
   }));
 
   return (
-    <div className="w-5/6 mt-[150px] mx-auto">
+    <div className='w-5/6 mt-[150px] mx-auto'>
       <Box
         sx={{
           display: 'flex',
           flexWrap: 'wrap',
           flexDirection: 'column',
           alignItems: 'center',
+          '.MuiOutlinedInput-notchedOutline': {
+            borderColor: darkMode ? 'white' : '#848884',
+          },
         }}
       >
-        <FormControl sx={{ m: 1, width: '500px' }} variant="outlined">
-          <InputLabel htmlFor="outlined-adornment-email">Email</InputLabel>
+        <FormControl
+          sx={{
+            m: 1,
+            width: '500px',
+            '&:hover': {
+              '& fieldset': {
+                borderColor: darkMode ? 'white' : '#FFF',
+              },
+            },
+          }}
+          variant='outlined'
+        >
+          <InputLabel
+            htmlFor='outlined-adornment-email'
+            sx={{ color: darkMode ? 'white' : '' }}
+          >
+            Email
+          </InputLabel>
           <OutlinedInput
-            id="outlined-adornment-email"
+            id='outlined-adornment-email'
+            sx={{ color: darkMode ? 'white' : '' }}
             value={email}
             onChange={handleEmailChange}
             onBlur={validateEmail}
             error={!isValidEmail}
             endAdornment={
-              <InputAdornment position="end">
-                <AccountCircle />
+              <InputAdornment position='end'>
+                <AccountCircle sx={{ color: darkMode ? 'white' : '' }} />
               </InputAdornment>
             }
-            label="Email"
+            label='Email'
           />
           {!isValidEmail && (
             <FormHelperText error>Invalid Email</FormHelperText>
           )}
         </FormControl>
 
-        <FormControl sx={{ m: 1, width: '500px' }} variant="outlined">
-          <InputLabel htmlFor="outlined-adornment-password">
+        <FormControl sx={{ m: 1, width: '500px' }} variant='outlined'>
+          <InputLabel
+            htmlFor='outlined-adornment-password'
+            sx={{ color: darkMode ? 'white' : '' }}
+          >
             Password
           </InputLabel>
           <OutlinedInput
-            id="outlined-adornment-password"
+            id='outlined-adornment-password'
             value={password}
             onChange={handlePasswordChange}
             type={showPassword ? 'text' : 'password'}
+            sx={{ color: darkMode ? 'white' : '' }}
             endAdornment={
-              <InputAdornment position="end">
+              <InputAdornment position='end'>
                 <IconButton
-                  aria-label="toggle password visibility"
+                  aria-label='toggle password visibility'
                   onClick={handleClickShowPassword}
                   onMouseDown={handleMouseDownPassword}
-                  edge="end"
+                  edge='end'
                   sx={{
                     marginRight: -1,
+                    color: darkMode ? 'white' : '',
                   }}
                 >
                   {showPassword ? <VisibilityOff /> : <Visibility />}
                 </IconButton>
               </InputAdornment>
             }
-            label="Password"
+            label='Password'
           />
         </FormControl>
         <GreyButton onClick={handleLogin}>Log in</GreyButton>
