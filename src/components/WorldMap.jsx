@@ -37,21 +37,25 @@ function WorldMap({ darkMode }) {
 
   async function handleClick(geo) {
     try {
-      const countryCode = await CountryCodeConverter({
-        countryName: geo.properties.name,
-      });
-      const countryName = geo.properties.name;
-      const lowercaseCountryCode = countryCode.toLowerCase();
-      navigate(
-        `/country/${lowercaseCountryCode}/${countryName.replaceAll(' ', '-')}`
-      );
+      if (geo.properties.name === 'West Bank') {
+        navigate(`/country/ps/Palestine`);
+      } else {
+        const countryCode = await CountryCodeConverter({
+          countryName: geo.properties.name,
+        });
+        const countryName = geo.properties.name;
+        const lowercaseCountryCode = countryCode.toLowerCase();
+        navigate(
+          `/country/${lowercaseCountryCode}/${countryName.replaceAll(' ', '-')}`
+        );
+      }
     } catch (error) {
       console.error(error);
     }
   }
 
   return (
-    <div className='w-4/5 mx-auto'>
+    <div className="w-4/5 mx-auto">
       <ComposableMap>
         <ZoomableGroup
           zoom={position.zoom}
@@ -61,11 +65,11 @@ function WorldMap({ darkMode }) {
           <Geographies geography={geoUrl}>
             {({ geographies }) =>
               geographies.map(geo => (
-                <a key={geo.rsmKey} className='country-tooltip'>
+                <a key={geo.rsmKey} className="country-tooltip">
                   <Geography
                     geography={geo}
-                    fill='#faaa70'
-                    stroke='#d1d1d1'
+                    fill="#faaa70"
+                    stroke="#d1d1d1"
                     onMouseEnter={() => {
                       setTooltipContent(geo.properties.name);
                     }}
@@ -73,7 +77,7 @@ function WorldMap({ darkMode }) {
                       setTooltipContent('');
                     }}
                     onClick={() => handleClick(geo)}
-                    className='cursor-pointer'
+                    className="cursor-pointer"
                     style={{
                       default: {
                         fill: darkMode ? '#f08b42' : '#faaa70',
@@ -95,33 +99,33 @@ function WorldMap({ darkMode }) {
           </Geographies>
         </ZoomableGroup>
       </ComposableMap>
-      <Tooltip anchorSelect='.country-tooltip' place='top'>
-        {tooltipContent}
+      <Tooltip anchorSelect=".country-tooltip" place="top">
+        {tooltipContent === 'West Bank' ? 'Palestine' : tooltipContent}
       </Tooltip>
-      <div className='controls text-center'>
+      <div className="controls text-center">
         <button onClick={handleZoomIn}>
           <svg
-            xmlns='http://www.w3.org/2000/svg'
-            width='24'
-            height='24'
-            viewBox='0 0 24 24'
-            stroke='currentColor'
-            strokeWidth='3'
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth="3"
           >
-            <line x1='12' y1='5' x2='12' y2='19' />
-            <line x1='5' y1='12' x2='19' y2='12' />
+            <line x1="12" y1="5" x2="12" y2="19" />
+            <line x1="5" y1="12" x2="19" y2="12" />
           </svg>
         </button>
         <button onClick={handleZoomOut}>
           <svg
-            xmlns='http://www.w3.org/2000/svg'
-            width='24'
-            height='24'
-            viewBox='0 0 24 24'
-            stroke='currentColor'
-            strokeWidth='3'
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth="3"
           >
-            <line x1='5' y1='12' x2='19' y2='12' />
+            <line x1="5" y1="12" x2="19" y2="12" />
           </svg>
         </button>
       </div>

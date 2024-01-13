@@ -170,7 +170,7 @@ const CountryNameConverter = ({ countryCode }) => {
       VE: 'Venezuela',
       VN: 'Vietnam',
       VU: 'Vanuatu',
-      PS: 'West Bank',
+      PS: 'Palestine',
       YE: 'Yemen',
       ZA: 'South Africa',
       ZM: 'Zambia',

@@ -173,7 +173,7 @@ function Borders({ borders = [], setPhotos, setAlternativePhotos }) {
       VEN: 'Venezuela',
       VNM: 'Vietnam',
       VUT: 'Vanuatu',
-      PSE: 'West Bank',
+      PSE: 'Palestine',
       YEM: 'Yemen',
       ZAF: 'South Africa',
       ZMB: 'Zambia',
