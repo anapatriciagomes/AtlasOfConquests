@@ -74,7 +74,7 @@ function App() {
               setLoggedIn={setLoggedIn}
               setLoggedUserDetails={setLoggedUserDetails}
               setUserId={setUserId}
-              //data={email, setEmail}
+              darkMode={darkMode}
             />
           }
         />
@@ -136,6 +136,7 @@ function App() {
               loggedUserDetails={loggedUserDetails}
               userId={userId}
               setLoggedIn={setLoggedIn}
+              darkMode={darkMode}
             />
           }
         />
