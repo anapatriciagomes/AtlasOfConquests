@@ -26,28 +26,28 @@ function SearchBar({ searchedCountries, darkMode }) {
         }}
       >
         <InputLabel
-          htmlFor='outlined-adornment-amount'
-          type='text'
-          name='search'
-          id='search'
+          htmlFor="outlined-adornment-amount"
+          type="text"
+          name="search"
+          id="search"
           sx={{ color: darkMode ? 'white' : 'inherit' }}
         >
           Search Country
         </InputLabel>
         <OutlinedInput
-          id='outlined-adornment-amount'
+          id="outlined-adornment-amount"
           startAdornment={
             <InputAdornment
-              position='start'
+              position="start"
               sx={{ color: darkMode ? 'white' : 'inherit' }}
             >
               <SearchIcon />
             </InputAdornment>
           }
-          label='Search Country'
+          label="Search Country"
           value={search}
           onChange={handleSearch}
-          placeholder='Country Name'
+          placeholder="Country Name"
           sx={{
             color: darkMode ? 'white' : 'inherit',
           }}

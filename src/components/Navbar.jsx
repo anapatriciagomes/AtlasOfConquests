@@ -122,7 +122,11 @@ function Navbar({
           )}
         </div>
         <button
-          onClick={() => setDarkMode(!darkMode)}
+          onClick={() => {
+            localStorage.setItem('darkMode', !darkMode);
+            setDarkMode(!darkMode);
+            console.log(`!darkMode : ${!darkMode}`);
+          }}
           className="ml-[20px] text-sm"
         >
           {darkMode ? (

@@ -29,6 +29,9 @@ function App() {
       setUserId(+parseInt(localStorage.getItem('userId')));
       setEmail(localStorage.getItem('email'));
     }
+    const isDarkMode =
+      localStorage.getItem('darkMode') === 'true' ? true : false;
+    setDarkMode(isDarkMode);
   }, []);
 
   useEffect(() => {
@@ -56,11 +59,11 @@ function App() {
       />
       <Routes>
         <Route
-          path='/'
+          path="/"
           element={<HomePage loggedIn={loggedIn} darkMode={darkMode} />}
         />
         <Route
-          path='/login'
+          path="/login"
           element={
             <LoginPage
               email={email}
@@ -71,11 +74,12 @@ function App() {
               setLoggedIn={setLoggedIn}
               setLoggedUserDetails={setLoggedUserDetails}
               setUserId={setUserId}
+              //data={email, setEmail}
             />
           }
         />
         <Route
-          path='/country/:countryCode/:countryName'
+          path="/country/:countryCode/:countryName"
           element={
             <CountryPage
               loggedIn={loggedIn}
@@ -87,7 +91,7 @@ function App() {
           }
         />
         <Route
-          path='/map-visited-wishlist'
+          path="/map-visited-wishlist"
           element={
             <MapVisitedWishList
               loggedIn={loggedIn}
@@ -99,7 +103,7 @@ function App() {
           }
         />
         <Route
-          path='/visited'
+          path="/visited"
           element={
             <Visited
               loggedIn={loggedIn}
@@ -111,7 +115,7 @@ function App() {
           }
         />
         <Route
-          path='/wishlist'
+          path="/wishlist"
           element={
             <WishList
               loggedIn={loggedIn}
@@ -122,7 +126,7 @@ function App() {
           }
         />
         <Route
-          path='/user-account'
+          path="/user-account"
           element={
             <UserAccountPage
               email={email}
@@ -136,7 +140,7 @@ function App() {
           }
         />
         <Route
-          path='/list'
+          path="/list"
           element={
             <CountriesList
               loggedIn={loggedIn}
@@ -147,7 +151,7 @@ function App() {
             />
           }
         />
-        <Route path='*' element={<ErrorPage />} />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </div>
   );
