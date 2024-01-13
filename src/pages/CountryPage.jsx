@@ -134,6 +134,7 @@ function CountryPage({
     } else {
       fetchAPIImages();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [countryName]);
 
   const formatArea = area => {
