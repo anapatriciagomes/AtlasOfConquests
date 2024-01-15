@@ -1,5 +1,6 @@
 import { GoogleMap, useLoadScript, MarkerF } from '@react-google-maps/api';
 import CircularProgress from '@mui/material/CircularProgress';
+import React from 'react';
 
 const mapContainerStyle = {
   width: '500px',
@@ -7,7 +8,7 @@ const mapContainerStyle = {
   borderRadius: '0.375rem',
 };
 
-const GoogleMaps = ({ lat, lng, area }) => {
+const GoogleMaps = ({ lat, lng, area, darkMode }) => {
   const center = {
     lat: lat,
     lng: lng,
@@ -15,6 +16,21 @@ const GoogleMaps = ({ lat, lng, area }) => {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: import.meta.env.VITE_APIKEY_GOOGLEMAPS,
   });
+
+  React.useEffect(() => {
+    const style = document.createElement('style');
+    style.type = 'text/css';
+    style.innerHTML = `
+      .gm-style button {
+        background-color: ${
+          darkMode ? '#222222 !important' : 'white !important'
+        };
+        opacity: 0.7;
+        color: ${darkMode ? 'white !important' : 'inherit !important'};
+      }
+    `;
+    document.head.appendChild(style);
+  }, [darkMode]);
 
   let customZoom = 0;
 
