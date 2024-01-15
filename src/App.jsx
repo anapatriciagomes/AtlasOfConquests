@@ -88,7 +88,6 @@ function App() {
               setLoggedIn={setLoggedIn}
               setLoggedUserDetails={setLoggedUserDetails}
               setUserId={setUserId}
-              darkMode={darkMode}
             />
           }
         />
@@ -124,7 +123,6 @@ function App() {
               loggedUserDetails={loggedUserDetails}
               setLoggedUserDetails={setLoggedUserDetails}
               userId={userId}
-              darkMode={darkMode}
             />
           }
         />
@@ -150,7 +148,6 @@ function App() {
               loggedUserDetails={loggedUserDetails}
               userId={userId}
               setLoggedIn={setLoggedIn}
-              darkMode={darkMode}
             />
           }
         />
@@ -162,7 +159,6 @@ function App() {
               loggedUserDetails={loggedUserDetails}
               setLoggedUserDetails={setLoggedUserDetails}
               userId={userId}
-              darkMode={darkMode}
             />
           }
         />

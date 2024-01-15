@@ -113,7 +113,7 @@ function CountriesList({
     };
 
     return (
-      <TableHead className='w-[95%] mx-auto'>
+      <TableHead className="w-[95%] mx-auto">
         <TableRow>
           {loggedIn
             ? headCells.map(headCell => (
@@ -122,23 +122,20 @@ function CountriesList({
                   align={headCell.numeric ? 'center' : 'center'}
                   padding={headCell.disablePadding ? 'none' : 'normal'}
                   sortDirection={orderBy === headCell.id ? order : false}
-                  className='text-center'
-                  style={{ color: darkMode ? 'white' : 'inherit' }}
+                  className="text-center"
                 >
                   {headCell.id !== 'actions' ? (
                     <TableSortLabel
                       active={orderBy === headCell.id}
                       direction={orderBy === headCell.id ? order : 'asc'}
                       onClick={createSortHandler(headCell.id)}
-                      style={{ color: darkMode ? 'white' : 'inherit' }}
                     >
                       {headCell.label}
                       {orderBy === headCell.id ? (
                         <Box
-                          component='span'
+                          component="span"
                           sx={{
                             visuallyHidden,
-                            color: darkMode ? 'white' : 'inherit',
                           }}
                         >
                           {order === 'desc' ? '' : ''}
@@ -158,23 +155,20 @@ function CountriesList({
                     align={headCell.numeric ? 'center' : 'center'}
                     padding={headCell.disablePadding ? 'none' : 'normal'}
                     sortDirection={orderBy === headCell.id ? order : false}
-                    className='text-center'
-                    style={{ color: darkMode ? 'white' : 'inherit' }}
+                    className="text-center"
                   >
                     {headCell.id !== 'actions' ? (
                       <TableSortLabel
                         active={orderBy === headCell.id}
                         direction={orderBy === headCell.id ? order : 'asc'}
                         onClick={createSortHandler(headCell.id)}
-                        style={{ color: darkMode ? 'white' : 'inherit' }}
                       >
                         {headCell.label}
                         {orderBy === headCell.id ? (
                           <Box
-                            component='span'
+                            component="span"
                             sx={{
                               visuallyHidden,
-                              color: darkMode ? 'white' : 'inherit',
                             }}
                           >
                             {order === 'desc' ? '' : ''}
@@ -268,10 +262,10 @@ function CountriesList({
   }, []);
 
   return (
-    <div className='mt-[120px]'>
-      <h1 className='text-xl text-center my-[30px]'>Countries List</h1>
+    <div className="mt-[120px]">
+      <h1 className="text-xl text-center my-[30px]">Countries List</h1>
       {fetching && (
-        <div className='mt-[80px] text-center'>
+        <div className="mt-[80px] text-center">
           <Box
             sx={{
               display: 'flex',
@@ -286,21 +280,20 @@ function CountriesList({
       )}
 
       {countries && (
-        <Box sx={{ width: '95%' }} className='mx-auto'>
+        <Box sx={{ width: '95%' }} className="mx-auto">
           <SearchBar searchedCountries={searchedCountries} />
           <Paper
             sx={{
               width: '95%',
               mb: 2,
-              backgroundColor: darkMode ? '#333333' : '',
             }}
-            className='mx-auto'
+            className="mx-auto"
           >
             <TableContainer>
               <Table
                 sx={{ minWidth: 750 }}
-                aria-labelledby='tableTitle'
-                size='medium'
+                aria-labelledby="tableTitle"
+                size="medium"
               >
                 <EnhancedTableHead
                   numSelected={selected.length}
@@ -323,18 +316,18 @@ function CountriesList({
                         <TableRow
                           hover
                           key={index}
-                          role='checkbox'
+                          role="checkbox"
                           aria-checked={isItemSelected}
                           tabIndex={-1}
                           selected={isItemSelected}
                           sx={{ cursor: 'pointer' }}
                         >
                           <TableCell
-                            component='th'
+                            component="th"
                             id={labelId}
-                            scope='row'
-                            padding='none'
-                            align='center'
+                            scope="row"
+                            padding="none"
+                            align="center"
                           >
                             <Link
                               to={`/country/${row.cca2.toLowerCase()}/${CountryNameConverter(
@@ -343,44 +336,29 @@ function CountriesList({
                                 }
                               )}`}
                               className={`${
-                                darkMode ? 'text-blue-300' : 'text-blue-500'
+                                darkMode ? 'text-[#64b5f6]' : 'text-[#2196f3]'
                               } hover:text-[#ff9800]`}
                             >
                               {row.name.common}
                             </Link>
                           </TableCell>
-                          <TableCell
-                            align='center'
-                            style={{ color: darkMode ? 'white' : 'inherit' }}
-                          >
+                          <TableCell align="center">
                             {row.capital.length > 1
                               ? row.capital.toString().replaceAll(',', ', ')
                               : row.capital}
                           </TableCell>
-                          <TableCell
-                            align='center'
-                            style={{ color: darkMode ? 'white' : 'inherit' }}
-                          >
+                          <TableCell align="center">
                             {<PopulationConverter number={row.population} />}
                           </TableCell>
-                          <TableCell
-                            align='center'
-                            style={{ color: darkMode ? 'white' : 'inherit' }}
-                          >
+                          <TableCell align="center">
                             {row.area} km<sup>2</sup>
                           </TableCell>
-                          <TableCell
-                            align='center'
-                            style={{ color: darkMode ? 'white' : 'inherit' }}
-                          >
+                          <TableCell align="center">
                             {row.continents.join(' and ')}
                           </TableCell>
                           {loggedIn ? (
-                            <TableCell
-                              align='center'
-                              style={{ color: darkMode ? 'white' : 'inherit' }}
-                            >
-                              <div className='flex flex-col justify-between h-[122px]'>
+                            <TableCell align="center">
+                              <div className="flex flex-col justify-between h-[122px]">
                                 <AddRemoveVisited
                                   loggedIn={loggedIn}
                                   loggedUserDetails={loggedUserDetails}
@@ -418,13 +396,12 @@ function CountriesList({
             </TableContainer>
             <TablePagination
               rowsPerPageOptions={[10, 20, 50, 100, 202]}
-              component='div'
+              component="div"
               count={202}
               rowsPerPage={rowsPerPage}
               page={page}
               onPageChange={handleChangePage}
               onRowsPerPageChange={handleChangeRowsPerPage}
-              style={{ color: darkMode ? 'white' : 'inherit' }}
             />
           </Paper>
         </Box>

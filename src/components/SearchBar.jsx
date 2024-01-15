@@ -5,7 +5,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import FormControl from '@mui/material/FormControl';
 import SearchIcon from '@mui/icons-material/Search';
 
-function SearchBar({ searchedCountries, darkMode }) {
+function SearchBar({ searchedCountries }) {
   const [search, setSearch] = useState();
 
   const handleSearch = e => {
@@ -20,9 +20,7 @@ function SearchBar({ searchedCountries, darkMode }) {
           marginTop: 4,
           marginBottom: 4,
           width: '95%',
-          '.MuiOutlinedInput-notchedOutline': {
-            borderColor: darkMode ? 'white' : '#848884',
-          },
+          '.MuiOutlinedInput-notchedOutline': {},
         }}
       >
         <InputLabel
@@ -30,17 +28,13 @@ function SearchBar({ searchedCountries, darkMode }) {
           type="text"
           name="search"
           id="search"
-          sx={{ color: darkMode ? 'white' : 'inherit' }}
         >
           Search Country
         </InputLabel>
         <OutlinedInput
           id="outlined-adornment-amount"
           startAdornment={
-            <InputAdornment
-              position="start"
-              sx={{ color: darkMode ? 'white' : 'inherit' }}
-            >
+            <InputAdornment position="start">
               <SearchIcon />
             </InputAdornment>
           }
@@ -48,9 +42,6 @@ function SearchBar({ searchedCountries, darkMode }) {
           value={search}
           onChange={handleSearch}
           placeholder="Country Name"
-          sx={{
-            color: darkMode ? 'white' : 'inherit',
-          }}
         />
       </FormControl>
     </div>

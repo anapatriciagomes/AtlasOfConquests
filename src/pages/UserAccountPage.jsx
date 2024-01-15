@@ -32,7 +32,6 @@ function UserAccountPage({
   loggedUserDetails,
   userId,
   setLoggedIn,
-  darkMode,
 }) {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -119,11 +118,11 @@ function UserAccountPage({
   }));
 
   return (
-    <div className='w-[580px] mt-[150px] mx-auto'>
+    <div className="w-[580px] mt-[150px] mx-auto">
       <List>
         <ListItem sx={{ height: '68px' }}>
           <ListItemIcon sx={{ justifyContent: 'center' }}>
-            <EmailIcon sx={{ color: darkMode ? 'white' : '' }} />
+            <EmailIcon />
           </ListItemIcon>
           <ListItemText
             sx={
@@ -139,46 +138,39 @@ function UserAccountPage({
         </ListItem>
         <ListItem>
           <ListItemIcon sx={{ justifyContent: 'center' }}>
-            <LockIcon sx={{ color: darkMode ? 'white' : '' }} />
+            <LockIcon />
           </ListItemIcon>
           <FormControl
             sx={{
               m: 1,
               width: '300px',
-              '.MuiOutlinedInput-notchedOutline': {
-                borderColor: darkMode ? 'white' : '#848884',
-              },
             }}
-            variant='outlined'
+            variant="outlined"
           >
-            <InputLabel
-              htmlFor='outlined-adornment-password'
-              sx={{ color: darkMode ? 'white' : '' }}
-            >
+            <InputLabel htmlFor="outlined-adornment-password">
               Password
             </InputLabel>
             <OutlinedInput
-              id='outlined-adornment-password'
+              id="outlined-adornment-password"
               value={password}
               onChange={handlePasswordChange}
               type={showPassword ? 'text' : 'password'}
               endAdornment={
-                <InputAdornment position='end'>
+                <InputAdornment position="end">
                   <IconButton
-                    aria-label='toggle password visibility'
+                    aria-label="toggle password visibility"
                     onClick={handleClickShowPassword}
                     onMouseDown={handleMouseDownPassword}
-                    edge='end'
+                    edge="end"
                     sx={{
                       marginRight: -1,
-                      color: darkMode ? 'white' : '',
                     }}
                   >
                     {showPassword ? <VisibilityOff /> : <Visibility />}
                   </IconButton>
                 </InputAdornment>
               }
-              label='Password'
+              label="Password"
             />
           </FormControl>
           <GreyButton onClick={handleChangePasswordButton}>
@@ -192,9 +184,9 @@ function UserAccountPage({
               fullScreen={fullScreen}
               open={open}
               onClose={handleClose}
-              aria-labelledby='responsive-dialog-title'
+              aria-labelledby="responsive-dialog-title"
             >
-              <DialogTitle id='responsive-dialog-title'>
+              <DialogTitle id="responsive-dialog-title">
                 {'Are you sure you want to delete your account?'}
               </DialogTitle>
               <DialogActions>
