@@ -10,6 +10,9 @@ import Visited from './pages/Visited';
 import WishList from './pages/Wishlist';
 import UserAccountPage from './pages/UserAccountPage';
 import CountriesList from './pages/CountriesList';
+import * as React from 'react';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
 
 function App() {
   const [email, setEmail] = useState('');
@@ -19,6 +22,16 @@ function App() {
   const [loggedUserDetails, setLoggedUserDetails] = useState(null);
   const [userId, setUserId] = useState(0);
   const [darkMode, setDarkMode] = useState(false);
+
+  const theme = React.useMemo(
+    () =>
+      createTheme({
+        palette: {
+          mode: darkMode ? 'dark' : 'light',
+        },
+      }),
+    [darkMode]
+  );
 
   useEffect(() => {
     if (localStorage.getItem('loggedIn')) {
@@ -46,7 +59,8 @@ function App() {
   }, [darkMode]);
 
   return (
-    <div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
       <Navbar
         loginPageActive={loginPageActive}
         setLoginPageActive={setLoginPageActive}
@@ -154,7 +168,7 @@ function App() {
         />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
-    </div>
+    </ThemeProvider>
   );
 }
 
