@@ -16,7 +16,8 @@ function Weather({ capital }) {
     if (firstCity === 'Washington, D.C.') {
       firstCity = 'Washington';
     }
-    let formattedCity = firstCity.replace(/ /g, '.');
+
+    let formattedCity = firstCity.replace(/ /g, ' ');
     formattedCity = formattedCity
       .normalize('NFD')
       .replace(/[\u0300-\u036f]/g, '');
@@ -26,6 +27,7 @@ function Weather({ capital }) {
           formattedCity
         )}&appid=${import.meta.env.VITE_API_WEATHER_KEY}&units=metric`
       );
+
       const data = response.data;
       setFetching(false);
       setCurrentTemperature(data.main.temp);
@@ -46,7 +48,7 @@ function Weather({ capital }) {
   return (
     <div>
       {fetching && (
-        <div className="mt-[80px] text-center">
+        <div className='mt-[80px] text-center'>
           <Box
             sx={{
               display: 'flex',
@@ -62,18 +64,18 @@ function Weather({ capital }) {
       <>
         {currentTemperature !== null ? (
           <>
-            <div className="flex items-center">
+            <div className='flex items-center'>
               {' '}
               <img
-                className="w-[50px]"
+                className='w-[50px]'
                 src={`https://openweathermap.org/img/wn/${currentConditions}@2x.png`}
-                alt="weather conditions"
+                alt='weather conditions'
               />
-              <span className="text-xl">
+              <span className='text-xl'>
                 {Math.round(currentTemperature)}°C
               </span>
             </div>{' '}
-            <div className="text-xs">
+            <div className='text-xs'>
               <p>
                 Feels like {feelsLike.toFixed(1)}°C |{' '}
                 {description.charAt(0).toUpperCase() + description.slice(1)} |
