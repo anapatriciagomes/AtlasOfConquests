@@ -24,7 +24,7 @@ function GoogleMaps({ lat, lng, area, darkMode }) {
 
   const mapContainerStyle = {
     width: width < 550 ? `${width * 0.95}px` : '500px',
-    height: '45vh',
+    height: width < 550 ? '45vh' : width < 1100 ? '65vh' : '45vh',
     borderRadius: '0.375rem',
   };
 
