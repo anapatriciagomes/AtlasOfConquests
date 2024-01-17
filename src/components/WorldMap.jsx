@@ -55,7 +55,7 @@ function WorldMap({ darkMode }) {
   }
 
   return (
-    <div className="w-4/5 mx-auto">
+    <div className="w-4/5 mx-auto max-[1010px]:w-[95%]">
       <ComposableMap>
         <ZoomableGroup
           zoom={position.zoom}

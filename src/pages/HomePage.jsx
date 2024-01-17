@@ -15,11 +15,11 @@ function HomePage({ loggedIn, darkMode }) {
   return (
     <div>
       {loggedIn ? (
-        <div className='mx-6 mt-[60px]'>
+        <div className="mx-6 mt-[70px] max-[381px]:mt-[100px]">
           <MapVisitedWishList />
         </div>
       ) : (
-        <div className='mx-6 mt-[60px]'>
+        <div className="mx-6 mt-[70px] max-[381px]:mt-[100px]">
           <WorldMap darkMode={darkMode} />
         </div>
       )}
