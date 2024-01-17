@@ -232,6 +232,7 @@ function MapVisitedWishList({
                   setLoggedUserDetails={setLoggedUserDetails}
                   loggedUserId={userId}
                   countryName={tooltipContent}
+                  showSmallButton
                 />
               </div>
               <AddRemoveWishlist
@@ -240,6 +241,7 @@ function MapVisitedWishList({
                 setLoggedUserDetails={setLoggedUserDetails}
                 loggedUserId={userId}
                 countryName={tooltipContent}
+                showSmallButton
               />
             </div>
           </Tooltip>

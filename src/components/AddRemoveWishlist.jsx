@@ -10,6 +10,7 @@ function AddRemoveWishlist({
   setLoggedUserDetails,
   loggedUserId,
   countryName,
+  showSmallButton,
 }) {
   const [wishlist, setWishlist] = useState(false);
   const [country, setCountry] = useState('');
@@ -104,6 +105,14 @@ function AddRemoveWishlist({
     }
   };
 
+  const handleSmallButtonClick = () => {
+    if (wishlist) {
+      handleRemoveCountry();
+    } else {
+      handleAddCountry();
+    }
+  };
+
   const PurpleButton = styled(Button)(({ theme }) => ({
     color: theme.palette.getContrastText(deepPurple[500]),
     backgroundColor: deepPurple[300],
@@ -117,14 +126,41 @@ function AddRemoveWishlist({
     },
   }));
 
+  const SmallPurpleButton = styled(Button)(({ theme }) => ({
+    color: theme.palette.getContrastText(deepPurple[500]),
+    backgroundColor: deepPurple[300],
+    width: '150px',
+    height: '36px',
+
+    '&:hover': {
+      backgroundColor: deepPurple[500],
+      width: '150px',
+      height: '36px',
+    },
+  }));
+
   return (
     <div>
       {loggedIn ? (
-        <PurpleButton onClick={handleButtonClick}>
-          {wishlist
-            ? 'Remove Country from Wishlist List'
-            : 'Add Country to Wishlist List'}
-        </PurpleButton>
+        <div>
+          {showSmallButton ? (
+            <SmallPurpleButton onClick={handleSmallButtonClick}>
+              {wishlist ? (
+                <span style={{ fontSize: '12px', padding: '0px' }}>
+                  Remove from Wishlist
+                </span>
+              ) : (
+                <span style={{ fontSize: '12px' }}>Add to Wishlist</span>
+              )}
+            </SmallPurpleButton>
+          ) : (
+            <PurpleButton onClick={handleButtonClick}>
+              {wishlist
+                ? 'Remove Country from Visited List'
+                : 'Add Country to Visited List'}
+            </PurpleButton>
+          )}
+        </div>
       ) : (
         ''
       )}

@@ -10,6 +10,7 @@ function AddRemoveVisited({
   setLoggedUserDetails,
   loggedUserId,
   countryName,
+  showSmallButton,
 }) {
   const [visited, setVisited] = useState(false);
   const [country, setCountry] = useState('');
@@ -100,6 +101,14 @@ function AddRemoveVisited({
     }
   };
 
+  const handleSmallButtonClick = () => {
+    if (visited) {
+      handleRemoveCountry();
+    } else {
+      handleAddCountry();
+    }
+  };
+
   const GreenButton = styled(Button)(({ theme }) => ({
     color: theme.palette.getContrastText(lightGreen[500]),
     backgroundColor: lightGreen[300],
@@ -113,19 +122,45 @@ function AddRemoveVisited({
     },
   }));
 
+  const SmallGreenButton = styled(Button)(({ theme }) => ({
+    color: theme.palette.getContrastText(lightGreen[500]),
+    backgroundColor: lightGreen[300],
+    width: '150px',
+    height: '36px',
+
+    '&:hover': {
+      backgroundColor: lightGreen[500],
+      width: '150px',
+      height: '36px',
+    },
+  }));
+
   return (
     <div>
       {loggedIn ? (
-        <GreenButton onClick={handleButtonClick}>
-          {visited
-            ? 'Remove Country from Visited List'
-            : 'Add Country to Visited List'}
-        </GreenButton>
+        <div>
+          {showSmallButton ? (
+            <SmallGreenButton onClick={handleSmallButtonClick}>
+              {visited ? (
+                <span style={{ fontSize: '12px' }}>
+                  Remove from Visited List
+                </span>
+              ) : (
+                <span style={{ fontSize: '12px' }}>Add to Visited List</span>
+              )}
+            </SmallGreenButton>
+          ) : (
+            <GreenButton onClick={handleButtonClick}>
+              {visited
+                ? 'Remove Country from Visited List'
+                : 'Add Country to Visited List'}
+            </GreenButton>
+          )}
+        </div>
       ) : (
         ''
       )}
     </div>
   );
 }
-
 export default AddRemoveVisited;
