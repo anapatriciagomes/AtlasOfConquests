@@ -66,7 +66,7 @@ function Weather({ capital }) {
               {' '}
               <img
                 className="w-[50px]"
-                src={`http://openweathermap.org/img/wn/${currentConditions}@2x.png`}
+                src={`https://openweathermap.org/img/wn/${currentConditions}@2x.png`}
                 alt="weather conditions"
               />
               <span className="text-xl">
