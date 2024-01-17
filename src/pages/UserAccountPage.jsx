@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
@@ -34,6 +34,19 @@ function UserAccountPage({
   setLoggedIn,
 }) {
   const [showPassword, setShowPassword] = useState(false);
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const navigate = useNavigate();
 
@@ -101,26 +114,26 @@ function UserAccountPage({
   const RedButton = styled(Button)(({ theme }) => ({
     color: theme.palette.getContrastText(red[500]),
     backgroundColor: red[200],
-    width: '572px',
+    width: width < 600 ? `${width * 0.95}px` : '572px',
     height: '56px',
     marginTop: 20,
-    marginLeft: 12,
-    marginRight: 8,
+    marginLeft: 0,
+    marginRight: 0,
 
     '&:hover': {
       backgroundColor: red[400],
-      width: '572px',
+      width: width < 600 ? `${width * 0.95}px` : '572px',
       height: '56px',
       marginTop: 20,
-      marginLeft: 12,
-      marginRight: 8,
+      marginLeft: 0,
+      marginRight: 0,
     },
   }));
 
   return (
-    <div className="w-[580px] mt-[150px] mx-auto">
+    <div className="w-[580px] mt-[150px] mx-auto max-[600px]:w-[95%]">
       <List>
-        <ListItem sx={{ height: '68px' }}>
+        <ListItem sx={{ height: '68px', padding: 0 }}>
           <ListItemIcon sx={{ justifyContent: 'center' }}>
             <EmailIcon />
           </ListItemIcon>
@@ -136,7 +149,7 @@ function UserAccountPage({
             }
           />
         </ListItem>
-        <ListItem>
+        <ListItem sx={{ padding: 0 }}>
           <ListItemIcon sx={{ justifyContent: 'center' }}>
             <LockIcon />
           </ListItemIcon>
@@ -177,7 +190,12 @@ function UserAccountPage({
             Change Password
           </GreyButton>
         </ListItem>
-        <ListItem>
+        <ListItem
+          sx={{
+            paddingLeft: '8px',
+            paddingRight: width < 600 ? '8px' : '28px',
+          }}
+        >
           <React.Fragment>
             <RedButton onClick={handleClickOpen}>Delete Account</RedButton>
             <Dialog
