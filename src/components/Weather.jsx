@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import OpenWeatherAPI from 'openweather-api-node';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
+import axios from 'axios';
 
 function Weather({ capital }) {
   let firstCity = capital.length > 0 ? capital[0] : '';
@@ -21,18 +21,18 @@ function Weather({ capital }) {
       .normalize('NFD')
       .replace(/[\u0300-\u036f]/g, '');
     try {
-      const weather = new OpenWeatherAPI({
-        key: `${import.meta.env.VITE_API_WEATHER_KEY}`,
-        locationName: encodeURIComponent(formattedCity),
-        units: 'metric',
-      });
-      const data = await weather.getCurrent();
+      const response = await axios.get(
+        `http://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(
+          formattedCity
+        )}&appid=${import.meta.env.VITE_API_WEATHER_KEY}&units=metric`
+      );
+      const data = response.data;
       setFetching(false);
-      setCurrentTemperature(data.weather.temp.cur);
-      setCurrentConditions(data.weather.icon.url);
-      setFeelsLike(data.weather.feelsLike.cur);
-      setDescription(data.weather.description);
-      setHumidity(data.weather.humidity);
+      setCurrentTemperature(data.main.temp);
+      setCurrentConditions(data.weather[0].icon);
+      setFeelsLike(data.main.feels_like);
+      setDescription(data.weather[0].description);
+      setHumidity(data.main.humidity);
     } catch (error) {
       console.error('Error fetching weather:', error);
       setFetching(false);
@@ -66,7 +66,7 @@ function Weather({ capital }) {
               {' '}
               <img
                 className="w-[50px]"
-                src={currentConditions}
+                src={`http://openweathermap.org/img/wn/${currentConditions}@2x.png`}
                 alt="weather conditions"
               />
               <span className="text-xl">
