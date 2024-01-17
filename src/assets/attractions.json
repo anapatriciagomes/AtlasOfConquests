@@ -900,7 +900,11 @@
       "Khovsgol Nuur",
       "Flaming Cliffs"
     ],
-    "country_code": "MN"
+    "country_code": "MN",
+    "imageURLs": [
+      "https://images.unsplash.com/photo-1589654615616-6756a5653100?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1575415868394-e3b78f3e9b3f?q=80&w=2798&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    ]
   },
   "Montenegro": {
     "attractions": ["Kotor", "Budva", "Durmitor National Park"],
