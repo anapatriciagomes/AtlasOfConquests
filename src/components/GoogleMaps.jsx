@@ -1,25 +1,39 @@
+import { useState, useEffect } from 'react';
 import { GoogleMap, useLoadScript, MarkerF } from '@react-google-maps/api';
 import CircularProgress from '@mui/material/CircularProgress';
-import React from 'react';
 
-const mapContainerStyle = {
-  width: '500px',
-  height: '45vh',
-  borderRadius: '0.375rem',
-};
-
-const GoogleMaps = ({ lat, lng, area, darkMode }) => {
+function GoogleMaps({ lat, lng, area, darkMode }) {
   const center = {
     lat: lat,
     lng: lng,
   };
+
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  const mapContainerStyle = {
+    width: width < 550 ? `${width * 0.95}px` : '500px',
+    height: '45vh',
+    borderRadius: '0.375rem',
+  };
+
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: import.meta.env.VITE_APIKEY_GOOGLEMAPS,
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     const style = document.createElement('style');
-    style.type = 'text/css';
     style.innerHTML = `
       .gm-style button {
         background-color: ${
@@ -102,5 +116,5 @@ const GoogleMaps = ({ lat, lng, area, darkMode }) => {
       </GoogleMap>
     </div>
   );
-};
+}
 export default GoogleMaps;
