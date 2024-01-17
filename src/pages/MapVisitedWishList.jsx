@@ -91,7 +91,7 @@ function MapVisitedWishList({
   }
 
   return (
-    <div className="w-4/5 mx-auto mt-[70px] max-[1010px]:w-[95%]">
+    <div className="w-4/5 mx-auto mt-[70px] max-[1010px]:w-[95%] max-[381px]:mt-[120px]">
       {loggedUserDetails && visitedCountries && wishlistCountries && (
         <div>
           <ComposableMap>
