@@ -53,7 +53,7 @@ function Wishlist({
   return (
     <div>
       {loggedIn && (
-        <div className="mt-[120px] mx-auto text-center w-[650px]">
+        <div className="mt-[120px] mx-auto text-center w-[650px] max-[700px]:w-[95%]">
           <h1 className="mb-[40px] text-xl text-center">Wishlist Countries</h1>
           {wishlistCountries ? (
             <h2 className="mb-[40px] text-xl text-center leading-10">
@@ -78,7 +78,7 @@ function Wishlist({
                 className="flex justify-center items-center mb-[20px]"
               >
                 <Link
-                  className={`flex justify-start items-center flex-wrap w-[50%] text-[${`#ef914e`}] font-semibold hover:text-[#F53]`}
+                  className={`flex justify-start items-center w-[50%] text-[${`#ef914e`}] font-semibold hover:text-[#F53]`}
                   to={`/country/${CountryCodeConverter({
                     countryName: wishlist.country,
                   })}/${wishlist.country.replaceAll(' ', '-')}`}
@@ -101,7 +101,7 @@ function Wishlist({
                         ))
                     : ''}
 
-                  <p>{wishlist.country}</p>
+                  <p className="text-left">{wishlist.country}</p>
                 </Link>
                 <div>
                   <AddRemoveWishlist
