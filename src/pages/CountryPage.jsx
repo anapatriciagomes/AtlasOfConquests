@@ -272,7 +272,7 @@ function CountryPage({
                     </div>
                   )}
                   {loggedIn ? (
-                    <div className="flex justify-between mx-auto mt-[20px] w-[400px]">
+                    <div className="flex justify-between mx-auto mt-[20px] w-[400px] max-[550px]:flex-col max-[550px]:items-center max-[550px]:h-[120px] max-[550px]:w-auto">
                       <AddRemoveVisited
                         loggedIn={loggedIn}
                         loggedUserDetails={loggedUserDetails}
