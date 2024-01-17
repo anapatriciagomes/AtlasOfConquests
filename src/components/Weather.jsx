@@ -22,7 +22,7 @@ function Weather({ capital }) {
       .replace(/[\u0300-\u036f]/g, '');
     try {
       const response = await axios.get(
-        `http://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(
+        `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(
           formattedCity
         )}&appid=${import.meta.env.VITE_API_WEATHER_KEY}&units=metric`
       );
