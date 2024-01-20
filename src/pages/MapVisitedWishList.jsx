@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import CountryCodeConverter from '../components/CountryCodeConverter';
 import AddRemoveVisited from '../components/AddRemoveVisited';
 import AddRemoveWishlist from '../components/AddRemoveWishlist';
+import RandomCountry from '../components/RandomCountry';
 
 import geoUrl from '../assets/features.json';
 
@@ -271,6 +272,9 @@ function MapVisitedWishList({
                 <line x1="5" y1="12" x2="19" y2="12" />
               </svg>
             </button>
+          </div>
+          <div className="text-center mt-[20px]">
+            <RandomCountry />
           </div>
         </div>
       )}

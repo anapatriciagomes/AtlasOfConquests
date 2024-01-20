@@ -29,6 +29,19 @@ function LoginPage({
   const [showPassword, setShowPassword] = useState(false);
   const [isValidEmail, setIsValidEmail] = useState(true);
   const [users, setUsers] = useState([]);
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const navigate = useNavigate();
 
@@ -139,35 +152,35 @@ function LoginPage({
   const GreyButton = styled(Button)(({ theme }) => ({
     color: theme.palette.getContrastText(grey[500]),
     backgroundColor: grey[500],
-    width: '500px',
+    width: width < 550 ? `${width * 0.95}px` : '500px',
     height: '56px',
-    margin: 8,
+    margin: width < 550 ? '8px 0' : 8,
 
     '&:hover': {
       backgroundColor: grey[600],
-      width: '500px',
+      width: width < 550 ? `${width * 0.95}px` : '500px',
       height: '56px',
-      margin: 8,
+      margin: width < 550 ? '8px 0' : 8,
     },
   }));
 
   const OrangeButton = styled(Button)(({ theme }) => ({
     color: theme.palette.getContrastText(orange[500]),
     backgroundColor: orange[300],
-    width: '500px',
+    width: width < 550 ? `${width * 0.95}px` : '500px',
     height: '56px',
-    margin: 8,
+    margin: width < 550 ? '8px 0' : 8,
 
     '&:hover': {
       backgroundColor: orange[500],
-      width: '500px',
+      width: width < 550 ? `${width * 0.95}px` : '500px',
       height: '56px',
-      margin: 8,
+      margin: width < 550 ? '8px 0' : 8,
     },
   }));
 
   return (
-    <div className="w-5/6 mt-[150px] mx-auto">
+    <div className="w-5/6 mt-[150px] mx-auto max-[550px]:w-[95%]">
       <Box
         sx={{
           display: 'flex',
@@ -178,8 +191,8 @@ function LoginPage({
       >
         <FormControl
           sx={{
-            m: 1,
-            width: '500px',
+            m: width < 550 ? '8px 0px' : '8px',
+            width: width < 550 ? `${width * 0.95}px` : '500px',
           }}
           variant="outlined"
         >
@@ -202,7 +215,13 @@ function LoginPage({
           )}
         </FormControl>
 
-        <FormControl sx={{ m: 1, width: '500px' }} variant="outlined">
+        <FormControl
+          sx={{
+            m: width < 550 ? '8px 0px' : '8px',
+            width: width < 550 ? `${width * 0.95}px` : '500px',
+          }}
+          variant="outlined"
+        >
           <InputLabel htmlFor="outlined-adornment-password">
             Password
           </InputLabel>

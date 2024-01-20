@@ -8,6 +8,7 @@ import {
 import { Tooltip } from 'react-tooltip';
 import { useNavigate } from 'react-router-dom';
 import CountryCodeConverter from './CountryCodeConverter';
+import RandomCountry from './RandomCountry';
 
 import geoUrl from '../assets/features.json';
 
@@ -128,6 +129,9 @@ function WorldMap({ darkMode }) {
             <line x1="5" y1="12" x2="19" y2="12" />
           </svg>
         </button>
+      </div>
+      <div className="text-center mt-[20px]">
+        <RandomCountry />
       </div>
     </div>
   );
