@@ -76,8 +76,6 @@ function DistanceCalculator({ lat, lng, countryName }) {
           console.error('Error getting geolocation:', error.message);
         }
       );
-    } else {
-      console.log('Geolocation is not available in your browser.');
     }
   }, []);
 
