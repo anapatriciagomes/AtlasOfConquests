@@ -43,7 +43,7 @@ function RandomCountry() {
       Math.random() * Object.keys(attractions).length
     );
     const randomCountry = Object.keys(attractions)[randomIndex];
-    console.log(randomCountry);
+
     const randomCountryCode = CountryCodeConverter({
       countryName: randomCountry,
     });
