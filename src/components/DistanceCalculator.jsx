@@ -109,13 +109,15 @@ function DistanceCalculator({ lat, lng, countryName }) {
             >
               {country}
             </Link>{' '}
-            is
+            is around
             <span className='font-semibold'>
               {' '}
               {` ${distances.kilometers.toFixed(0)} km `}
             </span>{' '}
-            {`(${distances.miles.toFixed(0)} mi)`} from the center of{' '}
-            {countryName}!
+            {`(${distances.miles.toFixed(0)} mi)`}{' '}
+            {countryName.charAt(countryName.length - 1) === 's'
+              ? `away from ${countryName}' center!`
+              : `away from ${countryName}'s center!`}
           </p>
         ) : (
           <p>
