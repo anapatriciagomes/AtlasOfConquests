@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import CountryCodeConverter from './CountryCodeConverter';
 
 function DistanceCalculator({ lat, lng }) {
   const [position, setPosition] = useState({
@@ -93,14 +95,29 @@ function DistanceCalculator({ lat, lng }) {
     <>
       <span>
         {position.latitude && position.longitude ? (
-          <h2>
-            {country} is{' '}
-            {` ${distances.kilometers.toFixed(1)} km (${distances.miles.toFixed(
+          <p>
+            You are in{' '}
+            <Link
+              className={`text-[#ef914e] font-semibold hover:text-[#F53]`}
+              to={`/country/${CountryCodeConverter({
+                countryName: country,
+              })}/${country.replaceAll(' ', '-')}`}
+            >
+              {country}
+            </Link>{' '}
+            <span className='font-semibold'>
+              {' '}
+              - {` ${distances.kilometers.toFixed(1)} km `}
+            </span>{' '}
+            {`(${distances.miles.toFixed(
               1
             )} mi) away from this country's center!`}
-          </h2>
+          </p>
         ) : (
-          <p>Please enable your location</p>
+          <p>
+            Please enable your location to know how far away you are from this
+            country.
+          </p>
         )}
       </span>
     </>
