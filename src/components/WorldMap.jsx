@@ -130,7 +130,7 @@ function WorldMap({ darkMode }) {
           </svg>
         </button>
       </div>
-      <div className="text-center mt-[20px]">
+      <div className="text-center mt-[20px] mb-[50px]">
         <RandomCountry />
       </div>
     </div>
