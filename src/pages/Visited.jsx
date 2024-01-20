@@ -11,7 +11,7 @@ function Visited({
   setLoggedUserDetails,
   userId,
 }) {
-  const [visitedCountries, setVisitedCountries] = useState(null);
+  const [visitedCountries, setVisitedCountries] = useState([]);
   const [showVisited, setShowVisited] = useState([]);
   const [countriesFlags, setCountriesFlags] = useState(null);
 
@@ -55,7 +55,7 @@ function Visited({
       {loggedIn && (
         <div className="mt-[120px] mx-auto text-center w-[650px] max-[700px]:w-[95%]">
           <h1 className="mb-[40px] text-xl text-center">Visited Countries</h1>
-          {visitedCountries ? (
+          {visitedCountries.length > 0 ? (
             <h2 className="mb-[20px] text-xl text-center leading-10">
               You have visited{' '}
               <b className="text-[#6fbc16] text-2xl">
@@ -68,12 +68,12 @@ function Visited({
           ) : (
             ''
           )}
-          {visitedCountries ? (
+          {visitedCountries.length > 0 ? (
             <SearchBar searchedCountries={searchedCountries} />
           ) : (
             ''
           )}
-          {visitedCountries ? (
+          {visitedCountries.length > 0 ? (
             showVisited.map(visited => (
               <div
                 key={visited.id}
@@ -118,7 +118,11 @@ function Visited({
             ))
           ) : (
             <h1>
-              Your list is still empty, click on the map below to add countries.
+              Your list is still empty, click on the{' '}
+              <Link to="/map-visited-wishlist" className="text-[#ff6b00]">
+                map
+              </Link>{' '}
+              to add countries.
             </h1>
           )}
         </div>

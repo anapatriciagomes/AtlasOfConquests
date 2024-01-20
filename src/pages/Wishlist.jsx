@@ -13,7 +13,7 @@ function Wishlist({
   userId,
   darkMode,
 }) {
-  const [wishlistCountries, setWishlistCountries] = useState(null);
+  const [wishlistCountries, setWishlistCountries] = useState([]);
   const [showWishlist, setShowWishlist] = useState([]);
   const [countriesFlags, setCountriesFlags] = useState(null);
 
@@ -57,7 +57,7 @@ function Wishlist({
       {loggedIn && (
         <div className="mt-[120px] mx-auto text-center w-[650px] max-[700px]:w-[95%]">
           <h1 className="mb-[40px] text-xl text-center">Wishlist Countries</h1>
-          {wishlistCountries ? (
+          {wishlistCountries.length > 0 ? (
             <h2 className="mb-[40px] text-xl text-center leading-10">
               You have{' '}
               <b
@@ -72,12 +72,12 @@ function Wishlist({
           ) : (
             ''
           )}
-          {wishlistCountries ? (
+          {wishlistCountries.length > 0 ? (
             <SearchBar searchedCountries={searchedCountries} />
           ) : (
             ''
           )}
-          {wishlistCountries ? (
+          {wishlistCountries.length > 0 ? (
             showWishlist.map(wishlist => (
               <div
                 key={wishlist.id}
@@ -122,7 +122,11 @@ function Wishlist({
             ))
           ) : (
             <h1>
-              Your list is still empty, click on the map below to add countries.
+              Your list is still empty, go to a random country or click on the{' '}
+              <Link to="/map-visited-wishlist" className="text-[#ff6b00]">
+                map
+              </Link>{' '}
+              to add countries.
             </h1>
           )}
           <div className="text-center mt-[20px] mb-[50px]">

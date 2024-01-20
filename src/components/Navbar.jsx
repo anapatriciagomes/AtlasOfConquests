@@ -6,7 +6,6 @@ import LightModeIcon from '@mui/icons-material/LightMode';
 import * as React from 'react';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Box from '@mui/material/Box';
-import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
@@ -14,10 +13,6 @@ import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Tooltip from '@mui/material/Tooltip';
-import PersonAdd from '@mui/icons-material/PersonAdd';
-import Settings from '@mui/icons-material/Settings';
 import LoginIcon from '@mui/icons-material/Login';
 import Logout from '@mui/icons-material/Logout';
 
@@ -239,78 +234,68 @@ function Navbar({
                   transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                   anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                 >
-                  <MenuItem onClick={handleClose}>
+                  <NavLink
+                    to="/list"
+                    style={({ isActive }) => {
+                      return isActive ? { color: '#dd7031' } : {};
+                    }}
+                    onClick={() => setLoginPageActive(false)}
+                  >
+                    <MenuItem onClick={handleClose}>Countries List</MenuItem>
+                  </NavLink>
+
+                  {loggedIn ? (
                     <NavLink
-                      to="/list"
-                      className="mr-[30px]"
+                      to="/map-visited-wishlist"
                       style={({ isActive }) => {
                         return isActive ? { color: '#dd7031' } : {};
                       }}
                       onClick={() => setLoginPageActive(false)}
                     >
-                      Countries List
-                    </NavLink>
-                  </MenuItem>
-
-                  {loggedIn ? (
-                    <MenuItem onClick={handleClose}>
-                      <NavLink
-                        to="/map-visited-wishlist"
-                        className="mr-[30px]"
-                        style={({ isActive }) => {
-                          return isActive ? { color: '#dd7031' } : {};
-                        }}
-                        onClick={() => setLoginPageActive(false)}
-                      >
+                      <MenuItem onClick={handleClose}>
                         Visited & Wishlist Map
-                      </NavLink>
-                    </MenuItem>
+                      </MenuItem>
+                    </NavLink>
                   ) : (
                     ''
                   )}
                   {loggedIn ? (
-                    <MenuItem onClick={handleClose}>
-                      <NavLink
-                        to="/visited"
-                        className="mr-[30px]"
-                        style={({ isActive }) => {
-                          return isActive ? { color: '#dd7031' } : {};
-                        }}
-                        onClick={() => setLoginPageActive(false)}
-                      >
-                        Visited
-                      </NavLink>
-                    </MenuItem>
+                    <NavLink
+                      to="/visited"
+                      style={({ isActive }) => {
+                        return isActive ? { color: '#dd7031' } : {};
+                      }}
+                      onClick={() => setLoginPageActive(false)}
+                    >
+                      <MenuItem onClick={handleClose}>Visited</MenuItem>
+                    </NavLink>
                   ) : (
                     ''
                   )}
                   {loggedIn ? (
-                    <MenuItem onClick={handleClose}>
-                      <NavLink
-                        to="/wishlist"
-                        className="mr-[30px]"
-                        style={({ isActive }) => {
-                          return isActive ? { color: '#dd7031' } : {};
-                        }}
-                        onClick={() => setLoginPageActive(false)}
-                      >
-                        Wishlist
-                      </NavLink>
-                    </MenuItem>
+                    <NavLink
+                      to="/wishlist"
+                      style={({ isActive }) => {
+                        return isActive ? { color: '#dd7031' } : {};
+                      }}
+                      onClick={() => setLoginPageActive(false)}
+                    >
+                      <MenuItem onClick={handleClose}>Wishlist</MenuItem>
+                    </NavLink>
                   ) : (
                     ''
                   )}
 
                   <Divider />
-                  <MenuItem onClick={handleClose}>
-                    <button
-                      onClick={() => {
-                        localStorage.setItem('darkMode', !darkMode);
-                        setDarkMode(!darkMode);
-                        console.log(`!darkMode : ${!darkMode}`);
-                      }}
-                      className="flex items-center"
-                    >
+                  <button
+                    onClick={() => {
+                      localStorage.setItem('darkMode', !darkMode);
+                      setDarkMode(!darkMode);
+                      console.log(`!darkMode : ${!darkMode}`);
+                    }}
+                    className="flex items-center w-[100%]"
+                  >
+                    <MenuItem onClick={handleClose} sx={{ width: '100%' }}>
                       <ListItemIcon>
                         {darkMode ? (
                           <LightModeIcon className="text-center" />
@@ -319,29 +304,29 @@ function Navbar({
                         )}
                       </ListItemIcon>
                       {darkMode ? 'Light Mode' : 'Dark Mode'}
-                    </button>
-                  </MenuItem>
+                    </MenuItem>
+                  </button>
                   {loggedIn ? (
-                    <MenuItem onClick={handleClose}>
-                      <NavLink
-                        to="/user-account"
-                        style={
-                          (({ isActive }) => {
-                            return isActive ? { color: '#dd7031' } : {};
-                          },
-                          {
-                            display: 'flex',
-                            alignItems: 'center',
-                          })
-                        }
-                        onClick={() => setLoginPageActive(false)}
-                      >
+                    <NavLink
+                      to="/user-account"
+                      style={
+                        (({ isActive }) => {
+                          return isActive ? { color: '#dd7031' } : {};
+                        },
+                        {
+                          display: 'flex',
+                          alignItems: 'center',
+                        })
+                      }
+                      onClick={() => setLoginPageActive(false)}
+                    >
+                      <MenuItem onClick={handleClose} sx={{ width: '100%' }}>
                         <ListItemIcon>
                           <AccountCircleIcon />
                         </ListItemIcon>
                         Account Details
-                      </NavLink>
-                    </MenuItem>
+                      </MenuItem>
+                    </NavLink>
                   ) : (
                     ''
                   )}
@@ -349,27 +334,27 @@ function Navbar({
                   {loginPageActive ? (
                     ''
                   ) : (
-                    <MenuItem onClick={handleClose}>
-                      <NavLink
-                        style={{
-                          display: 'flex',
-                          alignItems: 'center',
-                        }}
-                        to="/login"
-                        onClick={() => {
-                          if (loggedIn) {
-                            setLoggedIn(false);
-                            localStorage.removeItem('loggedIn');
-                            localStorage.removeItem('loggedUserDetails');
-                            localStorage.removeItem('userId');
-                            localStorage.removeItem('email');
-                            localStorage.removeItem('userId');
-                            localStorage.removeItem('countryId');
-                            setLoggedUserDetails(null);
-                            setUserId(0);
-                          }
-                        }}
-                      >
+                    <NavLink
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                      }}
+                      to="/login"
+                      onClick={() => {
+                        if (loggedIn) {
+                          setLoggedIn(false);
+                          localStorage.removeItem('loggedIn');
+                          localStorage.removeItem('loggedUserDetails');
+                          localStorage.removeItem('userId');
+                          localStorage.removeItem('email');
+                          localStorage.removeItem('userId');
+                          localStorage.removeItem('countryId');
+                          setLoggedUserDetails(null);
+                          setUserId(0);
+                        }
+                      }}
+                    >
+                      <MenuItem onClick={handleClose} sx={{ width: '100%' }}>
                         <ListItemIcon>
                           {loggedIn ? (
                             <Logout fontSize="small" />
@@ -378,8 +363,8 @@ function Navbar({
                           )}
                         </ListItemIcon>
                         {loggedIn ? 'Logout' : 'Login'}
-                      </NavLink>
-                    </MenuItem>
+                      </MenuItem>
+                    </NavLink>
                   )}
                 </Menu>
               </div>
