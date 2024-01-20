@@ -15,6 +15,8 @@ function Weather({ capital }) {
   const fetchWeather = async () => {
     if (firstCity === 'Washington, D.C.') {
       firstCity = 'Washington';
+    } else if (firstCity === 'El Aaiún') {
+      firstCity = 'Laayoune';
     }
 
     let formattedCity = firstCity.replace(/ /g, ' ');
