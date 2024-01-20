@@ -116,8 +116,8 @@ function DistanceCalculator({ lat, lng, countryName }) {
             </span>{' '}
             {`(${distances.miles.toFixed(0)} mi)`}{' '}
             {countryName.charAt(countryName.length - 1) === 's'
-              ? `away from ${countryName}' center!`
-              : `away from ${countryName}'s center!`}
+              ? `from ${countryName}' center!`
+              : `from ${countryName}'s center!`}
           </p>
         ) : (
           <p>
