@@ -101,7 +101,6 @@ function DistanceCalculator({ lat, lng, countryName }) {
       <span>
         {position.latitude && position.longitude ? (
           <p>
-            You are in{' '}
             <Link
               className={`text-[#ef914e] font-semibold hover:text-[#F53]`}
               to={`/country/${CountryCodeConverter({
@@ -110,15 +109,13 @@ function DistanceCalculator({ lat, lng, countryName }) {
             >
               {country}
             </Link>{' '}
-            -
+            is
             <span className='font-semibold'>
               {' '}
               {` ${distances.kilometers.toFixed(0)} km `}
             </span>{' '}
-            {`(${distances.miles.toFixed(0)} mi) - from`}{' '}
-            {countryName.charAt(countryName.length - 1) === 's'
-              ? `${countryName}' center!`
-              : `${countryName}'s center!`}
+            {`(${distances.miles.toFixed(0)} mi)`} from the center of{' '}
+            {countryName}!
           </p>
         ) : (
           <p>

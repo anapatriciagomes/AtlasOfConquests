@@ -86,9 +86,7 @@ function Weather({ capital }) {
             </div>
           </>
         ) : (
-          <p>
-            <CircularProgress />
-          </p>
+          <p></p>
         )}
       </>
     </div>
