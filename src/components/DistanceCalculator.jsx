@@ -1,20 +1,5 @@
 import { useEffect, useState } from 'react';
 
-const MyLocation = ({ position }) => {
-  return (
-    <div className='mt-[200px]'>
-      <h2>My Current Location</h2>
-      {position.latitude && position.longitude ? (
-        <p>
-          Latitude: {position.latitude}, Longitude: {position.longitude}
-        </p>
-      ) : (
-        <p>Please enable your location</p>
-      )}
-    </div>
-  );
-};
-
 function DistanceCalculator({ lat, lng }) {
   const [position, setPosition] = useState({
     latitude: null,
@@ -25,6 +10,8 @@ function DistanceCalculator({ lat, lng }) {
     kilometers: 0,
     miles: 0,
   });
+
+  const [country, setCountry] = useState('');
 
   function haversineDistance(coords1, coords2) {
     function toRad(x) {
@@ -60,6 +47,20 @@ function DistanceCalculator({ lat, lng }) {
     };
   }
 
+  async function reverseGeocode(latitude, longitude) {
+    try {
+      const response = await fetch(
+        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`
+      );
+      const data = await response.json();
+      if (data.address && data.address.country) {
+        setCountry(data.address.country);
+      }
+    } catch (error) {
+      console.error('Error fetching reverse geocoding data:', error);
+    }
+  }
+
   useEffect(() => {
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition(
@@ -79,21 +80,30 @@ function DistanceCalculator({ lat, lng }) {
   }, []);
 
   useEffect(() => {
-    const coords1 = { lat: position.latitude, lon: position.longitude };
-    const coords2 = { lat: lat, lon: lng };
-    const newDistances = haversineDistance(coords1, coords2);
-    setDistances(newDistances);
+    if (position.latitude !== null && position.longitude !== null) {
+      const coords1 = { lat: position.latitude, lon: position.longitude };
+      const coords2 = { lat: lat, lon: lng };
+      const newDistances = haversineDistance(coords1, coords2);
+      setDistances(newDistances);
+      reverseGeocode(position.latitude, position.longitude);
+    }
   }, [lat, lng, position]);
 
   return (
-    <div>
-      <MyLocation position={position} />
-      {`You are ${distances.kilometers.toFixed(
-        1
-      )} kilometers (${distances.miles.toFixed(
-        1
-      )} miles) from this country's center`}
-    </div>
+    <>
+      <span>
+        {position.latitude && position.longitude ? (
+          <h2>
+            {country} is{' '}
+            {` ${distances.kilometers.toFixed(1)} km (${distances.miles.toFixed(
+              1
+            )} mi) away from this country's center!`}
+          </h2>
+        ) : (
+          <p>Please enable your location</p>
+        )}
+      </span>
+    </>
   );
 }
 
