@@ -20,28 +20,28 @@ function DistanceCalculator({ lat, lng, countryName }) {
       return (x * Math.PI) / 180;
     }
 
-    var lon1 = coords1.lon;
-    var lat1 = coords1.lat;
+    const lon1 = coords1.lon;
+    const lat1 = coords1.lat;
 
-    var lon2 = coords2.lon;
-    var lat2 = coords2.lat;
+    const lon2 = coords2.lon;
+    const lat2 = coords2.lat;
 
-    var R = 6371; // Earth radius in kilometers
-    var MILES_CONVERSION = 0.621371;
+    const R = 6371; // Earth radius in kilometers
+    const MILES_CONVERSION = 0.621371;
 
-    var x1 = lat2 - lat1;
-    var dLat = toRad(x1);
-    var x2 = lon2 - lon1;
-    var dLon = toRad(x2);
-    var a =
+    const x1 = lat2 - lat1;
+    const dLat = toRad(x1);
+    const x2 = lon2 - lon1;
+    const dLon = toRad(x2);
+    const a =
       Math.sin(dLat / 2) * Math.sin(dLat / 2) +
       Math.cos(toRad(lat1)) *
         Math.cos(toRad(lat2)) *
         Math.sin(dLon / 2) *
         Math.sin(dLon / 2);
-    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    var distanceInKilometers = R * c;
-    var distanceInMiles = distanceInKilometers * MILES_CONVERSION;
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const distanceInKilometers = R * c;
+    const distanceInMiles = distanceInKilometers * MILES_CONVERSION;
 
     return {
       kilometers: distanceInKilometers,
