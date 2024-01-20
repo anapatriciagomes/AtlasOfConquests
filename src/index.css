@@ -8,4 +8,7 @@
   h1 {
     font-family: 'Bungee', sans-serif;
   }
+  .border-hover:hover {
+    color: #ff6647 !important;
+  }
 }
