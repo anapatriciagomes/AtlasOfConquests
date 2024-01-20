@@ -10,6 +10,7 @@ function Wishlist({
   loggedUserDetails,
   setLoggedUserDetails,
   userId,
+  darkMode,
 }) {
   const [wishlistCountries, setWishlistCountries] = useState(null);
   const [showWishlist, setShowWishlist] = useState([]);
@@ -58,7 +59,11 @@ function Wishlist({
           {wishlistCountries ? (
             <h2 className="mb-[40px] text-xl text-center leading-10">
               You have{' '}
-              <b className="text-[#673ab7] text-2xl">
+              <b
+                className={`${
+                  darkMode ? 'text-[#9e76e3]' : 'text-[#673ab7]'
+                } text-2xl`}
+              >
                 {wishlistCountries.length}
               </b>{' '}
               countries on your Wishlist!

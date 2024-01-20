@@ -134,6 +134,7 @@ function App() {
               loggedUserDetails={loggedUserDetails}
               setLoggedUserDetails={setLoggedUserDetails}
               userId={userId}
+              darkMode={darkMode}
             />
           }
         />
