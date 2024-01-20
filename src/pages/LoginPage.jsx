@@ -28,6 +28,7 @@ function LoginPage({
 }) {
   const [showPassword, setShowPassword] = useState(false);
   const [isValidEmail, setIsValidEmail] = useState(true);
+  const [isValidPassword, setIsValidPassword] = useState(true);
   const [users, setUsers] = useState([]);
   const [width, setWidth] = useState(window.innerWidth);
 
@@ -77,6 +78,12 @@ function LoginPage({
     setIsValidEmail(emailRegex.test(email));
   };
 
+  const validatePassword = () => {
+    if (password.trim() === '') {
+      setIsValidPassword(false);
+    }
+  };
+
   const handleEmailChange = event => {
     setEmail(event.target.value);
     localStorage.setItem('email', event.target.value);
@@ -84,8 +91,20 @@ function LoginPage({
     setIsValidEmail(true);
   };
 
+  const isStrongPassword = password => {
+    const minLength = 8;
+    const hasUpperCase = /[A-Z]/.test(password);
+    const hasLowerCase = /[a-z]/.test(password);
+    const hasDigit = /\d/.test(password);
+
+    return (
+      password.length >= minLength && hasUpperCase && hasLowerCase && hasDigit
+    );
+  };
+
   const handlePasswordChange = event => {
     setPassword(event.target.value);
+    setIsValidPassword(true);
   };
 
   const handleLogin = () => {
@@ -129,6 +148,14 @@ function LoginPage({
 
       if (password.trim() === '') {
         alert('Password cannot be empty');
+        return;
+      }
+
+      if (!isStrongPassword(password)) {
+        setIsValidPassword(false);
+        alert(
+          'Password is not strong enough. Please follow the password requirements.'
+        );
         return;
       }
 
@@ -204,8 +231,8 @@ function LoginPage({
             onBlur={validateEmail}
             error={!isValidEmail}
             endAdornment={
-              <InputAdornment position="end">
-                <AccountCircle />
+              <InputAdornment position="end" sx={{ width: '40px' }}>
+                <AccountCircle sx={{ marginLeft: '16px' }} />
               </InputAdornment>
             }
             label="Email"
@@ -229,6 +256,8 @@ function LoginPage({
             id="outlined-adornment-password"
             value={password}
             onChange={handlePasswordChange}
+            onBlur={validatePassword}
+            error={!isValidPassword}
             type={showPassword ? 'text' : 'password'}
             endAdornment={
               <InputAdornment position="end">
@@ -239,6 +268,7 @@ function LoginPage({
                   edge="end"
                   sx={{
                     marginRight: -1,
+                    marginLeft: '8px',
                   }}
                 >
                   {showPassword ? <VisibilityOff /> : <Visibility />}
@@ -247,6 +277,12 @@ function LoginPage({
             }
             label="Password"
           />
+          {!isValidPassword && (
+            <FormHelperText error>
+              Password should be at least 8 characters long and include
+              uppercase, lowercase, and digits.
+            </FormHelperText>
+          )}
         </FormControl>
         <GreyButton onClick={handleLogin}>Log in</GreyButton>
         <OrangeButton onClick={handleRegister}>Register</OrangeButton>

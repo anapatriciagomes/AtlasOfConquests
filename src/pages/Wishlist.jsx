@@ -4,6 +4,7 @@ import axios from 'axios';
 import CountryCodeConverter from '../components/CountryCodeConverter';
 import AddRemoveWishlist from '../components/AddRemoveWishlist';
 import SearchBar from '../components/SearchBar';
+import RandomCountry from '../components/RandomCountry';
 
 function Wishlist({
   loggedIn,
@@ -124,6 +125,9 @@ function Wishlist({
               Your list is still empty, click on the map below to add countries.
             </h1>
           )}
+          <div className="text-center mt-[20px] mb-[50px]">
+            <RandomCountry />
+          </div>
         </div>
       )}
       {loggedIn === false && (
