@@ -125,7 +125,7 @@ function Wishlist({
               Your list is still empty, click on the map below to add countries.
             </h1>
           )}
-          <div className="text-center mt-[20px]">
+          <div className="text-center mt-[20px] mb-[50px]">
             <RandomCountry />
           </div>
         </div>
