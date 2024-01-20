@@ -272,13 +272,11 @@ function CountryPage({
                       </ul>
                     </div>
                   )}
-                  <div className='pb-3'>
-                    <span className='font-semibold'>Your distance:</span>
-                    <DistanceCalculator
-                      lat={country.latlng[0]}
-                      lng={country.latlng[1]}
-                    />
-                  </div>
+                  <DistanceCalculator
+                    lat={country.latlng[0]}
+                    lng={country.latlng[1]}
+                    countryName={country.name.common}
+                  />
                   {loggedIn ? (
                     <div className='flex justify-between mx-auto mt-[20px] w-[400px] max-[550px]:flex-col max-[550px]:items-center max-[550px]:h-[120px] max-[550px]:w-auto'>
                       <AddRemoveVisited

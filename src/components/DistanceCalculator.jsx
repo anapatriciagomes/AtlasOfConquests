@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import CountryCodeConverter from './CountryCodeConverter';
 
-function DistanceCalculator({ lat, lng }) {
+function DistanceCalculator({ lat, lng, countryName }) {
   const [position, setPosition] = useState({
     latitude: null,
     longitude: null,
@@ -91,8 +91,13 @@ function DistanceCalculator({ lat, lng }) {
     }
   }, [lat, lng, position]);
 
+  if (countryName === country) {
+    return null;
+  }
+
   return (
-    <>
+    <div className='pb-3'>
+      <span className='font-semibold'>Your distance:</span>
       <span>
         {position.latitude && position.longitude ? (
           <p>
@@ -105,22 +110,24 @@ function DistanceCalculator({ lat, lng }) {
             >
               {country}
             </Link>{' '}
+            -
             <span className='font-semibold'>
               {' '}
-              - {` ${distances.kilometers.toFixed(1)} km `}
+              {` ${distances.kilometers.toFixed(0)} km `}
             </span>{' '}
-            {`(${distances.miles.toFixed(
-              1
-            )} mi) away from this country's center!`}
+            {`(${distances.miles.toFixed(0)} mi) - from`}{' '}
+            {countryName.charAt(countryName.length - 1) === 's'
+              ? `${countryName}' center!`
+              : `${countryName}'s center!`}
           </p>
         ) : (
           <p>
-            Please enable your location to know how far away you are from this
-            country.
+            Please enable your <span className='font-semibold'>location</span>{' '}
+            to see how far away you are from {countryName}.
           </p>
         )}
       </span>
-    </>
+    </div>
   );
 }
 
