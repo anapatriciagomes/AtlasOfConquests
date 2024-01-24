@@ -45,7 +45,7 @@ const manifestForPlugIn = {
   display:"standalone",
   scope:'/',
   start_url:"/",
-  orientation:'portrait'
+  orientation:'portrait',
   prefer_related_applications: false,
   }
 }
