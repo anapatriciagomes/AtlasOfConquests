@@ -40,6 +40,7 @@ const manifestForPlugIn = {
       purpose:'any',
     }
   ],
+  theme_color:'#ffffff',
   background_color:'#f0e7db',
   display:"standalone",
   scope:'/',
