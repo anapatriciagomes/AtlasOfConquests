@@ -202,7 +202,7 @@ function CountryPage({
                     <span className='font-semibold'>Capital: </span>
                     {country.capital.join(', ')}
                   </p>
-                  <Weather capital={country.capital} />
+                  <Weather capital={country.capital} darkMode={darkMode} />
                   <div className='pb-3'>
                     <Clock
                       countryCode={country.cca2}
