@@ -8,6 +8,7 @@ const manifestForPlugIn = {
     './src/assets/world_atlas_favicon_192x192.png',
     './src/assets/world_atlas_favicon_512x512.png',
     './src/assets/world_atlas_favicon_apple_180x180.png',
+    './src/assets/world_atlas_favicon_144x144.png',
   ],
   manifest: {
     name: 'Atlas of Conquests',
@@ -36,7 +37,13 @@ const manifestForPlugIn = {
         src: './src/assets/world_atlas_favicon_512x512.png',
         sizes: '512x512',
         type: 'image/png',
-        purpose: 'any maskable',
+        purpose: 'any',
+      },
+      {
+        src: './src/assets/world_atlas_favicon_144x144.png',
+        sizes: '144x144',
+        type: 'image/png',
+        purpose: 'any',
       },
     ],
     theme_color: '#ffffff',
