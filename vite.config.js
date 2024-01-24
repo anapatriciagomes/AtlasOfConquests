@@ -37,7 +37,7 @@ const manifestForPlugIn = {
       src: './src/assets/world_atlas_favicon_144x144.png',
       sizes:'144x144',
       type:'image/png',
-      purpose:'unset',
+      purpose:'any',
     }
   ],
   theme_color:'#ffffff',
