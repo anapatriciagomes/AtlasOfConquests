@@ -13,25 +13,19 @@ const manifestForPlugIn = {
   manifest: {
     name: 'Atlas of Conquests',
     short_name: 'Atlas',
-    description: 'Atlas of Conquests PWA',
+    description: 'Atlas of Conquests Web App',
     icons: [
       {
         src: '/world_atlas_favicon_192x192.png',
         sizes: '192x192',
         type: 'image/png',
-        purpose: 'favicon',
-      },
-      {
-        src: '/world_atlas_favicon_512x512.png',
-        sizes: '512x512',
-        type: 'image/png',
-        purpose: 'favicon',
+        purpose: 'any',
       },
       {
         src: '/world_atlas_favicon_apple_180x180.png',
         sizes: '180x180',
         type: 'image/png',
-        purpose: 'apple-touch-icon',
+        purpose: 'any',
       },
       {
         src: '/world_atlas_favicon_512x512.png',
