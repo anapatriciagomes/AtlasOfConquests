@@ -4,7 +4,7 @@ import { VitePWA } from 'vite-plugin-pwa';
 
 const manifestForPlugIn = {
   registerType: 'prompt',
-  includeAssests:['./src/assets/world_atlas_favicon_192x192.png', "./src/assets/world_atlas_favicon_512x512.png", "./src/assets/world_atlas_favicon_apple_180x180.png"],
+  includeAssests:["./src/assets/world_atlas_favicon_192x192.png", "./src/assets/world_atlas_favicon_512x512.png", "./src/assets/world_atlas_favicon_apple_180x180.png"],
   manifest: {
     name: "Atlas of Conquests",
     short_name: "Atlas",
