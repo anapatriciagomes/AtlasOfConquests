@@ -66,29 +66,34 @@ Attractions (example)
 
 ```json
 ​
-"Country": "France"
-"Attraction": "Eiffel Tower"
-"Country Code": "FR"
+ "France": {
+    "attractions": ["Eiffel Tower", "Louvre Museum", "Mont Saint-Michel"],
+    "country_code": "FR"
+  },
 ​
-"Country": "Italy"
-"Attraction": "Colosseum"
-"Country Code": "IT"
+  "Italy": {
+    "attractions": ["Colosseum", "Venice", "Amalfi Coast"],
+    "country_code": "IT"
+  },
 ​
-"Country": "Portugal"
-"Attraction": "Mosteiro dos Jerónimos"
-"Country Code": "PT"
+  "Portugal": {
+    "attractions": [
+      "Mosteiro dos Jerónimos",
+      "Centro Cultural de Belém",
+      "Pena Palace"
+    ],
+    "country_code": "PR"
+  },
 ​
-"Country": "United Kingdom"
-"Attraction": "Buckingham Palace"
-"Country Code": "GB"
+  "United Kingdom": {
+    "attractions": ["Buckingham Palace", "Stonehenge", "The British Museum"],
+    "country_code": "GB"
+  },
 ​
-"Country": "Spain"
-"Attraction": "Sagrada Familia"
-"Country Code": "ES"
-​
-"Country": "Canada"
-"Attraction": "Niagara Falls"
-"Country Code": "CA"
+  "Spain": {
+    "attractions": ["Sagrada Familia", "Alhambra", "Park Güell"],
+    "country_code": "ES"
+  },
 ```
 
 Pexels API (example)
@@ -196,11 +201,10 @@ OpenWeather API (example)
 
 [Tailwind CSS](https://tailwindcss.com/)
 
+[vite-plugin-pwa](https://github.com/vite-pwa/vite-plugin-pwa)
 <br>​
 
 ## Links
-
-​
 
 ### Git
 
