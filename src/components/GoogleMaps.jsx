@@ -2,11 +2,23 @@ import { useState, useEffect } from 'react';
 import { GoogleMap, useLoadScript, MarkerF } from '@react-google-maps/api';
 import CircularProgress from '@mui/material/CircularProgress';
 
-function GoogleMaps({ lat, lng, area, darkMode }) {
-  const center = {
+function GoogleMaps({
+  lat,
+  lng,
+  area,
+  darkMode,
+  latCapital,
+  lngCapital,
+  countryName,
+}) {
+  let center = {
     lat: lat,
     lng: lng,
   };
+
+  if (countryName === 'Cape Verde') {
+    center = { lat: latCapital, lng: lngCapital };
+  }
 
   const [width, setWidth] = useState(window.innerWidth);
 
@@ -74,8 +86,8 @@ function GoogleMaps({ lat, lng, area, darkMode }) {
     customZoom = 10;
   } else customZoom = 13;
 
-  /*  russia - 2.5 */
-  /*  canada - 3 */
+  /*  russia - 2.3 */
+  /*  canada - 2.8 */
   /*  China 3.5 */
   /*  United states  3.6  */
   /*  india - 4.5 */

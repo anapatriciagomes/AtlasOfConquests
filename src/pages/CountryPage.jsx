@@ -303,6 +303,9 @@ function CountryPage({
                   lng={country.latlng[1]}
                   area={country.area}
                   darkMode={darkMode}
+                  latCapital={country.capitalInfo.latlng[0]}
+                  lngCapital={country.capitalInfo.latlng[1]}
+                  countryName={country.name.common}
                 />
               </div>
             </div>

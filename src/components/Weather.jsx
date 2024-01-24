@@ -50,7 +50,7 @@ function Weather({ capital }) {
   return (
     <div>
       {fetching && (
-        <div className='mt-[80px] text-center'>
+        <div className='mt-[80px] text-center bg-slate-700'>
           <Box
             sx={{
               display: 'flex',
