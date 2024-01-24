@@ -188,8 +188,8 @@ OpenWeather API (example)
 [axios](https://www.axios-http.com)
 
 [React Simple Maps](https://www.react-simple-maps.io/)
-​
-[Moment Timezone](https://momentjs.com/timezone/)
+
+​[Moment Timezone](https://momentjs.com/timezone/)
 
 [React Tooltip](https://react-tooltip.com/)
 
