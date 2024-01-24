@@ -69,7 +69,7 @@ function Weather({ capital, darkMode }) {
             <div
               className={`flex items-center bg-opacity-30 rounded ${
                 darkMode ? 'bg-[#f08b42]' : 'bg-[#faaa70]'
-              } w-[110px]`}
+              } w-[108px]`}
             >
               {' '}
               <img
