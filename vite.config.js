@@ -52,4 +52,9 @@ const manifestForPlugIn = {
 
 export default defineConfig({
   plugins: [react(), VitePWA(manifestForPlugIn)],
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './src/tests/setup.js',
+  },
 });
