@@ -34,8 +34,8 @@ const manifestForPlugIn = {
       purpose:'any maskable',
     },
     {
-      src: './src/assets/world_atlas_favicon_144x144.png',
-      sizes:'144x144',
+      src: './src/assets/world_atlas_favicon_512x512.png',
+      sizes:'512x512',
       type:'image/png',
       purpose:'any',
     }
