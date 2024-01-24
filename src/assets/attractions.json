@@ -224,7 +224,12 @@
   },
   "Cape Verde": {
     "attractions": ["Cidade Velha", "Fogo Volcano", "Santa Maria Beach"],
-    "country_code": "CV"
+    "country_code": "CV",
+    "imageURLs": [
+      "https://images.unsplash.com/photo-1617173883936-9f118045ad7a?q=80&w=2748&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1591870408955-9f5f749d396c?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1609929737476-89b37a1f5673?q=80&w=2748&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    ]
   },
   "Cambodia": {
     "attractions": ["Angkor Wat", "Phnom Penh", "Tonle Sap Lake"],
