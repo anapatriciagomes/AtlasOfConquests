@@ -5,10 +5,10 @@ import { VitePWA } from 'vite-plugin-pwa';
 const manifestForPlugIn = {
   registerType: 'prompt',
   includeAssets: [
-    'world_atlas_favicon_192x192.png',
-    'world_atlas_favicon_512x512.png',
-    'world_atlas_favicon_apple_180x180.png',
-    'world_atlas_favicon_144x144.png',
+    'pwa-192x192.png',
+    'pwa-512x512.png',
+    'apple-touch-icon.png',
+    'pwa-144x144.png',
   ],
   manifest: {
     name: 'Atlas of Conquests',
@@ -16,25 +16,25 @@ const manifestForPlugIn = {
     description: 'Atlas of Conquests Web App',
     icons: [
       {
-        src: '/world_atlas_favicon_192x192.png',
+        src: '/pwa-192x192.png',
         sizes: '192x192',
         type: 'image/png',
         purpose: 'any',
       },
       {
-        src: '/world_atlas_favicon_apple_180x180.png',
+        src: '/apple-touch-icon.png',
         sizes: '180x180',
         type: 'image/png',
         purpose: 'any',
       },
       {
-        src: '/world_atlas_favicon_512x512.png',
+        src: '/pwa-512x512.png',
         sizes: '512x512',
         type: 'image/png',
-        purpose: 'any',
+        purpose: 'any maskable',
       },
       {
-        src: '/world_atlas_favicon_144x144.png',
+        src: '/pwa-144x144.png',
         sizes: '144x144',
         type: 'image/png',
         purpose: 'any',
