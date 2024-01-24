@@ -151,9 +151,7 @@ function AddRemoveVisited({
             </SmallGreenButton>
           ) : (
             <GreenButton onClick={handleButtonClick}>
-              {visited
-                ? 'Remove Country from Visited List'
-                : 'Add Country to Visited List'}
+              {visited ? 'Remove from Visited List' : 'Add to Visited List'}
             </GreenButton>
           )}
         </div>
