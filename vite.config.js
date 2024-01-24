@@ -51,7 +51,16 @@ const manifestForPlugIn = {
 };
 
 export default defineConfig({
-  plugins: [react(), VitePWA(manifestForPlugIn)],
+  plugins: [
+    react(),
+    VitePWA({
+      workbox: {
+        globPatterns: ['**/*'],
+      },
+      includeAssets: ['**/*'],
+      manifestForPlugIn,
+    }),
+  ],
   test: {
     globals: true,
     environment: 'jsdom',
