@@ -155,9 +155,7 @@ function AddRemoveWishlist({
             </SmallPurpleButton>
           ) : (
             <PurpleButton onClick={handleButtonClick}>
-              {wishlist
-                ? 'Remove Country from Visited List'
-                : 'Add Country to Visited List'}
+              {wishlist ? 'Remove from Wishlist' : 'Add to Wishlist'}
             </PurpleButton>
           )}
         </div>
