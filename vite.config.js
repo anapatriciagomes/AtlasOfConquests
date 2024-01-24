@@ -9,11 +9,7 @@ const manifestForPlugIn = {
     'pwa-512x512.png',
     'apple-touch-icon.png',
     'pwa-144x144.png',
-    '**/*',
   ],
-  workbox: {
-    globPatterns: ['**/*'],
-  },
   manifest: {
     name: 'Atlas of Conquests',
     short_name: 'Atlas',
