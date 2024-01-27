@@ -26,7 +26,7 @@ function Navbar({
   darkMode,
   setDarkMode,
 }) {
-  const largeScreen = useMediaQuery('(min-width:1010px)');
+  const largeScreen = useMediaQuery('(min-width:1065px)');
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -296,7 +296,15 @@ function Navbar({
                   ) : (
                     ''
                   )}
-
+                  <NavLink
+                    to='/about'
+                    style={({ isActive }) => {
+                      return isActive ? { color: '#dd7031' } : {};
+                    }}
+                    onClick={() => setLoginPageActive(false)}
+                  >
+                    <MenuItem onClick={handleClose}>About Us</MenuItem>
+                  </NavLink>
                   <Divider />
                   <button
                     onClick={() => {
@@ -341,7 +349,6 @@ function Navbar({
                   ) : (
                     ''
                   )}
-
                   {loginPageActive ? (
                     ''
                   ) : (
