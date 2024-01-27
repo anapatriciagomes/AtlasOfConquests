@@ -8,7 +8,7 @@
 ## Description
 
 ​
-Travel registering App that allows users to keep a record of the countries they already visited and those they wish to visit. With useful and constantly updated by information for each country.
+Travel registering App that allows users to keep a record of the countries they already visited and those they wish to visit, with useful and constantly updated information for each country.
 ​
 <br>
 ​
