@@ -171,12 +171,12 @@ function CountryPage({
         </div>
       )}
 
-      <div style={photoStyle} className="mt-[72px]">
+      <div style={photoStyle} className="mt-[72px] h-full min-h-[105vh]">
         {countries &&
           countries.map((country, index) => (
             <div
               key={index}
-              className="flex flex-col text-justify justify-center pb-[200px] min-[1024px]:pb-[300px] min-[1280px]:pb-[500px]"
+              className="flex flex-col text-justify justify-center pb-[50px]"
             >
               <div
                 className={`flex justify-center items-center mb-10 mt-[40px] mx-auto w-[1050px] ${
