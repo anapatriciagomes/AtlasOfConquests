@@ -164,7 +164,7 @@ function App() {
             />
           }
         />
-        <Route path='/about' element={<AboutUs />} />
+        <Route path='/about' element={<AboutUs darkMode={darkMode} />} />
         <Route path='*' element={<ErrorPage />} />
       </Routes>
     </ThemeProvider>
