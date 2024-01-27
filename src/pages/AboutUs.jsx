@@ -13,7 +13,7 @@ function AboutUs({ darkMode }) {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
-      className="w-[100vw] h-[100vh] pt-[110px] max-[640px]:pt-[100px] max-[640px]:pb-[30px]"
+      className="w-[100vw] h-[100vh] pt-[110px] max-[640px]:pt-[100px] max-[640px]:pb-[800px]"
     >
       <div
         className={` ${
