@@ -13,7 +13,7 @@ function AboutUs({ darkMode }) {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
-      className="w-[100vw] h-[100vh] pt-[110px] max-[640px]:pt-[100px] max-[640px]:pb-[800px]"
+      className="w-[100vw] h-full min-h-[105vh] pt-[110px] max-[640px]:pt-[100px]"
     >
       <div
         className={` ${
@@ -33,7 +33,7 @@ function AboutUs({ darkMode }) {
             <img
               src={Patricia}
               alt="Patrícia"
-              className="mx-auto max-w-[100px] mt-[35px] max-[640px]:mt-[15px]"
+              className="mx-auto w-[100px] mt-[35px] max-[640px]:mt-[15px] max-[640px]:w-[80px]"
             />
             <div className="mt-[30px] max-[640px]:mt-[15px]">
               <LocationOnIcon />
@@ -69,7 +69,7 @@ function AboutUs({ darkMode }) {
             <img
               src={Ruben}
               alt="Ruben"
-              className="mx-auto max-w-[100px] mt-[35px] max-[640px]:mt-[15px]"
+              className="mx-auto w-[100px] mt-[35px] max-[640px]:mt-[15px] max-[640px]:w-[80px]"
             />
             <div className="mt-[30px] max-[640px]:mt-[15px]">
               <LocationOnIcon />
