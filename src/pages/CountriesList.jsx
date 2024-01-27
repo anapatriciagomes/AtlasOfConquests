@@ -261,6 +261,12 @@ function CountriesList({
       });
   }, []);
 
+  const formatArea = area => {
+    let formattedNumber = area.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+
+    return formattedNumber;
+  };
+
   return (
     <div className="mt-[120px]">
       <h1 className="text-xl text-center my-[30px]">Countries List</h1>
@@ -351,7 +357,7 @@ function CountriesList({
                             {<PopulationConverter number={row.population} />}
                           </TableCell>
                           <TableCell align="center">
-                            {row.area} km<sup>2</sup>
+                            {formatArea(row.area)} km<sup>2</sup>
                           </TableCell>
                           <TableCell align="center">
                             {row.continents.join(' and ')}
