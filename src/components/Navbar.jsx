@@ -45,21 +45,21 @@ function Navbar({
             !darkMode ? 'bg-[#ededed]' : 'bg-[#16161D]'
           }`}
         >
-          <div className="flex justify-start items-center">
+          <div className='flex justify-start items-center'>
             <NavLink
-              to="/"
-              className="flex items-center"
+              to='/'
+              className='flex items-center'
               onClick={() => setLoginPageActive(false)}
             >
-              <img src={worldImage} alt="world" className="w-10 h-10 mr-3" />
-              <h1 className="text-2xl max-[610px]:text-xl text-center">
+              <img src={worldImage} alt='world' className='w-10 h-10 mr-3' />
+              <h1 className='text-2xl max-[610px]:text-xl text-center'>
                 Atlas Of Conquests
               </h1>
             </NavLink>
-            <div className="ml-auto flex items-center text-sm text-center font-medium">
+            <div className='ml-auto flex items-center text-sm text-center font-medium'>
               <NavLink
-                to="/list"
-                className="mr-[30px]"
+                to='/list'
+                className='mr-[30px]'
                 style={({ isActive }) => {
                   return isActive ? { color: '#dd7031' } : {};
                 }}
@@ -67,10 +67,11 @@ function Navbar({
               >
                 Countries List
               </NavLink>
+
               {loggedIn ? (
                 <NavLink
-                  to="/map-visited-wishlist"
-                  className="mr-[30px]"
+                  to='/map-visited-wishlist'
+                  className='mr-[30px]'
                   style={({ isActive }) => {
                     return isActive ? { color: '#dd7031' } : {};
                   }}
@@ -83,8 +84,8 @@ function Navbar({
               )}
               {loggedIn ? (
                 <NavLink
-                  to="/visited"
-                  className="mr-[30px]"
+                  to='/visited'
+                  className='mr-[30px]'
                   style={({ isActive }) => {
                     return isActive ? { color: '#dd7031' } : {};
                   }}
@@ -97,8 +98,8 @@ function Navbar({
               )}
               {loggedIn ? (
                 <NavLink
-                  to="/wishlist"
-                  className="mr-[30px]"
+                  to='/wishlist'
+                  className='mr-[30px]'
                   style={({ isActive }) => {
                     return isActive ? { color: '#dd7031' } : {};
                   }}
@@ -109,12 +110,22 @@ function Navbar({
               ) : (
                 ''
               )}
+              <NavLink
+                to='/about'
+                className='mr-[30px]'
+                style={({ isActive }) => {
+                  return isActive ? { color: '#dd7031' } : {};
+                }}
+                onClick={() => setLoginPageActive(false)}
+              >
+                About Us
+              </NavLink>
               {loginPageActive ? (
                 ''
               ) : (
                 <NavLink
-                  to="/login"
-                  className="text-sm"
+                  to='/login'
+                  className='text-sm'
                   onClick={() => {
                     if (loggedIn) {
                       setLoggedIn(false);
@@ -134,13 +145,13 @@ function Navbar({
               )}
               {loggedIn ? (
                 <NavLink
-                  to="/user-account"
+                  to='/user-account'
                   style={({ isActive }) => {
                     return isActive ? { color: '#dd7031' } : {};
                   }}
                   onClick={() => setLoginPageActive(false)}
                 >
-                  <AccountCircleIcon className="ml-[20px] text-center" />
+                  <AccountCircleIcon className='ml-[20px] text-center' />
                 </NavLink>
               ) : (
                 ''
@@ -152,12 +163,12 @@ function Navbar({
                 setDarkMode(!darkMode);
                 console.log(`!darkMode : ${!darkMode}`);
               }}
-              className="ml-[20px] text-sm"
+              className='ml-[20px] text-sm'
             >
               {darkMode ? (
-                <LightModeIcon className="text-center" />
+                <LightModeIcon className='text-center' />
               ) : (
-                <DarkModeIcon className="text-center" />
+                <DarkModeIcon className='text-center' />
               )}
             </button>
           </div>
@@ -169,18 +180,18 @@ function Navbar({
               !darkMode ? 'bg-[#ededed]' : 'bg-[#16161D]'
             }`}
           >
-            <div className="flex justify-start items-center">
+            <div className='flex justify-start items-center'>
               <NavLink
-                to="/"
-                className="flex items-center"
+                to='/'
+                className='flex items-center'
                 onClick={() => setLoginPageActive(false)}
               >
-                <img src={worldImage} alt="world" className="w-10 h-10 mr-3" />
-                <h1 className="text-2xl max-[610px]:text-xl text-center">
+                <img src={worldImage} alt='world' className='w-10 h-10 mr-3' />
+                <h1 className='text-2xl max-[610px]:text-xl text-center'>
                   Atlas Of Conquests
                 </h1>
               </NavLink>
-              <div className="ml-auto flex items-center text-sm text-center font-medium">
+              <div className='ml-auto flex items-center text-sm text-center font-medium'>
                 <Box
                   sx={{
                     display: 'flex',
@@ -190,10 +201,10 @@ function Navbar({
                 >
                   <IconButton
                     onClick={handleClick}
-                    size="small"
+                    size='small'
                     sx={{ ml: 2 }}
                     aria-controls={open ? 'account-menu' : undefined}
-                    aria-haspopup="true"
+                    aria-haspopup='true'
                     aria-expanded={open ? 'true' : undefined}
                   >
                     {open ? <MenuOpenIcon /> : <MenuIcon />}
@@ -201,7 +212,7 @@ function Navbar({
                 </Box>
                 <Menu
                   anchorEl={anchorEl}
-                  id="account-menu"
+                  id='account-menu'
                   open={open}
                   onClose={handleClose}
                   onClick={handleClose}
@@ -235,7 +246,7 @@ function Navbar({
                   anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                 >
                   <NavLink
-                    to="/list"
+                    to='/list'
                     style={({ isActive }) => {
                       return isActive ? { color: '#dd7031' } : {};
                     }}
@@ -246,7 +257,7 @@ function Navbar({
 
                   {loggedIn ? (
                     <NavLink
-                      to="/map-visited-wishlist"
+                      to='/map-visited-wishlist'
                       style={({ isActive }) => {
                         return isActive ? { color: '#dd7031' } : {};
                       }}
@@ -261,7 +272,7 @@ function Navbar({
                   )}
                   {loggedIn ? (
                     <NavLink
-                      to="/visited"
+                      to='/visited'
                       style={({ isActive }) => {
                         return isActive ? { color: '#dd7031' } : {};
                       }}
@@ -274,7 +285,7 @@ function Navbar({
                   )}
                   {loggedIn ? (
                     <NavLink
-                      to="/wishlist"
+                      to='/wishlist'
                       style={({ isActive }) => {
                         return isActive ? { color: '#dd7031' } : {};
                       }}
@@ -293,14 +304,14 @@ function Navbar({
                       setDarkMode(!darkMode);
                       console.log(`!darkMode : ${!darkMode}`);
                     }}
-                    className="flex items-center w-[100%]"
+                    className='flex items-center w-[100%]'
                   >
                     <MenuItem onClick={handleClose} sx={{ width: '100%' }}>
                       <ListItemIcon>
                         {darkMode ? (
-                          <LightModeIcon className="text-center" />
+                          <LightModeIcon className='text-center' />
                         ) : (
-                          <DarkModeIcon className="text-center" />
+                          <DarkModeIcon className='text-center' />
                         )}
                       </ListItemIcon>
                       {darkMode ? 'Light Mode' : 'Dark Mode'}
@@ -308,7 +319,7 @@ function Navbar({
                   </button>
                   {loggedIn ? (
                     <NavLink
-                      to="/user-account"
+                      to='/user-account'
                       style={
                         (({ isActive }) => {
                           return isActive ? { color: '#dd7031' } : {};
@@ -339,7 +350,7 @@ function Navbar({
                         display: 'flex',
                         alignItems: 'center',
                       }}
-                      to="/login"
+                      to='/login'
                       onClick={() => {
                         if (loggedIn) {
                           setLoggedIn(false);
@@ -357,9 +368,9 @@ function Navbar({
                       <MenuItem onClick={handleClose} sx={{ width: '100%' }}>
                         <ListItemIcon>
                           {loggedIn ? (
-                            <Logout fontSize="small" />
+                            <Logout fontSize='small' />
                           ) : (
-                            <LoginIcon fontSize="small" />
+                            <LoginIcon fontSize='small' />
                           )}
                         </ListItemIcon>
                         {loggedIn ? 'Logout' : 'Login'}
