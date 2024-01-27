@@ -287,7 +287,7 @@
   "China": {
     "attractions": ["Great Wall of China", "Forbidden City", "Terracotta Army"],
     "country_code": "CN",
-    "imageUrls": [
+    "imageURLs": [
       "https://images.unsplash.com/photo-1508804052814-cd3ba865a116?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "https://images.unsplash.com/photo-1473938718606-f15cdc613d96?q=80&w=3048&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     ]
