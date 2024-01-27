@@ -179,35 +179,35 @@ function LoginPage({
   const GreyButton = styled(Button)(({ theme }) => ({
     color: theme.palette.getContrastText(grey[500]),
     backgroundColor: grey[500],
-    width: width < 550 ? `${width * 0.95}px` : '500px',
+    width: width < 610 ? `${width * 0.95}px` : '500px',
     height: '56px',
-    margin: width < 550 ? '8px 0' : 8,
+    margin: width < 610 ? '8px 0' : 8,
 
     '&:hover': {
       backgroundColor: grey[600],
-      width: width < 550 ? `${width * 0.95}px` : '500px',
+      width: width < 610 ? `${width * 0.95}px` : '500px',
       height: '56px',
-      margin: width < 550 ? '8px 0' : 8,
+      margin: width < 610 ? '8px 0' : 8,
     },
   }));
 
   const OrangeButton = styled(Button)(({ theme }) => ({
     color: theme.palette.getContrastText(orange[500]),
     backgroundColor: orange[300],
-    width: width < 550 ? `${width * 0.95}px` : '500px',
+    width: width < 610 ? `${width * 0.95}px` : '500px',
     height: '56px',
-    margin: width < 550 ? '8px 0' : 8,
+    margin: width < 610 ? '8px 0' : 8,
 
     '&:hover': {
       backgroundColor: orange[500],
-      width: width < 550 ? `${width * 0.95}px` : '500px',
+      width: width < 610 ? `${width * 0.95}px` : '500px',
       height: '56px',
-      margin: width < 550 ? '8px 0' : 8,
+      margin: width < 610 ? '8px 0' : 8,
     },
   }));
 
   return (
-    <div className="w-5/6 mt-[150px] mx-auto max-[550px]:w-[95%]">
+    <div className="w-5/6 mt-[150px] mx-auto max-[610px]:w-[95%]">
       <Box
         sx={{
           display: 'flex',
@@ -218,8 +218,8 @@ function LoginPage({
       >
         <FormControl
           sx={{
-            m: width < 550 ? '8px 0px' : '8px',
-            width: width < 550 ? `${width * 0.95}px` : '500px',
+            m: width < 610 ? '8px 0px' : '8px',
+            width: width < 610 ? `${width * 0.95}px` : '500px',
           }}
           variant="outlined"
         >
@@ -244,8 +244,8 @@ function LoginPage({
 
         <FormControl
           sx={{
-            m: width < 550 ? '8px 0px' : '8px',
-            width: width < 550 ? `${width * 0.95}px` : '500px',
+            m: width < 610 ? '8px 0px' : '8px',
+            width: width < 610 ? `${width * 0.95}px` : '500px',
           }}
           variant="outlined"
         >

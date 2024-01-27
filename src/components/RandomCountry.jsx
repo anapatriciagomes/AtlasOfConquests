@@ -26,15 +26,15 @@ function RandomCountry() {
   const OrangeButton = styled(Button)(({ theme }) => ({
     color: theme.palette.getContrastText(orange[500]),
     backgroundColor: orange[300],
-    width: width < 550 ? `${width * 0.95}px` : '500px',
+    width: width < 610 ? `${width * 0.95}px` : '500px',
     height: '56px',
-    margin: width < 550 ? '8px 0' : 8,
+    margin: width < 610 ? '8px 0' : 8,
 
     '&:hover': {
       backgroundColor: orange[500],
-      width: width < 550 ? `${width * 0.95}px` : '500px',
+      width: width < 610 ? `${width * 0.95}px` : '500px',
       height: '56px',
-      margin: width < 550 ? '8px 0' : 8,
+      margin: width < 610 ? '8px 0' : 8,
     },
   }));
 
