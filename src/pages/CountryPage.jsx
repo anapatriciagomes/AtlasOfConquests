@@ -215,7 +215,7 @@ function CountryPage({
                   </p>
                   <p className="pb-3">
                     <span className="font-semibold">Area:</span>{' '}
-                    {formatArea(country.area)} m<sup>2</sup>
+                    {formatArea(country.area)} km<sup>2</sup>
                   </p>
                   <Borders borders={country.borders} />
                   <p className="pt-3  font-semibold">
