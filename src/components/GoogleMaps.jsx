@@ -36,7 +36,7 @@ function GoogleMaps({
 
   const mapContainerStyle = {
     width: width < 550 ? `${width * 0.95}px` : '500px',
-    height: width < 550 ? '45vh' : width < 1100 ? '65vh' : '45vh',
+    height: width < 2000 ? '45vh' : width < 3000 ? '35vh' : '20vh',
     borderRadius: '0.375rem',
   };
 
