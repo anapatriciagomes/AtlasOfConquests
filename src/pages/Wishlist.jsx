@@ -1,21 +1,18 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import CountryCodeConverter from '../components/CountryCodeConverter';
 import AddRemoveWishlist from '../components/AddRemoveWishlist';
 import SearchBar from '../components/SearchBar';
 import RandomCountry from '../components/RandomCountry';
+import { AuthContext } from '../context/auth.context';
 
-function Wishlist({
-  loggedIn,
-  loggedUserDetails,
-  setLoggedUserDetails,
-  userId,
-  darkMode,
-}) {
+function Wishlist({ loggedUserDetails, setLoggedUserDetails, darkMode }) {
   const [wishlistCountries, setWishlistCountries] = useState([]);
   const [showWishlist, setShowWishlist] = useState([]);
   const [countriesFlags, setCountriesFlags] = useState(null);
+
+  const { loggedIn } = useContext(AuthContext);
 
   useEffect(() => {
     if (loggedUserDetails && loggedUserDetails.wishlist) {
@@ -80,7 +77,7 @@ function Wishlist({
           {wishlistCountries.length > 0 ? (
             showWishlist.map(wishlist => (
               <div
-                key={wishlist.id}
+                key={wishlist._id}
                 className="flex justify-center items-center mb-[20px]"
               >
                 <Link
@@ -114,7 +111,7 @@ function Wishlist({
                     loggedIn={loggedIn}
                     loggedUserDetails={loggedUserDetails}
                     setLoggedUserDetails={setLoggedUserDetails}
-                    loggedUserId={userId}
+                    loggedUserId={loggedUserDetails._id}
                     countryName={wishlist.country}
                   />
                 </div>

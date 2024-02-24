@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
@@ -14,14 +14,16 @@ import AboutUs from './pages/AboutUs';
 import * as React from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
+import { AuthContext } from './context/auth.context';
 
 function App() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loginPageActive, setLoginPageActive] = useState(false);
-  const [loggedIn, setLoggedIn] = useState(false);
   const [loggedUserDetails, setLoggedUserDetails] = useState(null);
-  const [userId, setUserId] = useState(0);
+
+  const { loggedIn } = useContext(AuthContext);
+
   const [darkMode, setDarkMode] = useState(false);
 
   const theme = React.useMemo(
@@ -35,14 +37,25 @@ function App() {
   );
 
   useEffect(() => {
-    if (localStorage.getItem('loggedIn')) {
-      setLoggedIn(true);
-      setLoggedUserDetails(
-        JSON.parse(localStorage.getItem('loggedUserDetails'))
-      );
-      setUserId(+parseInt(localStorage.getItem('userId')));
-      setEmail(localStorage.getItem('email'));
+    const storedUserDetails = localStorage.getItem('loggedUserDetails');
+    const storedEmail = localStorage.getItem('email');
+
+    try {
+      if (storedUserDetails) {
+        setLoggedUserDetails(JSON.parse(storedUserDetails));
+      } else {
+        console.error('User details not found in localStorage.');
+      }
+
+      if (storedEmail) {
+        setEmail(storedEmail);
+      } else {
+        console.error('Email not found in localStorage.');
+      }
+    } catch (error) {
+      console.error('Error parsing JSON:', error);
     }
+
     const isDarkMode =
       localStorage.getItem('darkMode') === 'true' ? true : false;
     setDarkMode(isDarkMode);
@@ -65,20 +78,17 @@ function App() {
       <Navbar
         loginPageActive={loginPageActive}
         setLoginPageActive={setLoginPageActive}
-        loggedIn={loggedIn}
-        setLoggedIn={setLoggedIn}
         setLoggedUserDetails={setLoggedUserDetails}
-        setUserId={setUserId}
         darkMode={darkMode}
         setDarkMode={setDarkMode}
       />
       <Routes>
         <Route
-          path='/'
+          path="/"
           element={<HomePage loggedIn={loggedIn} darkMode={darkMode} />}
         />
         <Route
-          path='/login'
+          path="/login"
           element={
             <LoginPage
               email={email}
@@ -86,86 +96,71 @@ function App() {
               password={password}
               setPassword={setPassword}
               setLoginPageActive={setLoginPageActive}
-              setLoggedIn={setLoggedIn}
               setLoggedUserDetails={setLoggedUserDetails}
-              setUserId={setUserId}
             />
           }
         />
         <Route
-          path='/country/:countryCode/:countryName'
+          path="/country/:countryCode/:countryName"
           element={
             <CountryPage
-              loggedIn={loggedIn}
               loggedUserDetails={loggedUserDetails}
               setLoggedUserDetails={setLoggedUserDetails}
-              userId={userId}
               darkMode={darkMode}
             />
           }
         />
         <Route
-          path='/map-visited-wishlist'
+          path="/map-visited-wishlist"
           element={
             <MapVisitedWishList
-              loggedIn={loggedIn}
               loggedUserDetails={loggedUserDetails}
               setLoggedUserDetails={setLoggedUserDetails}
-              userId={userId}
               darkMode={darkMode}
             />
           }
         />
         <Route
-          path='/visited'
+          path="/visited"
           element={
             <Visited
-              loggedIn={loggedIn}
               loggedUserDetails={loggedUserDetails}
               setLoggedUserDetails={setLoggedUserDetails}
-              userId={userId}
             />
           }
         />
         <Route
-          path='/wishlist'
+          path="/wishlist"
           element={
             <WishList
               loggedIn={loggedIn}
               loggedUserDetails={loggedUserDetails}
               setLoggedUserDetails={setLoggedUserDetails}
-              userId={userId}
               darkMode={darkMode}
             />
           }
         />
         <Route
-          path='/user-account'
+          path="/user-account"
           element={
             <UserAccountPage
-              email={email}
-              setEmail={setEmail}
               password={password}
               setPassword={setPassword}
               loggedUserDetails={loggedUserDetails}
-              userId={userId}
-              setLoggedIn={setLoggedIn}
             />
           }
         />
         <Route
-          path='/list'
+          path="/list"
           element={
             <CountriesList
-              loggedIn={loggedIn}
               loggedUserDetails={loggedUserDetails}
               setLoggedUserDetails={setLoggedUserDetails}
-              userId={userId}
             />
           }
         />
-        <Route path='/about' element={<AboutUs darkMode={darkMode} />} />
-        <Route path='*' element={<ErrorPage />} />
+        <Route path="/about" element={<AboutUs darkMode={darkMode} />} />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </ThemeProvider>
   );

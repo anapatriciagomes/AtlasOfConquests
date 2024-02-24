@@ -1,19 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import CountryCodeConverter from '../components/CountryCodeConverter';
 import AddRemoveVisited from '../components/AddRemoveVisited';
 import SearchBar from '../components/SearchBar';
+import { AuthContext } from '../context/auth.context';
 
-function Visited({
-  loggedIn,
-  loggedUserDetails,
-  setLoggedUserDetails,
-  userId,
-}) {
+function Visited({ loggedUserDetails, setLoggedUserDetails }) {
   const [visitedCountries, setVisitedCountries] = useState([]);
   const [showVisited, setShowVisited] = useState([]);
   const [countriesFlags, setCountriesFlags] = useState(null);
+
+  const { loggedIn } = useContext(AuthContext);
 
   useEffect(() => {
     if (loggedUserDetails && loggedUserDetails.visited) {
@@ -76,7 +74,7 @@ function Visited({
           {visitedCountries.length > 0 ? (
             showVisited.map(visited => (
               <div
-                key={visited.id}
+                key={visited._id}
                 className="flex justify-center items-center mb-[20px]"
               >
                 <Link
@@ -110,7 +108,7 @@ function Visited({
                     loggedIn={loggedIn}
                     loggedUserDetails={loggedUserDetails}
                     setLoggedUserDetails={setLoggedUserDetails}
-                    loggedUserId={userId}
+                    loggedUserId={loggedUserDetails._id}
                     countryName={visited.country}
                   />
                 </div>

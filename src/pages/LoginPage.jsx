@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
@@ -15,6 +14,8 @@ import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import { grey } from '@mui/material/colors';
 import { orange } from '@mui/material/colors';
+import { login, signup, getUserDetails } from '../api/auth.api';
+import { AuthContext } from '../context/auth.context';
 
 function LoginPage({
   email,
@@ -22,15 +23,14 @@ function LoginPage({
   password,
   setPassword,
   setLoginPageActive,
-  setLoggedIn,
   setLoggedUserDetails,
-  setUserId,
 }) {
   const [showPassword, setShowPassword] = useState(false);
   const [isValidEmail, setIsValidEmail] = useState(true);
   const [isValidPassword, setIsValidPassword] = useState(true);
-  const [users, setUsers] = useState([]);
   const [width, setWidth] = useState(window.innerWidth);
+
+  const { storeToken, authenticateUser } = useContext(AuthContext);
 
   useEffect(() => {
     const handleResize = () => {
@@ -45,23 +45,6 @@ function LoginPage({
   }, []);
 
   const navigate = useNavigate();
-
-  const getUsers = async () => {
-    try {
-      const response = await axios.get(
-        `${
-          import.meta.env.VITE_BACKEND_URL
-        }/users/?_embed=visited&_embed=wishlist`
-      );
-      setUsers(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    getUsers();
-  }, [email]);
 
   const handleClickShowPassword = () => setShowPassword(show => !show);
 
@@ -85,8 +68,8 @@ function LoginPage({
   };
 
   const handleEmailChange = event => {
-    setEmail(event.target.value);
-    localStorage.setItem('email', event.target.value);
+    setEmail(event.target.value.trim());
+    localStorage.setItem('email', event.target.value.trim());
     console.log(localStorage.getItem('email'));
     setIsValidEmail(true);
   };
@@ -107,7 +90,7 @@ function LoginPage({
     setIsValidPassword(true);
   };
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     if (!isValidEmail) {
       alert('Invalid email format');
       return;
@@ -118,61 +101,57 @@ function LoginPage({
       return;
     }
 
-    const user = users.find(
-      user => user.email === email && user.password === password
-    );
+    const user = { email, password };
 
-    if (user) {
-      setLoggedUserDetails(user);
-      localStorage.setItem('loggedUserDetails', JSON.stringify(user));
-      setUserId(user.id);
-      localStorage.setItem('userId', user.id.toString());
-      setLoggedIn(true);
-      localStorage.setItem('loggedIn', true);
+    try {
+      const response = await login(user);
+      const userDetails = await getUserDetails(response.data.userId);
+
+      storeToken(response.data.authToken);
+      authenticateUser();
+      setLoggedUserDetails(userDetails.data);
+      localStorage.setItem(
+        'loggedUserDetails',
+        JSON.stringify(userDetails.data)
+      );
       setLoginPageActive(false);
       setPassword('');
       navigate('/map-visited-wishlist');
-    } else if (users.find(user => user.email === email) === undefined) {
-      alert('Email does not exist, try registering.');
-    } else {
-      alert('Wrong Password');
+    } catch (error) {
+      console.log('Error logging in', error);
+      alert(error.response.data.message);
     }
   };
 
   const handleRegister = async () => {
+    if (!isValidEmail) {
+      alert('Invalid email format');
+      return;
+    }
+
+    if (password.trim() === '') {
+      alert('Password cannot be empty');
+      return;
+    }
+
+    if (!isStrongPassword(password)) {
+      setIsValidPassword(false);
+      alert(
+        'Password is not strong enough. Please follow the password requirements.'
+      );
+      return;
+    }
+
+    const user = { email, password };
+
     try {
-      if (!isValidEmail) {
-        alert('Invalid email format');
-        return;
-      }
+      await signup(user);
 
-      if (password.trim() === '') {
-        alert('Password cannot be empty');
-        return;
-      }
-
-      if (!isStrongPassword(password)) {
-        setIsValidPassword(false);
-        alert(
-          'Password is not strong enough. Please follow the password requirements.'
-        );
-        return;
-      }
-
-      if (users.find(user => user.email === email) === undefined) {
-        const userDetails = { email, password };
-        await axios.post(
-          `${import.meta.env.VITE_BACKEND_URL}/users`,
-          userDetails
-        );
-        alert('Your registration was successful, please log in.');
-        setEmail('');
-        setPassword('');
-      } else {
-        alert('This email already exists, please log in.');
-      }
+      alert('Your registration was successful, please log in.');
+      setEmail('');
+      setPassword('');
     } catch (error) {
-      console.log(error);
+      alert(error.response.data.message);
     }
   };
 

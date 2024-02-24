@@ -1,14 +1,14 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useState, useEffect, useContext } from 'react';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import { deepPurple } from '@mui/material/colors';
+import { AuthContext } from '../context/auth.context';
+import { addWishlistCountry, deleteWishlistCountry } from '../api/wishlist.api';
+import { getUserDetails } from '../api/auth.api';
 
 function AddRemoveWishlist({
-  loggedIn,
   loggedUserDetails,
   setLoggedUserDetails,
-  loggedUserId,
   countryName,
   showSmallButton,
 }) {
@@ -16,6 +16,10 @@ function AddRemoveWishlist({
   const [country, setCountry] = useState('');
   const [countryId, setCountryId] = useState(0);
   const [userId, setUserId] = useState(0);
+
+  const { loggedIn } = useContext(AuthContext);
+
+  const loggedUserId = loggedUserDetails._id;
 
   useEffect(() => {
     if (countryName) {
@@ -25,7 +29,7 @@ function AddRemoveWishlist({
           : countryName
       );
     }
-    if (loggedUserId > 0) {
+    if (loggedUserId.length > 0) {
       setUserId(loggedUserId);
       localStorage.setItem('userId', loggedUserId.toString());
     }
@@ -36,7 +40,7 @@ function AddRemoveWishlist({
 
       if (filteredCountry.length > 0) {
         setWishlist(true);
-        setCountryId(filteredCountry[0].id);
+        setCountryId(filteredCountry[0]._id);
       } else {
         setWishlist(false);
       }
@@ -45,24 +49,14 @@ function AddRemoveWishlist({
 
   const handleAddCountry = async () => {
     try {
-      if (loggedUserId === 0) {
-        setUserId(+parseInt(localStorage.getItem('userId')));
+      if (loggedUserId.length === 0) {
+        setUserId(parseInt(localStorage.getItem('userId')));
       }
       const countryDetails = { country, userId };
-      await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/wishlist`,
-        countryDetails
-      );
+      await addWishlistCountry(countryDetails);
       setWishlist(true);
-      const updatedWishlist = await axios.get(
-        `${import.meta.env.VITE_BACKEND_URL}/users/${userId}?_embed=wishlist`
-      );
-      setCountryId(updatedWishlist.data.wishlist.slice(-1)[0].id);
-      const updatedUserDetails = await axios.get(
-        `${
-          import.meta.env.VITE_BACKEND_URL
-        }/users/${userId}?_embed=visited&_embed=wishlist`
-      );
+      const updatedUserDetails = await getUserDetails(userId);
+
       setLoggedUserDetails(updatedUserDetails.data);
       localStorage.setItem(
         'loggedUserDetails',
@@ -75,18 +69,12 @@ function AddRemoveWishlist({
 
   const handleRemoveCountry = async () => {
     try {
-      if (loggedUserId === 0) {
-        setUserId(+parseInt(localStorage.getItem('userId')));
+      if (loggedUserId.length === 0) {
+        setUserId(parseInt(localStorage.getItem('userId')));
       }
-      await axios.delete(
-        `${import.meta.env.VITE_BACKEND_URL}/wishlist/${countryId}`
-      );
+      await deleteWishlistCountry(countryId);
       setWishlist(false);
-      const updatedUserDetails = await axios.get(
-        `${
-          import.meta.env.VITE_BACKEND_URL
-        }/users/${userId}?_embed=visited&_embed=wishlist`
-      );
+      const updatedUserDetails = await getUserDetails(userId);
       setLoggedUserDetails(updatedUserDetails.data);
       localStorage.setItem(
         'loggedUserDetails',

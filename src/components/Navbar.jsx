@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import worldImage from '../assets/world_atlas_favicon.png';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -15,17 +16,16 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import LoginIcon from '@mui/icons-material/Login';
 import Logout from '@mui/icons-material/Logout';
+import { AuthContext } from '../context/auth.context';
 
 function Navbar({
   loginPageActive,
   setLoginPageActive,
-  loggedIn,
-  setLoggedIn,
   setLoggedUserDetails,
-  setUserId,
   darkMode,
   setDarkMode,
 }) {
+  const { loggedIn, logoutUser } = useContext(AuthContext);
   const largeScreen = useMediaQuery('(min-width:1115px)');
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -128,15 +128,13 @@ function Navbar({
                   className="text-sm"
                   onClick={() => {
                     if (loggedIn) {
-                      setLoggedIn(false);
+                      logoutUser();
                       localStorage.removeItem('loggedIn');
                       localStorage.removeItem('loggedUserDetails');
                       localStorage.removeItem('userId');
                       localStorage.removeItem('email');
-                      localStorage.removeItem('userId');
                       localStorage.removeItem('countryId');
                       setLoggedUserDetails(null);
-                      setUserId(0);
                     }
                   }}
                 >
@@ -360,15 +358,13 @@ function Navbar({
                       to="/login"
                       onClick={() => {
                         if (loggedIn) {
-                          setLoggedIn(false);
+                          logoutUser();
                           localStorage.removeItem('loggedIn');
                           localStorage.removeItem('loggedUserDetails');
                           localStorage.removeItem('userId');
                           localStorage.removeItem('email');
-                          localStorage.removeItem('userId');
                           localStorage.removeItem('countryId');
                           setLoggedUserDetails(null);
-                          setUserId(0);
                         }
                       }}
                     >

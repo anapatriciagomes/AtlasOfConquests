@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import EmailIcon from '@mui/icons-material/Email';
@@ -24,17 +23,32 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
+import { changePassword, deleteAccount } from '../api/auth.api';
+import { AuthContext } from '../context/auth.context';
 
-function UserAccountPage({
-  email,
-  password,
-  setPassword,
-  loggedUserDetails,
-  userId,
-  setLoggedIn,
-}) {
+function UserAccountPage({ password, setPassword, loggedUserDetails }) {
   const [showPassword, setShowPassword] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
+  const [isValidPassword, setIsValidPassword] = useState(true);
+
+  const { logoutUser } = useContext(AuthContext);
+
+  const validatePassword = () => {
+    if (password.trim() === '') {
+      setIsValidPassword(false);
+    }
+  };
+
+  const isStrongPassword = password => {
+    const minLength = 8;
+    const hasUpperCase = /[A-Z]/.test(password);
+    const hasLowerCase = /[a-z]/.test(password);
+    const hasDigit = /\d/.test(password);
+
+    return (
+      password.length >= minLength && hasUpperCase && hasLowerCase && hasDigit
+    );
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -62,15 +76,29 @@ function UserAccountPage({
 
   const handleChangePasswordButton = async () => {
     try {
-      const requestDetails = { email, password };
-      await axios.put(
-        `${import.meta.env.VITE_BACKEND_URL}/users/${userId}`,
-        requestDetails
-      );
+      if (password.trim() === '') {
+        alert('Password cannot be empty');
+        return;
+      }
+
+      if (!isStrongPassword(password)) {
+        setIsValidPassword(false);
+        alert(
+          'Password is not strong enough. Please follow the password requirements.'
+        );
+        return;
+      }
+
+      const { email, _id } = loggedUserDetails;
+
+      const user = { email, password, _id };
+
+      await changePassword(user);
       alert('Your password has been successfuly updated.');
       setPassword('');
     } catch (error) {
-      console.log(error);
+      console.log('Error updating password', error);
+      alert(error.response.data.message);
     }
   };
 
@@ -89,11 +117,16 @@ function UserAccountPage({
   const handleDeleteAccount = async () => {
     try {
       setOpen(false);
-      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/users/${userId}`);
-      setLoggedIn(false);
+      await deleteAccount(loggedUserDetails._id);
+      logoutUser();
+      localStorage.removeItem('loggedIn');
+      localStorage.removeItem('loggedUserDetails');
+      localStorage.removeItem('email');
+      localStorage.removeItem('countryId');
       navigate('/');
     } catch (error) {
-      console.log(error);
+      console.log('Error deleting user account', error);
+      alert(error.response.data.message);
     }
   };
 
@@ -167,6 +200,8 @@ function UserAccountPage({
               id="outlined-adornment-password"
               value={password}
               onChange={handlePasswordChange}
+              onBlur={validatePassword}
+              error={!isValidPassword}
               type={showPassword ? 'text' : 'password'}
               endAdornment={
                 <InputAdornment position="end">

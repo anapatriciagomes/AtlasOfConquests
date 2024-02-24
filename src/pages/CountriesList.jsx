@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -21,14 +21,9 @@ import SearchBar from '../components/SearchBar';
 import AddRemoveVisited from '../components/AddRemoveVisited';
 import AddRemoveWishlist from '../components/AddRemoveWishlist';
 import CountryNameConverter from '../components/CountryNameConverter';
+import { AuthContext } from '../context/auth.context';
 
-function CountriesList({
-  loggedIn,
-  loggedUserDetails,
-  setLoggedUserDetails,
-  userId,
-  darkMode,
-}) {
+function CountriesList({ loggedUserDetails, setLoggedUserDetails, darkMode }) {
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('name');
   const [selected, setSelected] = React.useState([]);
@@ -37,6 +32,8 @@ function CountriesList({
   const [fetching, setFetching] = useState(true);
   const [countries, setCountries] = useState([]);
   const [showCountries, setShowCountries] = useState([]);
+
+  const { loggedIn } = useContext(AuthContext);
 
   const getComparator = (order, orderBy) => {
     return order === 'desc'
@@ -369,14 +366,14 @@ function CountriesList({
                                   loggedIn={loggedIn}
                                   loggedUserDetails={loggedUserDetails}
                                   setLoggedUserDetails={setLoggedUserDetails}
-                                  loggedUserId={userId}
+                                  loggedUserId={loggedUserDetails._id}
                                   countryName={row.name.common}
                                 />
                                 <AddRemoveWishlist
                                   loggedIn={loggedIn}
                                   loggedUserDetails={loggedUserDetails}
                                   setLoggedUserDetails={setLoggedUserDetails}
-                                  loggedUserId={userId}
+                                  loggedUserId={loggedUserDetails._id}
                                   countryName={row.name.common}
                                 />
                               </div>

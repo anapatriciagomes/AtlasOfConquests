@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import {
   ComposableMap,
   Geographies,
@@ -11,19 +11,19 @@ import CountryCodeConverter from '../components/CountryCodeConverter';
 import AddRemoveVisited from '../components/AddRemoveVisited';
 import AddRemoveWishlist from '../components/AddRemoveWishlist';
 import RandomCountry from '../components/RandomCountry';
-
 import geoUrl from '../assets/features.json';
+import { AuthContext } from '../context/auth.context';
 
 function MapVisitedWishList({
-  loggedIn,
   loggedUserDetails,
   setLoggedUserDetails,
-  userId,
   darkMode,
 }) {
   const [visitedCountries, setVisitedCountries] = useState([]);
   const [wishlistCountries, setWishlistCountries] = useState([]);
   const [tooltipContent, setTooltipContent] = useState('');
+
+  const { loggedIn } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -95,7 +95,7 @@ function MapVisitedWishList({
   const gradientColorsHover = ['rgba(103,58,183,1)', 'rgba(139,195,75,1)'];
 
   return (
-    <div className='w-4/5 mx-auto mt-[70px] max-[1010px]:w-[95%] max-[381px]:mt-[140px]'>
+    <div className="w-4/5 mx-auto mt-[70px] max-[1010px]:w-[95%] max-[381px]:mt-[140px]">
       {loggedUserDetails && visitedCountries && wishlistCountries && (
         <div>
           <ComposableMap>
@@ -138,18 +138,18 @@ function MapVisitedWishList({
                     }
 
                     return (
-                      <a key={geo.rsmKey} className='country-tooltip'>
+                      <a key={geo.rsmKey} className="country-tooltip">
                         <Geography
                           geography={geo}
                           fill={fillColor}
-                          stroke='#d1d1d1'
+                          stroke="#d1d1d1"
                           onMouseEnter={() => {
                             geo.properties.name === 'West Bank'
                               ? setTooltipContent('Palestine')
                               : setTooltipContent(geo.properties.name);
                           }}
                           onClick={() => handleClick(geo)}
-                          className='cursor-pointer'
+                          className="cursor-pointer"
                           style={{
                             default: {
                               outline: 'none',
@@ -172,37 +172,37 @@ function MapVisitedWishList({
               </Geographies>
             </ZoomableGroup>
             <defs>
-              <linearGradient id='gradient' x1='0' x2='1' y1='0' y2='0'>
-                <stop offset='0%' stopColor={gradientColors[0]} />
-                <stop offset='100%' stopColor={gradientColors[1]} />
+              <linearGradient id="gradient" x1="0" x2="1" y1="0" y2="0">
+                <stop offset="0%" stopColor={gradientColors[0]} />
+                <stop offset="100%" stopColor={gradientColors[1]} />
               </linearGradient>
-              <linearGradient id='gradientHover' x1='0' x2='1' y1='0' y2='0'>
-                <stop offset='0%' stopColor={gradientColorsHover[0]} />
-                <stop offset='100%' stopColor={gradientColorsHover[1]} />
+              <linearGradient id="gradientHover" x1="0" x2="1" y1="0" y2="0">
+                <stop offset="0%" stopColor={gradientColorsHover[0]} />
+                <stop offset="100%" stopColor={gradientColorsHover[1]} />
               </linearGradient>
             </defs>
           </ComposableMap>
           <Tooltip
-            anchorSelect='.country-tooltip'
-            place='top-start'
-            className='text-center'
+            anchorSelect=".country-tooltip"
+            place="top-start"
+            className="text-center"
             clickable
             offset={-10}
           >
             <a
               onClick={() => handleClickTooltip(tooltipContent)}
-              className='text-white hover:text-[#ff9800] cursor-pointer px-[20px] py-[5px] bg-gray-700 rounded'
+              className="text-white hover:text-[#ff9800] cursor-pointer px-[20px] py-[5px] bg-gray-700 rounded"
             >
               {tooltipContent}
             </a>
 
-            <div className='flex mt-[10px]'>
-              <div className='mr-[10px]'>
+            <div className="flex mt-[10px]">
+              <div className="mr-[10px]">
                 <AddRemoveVisited
                   loggedIn={loggedIn}
                   loggedUserDetails={loggedUserDetails}
                   setLoggedUserDetails={setLoggedUserDetails}
-                  loggedUserId={userId}
+                  loggedUserId={loggedUserDetails._id}
                   countryName={tooltipContent}
                   showSmallButton
                 />
@@ -211,46 +211,46 @@ function MapVisitedWishList({
                 loggedIn={loggedIn}
                 loggedUserDetails={loggedUserDetails}
                 setLoggedUserDetails={setLoggedUserDetails}
-                loggedUserId={userId}
+                loggedUserId={loggedUserDetails._id}
                 countryName={tooltipContent}
                 showSmallButton
               />
             </div>
           </Tooltip>
-          <div className='controls text-center'>
+          <div className="controls text-center">
             <button onClick={handleZoomIn}>
               <svg
-                xmlns='http://www.w3.org/2000/svg'
-                width='24'
-                height='24'
-                viewBox='0 0 24 24'
-                stroke='currentColor'
-                strokeWidth='3'
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth="3"
               >
-                <line x1='12' y1='5' x2='12' y2='19' />
-                <line x1='5' y1='12' x2='19' y2='12' />
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
               </svg>
             </button>
             <button onClick={handleZoomOut}>
               <svg
-                xmlns='http://www.w3.org/2000/svg'
-                width='24'
-                height='24'
-                viewBox='0 0 24 24'
-                stroke='currentColor'
-                strokeWidth='3'
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth="3"
               >
-                <line x1='5' y1='12' x2='19' y2='12' />
+                <line x1="5" y1="12" x2="19" y2="12" />
               </svg>
             </button>
           </div>
-          <div className='text-center mt-[20px] mb-[50px]'>
+          <div className="text-center mt-[20px] mb-[50px]">
             <RandomCountry />
           </div>
         </div>
       )}
       {loggedIn === false && (
-        <h1 className='mt-[120px] text-center text-xl'>
+        <h1 className="mt-[120px] text-center text-xl">
           Please log in to visit this page
         </h1>
       )}

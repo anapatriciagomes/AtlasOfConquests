@@ -1,14 +1,14 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useState, useEffect, useContext } from 'react';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import { lightGreen } from '@mui/material/colors';
+import { AuthContext } from '../context/auth.context';
+import { addVisitedCountry, deleteVisitedCountry } from '../api/visited.api';
+import { getUserDetails } from '../api/auth.api';
 
 function AddRemoveVisited({
-  loggedIn,
   loggedUserDetails,
   setLoggedUserDetails,
-  loggedUserId,
   countryName,
   showSmallButton,
 }) {
@@ -16,6 +16,10 @@ function AddRemoveVisited({
   const [country, setCountry] = useState('');
   const [countryId, setCountryId] = useState(0);
   const [userId, setUserId] = useState(0);
+
+  const { loggedIn } = useContext(AuthContext);
+
+  const loggedUserId = loggedUserDetails._id;
 
   useEffect(() => {
     if (countryName) {
@@ -25,7 +29,7 @@ function AddRemoveVisited({
           : countryName
       );
     }
-    if (loggedUserId > 0) {
+    if (loggedUserId.length > 0) {
       setUserId(loggedUserId);
       localStorage.setItem('userId', loggedUserId.toString());
     }
@@ -36,29 +40,23 @@ function AddRemoveVisited({
 
       if (filteredCountry.length > 0) {
         setVisited(true);
-        setCountryId(filteredCountry[0].id);
+        setCountryId(filteredCountry[0]._id);
       } else {
         setVisited(false);
       }
     }
-  }, [countryName, loggedUserDetails, loggedUserId]);
+  }, [countryName, loggedUserDetails]);
 
   const handleAddCountry = async () => {
     try {
-      if (loggedUserId === 0) {
-        setUserId(+parseInt(localStorage.getItem('userId')));
+      if (loggedUserId.length === 0) {
+        setUserId(parseInt(localStorage.getItem('userId')));
       }
       const countryDetails = { country, userId };
-      await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/visited`,
-        countryDetails
-      );
+      await addVisitedCountry(countryDetails);
       setVisited(true);
-      const updatedUserDetails = await axios.get(
-        `${
-          import.meta.env.VITE_BACKEND_URL
-        }/users/${userId}?_embed=visited&_embed=wishlist`
-      );
+      const updatedUserDetails = await getUserDetails(userId);
+
       setLoggedUserDetails(updatedUserDetails.data);
       localStorage.setItem(
         'loggedUserDetails',
@@ -71,18 +69,12 @@ function AddRemoveVisited({
 
   const handleRemoveCountry = async () => {
     try {
-      if (loggedUserId === 0) {
-        setUserId(+parseInt(localStorage.getItem('userId')));
+      if (loggedUserId.length === 0) {
+        setUserId(parseInt(localStorage.getItem('userId')));
       }
-      await axios.delete(
-        `${import.meta.env.VITE_BACKEND_URL}/visited/${countryId}`
-      );
+      await deleteVisitedCountry(countryId);
       setVisited(false);
-      const updatedUserDetails = await axios.get(
-        `${
-          import.meta.env.VITE_BACKEND_URL
-        }/users/${userId}?_embed=visited&_embed=wishlist`
-      );
+      const updatedUserDetails = await getUserDetails(userId);
       setLoggedUserDetails(updatedUserDetails.data);
       localStorage.setItem(
         'loggedUserDetails',

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import attractions from '../assets/attractions.json';
@@ -12,20 +12,16 @@ import PopulationConverter from '../components/PopulationConverter';
 import Weather from '../components/Weather';
 import GoogleMaps from '../components/GoogleMaps';
 import DistanceCalculator from '../components/DistanceCalculator';
+import { AuthContext } from '../context/auth.context';
 
-function CountryPage({
-  loggedIn,
-  loggedUserDetails,
-  setLoggedUserDetails,
-  userId,
-  darkMode,
-}) {
+function CountryPage({ loggedUserDetails, setLoggedUserDetails, darkMode }) {
   const [fetching, setFetching] = useState(true);
   const [countries, setCountries] = useState(null);
   const [photoStyle, setPhotoStyle] = useState({});
 
   const { countryCode } = useParams();
   const { countryName } = useParams();
+  const { loggedIn } = useContext(AuthContext);
 
   useEffect(() => {
     if (countryCode) {
@@ -283,14 +279,12 @@ function CountryPage({
                         loggedIn={loggedIn}
                         loggedUserDetails={loggedUserDetails}
                         setLoggedUserDetails={setLoggedUserDetails}
-                        loggedUserId={userId}
                         countryName={countryName}
                       />
                       <AddRemoveWishlist
                         loggedIn={loggedIn}
                         loggedUserDetails={loggedUserDetails}
                         setLoggedUserDetails={setLoggedUserDetails}
-                        loggedUserId={userId}
                         countryName={countryName}
                       />
                     </div>
