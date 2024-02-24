@@ -262,10 +262,8 @@ function LoginPage({
               uppercase, lowercase, and digits.
             </FormHelperText>
           )}
-          <GreyButton type="submit" onClick={handleLogin}>
-            Log in
-          </GreyButton>
         </FormControl>
+        <GreyButton onClick={handleLogin}>Log in</GreyButton>
         <OrangeButton onClick={handleRegister}>Register</OrangeButton>
       </Box>
     </div>
