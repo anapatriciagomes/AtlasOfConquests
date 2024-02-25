@@ -16,6 +16,7 @@ import { grey } from '@mui/material/colors';
 import { orange } from '@mui/material/colors';
 import { login, signup, getUserDetails } from '../api/auth.api';
 import { AuthContext } from '../context/auth.context';
+import CircularProgress from '@mui/material/CircularProgress';
 
 function LoginPage({
   email,
@@ -29,6 +30,7 @@ function LoginPage({
   const [isValidEmail, setIsValidEmail] = useState(true);
   const [isValidPassword, setIsValidPassword] = useState(true);
   const [width, setWidth] = useState(window.innerWidth);
+  const [isLoading, setIsLoading] = useState(false);
 
   const { storeToken, authenticateUser } = useContext(AuthContext);
 
@@ -103,10 +105,13 @@ function LoginPage({
 
     const user = { email, password };
 
+    setIsLoading(true);
+
     try {
       const response = await login(user);
       const userDetails = await getUserDetails(response.data.userId);
 
+      setIsLoading(false);
       storeToken(response.data.authToken);
       authenticateUser();
       setLoggedUserDetails(userDetails.data);
@@ -118,6 +123,7 @@ function LoginPage({
       setPassword('');
       navigate('/map-visited-wishlist');
     } catch (error) {
+      setIsLoading(false);
       console.log('Error logging in', error);
       alert(error.response.data.message);
     }
@@ -144,13 +150,17 @@ function LoginPage({
 
     const user = { email, password };
 
+    setIsLoading(true);
+
     try {
       await signup(user);
 
+      setIsLoading(false);
       alert('Your registration was successful, please log in.');
       setEmail('');
       setPassword('');
     } catch (error) {
+      setIsLoading(false);
       alert(error.response.data.message);
     }
   };
@@ -265,6 +275,7 @@ function LoginPage({
         </FormControl>
         <GreyButton onClick={handleLogin}>Log in</GreyButton>
         <OrangeButton onClick={handleRegister}>Register</OrangeButton>
+        <div className="my-[6px]">{isLoading && <CircularProgress />}</div>
       </Box>
     </div>
   );
