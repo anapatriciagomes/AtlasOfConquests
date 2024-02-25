@@ -103,7 +103,7 @@ function Visited({ loggedUserDetails, setLoggedUserDetails }) {
 
                   <p className="text-left">{visited.country}</p>
                 </Link>
-                <div>
+                <div className="ml-[10px]">
                   <AddRemoveVisited
                     loggedIn={loggedIn}
                     loggedUserDetails={loggedUserDetails}

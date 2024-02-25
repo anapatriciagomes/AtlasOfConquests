@@ -7,7 +7,7 @@ const CountryNameConverter = ({ countryCode }) => {
       AE: 'United Arab Emirates',
       AR: 'Argentina',
       AM: 'Armenia',
-      TF: 'French Southern Territories',
+      TF: 'French Southern and Antarctic Lands',
       AU: 'Australia',
       AT: 'Austria',
       AZ: 'Azerbaijan',

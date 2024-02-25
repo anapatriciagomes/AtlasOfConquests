@@ -106,7 +106,7 @@ function Wishlist({ loggedUserDetails, setLoggedUserDetails, darkMode }) {
 
                   <p className="text-left">{wishlist.country}</p>
                 </Link>
-                <div>
+                <div className="ml-[10px]">
                   <AddRemoveWishlist
                     loggedIn={loggedIn}
                     loggedUserDetails={loggedUserDetails}
