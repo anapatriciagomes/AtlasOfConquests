@@ -221,7 +221,33 @@ function LoginPage({
           alignItems: 'center',
         }}
       >
-        <form>
+        <FormControl
+          sx={{
+            m: width < 610 ? '8px 0px' : '8px',
+            width: width < 610 ? `${width * 0.95}px` : '500px',
+          }}
+          variant="outlined"
+        >
+          <InputLabel htmlFor="outlined-adornment-email">Email</InputLabel>
+          <OutlinedInput
+            id="outlined-adornment-email"
+            value={email}
+            onChange={handleEmailChange}
+            onBlur={validateEmail}
+            error={!isValidEmail}
+            endAdornment={
+              <InputAdornment position="end" sx={{ width: '40px' }}>
+                <AccountCircle sx={{ marginLeft: '16px' }} />
+              </InputAdornment>
+            }
+            label="Email"
+          />
+          {!isValidEmail && (
+            <FormHelperText error>Invalid Email</FormHelperText>
+          )}
+        </FormControl>
+
+        {!forgotPasswordClicked && (
           <FormControl
             sx={{
               m: width < 610 ? '8px 0px' : '8px',
@@ -229,70 +255,42 @@ function LoginPage({
             }}
             variant="outlined"
           >
-            <InputLabel htmlFor="outlined-adornment-email">Email</InputLabel>
+            <InputLabel htmlFor="outlined-adornment-password">
+              Password
+            </InputLabel>
             <OutlinedInput
-              id="outlined-adornment-email"
-              value={email}
-              onChange={handleEmailChange}
-              onBlur={validateEmail}
-              error={!isValidEmail}
+              id="outlined-adornment-password"
+              value={password}
+              onChange={handlePasswordChange}
+              onBlur={validatePassword}
+              error={!isValidPassword}
+              type={showPassword ? 'text' : 'password'}
               endAdornment={
-                <InputAdornment position="end" sx={{ width: '40px' }}>
-                  <AccountCircle sx={{ marginLeft: '16px' }} />
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                    edge="end"
+                    sx={{
+                      marginRight: -1,
+                      marginLeft: '8px',
+                    }}
+                  >
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
                 </InputAdornment>
               }
-              label="Email"
+              label="Password"
             />
-            {!isValidEmail && (
-              <FormHelperText error>Invalid Email</FormHelperText>
+            {!isValidPassword && (
+              <FormHelperText error>
+                Password should be at least 8 characters long and include
+                uppercase, lowercase, and digits.
+              </FormHelperText>
             )}
           </FormControl>
-
-          {!forgotPasswordClicked && (
-            <FormControl
-              sx={{
-                m: width < 610 ? '8px 0px' : '8px',
-                width: width < 610 ? `${width * 0.95}px` : '500px',
-              }}
-              variant="outlined"
-            >
-              <InputLabel htmlFor="outlined-adornment-password">
-                Password
-              </InputLabel>
-              <OutlinedInput
-                id="outlined-adornment-password"
-                value={password}
-                onChange={handlePasswordChange}
-                onBlur={validatePassword}
-                error={!isValidPassword}
-                type={showPassword ? 'text' : 'password'}
-                endAdornment={
-                  <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={handleClickShowPassword}
-                      onMouseDown={handleMouseDownPassword}
-                      edge="end"
-                      sx={{
-                        marginRight: -1,
-                        marginLeft: '8px',
-                      }}
-                    >
-                      {showPassword ? <VisibilityOff /> : <Visibility />}
-                    </IconButton>
-                  </InputAdornment>
-                }
-                label="Password"
-              />
-              {!isValidPassword && (
-                <FormHelperText error>
-                  Password should be at least 8 characters long and include
-                  uppercase, lowercase, and digits.
-                </FormHelperText>
-              )}
-            </FormControl>
-          )}
-        </form>
+        )}
 
         <GreyButton
           onClick={!forgotPasswordClicked ? handleLogin : handleForgotPassword}
