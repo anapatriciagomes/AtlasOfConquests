@@ -11,6 +11,7 @@ import WishList from './pages/Wishlist';
 import UserAccountPage from './pages/UserAccountPage';
 import CountriesList from './pages/CountriesList';
 import AboutUs from './pages/AboutUs';
+import ResetPassword from './pages/ResetPassword';
 import * as React from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -98,6 +99,12 @@ function App() {
               setLoginPageActive={setLoginPageActive}
               setLoggedUserDetails={setLoggedUserDetails}
             />
+          }
+        />
+        <Route
+          path="/reset-password/:token"
+          element={
+            <ResetPassword password={password} setPassword={setPassword} />
           }
         />
         <Route

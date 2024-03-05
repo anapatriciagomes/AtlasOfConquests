@@ -14,7 +14,7 @@ import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import { grey } from '@mui/material/colors';
 import { orange } from '@mui/material/colors';
-import { login, signup, getUserDetails } from '../api/auth.api';
+import { login, signup, getUserDetails, forgotPassword } from '../api/auth.api';
 import { AuthContext } from '../context/auth.context';
 import CircularProgress from '@mui/material/CircularProgress';
 
@@ -31,6 +31,7 @@ function LoginPage({
   const [isValidPassword, setIsValidPassword] = useState(true);
   const [width, setWidth] = useState(window.innerWidth);
   const [isLoading, setIsLoading] = useState(false);
+  const [forgotPasswordClicked, setForgotPasswordClicked] = useState(false);
 
   const { storeToken, authenticateUser } = useContext(AuthContext);
 
@@ -114,11 +115,11 @@ function LoginPage({
       setIsLoading(false);
       storeToken(response.data.authToken);
       authenticateUser();
-      setLoggedUserDetails(userDetails.data);
-      localStorage.setItem(
-        'loggedUserDetails',
-        JSON.stringify(userDetails.data)
-      );
+      const { _id, email, visited, wishlist } = userDetails.data;
+      const userData = { _id, email, visited, wishlist };
+
+      setLoggedUserDetails(userData);
+      localStorage.setItem('loggedUserDetails', JSON.stringify(userData));
       setLoginPageActive(false);
       setPassword('');
       navigate('/map-visited-wishlist');
@@ -161,6 +162,21 @@ function LoginPage({
       setPassword('');
     } catch (error) {
       setIsLoading(false);
+      alert(error.response.data.message);
+    }
+  };
+
+  const handleForgotPassword = async () => {
+    setIsLoading(true);
+    try {
+      await forgotPassword(email);
+      setIsLoading(false);
+      setForgotPasswordClicked(false);
+      alert(
+        'Please check your email inbox and spam, you will receive a reset link in the next few minutes'
+      );
+    } catch (error) {
+      console.log('Error on password reset', error);
       alert(error.response.data.message);
     }
   };
@@ -231,50 +247,67 @@ function LoginPage({
           )}
         </FormControl>
 
-        <FormControl
-          sx={{
-            m: width < 610 ? '8px 0px' : '8px',
-            width: width < 610 ? `${width * 0.95}px` : '500px',
-          }}
-          variant="outlined"
+        {!forgotPasswordClicked && (
+          <FormControl
+            sx={{
+              m: width < 610 ? '8px 0px' : '8px',
+              width: width < 610 ? `${width * 0.95}px` : '500px',
+            }}
+            variant="outlined"
+          >
+            <InputLabel htmlFor="outlined-adornment-password">
+              Password
+            </InputLabel>
+            <OutlinedInput
+              id="outlined-adornment-password"
+              value={password}
+              onChange={handlePasswordChange}
+              onBlur={validatePassword}
+              error={!isValidPassword}
+              type={showPassword ? 'text' : 'password'}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                    edge="end"
+                    sx={{
+                      marginRight: -1,
+                      marginLeft: '8px',
+                    }}
+                  >
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              }
+              label="Password"
+            />
+            {!isValidPassword && (
+              <FormHelperText error>
+                Password should be at least 8 characters long and include
+                uppercase, lowercase, and digits.
+              </FormHelperText>
+            )}
+          </FormControl>
+        )}
+
+        <GreyButton
+          onClick={!forgotPasswordClicked ? handleLogin : handleForgotPassword}
         >
-          <InputLabel htmlFor="outlined-adornment-password">
-            Password
-          </InputLabel>
-          <OutlinedInput
-            id="outlined-adornment-password"
-            value={password}
-            onChange={handlePasswordChange}
-            onBlur={validatePassword}
-            error={!isValidPassword}
-            type={showPassword ? 'text' : 'password'}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                  edge="end"
-                  sx={{
-                    marginRight: -1,
-                    marginLeft: '8px',
-                  }}
-                >
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            }
-            label="Password"
-          />
-          {!isValidPassword && (
-            <FormHelperText error>
-              Password should be at least 8 characters long and include
-              uppercase, lowercase, and digits.
-            </FormHelperText>
-          )}
-        </FormControl>
-        <GreyButton onClick={handleLogin}>Log in</GreyButton>
-        <OrangeButton onClick={handleRegister}>Register</OrangeButton>
+          {!forgotPasswordClicked ? 'Log in' : 'Reset password'}
+        </GreyButton>
+        {!forgotPasswordClicked && (
+          <OrangeButton onClick={handleRegister}>Register</OrangeButton>
+        )}
+        {!forgotPasswordClicked && (
+          <button
+            onClick={() => setForgotPasswordClicked(true)}
+            className="mt-[10px]"
+          >
+            Forgot password?
+          </button>
+        )}
         <div className="my-[6px]">{isLoading && <CircularProgress />}</div>
       </Box>
     </div>

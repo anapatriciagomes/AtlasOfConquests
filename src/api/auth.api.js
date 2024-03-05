@@ -26,3 +26,11 @@ export const verify = storedToken => {
     headers: { Authorization: `Bearer ${storedToken}` },
   });
 };
+
+export const forgotPassword = email => {
+  return axios.put(`${baseURL}/forgot-password`, { email });
+};
+
+export const resetPassword = (token, password) => {
+  return axios.put(`${baseURL}/reset-password`, { token, password });
+};
