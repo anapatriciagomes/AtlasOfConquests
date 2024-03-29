@@ -68,8 +68,6 @@ function CountryPage({ loggedUserDetails, setLoggedUserDetails, darkMode }) {
           `${randomAttraction}${' '}${countryName.replaceAll('-', ' ')}`
         );
 
-        console.log('response', response);
-
         setPhotoStyle({
           backgroundImage: `url(${response.data.photos[0].src.large2x})`,
           backgroundRepeat: 'no-repeat',
@@ -136,7 +134,6 @@ function CountryPage({ loggedUserDetails, setLoggedUserDetails, darkMode }) {
     } else {
       fetchAPIImages();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [countryName]);
 
   const formatArea = area => {
