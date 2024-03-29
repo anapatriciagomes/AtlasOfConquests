@@ -210,14 +210,15 @@ function CountryPage({ loggedUserDetails, setLoggedUserDetails, darkMode }) {
                     {Object.keys(country.languages).length === 1
                       ? 'Official Language: '
                       : 'Official Languages: '}
-                    {Object.entries(country.languages).map(
-                      ([languageCode, language], index) => (
-                        <span key={languageCode} className="font-normal">
-                          {index > 0 && ', '}
-                          {language}
-                        </span>
-                      )
-                    )}
+                    {Object.entries &&
+                      Object.entries(country.languages).map(
+                        ([languageCode, language], index) => (
+                          <span key={languageCode} className="font-normal">
+                            {index > 0 && ', '}
+                            {language}
+                          </span>
+                        )
+                      )}
                   </p>
                   <ul className="pt-3 pb-3">
                     <li>
@@ -226,26 +227,28 @@ function CountryPage({ loggedUserDetails, setLoggedUserDetails, darkMode }) {
                           ? 'Currency: '
                           : 'Currencies: '}
                       </span>
-                      {Object.values(country.currencies)
-                        .map(
-                          currencyInfo =>
-                            `${currencyInfo.name} (${currencyInfo.symbol})`
-                        )
-                        .join(', ')}
+                      {Object.values &&
+                        Object.values(country.currencies)
+                          .map(
+                            currencyInfo =>
+                              `${currencyInfo.name} (${currencyInfo.symbol})`
+                          )
+                          .join(', ')}
                     </li>
                   </ul>
                   <p className="pb-3  font-semibold">
                     {Object.keys(country.continents).length === 1
                       ? 'Continent: '
                       : 'Continents: '}
-                    {Object.entries(country.continents).map(
-                      ([continentCode, continent], index) => (
-                        <span key={continentCode} className="font-normal">
-                          {index > 0 && ' and '}
-                          {continent}
-                        </span>
-                      )
-                    )}
+                    {Object.entries &&
+                      Object.entries(country.continents).map(
+                        ([continentCode, continent], index) => (
+                          <span key={continentCode} className="font-normal">
+                            {index > 0 && ' and '}
+                            {continent}
+                          </span>
+                        )
+                      )}
                   </p>
                   {attractions[countryName.replaceAll('-', ' ')]
                     ?.attractions && (
