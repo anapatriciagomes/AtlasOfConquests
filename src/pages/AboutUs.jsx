@@ -1,7 +1,7 @@
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import Patricia from '../assets/Patrícia.png';
+import Patricia from '../assets/Patricia.png';
 import Ruben from '../assets/Ruben.png';
 import { Link } from 'react-router-dom';
 
@@ -14,7 +14,7 @@ function AboutUs({ darkMode }) {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
-      className='w-[100vw] h-full min-h-[105vh] pt-[110px] max-[640px]:pt-[100px]'
+      className="w-[100vw] h-full min-h-[105vh] pt-[110px] max-[640px]:pt-[100px]"
     >
       <div
         className={` ${
@@ -29,60 +29,60 @@ function AboutUs({ darkMode }) {
         <div
           className={`flex justify-center max-[640px]:flex-col max-[640px]:items-center`}
         >
-          <div className='text-center w-[50%] max-[640px]:mr-0 max-[640px]:mb-[15px] max-[640px]:w-[95%]'>
-            <h2 className='text-lg font-medium'>Ana Patrícia Gomes</h2>
+          <div className="text-center w-[50%] max-[640px]:mr-0 max-[640px]:mb-[15px] max-[640px]:w-[95%]">
+            <h2 className="text-lg font-medium">Ana Patrícia Gomes</h2>
             <img
               src={Patricia}
-              alt='Patrícia'
-              className='mx-auto w-[100px] mt-[35px] max-[640px]:mt-[15px] max-[640px]:w-[80px]'
+              alt="Patrícia"
+              className="mx-auto w-[100px] mt-[35px] max-[640px]:mt-[15px] max-[640px]:w-[80px]"
             />
-            <div className='mt-[30px] max-[640px]:mt-[15px]'>
+            <div className="mt-[30px] max-[640px]:mt-[15px]">
               <LocationOnIcon />
-              <Link to='/country/pt/Portugal'>&nbsp; Lisbon, Portugal</Link>
+              <Link to="/country/pt/Portugal">&nbsp; Lisbon, Portugal</Link>
             </div>
-            <div className='mt-[30px] max-[640px]:mt-[15px] '>
+            <div className="mt-[30px] max-[640px]:mt-[15px] ">
               <a
-                href='https://github.com/anapatriciagomes'
-                target='_blank'
-                rel='noopener noreferrer'
-                className='mr-[70px] max-[250px]:mr-[20px]'
+                href="https://github.com/anapatriciagomes"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mr-[70px] max-[250px]:mr-[20px]"
               >
                 <GitHubIcon style={{ width: '42px', height: '42px' }} />
               </a>
               <a
-                href='https://www.linkedin.com/in/anapatriciagomes/'
-                target='_blank'
-                rel='noopener noreferrer'
+                href="https://www.linkedin.com/in/anapatriciagomes/"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <LinkedInIcon style={{ width: '42px', height: '42px' }} />
               </a>
             </div>
           </div>
 
-          <div className='text-center w-[50%] max-[640px]:ml-0 max-[640px]:mt-[15px] max-[640px]:w-[95%]'>
-            <h2 className='text-lg font-medium text-center'>Ruben Abreu</h2>
+          <div className="text-center w-[50%] max-[640px]:ml-0 max-[640px]:mt-[15px] max-[640px]:w-[95%]">
+            <h2 className="text-lg font-medium text-center">Ruben Abreu</h2>
             <img
               src={Ruben}
-              alt='Ruben'
-              className='mx-auto w-[100px] mt-[35px] max-[640px]:mt-[15px] max-[640px]:w-[80px]'
+              alt="Ruben"
+              className="mx-auto w-[100px] mt-[35px] max-[640px]:mt-[15px] max-[640px]:w-[80px]"
             />
-            <div className='mt-[30px] max-[640px]:mt-[15px]'>
+            <div className="mt-[30px] max-[640px]:mt-[15px]">
               <LocationOnIcon />
-              <Link to='/country/pt/Portugal'>&nbsp; Lisbon, Portugal</Link>
+              <Link to="/country/pt/Portugal">&nbsp; Lisbon, Portugal</Link>
             </div>
-            <div className='mt-[30px] max-[640px]:mt-[20px]'>
+            <div className="mt-[30px] max-[640px]:mt-[20px]">
               <a
-                href='https://github.com/ruben-abreu'
-                target='_blank'
-                rel='noopener noreferrer'
-                className='mr-[70px] max-[250px]:mr-[20px]'
+                href="https://github.com/ruben-abreu"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mr-[70px] max-[250px]:mr-[20px]"
               >
                 <GitHubIcon style={{ width: '42px', height: '42px' }} />
               </a>
               <a
-                href='https://www.linkedin.com/in/ruben-abreu1/'
-                target='_blank'
-                rel='noopener noreferrer'
+                href="https://www.linkedin.com/in/ruben-abreu1/"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <LinkedInIcon style={{ width: '42px', height: '42px' }} />
               </a>
