@@ -28,7 +28,7 @@ function Weather({ capital, darkMode }) {
       const city = encodeURIComponent(formattedCity);
       const response = await getWeatherData(city);
 
-      const data = response;
+      const data = response.data;
       setFetching(false);
       setCurrentTemperature(data.main.temp);
       setCurrentConditions(data.weather[0].icon);
