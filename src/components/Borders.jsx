@@ -225,27 +225,28 @@ function Borders({ borders = [], setPhotos, setAlternativePhotos }) {
 
         return (
           <div>
-            <p className='pb-3'>
-              <span className='font-semibold'>Borders:</span>
+            <p className="pb-3">
+              <span className="font-semibold">Borders:</span>
             </p>
             {borderCountries.length > 2 ? (
               <table>
                 <tbody>
                   <tr>
-                    <td className='flex flex-wrap'>
-                      {borderCountries.map((country, index) => (
-                        <Link
-                          key={index}
-                          className={`font-semibold mb-1 mr-7 border-hover`}
-                          style={{ color: colors[index % colors.length] }}
-                          to={`/country/${CountryCodeConverter({
-                            countryName: country,
-                          })}/${country.replaceAll(' ', '-')}`}
-                          onClick={handleBorderClick}
-                        >
-                          {country}
-                        </Link>
-                      ))}
+                    <td className="flex flex-wrap">
+                      {borderCountries &&
+                        borderCountries.map((country, index) => (
+                          <Link
+                            key={index}
+                            className={`font-semibold mb-1 mr-7 border-hover`}
+                            style={{ color: colors[index % colors.length] }}
+                            to={`/country/${CountryCodeConverter({
+                              countryName: country,
+                            })}/${country.replaceAll(' ', '-')}`}
+                            onClick={handleBorderClick}
+                          >
+                            {country}
+                          </Link>
+                        ))}
                     </td>
                   </tr>
                 </tbody>
@@ -254,19 +255,20 @@ function Borders({ borders = [], setPhotos, setAlternativePhotos }) {
               <table>
                 <tbody>
                   <tr>
-                    {borderCountries.map((country, index) => (
-                      <td key={index} className='flex mb-1'>
-                        <Link
-                          className={`text-[#ef914e] font-semibold hover:text-[#F53]`}
-                          to={`/country/${CountryCodeConverter({
-                            countryName: country,
-                          })}/${country.replaceAll(' ', '-')}`}
-                          onClick={handleBorderClick}
-                        >
-                          {country}
-                        </Link>
-                      </td>
-                    ))}
+                    {borderCountries &&
+                      borderCountries.map((country, index) => (
+                        <td key={index} className="flex mb-1">
+                          <Link
+                            className={`text-[#ef914e] font-semibold hover:text-[#F53]`}
+                            to={`/country/${CountryCodeConverter({
+                              countryName: country,
+                            })}/${country.replaceAll(' ', '-')}`}
+                            onClick={handleBorderClick}
+                          >
+                            {country}
+                          </Link>
+                        </td>
+                      ))}
                   </tr>
                 </tbody>
               </table>
