@@ -13,6 +13,7 @@ import Weather from '../components/Weather';
 import GoogleMaps from '../components/GoogleMaps';
 import DistanceCalculator from '../components/DistanceCalculator';
 import { AuthContext } from '../context/auth.context';
+import { getPexelsImage } from '../api/pexels.api';
 
 function CountryPage({ loggedUserDetails, setLoggedUserDetails, darkMode }) {
   const [fetching, setFetching] = useState(true);
@@ -63,17 +64,11 @@ function CountryPage({ loggedUserDetails, setLoggedUserDetails, darkMode }) {
               : countryName
           ]?.attractions[randomIndex];
 
-        const response = await axios.get(
-          `https://api.pexels.com/v1/search?query=${randomAttraction}${' '}${countryName.replaceAll(
-            '-',
-            ' '
-          )}&orientation=landscape&size=large`,
-          {
-            headers: {
-              Authorization: import.meta.env.VITE_API_KEY,
-            },
-          }
+        const response = await getPexelsImage(
+          `${randomAttraction}${' '}${countryName.replaceAll('-', ' ')}`
         );
+
+        console.log('response', response);
 
         setPhotoStyle({
           backgroundImage: `url(${response.data.photos[0].src.large2x})`,
